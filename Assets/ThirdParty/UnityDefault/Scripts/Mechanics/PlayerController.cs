@@ -15,30 +15,33 @@ namespace Platformer.Mechanics
     /// </summary>
     public class PlayerController : KinematicObject
     {
-        public AudioClip jumpAudio;
-        public AudioClip respawnAudio;
-        public AudioClip ouchAudio;
+        [SerializeField] public AudioClip jumpAudio;
+        [SerializeField] public AudioClip respawnAudio;
+        [SerializeField] public AudioClip ouchAudio;
 
         /// <summary>
         /// Max horizontal speed of the player.
         /// </summary>
-        public float maxSpeed = 7;
+        [SerializeField] public float maxSpeed = 7;
         /// <summary>
         /// Initial jump velocity at the start of a jump.
         /// </summary>
-        public float jumpTakeOffSpeed = 7;
+        [SerializeField] public float jumpTakeOffSpeed = 7;
 
-        public JumpState jumpState = JumpState.Grounded;
-        private bool stopJump;
+        [SerializeField] public JumpState jumpState = JumpState.Grounded;
+        [SerializeField] private bool stopJump;
         /*internal new*/ public Collider2D collider2d;
         /*internal new*/ public AudioSource audioSource;
         public Health health;
         public bool controlEnabled = true;
 
-        bool jump;
-        Vector2 move;
-        SpriteRenderer spriteRenderer;
-        internal Animator animator;
+        [SerializeField] private bool jump;
+        [SerializeField] private Vector2 move;
+        [SerializeField] private Vector2 mousePosition;
+        [SerializeField] SpriteRenderer spriteRenderer;
+        [SerializeField] internal Animator animator;
+        [SerializeField] private Transform aimTransform;
+        
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
         private InputAction m_MoveAction;
