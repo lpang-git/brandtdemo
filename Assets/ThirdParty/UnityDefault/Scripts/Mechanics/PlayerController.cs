@@ -43,6 +43,7 @@ namespace Platformer.Mechanics
 
         private InputAction m_MoveAction;
         private InputAction m_JumpAction;
+        private InputAction m_LookAction;
 
         public Bounds Bounds => collider2d.bounds;
 
@@ -53,18 +54,23 @@ namespace Platformer.Mechanics
             collider2d = GetComponent<Collider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
+            aimTransform = transform.Find("Aim");
 
             m_MoveAction = InputSystem.actions.FindAction("Player/Move");
             m_JumpAction = InputSystem.actions.FindAction("Player/Jump");
+            m_LookAction = InputSystem.actions.FindAction("Player/Look");
             
             m_MoveAction.Enable();
             m_JumpAction.Enable();
+            m_LookAction.Enable();
         }
 
         protected override void Update()
         {
             if (controlEnabled)
             {
+                AimAtMouse();
+                
                 move.x = m_MoveAction.ReadValue<Vector2>().x;
                 if (jumpState == JumpState.Grounded && m_JumpAction.WasPressedThisFrame())
                     jumpState = JumpState.PrepareToJump;
@@ -146,6 +152,36 @@ namespace Platformer.Mechanics
             Jumping,
             InFlight,
             Landed
+        }
+
+        protected override void OnEnable()
+        {
+            m_LookAction.performed += OnLook;
+            
+            base.OnEnable();
+        }
+
+        protected override void OnDisable()
+        {
+            m_LookAction.performed -= OnLook;
+            
+            base.OnDisable();
+        }
+
+        private void OnLook(InputAction.CallbackContext context)
+        {
+            mousePosition = context.ReadValue<Vector2>();
+            Debug.Log($"Mouse Position: {mousePosition}");
+        }
+        
+        private void AimAtMouse()
+        {
+            // Convert mouse position to world coordinates
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Camera.main.nearClipPlane));
+            
+            Vector3 aimDirection = (worldPosition - transform.position).normalized;
+            float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+            aimTransform.eulerAngles =  new Vector3(0, 0, angle);
         }
     }
 }
