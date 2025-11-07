@@ -44,9 +44,9 @@ namespace Platformer.Mechanics
         
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
-        private InputAction m_MoveAction;
-        private InputAction m_JumpAction;
-        private InputAction m_LookAction;
+        private InputAction _moveAction;
+        private InputAction _jumpAction;
+        private InputAction _lookAction;
 
         public Bounds Bounds => collider2d.bounds;
 
@@ -59,13 +59,13 @@ namespace Platformer.Mechanics
             animator = GetComponent<Animator>();
             aimTransform = transform.Find("Aim");
 
-            m_MoveAction = InputSystem.actions.FindAction("Player/Move");
-            m_JumpAction = InputSystem.actions.FindAction("Player/Jump");
-            m_LookAction = InputSystem.actions.FindAction("Player/Look");
+            _moveAction = InputSystem.actions.FindAction("Player/Move");
+            _jumpAction = InputSystem.actions.FindAction("Player/Jump");
+            _lookAction = InputSystem.actions.FindAction("Player/Look");
             
-            m_MoveAction.Enable();
-            m_JumpAction.Enable();
-            m_LookAction.Enable();
+            _moveAction.Enable();
+            _jumpAction.Enable();
+            _lookAction.Enable();
         }
 
         protected override void Update()
@@ -74,10 +74,10 @@ namespace Platformer.Mechanics
             {
                 AimAtMouse();
                 
-                move.x = m_MoveAction.ReadValue<Vector2>().x;
-                if (jumpState == JumpState.Grounded && m_JumpAction.WasPressedThisFrame())
+                move.x = _moveAction.ReadValue<Vector2>().x;
+                if (jumpState == JumpState.Grounded && _jumpAction.WasPressedThisFrame())
                     jumpState = JumpState.PrepareToJump;
-                else if (m_JumpAction.WasReleasedThisFrame())
+                else if (_jumpAction.WasReleasedThisFrame())
                 {
                     stopJump = true;
                     Schedule<PlayerStopJump>().player = this;
@@ -159,14 +159,14 @@ namespace Platformer.Mechanics
 
         protected override void OnEnable()
         {
-            m_LookAction.performed += OnLook;
+            _lookAction.performed += OnLook;
             
             base.OnEnable();
         }
 
         protected override void OnDisable()
         {
-            m_LookAction.performed -= OnLook;
+            _lookAction.performed -= OnLook;
             
             base.OnDisable();
         }
@@ -174,7 +174,6 @@ namespace Platformer.Mechanics
         private void OnLook(InputAction.CallbackContext context)
         {
             mousePosition = context.ReadValue<Vector2>();
-            Debug.Log($"Mouse Position: {mousePosition}");
         }
         
         private void AimAtMouse()
