@@ -33,8 +33,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.14, y: 3.39, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.64, y: 0.64, z: 0.64}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4526335388715526479}
   m_Father: {fileID: 0}
@@ -60,10 +60,17 @@ MonoBehaviour:
   maxSpeed: 3
   jumpTakeOffSpeed: 3
   jumpState: 0
+  stopJump: 0
   collider2d: {fileID: 1824045667}
   audioSource: {fileID: 8509783501685719824}
   health: {fileID: 6082575806313374961}
   controlEnabled: 1
+  jump: 0
+  move: {x: 0, y: 0}
+  mousePosition: {x: 0, y: 0}
+  spriteRenderer: {fileID: 0}
+  animator: {fileID: 0}
+  aimTransform: {fileID: 0}
 --- !u!114 &6082575806313374961
 MonoBehaviour:
   m_ObjectHideFlags: 0
