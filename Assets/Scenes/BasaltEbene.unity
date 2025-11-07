@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 89015105}
   m_Layer: 0
   m_Name: Colliders TopLayer
-  m_TagString: Untagged
+  m_TagString: ProjectileObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -783,18 +783,6 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4520396350849616, guid: c21a2efb0ed60d16d93797053c602470, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4520396350849616, guid: c21a2efb0ed60d16d93797053c602470, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4520396350849616, guid: c21a2efb0ed60d16d93797053c602470, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4520396350849616, guid: c21a2efb0ed60d16d93797053c602470, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.194
       objectReference: {fileID: 0}
@@ -833,6 +821,11 @@ PrefabInstance:
     - target: {fileID: 4520396350849616, guid: c21a2efb0ed60d16d93797053c602470, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4526335388715526479, guid: c21a2efb0ed60d16d93797053c602470,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1053,6 +1046,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &719051582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 719051583}
+  - component: {fileID: 719051584}
+  m_Layer: 0
+  m_Name: Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &719051583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719051582}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1180325733}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &719051584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719051582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75fa2f9ea4cb54f34aaac731aabe3733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Platformer.UI.MainUIController
+  panels: []
 --- !u!1 &789019358
 GameObject:
   m_ObjectHideFlags: 0
@@ -1249,6 +1287,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CinemachineConfiner
       objectReference: {fileID: 0}
+    - target: {fileID: 5102505034379151493, guid: 6f545478bd0fb7a478ed6f674a5210f5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1283,7 +1326,7 @@ GameObject:
   - component: {fileID: 1014190720}
   m_Layer: 0
   m_Name: Colliders PlattformLayer
-  m_TagString: Untagged
+  m_TagString: ProjectileObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1670,6 +1713,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1180325732
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1180325733}
+  m_Layer: 0
+  m_Name: Main Menu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1180325733
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180325732}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.76516, y: -0.75265, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 719051583}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1219285143
 GameObject:
   m_ObjectHideFlags: 0
@@ -3326,9 +3401,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9167826365723281241, guid: 33d6742517ee6384bb59e0c84738120d,
         type: 3}
-      propertyPath: m_TileSpriteArray.Array.data[7].m_Data
+      propertyPath: m_TileSpriteArray.Array.data[0].m_Data
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 9167826365723281241, guid: 33d6742517ee6384bb59e0c84738120d,
+        type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[7].m_Data
+      value: 
+      objectReference: {fileID: 5803250444597425747, guid: 6f7838e7ce1076b4fbd5c76252b877ec,
+        type: 3}
     - target: {fileID: 9167826365723281241, guid: 33d6742517ee6384bb59e0c84738120d,
         type: 3}
       propertyPath: m_TileAssetArray.Array.data[7].m_RefCount
@@ -3446,8 +3527,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9167826365723281241, guid: 33d6742517ee6384bb59e0c84738120d,
         type: 3}
-      propertyPath: m_TileSpriteArray.Array.data[7].m_RefCount
+      propertyPath: m_TileSpriteArray.Array.data[0].m_RefCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9167826365723281241, guid: 33d6742517ee6384bb59e0c84738120d,
+        type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[7].m_RefCount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9167826365723281241, guid: 33d6742517ee6384bb59e0c84738120d,
         type: 3}
@@ -3512,7 +3598,7 @@ PrefabInstance:
     - target: {fileID: 9167826365723281241, guid: 33d6742517ee6384bb59e0c84738120d,
         type: 3}
       propertyPath: m_Tiles.Array.data[41].second.m_TileSpriteIndex
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9167826365723281241, guid: 33d6742517ee6384bb59e0c84738120d,
         type: 3}
@@ -3641,3 +3727,4 @@ SceneRoots:
   - {fileID: 140746621}
   - {fileID: 641537751}
   - {fileID: 1219285144}
+  - {fileID: 1180325733}
