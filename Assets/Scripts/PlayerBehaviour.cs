@@ -5,7 +5,7 @@ using static Platformer.Core.Simulation;
 
 public class PlayerBehaviour : PlayerController
 {
-    [SerializeField] private float climbingSpeed;
+    [SerializeField] private float climbingSpeed = 2;
     
     private bool _isLadder  = false;
     private bool _canClimbUp;

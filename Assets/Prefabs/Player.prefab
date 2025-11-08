@@ -68,9 +68,11 @@ MonoBehaviour:
   jump: 0
   move: {x: 0, y: 0}
   mousePosition: {x: 0, y: 0}
+  rb: {fileID: 0}
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
   aimTransform: {fileID: 0}
+  climbingSpeed: 2
 --- !u!114 &6082575806313374961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,4 +476,3 @@ MonoBehaviour:
   firePointTransform: {fileID: 4526335388715526479}
   bulletPrefab: {fileID: 6090046924989035328, guid: a2ecb9899753c57b4bfc0d5dafc8cb28,
     type: 3}
-  player: {fileID: 4491486714860385802}
