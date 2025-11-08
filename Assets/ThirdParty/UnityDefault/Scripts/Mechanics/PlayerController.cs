@@ -34,9 +34,9 @@ namespace Platformer.Mechanics
 
         [SerializeField] private bool jump;
         [SerializeField] protected Vector2 move;
-        [SerializeField] private Vector2 mousePosition;
+        [SerializeField] protected Vector2 mousePosition;
         [SerializeField] protected Rigidbody2D rb;
-        [SerializeField] SpriteRenderer spriteRenderer;
+        [SerializeField] protected SpriteRenderer spriteRenderer;
         [SerializeField] internal Animator animator;
         [SerializeField] private Transform aimTransform;
 
@@ -47,11 +47,13 @@ namespace Platformer.Mechanics
         private InputAction _lookAction;
 
         protected bool skipFirstDependency;
-        
+        protected Camera _camera;
+
         public Bounds Bounds => collider2d.bounds;
 
         protected virtual void Awake()
         {
+            _camera = Camera.main;
             health = GetComponent<Health>();
             audioSource = GetComponent<AudioSource>();
             collider2d = GetComponent<Collider2D>();
@@ -141,18 +143,13 @@ namespace Platformer.Mechanics
                     velocity.y *= _model.jumpDeceleration;
                 }
             }
-            UpdateAnimationAndSprite();
+            UpdateAnimation();
 
             targetVelocity = move * maxSpeed;
         }
 
-        protected void UpdateAnimationAndSprite()
+        protected void UpdateAnimation()
         {
-            if (move.x > 0.01f)
-                spriteRenderer.flipX = false;
-            else if (move.x < -0.01f)
-                spriteRenderer.flipX = true;
-
             animator.SetBool("grounded", IsGrounded);
             animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
         }
@@ -185,13 +182,13 @@ namespace Platformer.Mechanics
             mousePosition = context.ReadValue<Vector2>();
         }
 
-        protected void AimAtMouse()
+        protected virtual void AimAtMouse()
         {
             // Convert mouse position to world coordinates
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Camera.main.nearClipPlane));
+            var worldPosition = _camera.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, _camera.nearClipPlane));
             
-            Vector3 aimDirection = (worldPosition - transform.position).normalized;
-            float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+            var aimDirection = (worldPosition - transform.position).normalized;
+            var angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
             aimTransform.eulerAngles =  new Vector3(0, 0, angle);
         }
     }

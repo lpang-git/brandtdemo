@@ -83,7 +83,7 @@ public class PlayerBehaviour : PlayerController
         if (_isLadder)
         {
             velocity.y = inputVector.y * climbingSpeed;
-            UpdateAnimationAndSprite();
+            UpdateAnimation();
             targetVelocity = move * maxSpeed;
         }
         else
@@ -102,5 +102,21 @@ public class PlayerBehaviour : PlayerController
         // Check for colliders above and below
         _canClimbUp = Physics2D.OverlapBox(positionAbove, boxCastSize, 0, LayerMask.GetMask("Default")) == null;
         _canClimbDown = Physics2D.OverlapBox(positionBelow, boxCastSize, 0, LayerMask.GetMask("Default")) == null;
+    }
+
+    protected override void AimAtMouse()
+    {
+        base.AimAtMouse();
+        
+        // Player flips based on mouse position
+        
+        var worldPosition = _camera.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, _camera.nearClipPlane));
+        var aimThreshold = 0.1f;
+        var directionX = worldPosition.x - transform.position.x;
+
+        if (directionX > aimThreshold)
+            spriteRenderer.flipX = false;
+        else if (directionX < -aimThreshold)
+            spriteRenderer.flipX = true;
     }
 }
