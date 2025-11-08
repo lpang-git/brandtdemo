@@ -54,25 +54,26 @@ MonoBehaviour:
   minGroundNormalY: 0.9
   gravityModifier: 1
   velocity: {x: 0, y: 0}
-  jumpAudio: {fileID: 0}
-  respawnAudio: {fileID: 0}
-  ouchAudio: {fileID: 0}
-  maxSpeed: 3
-  jumpTakeOffSpeed: 3
-  jumpState: 0
-  stopJump: 0
+  rb: {fileID: 50915408107096866}
+  spriteRenderer: {fileID: 212064061491315838}
+  animator: {fileID: 95391780594314510}
+  aimTransform: {fileID: 4526335388715526479}
   collider2d: {fileID: 1824045667}
   audioSource: {fileID: 8509783501685719824}
   health: {fileID: 6082575806313374961}
-  controlEnabled: 1
-  jump: 0
+  playerSpeed: 3
+  jumpTakeOffSpeed: 3
+  gunDistance: 0.2
+  climbingSpeed: 2
   move: {x: 0, y: 0}
   mousePosition: {x: 0, y: 0}
-  rb: {fileID: 0}
-  spriteRenderer: {fileID: 0}
-  animator: {fileID: 0}
-  aimTransform: {fileID: 0}
-  climbingSpeed: 2
+  jump: 0
+  stopJump: 0
+  controlEnabled: 1
+  jumpState: 0
+  jumpAudio: {fileID: 0}
+  respawnAudio: {fileID: 0}
+  ouchAudio: {fileID: 0}
 --- !u!114 &6082575806313374961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,6 +474,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac09aad1131741dba9ff2021700b52b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerGunBehaviour
-  firePointTransform: {fileID: 4526335388715526479}
   bulletPrefab: {fileID: 6090046924989035328, guid: a2ecb9899753c57b4bfc0d5dafc8cb28,
     type: 3}
+  firePointTransform: {fileID: 4526335388715526479}
+  player: {fileID: 1208144871472054}
+  userInterfaceObject: {fileID: 0}
+  shootCooldown: 0.4
+  maxAmmo: 3
+  startingAmmo: 2
+  currentChamberedAmmo: 0
+  nextShootTime: 0
+  totalOwnedAmmo: 0

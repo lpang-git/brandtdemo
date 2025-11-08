@@ -59,7 +59,7 @@ namespace Platformer.Mechanics
 
         private readonly PlatformerModel _model = GetModel<PlatformerModel>();
 
-        protected InputAction moveAction;
+        internal InputAction moveAction;
         protected InputAction jumpAction;
         private InputAction _lookAction;
 
