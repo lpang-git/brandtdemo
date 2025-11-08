@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,7 +6,6 @@ public class PlayerGunBehaviour : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform firePointTransform;
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private PlayerBehaviour player;
     
     [Space]
     [Header("Settings")]
