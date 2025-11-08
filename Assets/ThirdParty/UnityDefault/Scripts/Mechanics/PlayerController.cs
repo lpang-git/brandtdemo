@@ -26,69 +26,77 @@ namespace Platformer.Mechanics
         [SerializeField] public float jumpTakeOffSpeed = 7;
 
         [SerializeField] public JumpState jumpState = JumpState.Grounded;
-        [SerializeField] private bool stopJump;
+        [SerializeField] protected bool stopJump;
         /*internal new*/ public Collider2D collider2d;
         /*internal new*/ public AudioSource audioSource;
         public Health health;
         public bool controlEnabled = true;
 
         [SerializeField] private bool jump;
-        [SerializeField] private Vector2 move;
+        [SerializeField] protected Vector2 move;
         [SerializeField] private Vector2 mousePosition;
+        [SerializeField] protected Rigidbody2D rb;
         [SerializeField] SpriteRenderer spriteRenderer;
         [SerializeField] internal Animator animator;
         [SerializeField] private Transform aimTransform;
-        
-        readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
-        private InputAction _moveAction;
-        private InputAction _jumpAction;
+        private readonly PlatformerModel _model = GetModel<PlatformerModel>();
+
+        protected InputAction moveAction;
+        protected InputAction jumpAction;
         private InputAction _lookAction;
 
+        protected bool skipFirstDependency;
+        
         public Bounds Bounds => collider2d.bounds;
 
-        void Awake()
+        protected virtual void Awake()
         {
             health = GetComponent<Health>();
             audioSource = GetComponent<AudioSource>();
             collider2d = GetComponent<Collider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
+            rb = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
             aimTransform = transform.Find("Aim");
 
-            _moveAction = InputSystem.actions.FindAction("Player/Move");
-            _jumpAction = InputSystem.actions.FindAction("Player/Jump");
+            moveAction = InputSystem.actions.FindAction("Player/Move");
+            jumpAction = InputSystem.actions.FindAction("Player/Jump");
             _lookAction = InputSystem.actions.FindAction("Player/Look");
             
-            _moveAction.Enable();
-            _jumpAction.Enable();
+            moveAction.Enable();
+            jumpAction.Enable();
             _lookAction.Enable();
         }
 
         protected override void Update()
         {
-            if (controlEnabled)
+            if (!skipFirstDependency)
             {
-                AimAtMouse();
-                
-                move.x = _moveAction.ReadValue<Vector2>().x;
-                if (jumpState == JumpState.Grounded && _jumpAction.WasPressedThisFrame())
-                    jumpState = JumpState.PrepareToJump;
-                else if (_jumpAction.WasReleasedThisFrame())
+                if (controlEnabled)
                 {
-                    stopJump = true;
-                    Schedule<PlayerStopJump>().player = this;
+                    AimAtMouse();
+                                
+                    move.x = moveAction.ReadValue<Vector2>().x;
+                    if (jumpState == JumpState.Grounded && jumpAction.WasPressedThisFrame())
+                        jumpState = JumpState.PrepareToJump;
+                    else if (jumpAction.WasReleasedThisFrame())
+                    {
+                        stopJump = true;
+                        Schedule<PlayerStopJump>().player = this;
+                    }
                 }
+                else
+                {
+                    move.x = 0;
+                }
+                UpdateJumpState();
             }
-            else
-            {
-                move.x = 0;
-            }
-            UpdateJumpState();
+            
             base.Update();
         }
 
-        void UpdateJumpState()
+        protected void UpdateJumpState()
         {
             jump = false;
             switch (jumpState)
@@ -122,7 +130,7 @@ namespace Platformer.Mechanics
         {
             if (jump && IsGrounded)
             {
-                velocity.y = jumpTakeOffSpeed * model.jumpModifier;
+                velocity.y = jumpTakeOffSpeed * _model.jumpModifier;
                 jump = false;
             }
             else if (stopJump)
@@ -130,10 +138,16 @@ namespace Platformer.Mechanics
                 stopJump = false;
                 if (velocity.y > 0)
                 {
-                    velocity.y = velocity.y * model.jumpDeceleration;
+                    velocity.y *= _model.jumpDeceleration;
                 }
             }
+            UpdateAnimationAndSprite();
 
+            targetVelocity = move * maxSpeed;
+        }
+
+        protected void UpdateAnimationAndSprite()
+        {
             if (move.x > 0.01f)
                 spriteRenderer.flipX = false;
             else if (move.x < -0.01f)
@@ -141,8 +155,6 @@ namespace Platformer.Mechanics
 
             animator.SetBool("grounded", IsGrounded);
             animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
-
-            targetVelocity = move * maxSpeed;
         }
 
         public enum JumpState
@@ -172,8 +184,8 @@ namespace Platformer.Mechanics
         {
             mousePosition = context.ReadValue<Vector2>();
         }
-        
-        private void AimAtMouse()
+
+        protected void AimAtMouse()
         {
             // Convert mouse position to world coordinates
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Camera.main.nearClipPlane));
