@@ -3,10 +3,8 @@ using Platformer.Mechanics;
 using UnityEngine;
 using static Platformer.Core.Simulation;
 
-public class PlayerBehaviour : PlayerController
+public class PlayerAdvancedBehaviour : PlayerController
 {
-    [SerializeField] private float climbingSpeed = 2;
-    
     private bool _isLadder  = false;
     private bool _canClimbUp;
     private bool _canClimbDown;
@@ -84,13 +82,13 @@ public class PlayerBehaviour : PlayerController
         {
             velocity.y = inputVector.y * climbingSpeed;
             UpdateAnimation();
-            targetVelocity = move * maxSpeed;
+            targetVelocity = move * playerSpeed;
         }
         else
         {
             base.ComputeVelocity();
         }
-        velocity.x = move.x * maxSpeed;
+        velocity.x = move.x * playerSpeed;
     }
     
     private void CheckLadderCollisions()
@@ -110,7 +108,7 @@ public class PlayerBehaviour : PlayerController
         
         // Player flips based on mouse position
         
-        var worldPosition = _camera.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, _camera.nearClipPlane));
+        var worldPosition = cameraMain.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, cameraMain.nearClipPlane));
         var aimThreshold = 0.1f;
         var directionX = worldPosition.x - transform.position.x;
 

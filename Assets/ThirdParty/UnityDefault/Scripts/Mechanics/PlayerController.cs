@@ -12,36 +12,50 @@ namespace Platformer.Mechanics
     /// </summary>
     public class PlayerController : KinematicObject
     {
-        [SerializeField] public AudioClip jumpAudio;
-        [SerializeField] public AudioClip respawnAudio;
-        [SerializeField] public AudioClip ouchAudio;
-
-        /// <summary>
-        /// Max horizontal speed of the player.
-        /// </summary>
-        [SerializeField] public float maxSpeed = 7;
-        /// <summary>
-        /// Initial jump velocity at the start of a jump.
-        /// </summary>
-        [SerializeField] public float jumpTakeOffSpeed = 7;
-
-        [SerializeField] public JumpState jumpState = JumpState.Grounded;
-        [SerializeField] protected bool stopJump;
-        /*internal new*/ public Collider2D collider2d;
-        /*internal new*/ public AudioSource audioSource;
-        public Health health;
-        public bool controlEnabled = true;
-
-        [SerializeField] private bool jump;
-        [SerializeField] protected Vector2 move;
-        [SerializeField] protected Vector2 mousePosition;
+        [Header("References")]
         [SerializeField] protected Rigidbody2D rb;
         [SerializeField] protected SpriteRenderer spriteRenderer;
         [SerializeField] internal Animator animator;
-        [SerializeField] private Transform aimTransform;
-
+        [SerializeField] internal Transform aimTransform;
+        [SerializeField] internal Collider2D collider2d;
+        [SerializeField] internal AudioSource audioSource;
+        [SerializeField] internal Health health;
+        
+        
+        [Space]
+        [Header("Settings")]
+        
+        [Tooltip("Horizontal walking speed of the player.")]
+        [SerializeField]
+        internal float playerSpeed = 3;
+        
+        [Tooltip("Initial jump velocity at the start of a jump.")]
+        [SerializeField] public float jumpTakeOffSpeed = 3;
+        
         [Tooltip("How far is the gun from the player?")]
         [SerializeField] private float gunDistance = 0.2f;
+        
+        [Tooltip("How fast can the player climb?")]
+        [SerializeField] protected float climbingSpeed = 2;
+        
+        
+        [Space]
+        [Header("Debug Values")]
+        [SerializeField] protected Vector2 move;
+        [SerializeField] protected Vector2 mousePosition;
+        [SerializeField] internal bool jump;
+        [SerializeField] internal bool stopJump;
+        [SerializeField] internal bool controlEnabled;
+        
+        [Space]
+        [SerializeField] public JumpState jumpState = JumpState.Grounded;
+        
+        
+        [Space]
+        [Header("Audio Clips")]
+        [SerializeField] public AudioClip jumpAudio;
+        [SerializeField] public AudioClip respawnAudio;
+        [SerializeField] public AudioClip ouchAudio;
 
         private readonly PlatformerModel _model = GetModel<PlatformerModel>();
 
@@ -50,13 +64,15 @@ namespace Platformer.Mechanics
         private InputAction _lookAction;
 
         protected bool skipFirstDependency;
-        protected Camera _camera;
+        protected Camera cameraMain;
 
         public Bounds Bounds => collider2d.bounds;
 
         protected virtual void Awake()
         {
-            _camera = Camera.main;
+            controlEnabled = true;
+            
+            cameraMain = Camera.main;
             health = GetComponent<Health>();
             audioSource = GetComponent<AudioSource>();
             collider2d = GetComponent<Collider2D>();
@@ -148,13 +164,13 @@ namespace Platformer.Mechanics
             }
             UpdateAnimation();
 
-            targetVelocity = move * maxSpeed;
+            targetVelocity = move * playerSpeed;
         }
 
         protected void UpdateAnimation()
         {
             animator.SetBool("grounded", IsGrounded);
-            animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
+            animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / playerSpeed);
         }
 
         public enum JumpState
@@ -187,7 +203,7 @@ namespace Platformer.Mechanics
 
         protected virtual void AimAtMouse()
         {
-            var worldPosition = _camera.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, _camera.nearClipPlane));
+            var worldPosition = cameraMain.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, cameraMain.nearClipPlane));
             var aimDirection = (worldPosition - transform.position).normalized;
             var angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
             
