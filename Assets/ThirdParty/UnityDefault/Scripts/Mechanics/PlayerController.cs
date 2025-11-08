@@ -40,6 +40,9 @@ namespace Platformer.Mechanics
         [SerializeField] internal Animator animator;
         [SerializeField] private Transform aimTransform;
 
+        [Tooltip("How far is the gun from the player?")]
+        [SerializeField] private float gunDistance = 0.2f;
+
         private readonly PlatformerModel _model = GetModel<PlatformerModel>();
 
         protected InputAction moveAction;
@@ -184,12 +187,18 @@ namespace Platformer.Mechanics
 
         protected virtual void AimAtMouse()
         {
-            // Convert mouse position to world coordinates
             var worldPosition = _camera.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, _camera.nearClipPlane));
-            
             var aimDirection = (worldPosition - transform.position).normalized;
             var angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-            aimTransform.eulerAngles =  new Vector3(0, 0, angle);
+            
+            aimTransform.eulerAngles = new Vector3(0, 0, angle);
+            float directionX = worldPosition.x - transform.position.x;
+            float aimThreshold = 0.1f;
+            
+            spriteRenderer.flipX = directionX < -aimThreshold;
+            
+            aimTransform.localPosition = directionX < -aimThreshold ? new Vector3(-gunDistance, aimTransform.localPosition.y, aimTransform.localPosition.z) : // Move left
+                new Vector3(gunDistance, aimTransform.localPosition.y, aimTransform.localPosition.z); // Move right
         }
     }
 }
