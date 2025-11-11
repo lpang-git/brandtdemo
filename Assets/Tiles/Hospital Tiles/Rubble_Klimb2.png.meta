@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 45dbb4c364595c545a4b3af67d445e45
+guid: c64f234bd42014a48adc83a7763c17f5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6658899090421161877
-    second: Basalt_mini_0
+      213: 5131587927163269134
+    second: Rubble_Klimb2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Basalt_mini_0
+      name: Rubble_Klimb2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 59f99bf3179296c50800000000000000
-      internalID: 6658899090421161877
+      spriteID: e00ff3c0800173740800000000000000
+      internalID: 5131587927163269134
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: d461e8d9a3b8310488ad14a4525c6919
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Basalt_mini_0: 6658899090421161877
+      Rubble_Klimb2_0: 5131587927163269134
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

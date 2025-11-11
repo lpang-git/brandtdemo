@@ -103,37 +103,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bed3_0
+      name: Bed3_1
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 31
-        height: 37
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 02092dbcaacfc51a0800000000000000
-      internalID: -6819297925251559392
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bed3_1
-      rect:
-        serializedVersion: 2
-        x: 33
-        y: 0
-        width: 28
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -150,7 +128,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 6dd4fdc3f613fde4d904d8f81a87da8f
     internalID: 0
     vertices: []
     indices: 
