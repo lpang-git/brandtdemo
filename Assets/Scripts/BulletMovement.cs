@@ -6,7 +6,7 @@ public class BulletMovement : MonoBehaviour
     
     [SerializeField] private float speed = 4;
     
-    void Start()
+    private void Start()
     {
         rb.linearVelocity = transform.right * speed;
     }
