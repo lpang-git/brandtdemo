@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: f72444d21055af440881372aa9855e33
+guid: 888e2599522b18a4b9db211b26b0744b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7882105831869176636
-    second: hospitaParalaxl_0
+      213: 1876209990853130951
+    second: munition_Sprite_0
+  - first:
+      213: 7032133124420907993
+    second: munition_Sprite_1
+  - first:
+      213: 2673215595397453210
+    second: munition_Sprite_2
+  - first:
+      213: 5095411982518356823
+    second: munition_Sprite_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hospitaParalaxl_0
+      name: munition_Sprite_0
       rect:
         serializedVersion: 2
-        x: 12
+        x: 25
         y: 0
-        width: 549
-        height: 229
+        width: 15
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +124,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c3bd89e2e7dd26d60800000000000000
-      internalID: 7882105831869176636
+      spriteID: 7caf6dccb03a90a10800000000000000
+      internalID: 1876209990853130951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: munition_Sprite_1
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 0
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d3bd5e91d7279160800000000000000
+      internalID: 7032133124420907993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: munition_Sprite_2
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 0
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9513b3bb6b291520800000000000000
+      internalID: 2673215595397453210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: munition_Sprite_3
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 0
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75b8642933a86b640800000000000000
+      internalID: 5095411982518356823
       vertices: []
       indices: 
       edges: []
@@ -135,7 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      hospitaParalaxl_0: 7882105831869176636
+      munition_Sprite_0: 1876209990853130951
+      munition_Sprite_1: 7032133124420907993
+      munition_Sprite_2: 2673215595397453210
+      munition_Sprite_3: 5095411982518356823
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
