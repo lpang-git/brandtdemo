@@ -12,6 +12,9 @@ namespace Platformer.Mechanics
     /// </summary>
     public class PlayerController : KinematicObject
     {
+        private static readonly int Grounded = Animator.StringToHash("grounded");
+        private static readonly int VelocityX = Animator.StringToHash("velocityX");
+
         [Header("References")]
         [SerializeField] protected Rigidbody2D rb;
         [SerializeField] protected SpriteRenderer spriteRenderer;
@@ -20,7 +23,6 @@ namespace Platformer.Mechanics
         [SerializeField] internal Collider2D collider2d;
         [SerializeField] internal AudioSource audioSource;
         [SerializeField] internal Health health;
-        
         
         [Space]
         [Header("Settings")]
@@ -38,18 +40,35 @@ namespace Platformer.Mechanics
         [Tooltip("How fast can the player climb?")]
         [SerializeField] protected float climbingSpeed = 2;
         
+        [Tooltip("Coyote time is a short grace period (≈0.06–0.15s) after leaving a platform during which a jump input still counts as grounded.")]
+        [SerializeField] private float coyoteTime = 0.12f;
+        
+        [Tooltip("Jump buffer time is a short window (≈0.06–0.15s) that stores a recent jump press so the jump triggers as soon as the character becomes grounded.")]
+        [SerializeField] private float jumpBufferTime = 0.12f;
+        
+        [Tooltip("Player acceleration while grounded")]
+        [SerializeField] private float groundAccel = 40f;
+        
+        [Tooltip("Player acceleration while in air")]
+        [SerializeField] private float airAccel = 20f;
+
+        [Tooltip("How fast player gravity grows per second. Makes the player fall faster the longer the fall.")]
+        [SerializeField] private float fallAccelRamp = 1.5f;
+        
+        [Tooltip("Cap of player gravity acceleration.")]
+        [SerializeField] private float maxFallMultiplier = 4f;
+        
+        [Tooltip("Speed at which the player enters a lethal fall.")]
+        public float dramaticFallSpeed = -10f;
+        
+        [Tooltip("Duration of fall at which the player enters a lethal fall.")]
+        public float dramaticFallTime = 2f; 
         
         [Space]
         [Header("Debug Values")]
         [SerializeField] protected Vector2 move;
         [SerializeField] protected Vector2 mousePosition;
-        [SerializeField] internal bool jump;
-        [SerializeField] internal bool stopJump;
         [SerializeField] internal bool controlEnabled;
-        
-        [Space]
-        [SerializeField] public JumpState jumpState = JumpState.Grounded;
-        
         
         [Space]
         [Header("Audio Clips")]
@@ -60,14 +79,22 @@ namespace Platformer.Mechanics
         private readonly PlatformerModel _model = GetModel<PlatformerModel>();
 
         internal InputAction moveAction;
-        protected InputAction jumpAction;
-        private InputAction _lookAction;
+        private InputAction jumpAction;
+        private InputAction lookAction;
 
         protected bool skipFirstDependency;
         protected Camera cameraMain;
+        
+        private float _coyoteTimer;
+        protected float _jumpBufferTimer;
+        protected bool _jumpRequested;
+        private float _fallTime;
+        
+        private bool _wasGrounded = true;
+        private bool _jumpExecutedThisAirborne = false; 
 
         public Bounds Bounds => collider2d.bounds;
-
+        
         protected virtual void Awake()
         {
             controlEnabled = true;
@@ -83,13 +110,109 @@ namespace Platformer.Mechanics
 
             moveAction = InputSystem.actions.FindAction("Player/Move");
             jumpAction = InputSystem.actions.FindAction("Player/Jump");
-            _lookAction = InputSystem.actions.FindAction("Player/Look");
+            lookAction = InputSystem.actions.FindAction("Player/Look");
             
             moveAction.Enable();
             jumpAction.Enable();
-            _lookAction.Enable();
+            lookAction.Enable();
         }
 
+        protected override void Update()
+        {
+            if (IsGrounded)
+            {
+                _coyoteTimer = coyoteTime;
+            }
+            else
+            {
+                _coyoteTimer -= Time.deltaTime;
+            }
+
+            if (jumpAction.WasPressedThisFrame())
+            {
+                _jumpBufferTimer = jumpBufferTime;
+            }
+            else
+            {
+                _jumpBufferTimer -= Time.deltaTime;
+            }
+            
+            // request jump if buffered and coyote available
+            if (_jumpBufferTimer > 0f && _coyoteTimer > 0f)
+            {
+                _jumpRequested = true;
+                _jumpBufferTimer = 0f;
+            }
+
+            if (!skipFirstDependency)
+            {
+                if (controlEnabled)
+                {
+                    AimAtMouse();
+
+                    // horizontal input
+                    move.x = moveAction.ReadValue<Vector2>().x;
+
+                    if (jumpAction.WasReleasedThisFrame())
+                    {
+                        Schedule<PlayerStopJump>().player = this;
+                    }
+                }
+                else
+                {
+                    move.x = 0;
+                    _jumpRequested = false;
+                }
+            }
+            if (!_wasGrounded && IsGrounded)
+            {
+                Schedule<PlayerLanded>().player = this;
+                _jumpExecutedThisAirborne = false;
+            }
+                
+            _wasGrounded = IsGrounded;
+            
+            base.Update();
+        }
+
+        protected override void ComputeVelocity()
+        {
+            var targetX = move.x * playerSpeed;
+            var accel = IsGrounded ? groundAccel : airAccel;
+            velocity.x = Mathf.MoveTowards(velocity.x, targetX, accel * Time.deltaTime);
+            
+            if (_jumpRequested)
+            {
+                velocity.y = jumpTakeOffSpeed * _model.jumpModifier;
+                _jumpRequested = false;
+
+                // Ensure PlayerJumped is scheduled only once per airborne session
+                if (!_jumpExecutedThisAirborne)
+                {
+                    Schedule<PlayerJumped>().player = this;
+                    _jumpExecutedThisAirborne = true;
+                }
+            }
+            
+            if (velocity.y < 0f)
+            {
+                _fallTime += Time.deltaTime;
+                var extra = 1f + Mathf.Clamp(_fallTime * fallAccelRamp, 0f, maxFallMultiplier - 1f);
+                velocity.y += Physics2D.gravity.y * extra * Time.deltaTime;
+            }
+            else
+            {
+                _fallTime = 0f;
+                velocity.y += Physics2D.gravity.y * Time.deltaTime;
+            }
+
+            UpdateAnimation();
+            targetVelocity = new Vector2(velocity.x, targetVelocity.y);
+        }
+
+        #region old
+
+        /*
         protected override void Update()
         {
             if (!skipFirstDependency)
@@ -166,32 +289,30 @@ namespace Platformer.Mechanics
 
             targetVelocity = move * playerSpeed;
         }
+        */
 
+        #endregion
+        
         protected void UpdateAnimation()
         {
-            animator.SetBool("grounded", IsGrounded);
-            animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / playerSpeed);
-        }
-
-        public enum JumpState
-        {
-            Grounded,
-            PrepareToJump,
-            Jumping,
-            InFlight,
-            Landed
+            animator.SetBool(Grounded, IsGrounded);
+            animator.SetFloat(VelocityX, Mathf.Abs(velocity.x) / playerSpeed);
+            
+            var dramatic = velocity.y <= dramaticFallSpeed || _fallTime >= dramaticFallTime;
+            animator.SetBool("DramaticFall", dramatic);
+            if (dramatic){ Debug.Log("dramatic fall started"); }
         }
 
         protected override void OnEnable()
         {
-            _lookAction.performed += OnLook;
+            lookAction.performed += OnLook;
             
             base.OnEnable();
         }
 
         protected override void OnDisable()
         {
-            _lookAction.performed -= OnLook;
+            lookAction.performed -= OnLook;
             
             base.OnDisable();
         }

@@ -14,33 +14,19 @@ public class PlayerAdvancedBehaviour : PlayerController
         if (controlEnabled)
         {
             AimAtMouse();
-            
             var inputVector = moveAction.ReadValue<Vector2>();
-            
             move.x = inputVector.x; // Horizontal movement
-            
             skipFirstDependency = true;
             base.Update();
             
             CheckLadderCollisions();
-            if (_isLadder) // Vertical movement
-            {
-                LadderMovement(inputVector);
-                return; // avoid jumping checks
-            }
-
-            // Jump Logic
-            if (jumpState == JumpState.Grounded && jumpAction.WasPressedThisFrame())
-            {
-                jumpState = JumpState.PrepareToJump;
-            }
-            else if (jumpAction.WasReleasedThisFrame())
-            {
-                stopJump = true;
-                Schedule<PlayerStopJump>().player = this;
-            }
-
-            UpdateJumpState();
+            if (!_isLadder) return; // Vertical movement
+            
+            LadderMovement(inputVector);
+                
+            // clear any buffered jump while climbing
+            _jumpBufferTimer = 0f;
+            _jumpRequested = false;
         }
         else
         {
