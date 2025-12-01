@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 61136026505914921}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
+  m_LocalPosition: {x: -6, y: -3.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 848200495439885596}
@@ -352,7 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a229c636674274e12bb4f79ddcae0d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Platformer.View.ParallaxLayer
-  movementScale: {x: 0.05, y: 0.05, z: 0.05}
+  movementScale: {x: 0.05, y: 0, z: 0.05}
 --- !u!1 &5012602108546926659
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,7 +488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a229c636674274e12bb4f79ddcae0d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Platformer.View.ParallaxLayer
-  movementScale: {x: 0.3, y: 0.3, z: 0.3}
+  movementScale: {x: 0.3, y: 0, z: 0.3}
 --- !u!1 &7474735139439901446
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,7 +498,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 848200495439885596}
-  - component: {fileID: 8557357358765812536}
+  - component: {fileID: 4087681805963601848}
   m_Layer: 0
   m_Name: Layer 1 (Very Far Away)
   m_TagString: Untagged
@@ -522,7 +522,7 @@ Transform:
   - {fileID: 1503706542389358513}
   m_Father: {fileID: 979457729584257194}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8557357358765812536
+--- !u!114 &4087681805963601848
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -531,10 +531,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7474735139439901446}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a229c636674274e12bb4f79ddcae0d49, type: 3}
+  m_Script: {fileID: 11500000, guid: 5dfcb2801fa6e404ea732611181943db, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Platformer.View.ParallaxLayer
-  movementScale: {x: 0.9, y: 0.9, z: 0.5}
+  m_EditorClassIdentifier: Assembly-CSharp::PersonalParallax
+  movementScale: {x: 1, y: 0, z: 0.5}
 --- !u!1 &8170808985252395422
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,4 +582,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a229c636674274e12bb4f79ddcae0d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Platformer.View.ParallaxLayer
-  movementScale: {x: 0.5, y: 0.5, z: 0.5}
+  movementScale: {x: 0.5, y: 0, z: 0.5}
