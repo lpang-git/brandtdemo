@@ -11,8 +11,8 @@ namespace Platformer.Mechanics
     public class GameController : MonoBehaviour
     {
         private static GameController Instance;
-        
-        public PlatformerModel model;
+
+        [SerializeField] private PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
         void OnEnable()
         {
