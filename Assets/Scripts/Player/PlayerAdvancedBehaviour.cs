@@ -1,7 +1,5 @@
-using Platformer.Gameplay;
 using Platformer.Mechanics;
 using UnityEngine;
-using static Platformer.Core.Simulation;
 
 public class PlayerAdvancedBehaviour : PlayerController
 {
@@ -36,13 +34,14 @@ public class PlayerAdvancedBehaviour : PlayerController
 
     private void LadderMovement(Vector2 inputVector)
     {
-        if (inputVector.y > 0 && _canClimbUp)
+        switch (inputVector.y)
         {
-            rb.position += new Vector2(0, climbingSpeed * Time.deltaTime); // Climbing up
-        }
-        else if (inputVector.y < 0 && _canClimbDown)
-        {
-            rb.position += new Vector2(0, -climbingSpeed * Time.deltaTime); // Climbing down
+            case > 0 when _canClimbUp:
+                rb.position += new Vector2(0, climbingSpeed * Time.deltaTime); // Climbing up
+                break;
+            case < 0 when _canClimbDown:
+                rb.position += new Vector2(0, -climbingSpeed * Time.deltaTime); // Climbing down
+                break;
         }
     }
 
@@ -79,9 +78,9 @@ public class PlayerAdvancedBehaviour : PlayerController
     
     private void CheckLadderCollisions()
     {
-        Vector2 boxCastSize = new Vector2(0.1f, 0.1f);
-        Vector2 positionAbove = rb.position + new Vector2(0, boxCastSize.y / 2);
-        Vector2 positionBelow = rb.position - new Vector2(0, boxCastSize.y / 2);
+        var boxCastSize = new Vector2(0.1f, 0.1f);
+        var positionAbove = rb.position + new Vector2(0, boxCastSize.y / 2);
+        var positionBelow = rb.position - new Vector2(0, boxCastSize.y / 2);
 
         // Check for colliders above and below
         _canClimbUp = Physics2D.OverlapBox(positionAbove, boxCastSize, 0, LayerMask.GetMask("Default")) == null;

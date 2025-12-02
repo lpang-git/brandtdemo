@@ -58,9 +58,6 @@ namespace Platformer.Mechanics
         [Tooltip("Cap of player gravity acceleration.")]
         [SerializeField] private float maxFallMultiplier = 4f;
         
-        [Tooltip("Speed at which the player enters a lethal fall.")]
-        public float dramaticFallSpeed = -10f;
-        
         [Tooltip("Duration of fall at which the player enters a lethal fall.")]
         public float dramaticFallTime = 2f; 
         
@@ -209,98 +206,18 @@ namespace Platformer.Mechanics
             UpdateAnimation();
             targetVelocity = new Vector2(velocity.x, targetVelocity.y);
         }
-
-        #region old
-
-        /*
-        protected override void Update()
-        {
-            if (!skipFirstDependency)
-            {
-                if (controlEnabled)
-                {
-                    AimAtMouse();
-                                
-                    move.x = moveAction.ReadValue<Vector2>().x;
-                    if (jumpState == JumpState.Grounded && jumpAction.WasPressedThisFrame())
-                        jumpState = JumpState.PrepareToJump;
-                    else if (jumpAction.WasReleasedThisFrame())
-                    {
-                        stopJump = true;
-                        Schedule<PlayerStopJump>().player = this;
-                    }
-                }
-                else
-                {
-                    move.x = 0;
-                }
-                UpdateJumpState();
-            }
-            
-            base.Update();
-        }
-
-        protected void UpdateJumpState()
-        {
-            jump = false;
-            switch (jumpState)
-            {
-                case JumpState.PrepareToJump:
-                    jumpState = JumpState.Jumping;
-                    jump = true;
-                    stopJump = false;
-                    break;
-                case JumpState.Jumping:
-                    if (!IsGrounded)
-                    {
-                        Schedule<PlayerJumped>().player = this;
-                        jumpState = JumpState.InFlight;
-                    }
-                    break;
-                case JumpState.InFlight:
-                    if (IsGrounded)
-                    {
-                        Schedule<PlayerLanded>().player = this;
-                        jumpState = JumpState.Landed;
-                    }
-                    break;
-                case JumpState.Landed:
-                    jumpState = JumpState.Grounded;
-                    break;
-            }
-        }
-
-        protected override void ComputeVelocity()
-        {
-            if (jump && IsGrounded)
-            {
-                velocity.y = jumpTakeOffSpeed * _model.jumpModifier;
-                jump = false;
-            }
-            else if (stopJump)
-            {
-                stopJump = false;
-                if (velocity.y > 0)
-                {
-                    velocity.y *= _model.jumpDeceleration;
-                }
-            }
-            UpdateAnimation();
-
-            targetVelocity = move * playerSpeed;
-        }
-        */
-
-        #endregion
         
         protected void UpdateAnimation()
         {
             animator.SetBool(Grounded, IsGrounded);
             animator.SetFloat(VelocityX, Mathf.Abs(velocity.x) / playerSpeed);
             
-            var dramatic = velocity.y <= dramaticFallSpeed || _fallTime >= dramaticFallTime;
+            var dramatic = _fallTime >= dramaticFallTime;
+            if (!dramatic) return; // Check for dramatic fall
+            
             animator.SetBool("DramaticFall", dramatic);
-            if (dramatic){ Debug.Log("dramatic fall started"); }
+            // kill player once hit ground
+            Debug.Log("dramatic fall started");
         }
 
         protected override void OnEnable()
