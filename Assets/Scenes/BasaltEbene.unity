@@ -152,39 +152,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 296ecef601d31c1eda528ece2e933730, type: 3}
---- !u!1001 &1500050935
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5538854463020264213, guid: 9c5c4d00ac0dfa2e9a8a4fd9017d4e0c,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5538854463020264213, guid: 9c5c4d00ac0dfa2e9a8a4fd9017d4e0c,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5538854463020264213, guid: 9c5c4d00ac0dfa2e9a8a4fd9017d4e0c,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6875687810575097968, guid: 9c5c4d00ac0dfa2e9a8a4fd9017d4e0c,
-        type: 3}
-      propertyPath: m_Name
-      value: Triggers & Colliders
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9c5c4d00ac0dfa2e9a8a4fd9017d4e0c, type: 3}
 --- !u!1001 &1734403766
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -318,4 +285,3 @@ SceneRoots:
   - {fileID: 2037645399}
   - {fileID: 1734403766}
   - {fileID: 318565677}
-  - {fileID: 1500050935}
