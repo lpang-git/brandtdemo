@@ -62,7 +62,7 @@ Transform:
   m_GameObject: {fileID: 752697010444760303}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.517134, y: 2.3001764, z: -10}
+  m_LocalPosition: {x: -5.7371397, y: -0.000091813316, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -632,7 +632,7 @@ Transform:
   m_GameObject: {fileID: 6836414703074664067}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11, y: 2.3, z: -10}
+  m_LocalPosition: {x: -6, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -724,7 +724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BoundingShape2D: {fileID: 3298166886112571306}
+  BoundingShape2D: {fileID: 529204545399264562}
   Damping: 0
   SlowingDistance: 5
   OversizeWindow:
@@ -1237,9 +1237,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24acd04c37a4fb2d6b1f9949b5492779, type: 3}
---- !u!60 &3298166886112571306 stripped
+--- !u!60 &529204545399264562 stripped
 PolygonCollider2D:
-  m_CorrespondingSourceObject: {fileID: 5495752199757328259, guid: 24acd04c37a4fb2d6b1f9949b5492779,
+  m_CorrespondingSourceObject: {fileID: 7411157479274501403, guid: 24acd04c37a4fb2d6b1f9949b5492779,
     type: 3}
   m_PrefabInstance: {fileID: 7026078093792591913}
   m_PrefabAsset: {fileID: 0}
