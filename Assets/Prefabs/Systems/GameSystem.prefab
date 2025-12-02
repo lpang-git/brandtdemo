@@ -691,7 +691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BoundingShape2D: {fileID: 5993566611985932111}
+  BoundingShape2D: {fileID: 3298166886112571306}
   Damping: 0
   SlowingDistance: 5
   OversizeWindow:
@@ -1157,15 +1157,15 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24acd04c37a4fb2d6b1f9949b5492779, type: 3}
---- !u!4 &5993566611985932104 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3651515331697532769, guid: 24acd04c37a4fb2d6b1f9949b5492779,
+--- !u!60 &3298166886112571306 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 5495752199757328259, guid: 24acd04c37a4fb2d6b1f9949b5492779,
     type: 3}
   m_PrefabInstance: {fileID: 7026078093792591913}
   m_PrefabAsset: {fileID: 0}
---- !u!60 &5993566611985932111 stripped
-PolygonCollider2D:
-  m_CorrespondingSourceObject: {fileID: 3651515331697532774, guid: 24acd04c37a4fb2d6b1f9949b5492779,
+--- !u!4 &5993566611985932104 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3651515331697532769, guid: 24acd04c37a4fb2d6b1f9949b5492779,
     type: 3}
   m_PrefabInstance: {fileID: 7026078093792591913}
   m_PrefabAsset: {fileID: 0}

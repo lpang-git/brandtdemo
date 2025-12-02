@@ -448,8 +448,88 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasaltConfiner
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5102505034379151492, guid: 6f545478bd0fb7a478ed6f674a5210f5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5102505034379151493, guid: 6f545478bd0fb7a478ed6f674a5210f5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5495752199757328259}
   m_SourcePrefab: {fileID: 100100000, guid: 6f545478bd0fb7a478ed6f674a5210f5, type: 3}
+--- !u!1 &3651515331697532775 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5102505034379151493, guid: 6f545478bd0fb7a478ed6f674a5210f5,
+    type: 3}
+  m_PrefabInstance: {fileID: 8386675108411250658}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &5495752199757328259
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3651515331697532775}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 7.00959, y: 6.1270156}
+      - {x: -29.970543, y: 6.0915537}
+      - {x: -29.960833, y: -2.2680275}
+      - {x: 26.619677, y: -2.3276048}
+      - {x: 31.415234, y: -6.4939904}
+      - {x: 58.898262, y: -6.49366}
+      - {x: 58.90737, y: -8.809859}
+      - {x: 73.60875, y: -8.829159}
+      - {x: 73.577415, y: -1.7473397}
+      - {x: 81.92093, y: -2.1034946}
+      - {x: 82.03608, y: -4.937826}
+      - {x: 123.53931, y: -4.9786363}
+      - {x: 123.58231, y: -7.185069}
+      - {x: 153.09064, y: -7.152564}
+      - {x: 153.0752, y: -9.045387}
+      - {x: 197.89478, y: -9.038211}
+      - {x: 197.88492, y: -10.355127}
+      - {x: 213.12817, y: -10.345846}
+      - {x: 213.18546, y: -13.6431265}
+      - {x: 267.26956, y: -13.65721}
+      - {x: 267.28436, y: 6.7918324}
+      - {x: 7.479989, y: 8.9608555}
+  m_UseDelaunayMesh: 0
