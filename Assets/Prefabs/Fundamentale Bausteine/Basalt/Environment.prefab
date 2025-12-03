@@ -290,6 +290,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1386313969729855137, guid: 6a0b4e77643b7d546927fd62b60f3a6e,
         type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 1386313969729855137, guid: 6a0b4e77643b7d546927fd62b60f3a6e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1386313969729855137, guid: 6a0b4e77643b7d546927fd62b60f3a6e,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
