@@ -5,7 +5,7 @@ namespace Platformer.View
     [ExecuteAlways]
     public class ParallaxLayer : MonoBehaviour
     {
-        [SerializeField] private Vector2 movementScale = new Vector2(1f, 0f);
+        [SerializeField] private Vector2 movementScale = Vector2.one;
         [SerializeField] private bool lockY = true;
         [SerializeField] private bool snapToPixels = true;
         [SerializeField] private int pixelsPerUnit = 100;

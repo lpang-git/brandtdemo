@@ -491,9 +491,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a229c636674274e12bb4f79ddcae0d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Platformer.View.ParallaxLayer
-  movementScale: {x: 1, y: 1}
+  movementScale: {x: 1, y: 0}
   lockY: 1
-  snapToPixels: 1
+  snapToPixels: 0
   pixelsPerUnit: 100
 --- !u!1 &8170808985252395422
 GameObject:
