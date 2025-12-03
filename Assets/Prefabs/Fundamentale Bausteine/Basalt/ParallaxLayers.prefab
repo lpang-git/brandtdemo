@@ -123,7 +123,6 @@ Transform:
   - {fileID: 848200495439885596}
   - {fileID: 5551030401749965903}
   - {fileID: 5531130728691750220}
-  - {fileID: 4427281719511454024}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1567941765681437856
@@ -308,51 +307,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &4729583176350480026
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4427281719511454024}
-  - component: {fileID: 3723504360320092149}
-  m_Layer: 0
-  m_Name: Layer 4 (One Meter Away)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4427281719511454024
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4729583176350480026}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 979457729584257194}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3723504360320092149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4729583176350480026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a229c636674274e12bb4f79ddcae0d49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Platformer.View.ParallaxLayer
-  movementScale: {x: 0.05, y: 0, z: 0.05}
 --- !u!1 &5012602108546926659
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +424,7 @@ Transform:
   m_GameObject: {fileID: 5381348470840102866}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 9.73, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -488,7 +442,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a229c636674274e12bb4f79ddcae0d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Platformer.View.ParallaxLayer
-  movementScale: {x: 0.3, y: 0, z: 0.3}
+  movementScale: {x: 1, y: 1}
+  lockY: 1
+  snapToPixels: 1
+  pixelsPerUnit: 100
 --- !u!1 &7474735139439901446
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,7 +455,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 848200495439885596}
-  - component: {fileID: 4087681805963601848}
+  - component: {fileID: 158946285996225173}
   m_Layer: 0
   m_Name: Layer 1 (Very Far Away)
   m_TagString: Untagged
@@ -522,7 +479,7 @@ Transform:
   - {fileID: 1503706542389358513}
   m_Father: {fileID: 979457729584257194}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4087681805963601848
+--- !u!114 &158946285996225173
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -531,10 +488,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7474735139439901446}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dfcb2801fa6e404ea732611181943db, type: 3}
+  m_Script: {fileID: 11500000, guid: a229c636674274e12bb4f79ddcae0d49, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PersonalParallax
-  movementScale: {x: 1, y: 0, z: 0.5}
+  m_EditorClassIdentifier: Assembly-CSharp::Platformer.View.ParallaxLayer
+  movementScale: {x: 1, y: 1}
+  lockY: 1
+  snapToPixels: 1
+  pixelsPerUnit: 100
 --- !u!1 &8170808985252395422
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,10 +520,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8170808985252395422}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.839999, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6513612733299302972}
   - {fileID: 5536168335055162690}
@@ -582,4 +542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a229c636674274e12bb4f79ddcae0d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Platformer.View.ParallaxLayer
-  movementScale: {x: 0.08, y: 0, z: 0.5}
+  movementScale: {x: 0.08, y: 1}
+  lockY: 1
+  snapToPixels: 1
+  pixelsPerUnit: 100
