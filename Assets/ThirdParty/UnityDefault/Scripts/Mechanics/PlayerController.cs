@@ -133,9 +133,9 @@ namespace Platformer.Mechanics
             {
                 _jumpBufferTimer -= Time.deltaTime;
             }
-            
-            // request jump if buffered and coyote available
-            if (_jumpBufferTimer > 0f && _coyoteTimer > 0f)
+
+            // request jump only if coyote available & we haven't executed a jump for this airborne
+            if (_jumpBufferTimer > 0f && _coyoteTimer > 0f && !_jumpExecutedThisAirborne)
             {
                 _jumpRequested = true;
                 _jumpBufferTimer = 0f;
