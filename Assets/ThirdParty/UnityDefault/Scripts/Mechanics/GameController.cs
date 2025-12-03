@@ -10,9 +10,15 @@ namespace Platformer.Mechanics
     /// </summary> 
     public class GameController : MonoBehaviour
     {
-        private static GameController Instance;
+        public static GameController Instance { get; private set; }
 
-        [SerializeField] private PlatformerModel model = Simulation.GetModel<PlatformerModel>();
+        //This model field is public and can be therefore be modified in the 
+        //inspector.
+        //The reference actually comes from the InstanceRegister, and is shared
+        //through the simulation and events. Unity will deserialize over this
+        //shared reference when the scene loads, allowing the model to be
+        //conveniently configured inside the inspector.
+        public PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
         void OnEnable()
         {
