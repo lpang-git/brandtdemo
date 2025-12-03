@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using Platformer.Gameplay;
 using static Platformer.Core.Simulation;
-using Platformer.Model;
 using UnityEngine.InputSystem;
 
 namespace Platformer.Mechanics
@@ -72,8 +71,6 @@ namespace Platformer.Mechanics
         [SerializeField] public AudioClip jumpAudio;
         [SerializeField] public AudioClip respawnAudio;
         [SerializeField] public AudioClip ouchAudio;
-
-        private readonly PlatformerModel _model = GetModel<PlatformerModel>();
 
         internal InputAction moveAction;
         private InputAction jumpAction;
@@ -180,7 +177,7 @@ namespace Platformer.Mechanics
             
             if (_jumpRequested)
             {
-                velocity.y = jumpTakeOffSpeed * _model.jumpModifier;
+                velocity.y = jumpTakeOffSpeed;
                 _jumpRequested = false;
 
                 // Ensure PlayerJumped is scheduled only once per airborne session
@@ -246,8 +243,8 @@ namespace Platformer.Mechanics
             var angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
             
             aimTransform.eulerAngles = new Vector3(0, 0, angle);
-            float directionX = worldPosition.x - transform.position.x;
-            float aimThreshold = 0.1f;
+            var directionX = worldPosition.x - transform.position.x;
+            var aimThreshold = 0.1f;
             
             spriteRenderer.flipX = directionX < -aimThreshold;
             
