@@ -13,10 +13,10 @@ namespace Platformer.Gameplay
 
         public override void Execute()
         {
-            enemy._collider.enabled = false;
+            enemy.enemyCollider.enabled = false;
             enemy.control.enabled = false;
-            if (enemy._audio && enemy.ouch)
-                enemy._audio.PlayOneShot(enemy.ouch);
+            if (enemy.enemyAudio && enemy.ouch)
+                enemy.enemyAudio.PlayOneShot(enemy.ouch);
         }
     }
 }
