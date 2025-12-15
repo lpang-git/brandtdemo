@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BoundingShape2D: {fileID: 2037645400}
+  BoundingShape2D: {fileID: 2037645404}
   Damping: 0
   SlowingDistance: 5
   OversizeWindow:
@@ -473,12 +473,12 @@ PrefabInstance:
     - target: {fileID: 848200495439885596, guid: ffa09632b94ece5cba63ad31a538319e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.041150093
       objectReference: {fileID: 0}
     - target: {fileID: 848200495439885596, guid: ffa09632b94ece5cba63ad31a538319e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0043152254
+      value: 0.00495792
       objectReference: {fileID: 0}
     - target: {fileID: 979457729584257194, guid: ffa09632b94ece5cba63ad31a538319e,
         type: 3}
@@ -498,7 +498,7 @@ PrefabInstance:
     - target: {fileID: 5531130728691750220, guid: ffa09632b94ece5cba63ad31a538319e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.73
+      value: 9.74
       objectReference: {fileID: 0}
     - target: {fileID: 5531130728691750220, guid: ffa09632b94ece5cba63ad31a538319e,
         type: 3}
@@ -508,7 +508,7 @@ PrefabInstance:
     - target: {fileID: 5551030401749965903, guid: ffa09632b94ece5cba63ad31a538319e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.119999
+      value: 21.1
       objectReference: {fileID: 0}
     - target: {fileID: 5551030401749965903, guid: ffa09632b94ece5cba63ad31a538319e,
         type: 3}
@@ -813,12 +813,12 @@ PrefabInstance:
     - target: {fileID: 947856692748949456, guid: c87717fbfe10077e98515d1066524a50,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.7371397
+      value: -5.77829
       objectReference: {fileID: 0}
     - target: {fileID: 947856692748949456, guid: c87717fbfe10077e98515d1066524a50,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.000091813316
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1144722842942640910, guid: c87717fbfe10077e98515d1066524a50,
         type: 3}
@@ -913,12 +913,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c87717fbfe10077e98515d1066524a50, type: 3}
---- !u!60 &2037645400 stripped
-PolygonCollider2D:
-  m_CorrespondingSourceObject: {fileID: 529204545399264562, guid: c87717fbfe10077e98515d1066524a50,
-    type: 3}
-  m_PrefabInstance: {fileID: 2037645399}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2037645402 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4259233734399821760, guid: c87717fbfe10077e98515d1066524a50,
@@ -931,6 +925,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75fa2f9ea4cb54f34aaac731aabe3733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Platformer.UI.MainUIController
+--- !u!61 &2037645404 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 268960712919028652, guid: c87717fbfe10077e98515d1066524a50,
+    type: 3}
+  m_PrefabInstance: {fileID: 2037645399}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
