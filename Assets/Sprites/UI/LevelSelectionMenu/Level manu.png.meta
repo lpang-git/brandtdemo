@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b7d2e95b32c77cf43b7f82e367b10022
+guid: 5f13a0ab313da2742b2c849e944d782c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5476294114258337631
-    second: Level manu_0
+      213: -1326627831092584450
+    second: Level manu 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Level manu_0
+      name: Level manu 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f5f3ee57b74bffb40800000000000000
-      internalID: 5476294114258337631
+      spriteID: eff5492340fd69de0800000000000000
+      internalID: -1326627831092584450
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Level manu_0: 5476294114258337631
+      Level manu 1_0: -1326627831092584450
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
