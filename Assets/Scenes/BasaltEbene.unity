@@ -700,6 +700,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Environment
       objectReference: {fileID: 0}
+    - target: {fileID: 1858673646477732780, guid: 2bceda4ba3159c7efad31aae05c6a721,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858673646477732780, guid: 2bceda4ba3159c7efad31aae05c6a721,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858673646477732780, guid: 2bceda4ba3159c7efad31aae05c6a721,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858673646477732780, guid: 2bceda4ba3159c7efad31aae05c6a721,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 245.442
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858673646477732780, guid: 2bceda4ba3159c7efad31aae05c6a721,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858673646477732780, guid: 2bceda4ba3159c7efad31aae05c6a721,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2796127657640736100, guid: 2bceda4ba3159c7efad31aae05c6a721,
         type: 3}
       propertyPath: m_LocalPosition.x
