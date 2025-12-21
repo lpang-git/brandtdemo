@@ -62,8 +62,8 @@ namespace Platformer.Mechanics
         
         [Space]
         [Header("Debug Values")]
-        [SerializeField] protected Vector2 move;
-        [SerializeField] protected Vector2 mousePosition;
+        [SerializeField] internal Vector2 move;
+        [SerializeField] internal Vector2 mousePosition;
         [SerializeField] internal bool controlEnabled;
         
         [Space]
@@ -73,19 +73,19 @@ namespace Platformer.Mechanics
         [SerializeField] public AudioClip ouchAudio;
 
         internal InputAction moveAction;
-        private InputAction jumpAction;
-        private InputAction lookAction;
+        internal InputAction jumpAction;
+        internal InputAction lookAction;
 
         protected bool skipFirstDependency;
         protected Camera cameraMain;
         
         private float _coyoteTimer;
-        protected float _jumpBufferTimer;
-        protected bool _jumpRequested;
+        internal float _jumpBufferTimer;
+        internal bool _jumpRequested;
         private float _fallTime;
         
         private bool _wasGrounded = true;
-        private bool _jumpExecutedThisAirborne = false; 
+        internal bool _jumpExecutedThisAirborne = false; 
 
         public Bounds Bounds => collider2d.bounds;
         
