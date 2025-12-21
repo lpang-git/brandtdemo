@@ -38,17 +38,17 @@ namespace Platformer.Mechanics
             if (playerObj != null) _player = playerObj.GetComponent<PlayerController>();
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            var playerCol = collision.gameObject.GetComponent<PlayerController>();
-            var bullet = collision.gameObject.GetComponent<BulletMovement>();
+            var playerCol = other.gameObject.GetComponent<PlayerController>();
+            var bullet = other.gameObject.GetComponent<BulletMovement>();
             
             if (playerCol != null)
             {
                 Schedule<PlayerDeath>();
             } else if (bullet != null)
             {
-                Schedule<EnemyDeath>();
+                Schedule<EnemyDeath>().enemy = this;
             }
         }
 

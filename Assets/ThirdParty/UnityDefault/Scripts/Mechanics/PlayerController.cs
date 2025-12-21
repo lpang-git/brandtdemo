@@ -213,7 +213,7 @@ namespace Platformer.Mechanics
             if (!dramatic) return; // Check for dramatic fall
             
             animator.SetBool("DramaticFall", dramatic);
-            // kill player once hit ground
+            // when grounded, Schedule<PlayerDeath>();
             Debug.Log("dramatic fall started");
         }
 
