@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df11d2ad44624917bf3586aa9303279, type: 3}
+  m_Name: GrasWave
+  m_EditorClassIdentifier: Assembly-CSharp::Platformer.View.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: -585849251266406559, guid: 856c616d28b0e0940b2ecec7f2274783, type: 3}
+  - {fileID: -3941296409072007549, guid: c2230a9c2fb21de4a867c03895603b72, type: 3}
+  - {fileID: -6066998449790695406, guid: 2ae73581d0d7e084eaaaca0a2362a555, type: 3}
+  - {fileID: -3941296409072007549, guid: c2230a9c2fb21de4a867c03895603b72, type: 3}
+  m_MinSpeed: 1.5
+  m_MaxSpeed: 3
+  m_AnimationStartTime: 0
+  m_TileColliderType: 0
