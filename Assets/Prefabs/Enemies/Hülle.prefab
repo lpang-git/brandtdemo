@@ -11,7 +11,17 @@ PrefabInstance:
     - target: {fileID: 2201463609840920044, guid: 9e88524ad985c72958ab1cf02228cff6,
         type: 3}
       propertyPath: m_Name
-      value: EnemyDefault
+      value: "H\xFClle"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2530921196683594209, guid: 9e88524ad985c72958ab1cf02228cff6,
+        type: 3}
+      propertyPath: pursuitSpeed
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008609710648104785, guid: 9e88524ad985c72958ab1cf02228cff6,
+        type: 3}
+      propertyPath: maxSpeed
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4200161911611767874, guid: 9e88524ad985c72958ab1cf02228cff6,
         type: 3}

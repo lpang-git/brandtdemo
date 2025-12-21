@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4200161911611767874}
   - component: {fileID: 2530921196683594209}
   - component: {fileID: 4008609710648104785}
-  - component: {fileID: 5225981009378863354}
+  - component: {fileID: 2475872583176004394}
   - component: {fileID: 2189293429869315140}
   - component: {fileID: 1682347322769178323}
   - component: {fileID: 1439664809928414875}
@@ -53,7 +53,7 @@ MonoBehaviour:
   path: {fileID: 0}
   ouch: {fileID: 0}
   pursuitRadius: 2
-  pursuitSpeed: 1
+  pursuitSpeed: 0.2
 --- !u!114 &4008609710648104785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,7 +61,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2201463609840920044}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be4d02721cd9d4baa869d3b890cec48f, type: 3}
   m_Name: 
@@ -69,13 +69,13 @@ MonoBehaviour:
   minGroundNormalY: 0.65
   gravityModifier: 1
   velocity: {x: 0, y: 0}
-  maxSpeed: 7
-  jumpTakeOffSpeed: 7
+  maxSpeed: 1
+  jumpTakeOffSpeed: 0
   move: {x: 0, y: 0}
   jump: 0
   stopJump: 0
---- !u!60 &5225981009378863354
-PolygonCollider2D:
+--- !u!70 &2475872583176004394
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -108,24 +108,9 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.25, y: 0.765625}
-    newSize: {x: 1.28, y: 1.26}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0, y: 1}
-      - {x: -0.95105654, y: 0.30901697}
-      - {x: -0.5877852, y: -0.80901706}
-      - {x: 0.58778536, y: -0.80901694}
-      - {x: 0.9510565, y: 0.30901712}
-  m_UseDelaunayMesh: 0
+  m_Offset: {x: 0.016586594, y: 0}
+  m_Size: {x: 0.21292411, y: 0.765625}
+  m_Direction: 0
 --- !u!50 &2189293429869315140
 Rigidbody2D:
   serializedVersion: 5
@@ -220,7 +205,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2201463609840920044}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
