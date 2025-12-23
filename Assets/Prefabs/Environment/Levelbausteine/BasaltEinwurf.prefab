@@ -799,17 +799,17 @@ PrefabInstance:
     - target: {fileID: 3772753180816643367, guid: 96620d8a6882d8408b14ce1a93b11516,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[0].second.m_AnimationSpeed
-      value: 2.7139068
+      value: 2.5081108
       objectReference: {fileID: 0}
     - target: {fileID: 3772753180816643367, guid: 96620d8a6882d8408b14ce1a93b11516,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[1].second.m_AnimationSpeed
-      value: 2.6863487
+      value: 2.8082275
       objectReference: {fileID: 0}
     - target: {fileID: 3772753180816643367, guid: 96620d8a6882d8408b14ce1a93b11516,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[2].second.m_AnimationSpeed
-      value: 1.772055
+      value: 2.1796799
       objectReference: {fileID: 0}
     - target: {fileID: 3772753180816643367, guid: 96620d8a6882d8408b14ce1a93b11516,
         type: 3}
@@ -7361,6 +7361,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4242303541210174486}
     m_Modifications:
+    - target: {fileID: 2158817654084512607, guid: b095fcd5b644b3442ae46bd84448b394,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2940830262685780560, guid: b095fcd5b644b3442ae46bd84448b394,
         type: 3}
       propertyPath: m_Name
