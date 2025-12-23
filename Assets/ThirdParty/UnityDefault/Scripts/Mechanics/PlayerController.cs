@@ -46,7 +46,7 @@ namespace Platformer.Mechanics
         [SerializeField] private float jumpBufferTime = 0.12f;
         
         [Tooltip("Player acceleration while grounded")]
-        [SerializeField] private float groundAccel = 40f;
+        [SerializeField] internal float groundAccel = 40f;
         
         [Tooltip("Player acceleration while in air")]
         [SerializeField] private float airAccel = 20f;
@@ -85,7 +85,7 @@ namespace Platformer.Mechanics
         private float _fallTime;
         
         private bool _wasGrounded = true;
-        internal bool _jumpExecutedThisAirborne = false; 
+        private bool _jumpExecutedThisAirborne = false;
 
         public Bounds Bounds => collider2d.bounds;
         

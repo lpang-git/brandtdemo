@@ -40,10 +40,10 @@ namespace Platformer.Mechanics
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            var playerCol = other.gameObject.GetComponent<PlayerController>();
+            var player = other.gameObject.GetComponent<PlayerController>();
             var bullet = other.gameObject.GetComponent<BulletMovement>();
             
-            if (playerCol != null)
+            if (player != null)
             {
                 Schedule<PlayerDeath>();
             } else if (bullet != null)
