@@ -26,7 +26,7 @@ namespace Platformer.Mechanics
         /// Is the entity currently sitting on a surface?
         /// </summary>
         /// <value></value>
-        public bool IsGrounded { get; private set; }
+        public bool IsGrounded { get; protected set; }
 
         protected Vector2 targetVelocity;
         protected Vector2 groundNormal;
@@ -123,7 +123,7 @@ namespace Platformer.Mechanics
 
         }
 
-        private void PerformMovement(Vector2 move, bool yMovement)
+        protected void PerformMovement(Vector2 move, bool yMovement)
         {
             var distance = move.magnitude;
 

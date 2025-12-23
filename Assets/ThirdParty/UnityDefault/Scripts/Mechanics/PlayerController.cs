@@ -87,6 +87,8 @@ namespace Platformer.Mechanics
         private bool _wasGrounded = true;
         internal bool _jumpExecutedThisAirborne = false;
         
+        internal bool dyingState;
+        
         public Bounds Bounds => collider2d.bounds;
         
         protected virtual void Awake()

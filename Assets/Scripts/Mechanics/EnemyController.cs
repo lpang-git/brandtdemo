@@ -45,6 +45,7 @@ namespace Platformer.Mechanics
             
             if (player != null)
             {
+                player.dyingState  = true;
                 Schedule<PlayerDeath>();
             } else if (bullet != null)
             {

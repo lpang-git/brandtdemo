@@ -32,6 +32,18 @@ public class PlayerAdvancedBehaviour : PlayerController
         }
     }
 
+    protected override void FixedUpdate()
+    {
+        if (dyingState)
+        {
+            // stop physics movement immediately
+            velocity = Vector2.zero;
+            targetVelocity = Vector2.zero;
+            return;
+        }
+        base.FixedUpdate();
+    }
+
     private void LadderMovement(Vector2 inputVector)
     {
         switch (inputVector.y)
