@@ -58,7 +58,7 @@ namespace Platformer.Mechanics
         [SerializeField] private float maxFallMultiplier = 4f;
         
         [Tooltip("Duration of fall at which the player enters a lethal fall.")]
-        public float dramaticFallTime = 2f; 
+        [SerializeField] private float dramaticFallTime = 2f;
         
         [Space]
         [Header("Debug Values")]
@@ -85,8 +85,8 @@ namespace Platformer.Mechanics
         private float _fallTime;
         
         private bool _wasGrounded = true;
-        private bool _jumpExecutedThisAirborne = false;
-
+        internal bool _jumpExecutedThisAirborne = false;
+        
         public Bounds Bounds => collider2d.bounds;
         
         protected virtual void Awake()
@@ -143,14 +143,6 @@ namespace Platformer.Mechanics
                 if (controlEnabled)
                 {
                     AimAtMouse();
-
-                    // horizontal input
-                    move.x = moveAction.ReadValue<Vector2>().x;
-
-                    if (jumpAction.WasReleasedThisFrame())
-                    {
-                        Schedule<PlayerStopJump>().player = this;
-                    }
                 }
                 else
                 {
