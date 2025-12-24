@@ -11,8 +11,8 @@ namespace Platformer.Mechanics
     /// </summary>
     public class PlayerController : KinematicObject
     {
-        internal static readonly int Grounded = Animator.StringToHash("grounded");
-        internal static readonly int VelocityX = Animator.StringToHash("velocityX");
+        private static readonly int Grounded = Animator.StringToHash("grounded");
+        private static readonly int VelocityX = Animator.StringToHash("velocityX");
 
         [Header("References")]
         [SerializeField] protected Rigidbody2D rb;
@@ -23,9 +23,12 @@ namespace Platformer.Mechanics
         [SerializeField] internal AudioSource audioSource;
         [SerializeField] internal Health health;
 
+        [Space]
+        [Header("Audio Sources")]
         [SerializeField] private AudioSource[] sounds;
 
-        
+        [Space]
+        [Header("Settings")]
         [Tooltip("Horizontal walking speed of the player.")]
         [SerializeField] internal float playerSpeed = 3;
         
