@@ -12,14 +12,25 @@ namespace Platformer.Mechanics
     /// </summary>
     public class DeathZone : MonoBehaviour
     {
-        void OnTriggerEnter2D(Collider2D collider)
+        [SerializeField] private int zoneType; // 1 = Void fall, 2 = Spike trap
+
+        private void OnTriggerEnter2D(Collider2D collider)
         {
             var p = collider.gameObject.GetComponent<PlayerController>();
-            if (p != null)
+            if (p == null) return;
+
+            switch (zoneType)
             {
-                var ev = Schedule<PlayerEnteredDeathZone>();
-                ev.deathzone = this;
+                case 1:
+                    p.PlaySoundAndAnims(6);
+                    break;
+                case 2:
+                    p.PlaySoundAndAnims(11);
+                    break;
             }
+            
+            var ev = Schedule<PlayerEnteredDeathZone>();
+            ev.deathzone = this;
         }
     }
 }
