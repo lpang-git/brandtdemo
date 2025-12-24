@@ -63,6 +63,7 @@ MonoBehaviour:
   collider2d: {fileID: 298265138534161304}
   audioSource: {fileID: 8509783501685719824}
   health: {fileID: 6082575806313374961}
+  sounds: []
   playerSpeed: 3
   jumpTakeOffSpeed: 4.5
   gunDistance: 0.2
@@ -73,7 +74,6 @@ MonoBehaviour:
   airAccel: 20
   fallAccelRamp: 1.5
   maxFallMultiplier: 4
-  dramaticFallTime: 2
   move: {x: 0, y: 0}
   mousePosition: {x: 0, y: 0}
   controlEnabled: 1
@@ -504,6 +504,16 @@ PrefabInstance:
       value: PlayerUI
       objectReference: {fileID: 0}
     - target: {fileID: 1711136220190617559, guid: ea2dcdd8f25b7e963904f934f989c6d7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2338820092614607919, guid: ea2dcdd8f25b7e963904f934f989c6d7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8533760199747189610, guid: ea2dcdd8f25b7e963904f934f989c6d7,
         type: 3}
       propertyPath: m_IsActive
       value: 0
