@@ -20,6 +20,7 @@ namespace Platformer.Gameplay
             player.health.Increment();
             player.Teleport(model.spawnPoint.transform.position);
             player.animator.SetBool("dead", false);
+            player.fallingDramatically  = false;
             model.virtualCamera.Follow = player.transform;
             model.virtualCamera.LookAt = player.transform;
             Simulation.Schedule<EnablePlayerInput>(2f);

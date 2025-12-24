@@ -78,7 +78,7 @@ public class PlayerAdvancedBehaviour : PlayerController
         if (_isLadder)
         {
             velocity.y = inputVector.y * climbingSpeed;
-            UpdateAnimation();
+            CheckGrounded();
             targetVelocity = move * playerSpeed;
         }
         else

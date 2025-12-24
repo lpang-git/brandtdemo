@@ -11,8 +11,8 @@ namespace Platformer.Mechanics
     /// </summary>
     public class PlayerController : KinematicObject
     {
-        private static readonly int Grounded = Animator.StringToHash("grounded");
-        private static readonly int VelocityX = Animator.StringToHash("velocityX");
+        internal static readonly int Grounded = Animator.StringToHash("grounded");
+        internal static readonly int VelocityX = Animator.StringToHash("velocityX");
 
         [Header("References")]
         [SerializeField] protected Rigidbody2D rb;
@@ -27,11 +27,10 @@ namespace Platformer.Mechanics
 
         
         [Tooltip("Horizontal walking speed of the player.")]
-        [SerializeField]
-        internal float playerSpeed = 3;
+        [SerializeField] internal float playerSpeed = 3;
         
         [Tooltip("Initial jump velocity at the start of a jump.")]
-        [SerializeField] public float jumpTakeOffSpeed = 3;
+        [SerializeField] internal float jumpTakeOffSpeed = 3;
         
         [Tooltip("How far is the gun from the player?")]
         [SerializeField] private float gunDistance = 0.2f;
@@ -57,9 +56,6 @@ namespace Platformer.Mechanics
         [Tooltip("Cap of player gravity acceleration.")]
         [SerializeField] private float maxFallMultiplier = 4f;
         
-        [Tooltip("Duration of fall at which the player enters a lethal fall.")]
-        [SerializeField] private float dramaticFallTime = 2f;
-        
         [Space]
         [Header("Debug Values")]
         [SerializeField] internal Vector2 move;
@@ -82,7 +78,8 @@ namespace Platformer.Mechanics
         internal bool _jumpExecutedThisAirborne = false;
         
         internal bool dyingState;
-        
+        internal bool fallingDramatically;
+
         public Bounds Bounds => collider2d.bounds;
         
         protected virtual void Awake()
@@ -146,6 +143,7 @@ namespace Platformer.Mechanics
                     _jumpRequested = false;
                 }
             }
+
             if (!_wasGrounded && IsGrounded)
             {
                 Schedule<PlayerLanded>().player = this;
@@ -188,21 +186,33 @@ namespace Platformer.Mechanics
                 velocity.y += Physics2D.gravity.y * Time.deltaTime;
             }
 
-            UpdateAnimation();
+            CheckGrounded();
             targetVelocity = new Vector2(velocity.x, targetVelocity.y);
         }
-        
-        protected void UpdateAnimation()
+
+        internal void CheckGrounded()
         {
-            animator.SetBool(Grounded, IsGrounded);
-            animator.SetFloat(VelocityX, Mathf.Abs(velocity.x) / playerSpeed);
-            
-            var dramatic = _fallTime >= dramaticFallTime;
-            if (!dramatic) return; // Check for dramatic fall
-            
-            animator.SetBool("DramaticFall", dramatic);
-            // when grounded, Schedule<PlayerDeath>();
+            if (fallingDramatically)
+            {
+                if (!IsGrounded) return;
+                Schedule<PlayerDeath>();
+                PlaySoundAndAnims(10);
+            }
+            else
+            {
+                animator.SetBool(Grounded, IsGrounded);
+                animator.SetFloat(VelocityX, Mathf.Abs(velocity.x) / playerSpeed);
+                            
+                if (!IsGrounded) return;
+                sounds[13].Play();
+            }
+        }
+
+        internal void OnDramaticFall()
+        {
             Debug.Log("dramatic fall started");
+            fallingDramatically = true;
+            PlaySoundAndAnims(9);
         }
 
         protected override void OnEnable()
