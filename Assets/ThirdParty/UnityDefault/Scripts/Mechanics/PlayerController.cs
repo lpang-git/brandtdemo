@@ -22,9 +22,9 @@ namespace Platformer.Mechanics
         [SerializeField] internal Collider2D collider2d;
         [SerializeField] internal AudioSource audioSource;
         [SerializeField] internal Health health;
-        
-        [Space]
-        [Header("Settings")]
+
+        [SerializeField] private AudioSource[] sounds;
+
         
         [Tooltip("Horizontal walking speed of the player.")]
         [SerializeField]
@@ -65,12 +65,6 @@ namespace Platformer.Mechanics
         [SerializeField] internal Vector2 move;
         [SerializeField] internal Vector2 mousePosition;
         [SerializeField] internal bool controlEnabled;
-        
-        [Space]
-        [Header("Audio Clips")]
-        [SerializeField] public AudioClip jumpAudio;
-        [SerializeField] public AudioClip respawnAudio;
-        [SerializeField] public AudioClip ouchAudio;
 
         internal InputAction moveAction;
         internal InputAction jumpAction;
@@ -245,5 +239,93 @@ namespace Platformer.Mechanics
             aimTransform.localPosition = directionX < -aimThreshold ? new Vector3(-gunDistance, aimTransform.localPosition.y, aimTransform.localPosition.z) : // Move left
                 new Vector3(gunDistance, aimTransform.localPosition.y, aimTransform.localPosition.z); // Move right
         }
+
+        #region Sounds & Animations
+
+        internal void PlaySoundAndAnims(int actionId)
+        {
+            switch (actionId)
+            {
+                case 0:
+                    // Idle breathing
+                    sounds[0].Play();
+                    break;
+                case 1:
+                    // jump
+                    sounds[1].Play();
+                    break;
+                case 2:
+                    // walk
+                    sounds[2].Play();
+                    break;
+                case 3:
+                    // unholster weapon
+                    sounds[3].Play();
+                    break;
+                case 4:
+                    // holster weapon
+                    sounds[4].Play();
+                    break;
+                case 5:
+                    // shoot
+                    sounds[5].Play();
+                    break;
+                case 6:
+                    // die by void
+                    StopAllPlayerSounds();
+                    sounds[6].Play();
+                    break;
+                case 7:
+                    // climbing
+                    sounds[7].Play();
+                    break;
+                case 8:
+                    // die by enemy
+                    StopAllPlayerSounds();
+                    sounds[8].Play();
+                    break;
+                case 9:
+                    // dramatic fall
+                    sounds[9].Play();
+                    break;
+                case 10:
+                    // die by fall damage
+                    StopAllPlayerSounds();
+                    sounds[10].Play();
+                    break;
+                case 11:
+                    // die by spikes
+                    StopAllPlayerSounds();
+                    sounds[11].Play();
+                    break;
+                case 12:
+                    // die by Aufseher
+                    StopAllPlayerSounds();
+                    sounds[12].Play();
+                    break;
+                case 13:
+                    // NOTE: sound 13 is landing on feet normally
+                    break;
+                case 14:
+                    // respawning
+                    sounds[14].Play();
+                    break;
+            }
+        }
+
+        private void StopAllPlayerSounds()
+        {
+            foreach  (var sound in sounds)
+            {
+                sound.Stop();
+            }
+        }
+
+        private void StopAllAnimations()
+        {
+            
+        }
+
+        #endregion
     }
 }
