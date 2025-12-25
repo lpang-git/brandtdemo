@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 723fbcd7c16fa674db926cc4d4518d33
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2061992154371371348
+    second: BossTVHeadScreenURSheet_0
+  - first:
+      213: -1911904369609061153
+    second: BossTVHeadScreenURSheet_1
+  - first:
+      213: -6577500272780810078
+    second: BossTVHeadScreenURSheet_2
+  - first:
+      213: -1392956364762119090
+    second: BossTVHeadScreenURSheet_3
+  - first:
+      213: 2372144736629615491
+    second: BossTVHeadScreenURSheet_4
+  - first:
+      213: -6378147776846261140
+    second: BossTVHeadScreenURSheet_5
+  - first:
+      213: 6029311969391479017
+    second: BossTVHeadScreenURSheet_6
+  - first:
+      213: -1847602904235688815
+    second: BossTVHeadScreenURSheet_7
+  - first:
+      213: -7171316047584107604
+    second: BossTVHeadScreenURSheet_8
+  - first:
+      213: -6137931604232510618
+    second: BossTVHeadScreenURSheet_9
+  - first:
+      213: 5394162631598302417
+    second: BossTVHeadScreenURSheet_10
+  - first:
+      213: -953854392239642537
+    second: BossTVHeadScreenURSheet_11
+  - first:
+      213: -9179101560282238234
+    second: BossTVHeadScreenURSheet_12
+  - first:
+      213: -4667937716617473465
+    second: BossTVHeadScreenURSheet_13
+  - first:
+      213: 2714679777446927215
+    second: BossTVHeadScreenURSheet_14
+  - first:
+      213: 2789261623429476
+    second: BossTVHeadScreenURSheet_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BossTVHeadScreenURSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 36
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 451b2f280faad9c10800000000000000
+      internalID: 2061992154371371348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossTVHeadScreenURSheet_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 18
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdc4fe40b1d8775e0800000000000000
+      internalID: -1911904369609061153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossTVHeadScreenURSheet_2
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 36
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a86ddad95608b4a0800000000000000
+      internalID: -6577500272780810078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossTVHeadScreenURSheet_3
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 18
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e440cb201993bace0800000000000000
+      internalID: -1392956364762119090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossTVHeadScreenURSheet_4
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 36
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38bee9ed11d8be020800000000000000
+      internalID: 2372144736629615491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossTVHeadScreenURSheet_5
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 18
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c64912cc3644c77a0800000000000000
+      internalID: -6378147776846261140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossTVHeadScreenURSheet_6
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 36
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e8079f9a4b6ca350800000000000000
+      internalID: 6029311969391479017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossTVHeadScreenURSheet_7
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 18
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19c3d0792fefb56e0800000000000000
+      internalID: -1847602904235688815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossTVHeadScreenURSheet_8
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 36
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca3e0bbcc0e5a7c90800000000000000
+      internalID: -7171316047584107604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossTVHeadScreenURSheet_9
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 18
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 663e312e9bfa1daa0800000000000000
+      internalID: -6137931604232510618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossTVHeadScreenURSheet_10
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 36
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d46a1d755aebda40800000000000000
+      internalID: 5394162631598302417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossTVHeadScreenURSheet_11
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 18
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7582c17eb7a33c2f0800000000000000
+      internalID: -953854392239642537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossTVHeadScreenURSheet_12
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 36
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e2b42e83c74d9080800000000000000
+      internalID: -9179101560282238234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossTVHeadScreenURSheet_13
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 18
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7421e57e067283fb0800000000000000
+      internalID: -4667937716617473465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossTVHeadScreenURSheet_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6b19a5efda7ca520800000000000000
+      internalID: 2714679777446927215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossTVHeadScreenURSheet_15
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 0
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 469004491d8e90000800000000000000
+      internalID: 2789261623429476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BossTVHeadScreenURSheet_0: 2061992154371371348
+      BossTVHeadScreenURSheet_1: -1911904369609061153
+      BossTVHeadScreenURSheet_10: 5394162631598302417
+      BossTVHeadScreenURSheet_11: -953854392239642537
+      BossTVHeadScreenURSheet_12: -9179101560282238234
+      BossTVHeadScreenURSheet_13: -4667937716617473465
+      BossTVHeadScreenURSheet_14: 2714679777446927215
+      BossTVHeadScreenURSheet_15: 2789261623429476
+      BossTVHeadScreenURSheet_2: -6577500272780810078
+      BossTVHeadScreenURSheet_3: -1392956364762119090
+      BossTVHeadScreenURSheet_4: 2372144736629615491
+      BossTVHeadScreenURSheet_5: -6378147776846261140
+      BossTVHeadScreenURSheet_6: 6029311969391479017
+      BossTVHeadScreenURSheet_7: -1847602904235688815
+      BossTVHeadScreenURSheet_8: -7171316047584107604
+      BossTVHeadScreenURSheet_9: -6137931604232510618
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
