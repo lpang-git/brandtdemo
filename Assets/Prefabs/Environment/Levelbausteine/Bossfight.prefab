@@ -11,7 +11,12 @@ PrefabInstance:
     - target: {fileID: 3431638098877894983, guid: 4d7a63ca527a9344791332afc67b237c,
         type: 3}
       propertyPath: m_Name
-      value: Warehouse
+      value: Bossfight
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480911878037074197, guid: 4d7a63ca527a9344791332afc67b237c,
+        type: 3}
+      propertyPath: m_AnimatedTiles.Array.data[0].second.m_AnimationSpeed
+      value: 1.8917966
       objectReference: {fileID: 0}
     - target: {fileID: 6500741023972293445, guid: 4d7a63ca527a9344791332afc67b237c,
         type: 3}
@@ -62,6 +67,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129129278554399782, guid: 4d7a63ca527a9344791332afc67b237c,
+        type: 3}
+      propertyPath: m_Tiles.Array.data[5].second.m_TileIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129129278554399782, guid: 4d7a63ca527a9344791332afc67b237c,
+        type: 3}
+      propertyPath: m_TileAssetArray.Array.data[0].m_RefCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129129278554399782, guid: 4d7a63ca527a9344791332afc67b237c,
+        type: 3}
+      propertyPath: m_TileAssetArray.Array.data[2].m_RefCount
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129129278554399782, guid: 4d7a63ca527a9344791332afc67b237c,
+        type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[1].m_RefCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129129278554399782, guid: 4d7a63ca527a9344791332afc67b237c,
+        type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[2].m_RefCount
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129129278554399782, guid: 4d7a63ca527a9344791332afc67b237c,
+        type: 3}
+      propertyPath: m_Tiles.Array.data[5].second.m_TileSpriteIndex
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
