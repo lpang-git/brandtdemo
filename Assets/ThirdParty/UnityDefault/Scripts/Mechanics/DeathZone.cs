@@ -14,9 +14,9 @@ namespace Platformer.Mechanics
     {
         [SerializeField] private int zoneType; // 1 = Void fall, 2 = Spike trap
 
-        private void OnTriggerEnter2D(Collider2D collider)
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            var p = collider.gameObject.GetComponent<PlayerController>();
+            var p = other.gameObject.GetComponent<PlayerController>();
             if (p == null) return;
 
             switch (zoneType)
@@ -29,6 +29,7 @@ namespace Platformer.Mechanics
                     break;
             }
             
+            p.dyingState  = true;
             var ev = Schedule<PlayerEnteredDeathZone>();
             ev.deathzone = this;
         }
