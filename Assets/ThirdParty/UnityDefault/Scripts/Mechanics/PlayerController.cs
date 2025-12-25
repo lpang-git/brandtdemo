@@ -200,6 +200,7 @@ namespace Platformer.Mechanics
                 if (!IsGrounded) return;
                 Schedule<PlayerDeath>();
                 PlaySoundAndAnims(10);
+                fallingDramatically  = false;
             }
             else
             {
