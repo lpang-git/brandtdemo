@@ -1,3 +1,4 @@
+using Platformer.Mechanics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -32,7 +33,7 @@ public class PlayerGunBehaviour : MonoBehaviour
     [SerializeField] private float nextShootTime;
     [SerializeField] private int totalOwnedAmmo;
 
-    private PlayerAdvancedBehaviour _playerScript;
+    private PlayerController _playerScript;
     
     private InputAction _fireAction;
     private InputAction _reloadAction;
@@ -41,12 +42,13 @@ public class PlayerGunBehaviour : MonoBehaviour
     
     private void Awake()
     {
-        _playerScript = player.GetComponent<PlayerAdvancedBehaviour>();
-        _countingUI = userInterfaceObject.GetComponent<PlayerUI>();
+        _playerScript = player.GetComponent<PlayerController>();
         _fireAction = InputSystem.actions.FindAction("Player/Attack");
         _reloadAction = InputSystem.actions.FindAction("Player/Reload");
         currentChamberedAmmo = startingAmmo;
         totalOwnedAmmo = startingAmmo;
+        
+        _countingUI = userInterfaceObject.GetComponent<PlayerUI>();
     }
 
     private void OnEnable()
