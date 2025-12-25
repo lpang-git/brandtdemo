@@ -20,7 +20,6 @@ namespace Platformer.Mechanics
         [SerializeField] internal Animator animator;
         [SerializeField] internal Transform aimTransform;
         [SerializeField] internal Collider2D collider2d;
-        [SerializeField] internal AudioSource audioSource;
         [SerializeField] internal Health health;
 
         [Space] 
@@ -94,7 +93,6 @@ namespace Platformer.Mechanics
             
             _cameraMain = Camera.main;
             health = GetComponent<Health>();
-            audioSource = GetComponent<AudioSource>();
             collider2d = GetComponent<Collider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             rb = GetComponent<Rigidbody2D>();
