@@ -8,6 +8,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1157905948528262221, guid: 4d7a63ca527a9344791332afc67b237c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 3431638098877894983, guid: 4d7a63ca527a9344791332afc67b237c,
         type: 3}
       propertyPath: m_Name
@@ -16,7 +21,7 @@ PrefabInstance:
     - target: {fileID: 4480911878037074197, guid: 4d7a63ca527a9344791332afc67b237c,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[0].second.m_AnimationSpeed
-      value: 2.8769097
+      value: 2.1044722
       objectReference: {fileID: 0}
     - target: {fileID: 5123624047336514489, guid: 4d7a63ca527a9344791332afc67b237c,
         type: 3}
