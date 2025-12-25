@@ -2,6 +2,7 @@ using UnityEngine;
 using Platformer.Gameplay;
 using static Platformer.Core.Simulation;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace Platformer.Mechanics
 {
@@ -56,10 +57,14 @@ namespace Platformer.Mechanics
         
         [Tooltip("Cap of player gravity acceleration.")]
         [SerializeField] private float maxFallMultiplier = 4f;
-        
-        [Space]
-        [Header("Debug Values")]
-        [SerializeField] internal Vector2 move;
+
+        [Tooltip("Fall distance where fall becomes lethal.")] 
+        [SerializeField] private float dramaticThreshold = 5f;
+
+        [Space] 
+        [Header("Debug Values")] 
+        [SerializeField] private float fallDistance;
+        [SerializeField] private float fallStartPosY;
         [SerializeField] internal Vector2 mousePosition;
         [SerializeField] internal bool controlEnabled;
 
@@ -67,6 +72,7 @@ namespace Platformer.Mechanics
         private InputAction jumpAction;
         private InputAction lookAction;
 
+        private Vector2 move;
         private bool _skipFirstDependency;
         private Camera _cameraMain;
         
@@ -76,6 +82,7 @@ namespace Platformer.Mechanics
         private float _fallTime;
         
         private bool _wasGrounded = true;
+        private bool _wasAirborne;
         private bool _jumpExecutedThisAirborne = false;
         
         internal bool dyingState;
@@ -248,16 +255,30 @@ namespace Platformer.Mechanics
                     }
                 }
             
-                if (velocity.y < 0f)
+                if (!IsGrounded)
                 {
-                    _fallTime += Time.deltaTime;
-                    var extra = 1f + Mathf.Clamp(_fallTime * fallAccelRamp, 0f, maxFallMultiplier - 1f);
-                    velocity.y += Physics2D.gravity.y * extra * Time.deltaTime;
+                    if (!_wasAirborne)
+                    {
+                        fallStartPosY = transform.position.y;
+                        _wasAirborne  = true;
+                    }
+                    
+                    if (velocity.y < 0f)
+                    {
+                        _fallTime += Time.deltaTime;
+                        var extra = 1f + Mathf.Clamp(_fallTime * fallAccelRamp, 0f, maxFallMultiplier - 1f);
+                        velocity.y += Physics2D.gravity.y * extra * Time.deltaTime;
+                    }
+                    else
+                    {
+                        _fallTime = 0f;
+                        velocity.y += Physics2D.gravity.y * Time.deltaTime;
+                    }
                 }
                 else
                 {
+                    velocity.y = Mathf.Max(0f, velocity.y);
                     _fallTime = 0f;
-                    velocity.y += Physics2D.gravity.y * Time.deltaTime;
                 }
 
                 CheckGrounded();
@@ -268,12 +289,25 @@ namespace Platformer.Mechanics
 
         private void CheckGrounded()
         {
+            if (_wasAirborne && !IsGrounded)
+            {
+               fallDistance = fallStartPosY - transform.position.y;
+               
+               if (!_fallingDramatically && fallDistance > dramaticThreshold)
+               {
+                   Debug.Log("dramatic fall started");
+                   _fallingDramatically = true;
+                   PlaySoundAndAnims(9);
+               }
+            } 
+            
             if (_fallingDramatically && !_isLadder)
             {
                 if (!IsGrounded) return;
                 Schedule<PlayerDeath>();
                 PlaySoundAndAnims(10);
                 _fallingDramatically  = false;
+                fallStartPosY = 0f;
             }
             else
             {
@@ -282,6 +316,7 @@ namespace Platformer.Mechanics
                             
                 if (!IsGrounded) return;
                 sounds[13].Play();
+                _wasAirborne  = false;
             }
         }
     
@@ -316,13 +351,6 @@ namespace Platformer.Mechanics
                 spriteRenderer.flipX = false;
             else if (directionX < -aimThreshold)
                 spriteRenderer.flipX = true;
-        }
-    
-        internal void OnDramaticFall()
-        {
-            Debug.Log("dramatic fall started");
-            _fallingDramatically = true;
-            PlaySoundAndAnims(9);
         }
 
         protected override void OnEnable()

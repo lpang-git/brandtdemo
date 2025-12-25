@@ -114,16 +114,12 @@ namespace Platformer.Mechanics
             var moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
 
             var move = moveAlongGround * deltaPosition.x;
-
             PerformMovement(move, false);
-
             move = Vector2.up * deltaPosition.y;
-
             PerformMovement(move, true);
-
         }
 
-        protected void PerformMovement(Vector2 move, bool yMovement)
+        private void PerformMovement(Vector2 move, bool yMovement)
         {
             var distance = move.magnitude;
 
