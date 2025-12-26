@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2172502705865172799
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2046651163514377100, guid: 757da3b153cddbeb3911010a951229cf,
+        type: 3}
+      propertyPath: m_Name
+      value: Light Hub
+      objectReference: {fileID: 0}
+    - target: {fileID: 4933010677891978386, guid: 757da3b153cddbeb3911010a951229cf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4933010677891978386, guid: 757da3b153cddbeb3911010a951229cf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4933010677891978386, guid: 757da3b153cddbeb3911010a951229cf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 757da3b153cddbeb3911010a951229cf, type: 3}
