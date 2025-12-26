@@ -61,7 +61,6 @@ MonoBehaviour:
   animator: {fileID: 95391780594314510}
   aimTransform: {fileID: 4526335388715526479}
   collider2d: {fileID: 298265138534161304}
-  audioSource: {fileID: 0}
   health: {fileID: 6082575806313374961}
   sounds:
   - {fileID: 8575104651638045744}
@@ -91,6 +90,7 @@ MonoBehaviour:
   maxFallMultiplier: 4
   dramaticThreshold: 5
   fallDistance: 0
+  fallStartPosY: 0
   mousePosition: {x: 0, y: 0}
   controlEnabled: 1
 --- !u!114 &6082575806313374961
@@ -173,7 +173,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208144871472054}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 22100000, guid: eea18bae92dd918149eb18542272c692, type: 2}
   m_CullingMode: 0
