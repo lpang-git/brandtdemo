@@ -38,6 +38,7 @@ public class PlayerGunBehaviour : MonoBehaviour
     [Header("Debug Values")]
     [SerializeField] internal int currentChamberedAmmo;
     [SerializeField] private float nextShootTime;
+    [SerializeField] private float nextHolsterTime;
     [SerializeField] private int totalOwnedAmmo;
     [SerializeField] internal bool isAiming = false;
 

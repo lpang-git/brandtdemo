@@ -17,8 +17,7 @@ namespace Platformer.Mechanics
         private static readonly int Trap = Animator.StringToHash("trap");
         private static readonly int DramaticFall = Animator.StringToHash("dramaticFall");
         private static readonly int Climbing = Animator.StringToHash("climbing");
-        private static readonly int Aim = Animator.StringToHash("aim");
-        private static readonly int Unarm = Animator.StringToHash("unarm");
+        private static readonly int AimPressed = Animator.StringToHash("aimPressed");
         private static readonly int IsAiming = Animator.StringToHash("isAiming");
 
         [Header("References")] 
@@ -421,15 +420,14 @@ namespace Platformer.Mechanics
                         break;
                     case 5:
                         // holster/unholster weapon
-                        if (!_aimScript.isAiming)
+                        animator.SetTrigger(AimPressed);
+                        if (_aimScript.isAiming)
                         {
-                            animator.SetTrigger(Aim);
                             Debug.Log("5.1");
                             sounds[4].Play(); // unholster (aim)
                         }
                         else
                         {
-                            animator.SetTrigger(Unarm);
                             Debug.Log("5.2");
                             sounds[5].Play(); // holster (stop aiming)
                         }
