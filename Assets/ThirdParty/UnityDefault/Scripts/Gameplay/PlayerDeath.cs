@@ -12,20 +12,23 @@ namespace Platformer.Gameplay
     /// <typeparam name="PlayerDeath"></typeparam>
     public class PlayerDeath : Simulation.Event<PlayerDeath>
     {
-        PlatformerModel model = Simulation.GetModel<PlatformerModel>();
+        private static readonly int Hurt = Animator.StringToHash("hurt");
+        private static readonly int Dead = Animator.StringToHash("dead");
+
+        private PlatformerModel _model = Simulation.GetModel<PlatformerModel>();
 
         public override void Execute()
         {
-            var player = model.player;
+            var player = _model.player;
             if (player.health.IsAlive)
             {
                 player.health.Die();
-                model.virtualCamera.Follow = null;
-                model.virtualCamera.LookAt = null;
+                _model.virtualCamera.Follow = null;
+                _model.virtualCamera.LookAt = null;
                 // player.collider.enabled = false;
                 player.controlEnabled = false;
-                player.animator.SetTrigger("hurt");
-                player.animator.SetBool("dead", true);
+                player.animator.SetTrigger(Hurt);
+                player.animator.SetBool(Dead, true);
                 Simulation.Schedule<PlayerSpawn>(2);
             }
         }

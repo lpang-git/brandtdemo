@@ -387,7 +387,7 @@ namespace Platformer.Mechanics
                         sounds[1].Play();
                         break;
                     case 2:
-                        // walk
+                        // run
                         sounds[2].Play();
                         break;
                     case 3:
