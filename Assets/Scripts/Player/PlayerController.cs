@@ -14,6 +14,10 @@ namespace Platformer.Mechanics
     {
         private static readonly int Grounded = Animator.StringToHash("grounded");
         private static readonly int VelocityX = Animator.StringToHash("velocityX");
+        private static readonly int Dead = Animator.StringToHash("dead");
+        private static readonly int Trap = Animator.StringToHash("trap");
+        private static readonly int DramaticFall = Animator.StringToHash("dramaticFall");
+        private static readonly int Climbing = Animator.StringToHash("climbing");
 
         [Header("References")] 
         [SerializeField] protected Rigidbody2D rb;
@@ -232,6 +236,7 @@ namespace Platformer.Mechanics
         
             if (_isLadder)
             {
+                PlaySoundAndAnims(7);
                 velocity.y = inputVector.y * climbingSpeed;
                 CheckGrounded();
                 targetVelocity = move * playerSpeed;
@@ -299,24 +304,28 @@ namespace Platformer.Mechanics
                    _fallingDramatically = true;
                    PlaySoundAndAnims(9);
                }
-            } 
-            
-            if (_fallingDramatically && !_isLadder)
-            {
-                if (!IsGrounded) return;
-                Schedule<PlayerDeath>();
-                PlaySoundAndAnims(10);
-                _fallingDramatically  = false;
-                fallStartPosY = 0f;
             }
-            else
+
+            switch (_fallingDramatically)
             {
-                animator.SetBool(Grounded, IsGrounded);
-                animator.SetFloat(VelocityX, Mathf.Abs(velocity.x) / playerSpeed);
-                            
-                if (!IsGrounded) return;
-                sounds[13].Play();
-                _wasAirborne  = false;
+                case true when !_isLadder:
+                {
+                    if (!IsGrounded) return;
+                    Schedule<PlayerDeath>();
+                    PlaySoundAndAnims(10);
+                    _fallingDramatically = false;
+                    fallStartPosY = 0f;
+                    break;
+                }
+                case true when _isLadder:
+                    _fallingDramatically = false;
+                    fallStartPosY = 0f;
+                    break;
+                default:
+                    // Is either landing OR walking
+                    PlaySoundAndAnims(13);
+                    _wasAirborne  = false;
+                    break;
             }
         }
     
@@ -409,34 +418,72 @@ namespace Platformer.Mechanics
                         break;
                     case 7:
                         // climbing
+                        if (_fallingDramatically)
+                        {
+                            // Ladder can save player from deadly fall
+                            animator.SetBool(DramaticFall, false);
+                        }
+                        animator.SetBool(Climbing, true);
                         sounds[7].Play();
                         break;
                     case 8:
                         // die by enemy
                         StopAllPlayerSounds();
+                        
+                        if (_fallingDramatically)
+                        {
+                            // If enemy kills player before they hit ground
+                            animator.SetBool(DramaticFall, false);
+                        }
+                        
+                        animator.SetBool(Dead, true);
                         sounds[8].Play();
                         break;
                     case 9:
                         // dramatic fall
+                        animator.SetBool(DramaticFall, true);
                         sounds[9].Play();
                         break;
                     case 10:
                         // die by fall damage
+                        animator.SetBool(Dead, true);
+                        animator.SetBool(DramaticFall, false);
                         StopAllPlayerSounds();
                         sounds[10].Play();
                         break;
                     case 11:
                         // die by spikes
+                        if (_fallingDramatically)
+                        {
+                            // If spikes kill player before they hit ground
+                            animator.SetBool(DramaticFall, false);
+                        }
+                        
+                        animator.SetBool(Dead, true);
+                        animator.SetBool(Trap, true);
                         StopAllPlayerSounds();
                         sounds[11].Play();
                         break;
                     case 12:
                         // die by Aufseher
+                        if (_fallingDramatically)
+                        {
+                            // If Aufseher kills player before they hit ground
+                            animator.SetBool(DramaticFall, false);
+                        }
+                        
+                        animator.SetBool(Dead, true);
                         StopAllPlayerSounds();
                         sounds[12].Play();
                         break;
                     case 13:
-                        // NOTE: sound 13 is landing on feet normally
+                        // Walking, jumping, idle animation & landing animation + sound
+                        animator.SetBool(Climbing, false);
+                        animator.SetBool(Grounded, IsGrounded); // handles jump/land & if run
+                        animator.SetFloat(VelocityX, Mathf.Abs(velocity.x) / playerSpeed); // handles idle/run & if landing
+                        
+                        if (!_wasGrounded) return;
+                        sounds[13].Play();
                         break;
                     case 14:
                         // respawning
@@ -453,10 +500,12 @@ namespace Platformer.Mechanics
                 }
             }
 
-            private void StopAllAnimations()
+            internal void ResetAnimatorBools()
             {
-            
+                animator.SetBool(Dead, false);
+                animator.SetBool(Trap, false);
             }
-        #endregion
+
+            #endregion
     }
 }

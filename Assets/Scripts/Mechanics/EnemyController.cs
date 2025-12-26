@@ -47,6 +47,7 @@ namespace Platformer.Mechanics
             {
                 player.dyingState  = true;
                 Schedule<PlayerDeath>();
+                player.PlaySoundAndAnims(8);
             } else if (bullet != null)
             {
                 Schedule<EnemyDeath>().enemy = this;

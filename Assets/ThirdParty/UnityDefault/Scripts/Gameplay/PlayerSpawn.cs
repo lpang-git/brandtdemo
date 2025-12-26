@@ -21,7 +21,7 @@ namespace Platformer.Gameplay
             player.PlaySoundAndAnims(14);
             player.health.Increment();
             player.Teleport(_model.spawnPoint.transform.position);
-            player.animator.SetBool(Dead, false);
+            player.ResetAnimatorBools();
             _model.virtualCamera.Follow = player.transform;
             _model.virtualCamera.LookAt = player.transform;
             Simulation.Schedule<EnablePlayerInput>(2f);

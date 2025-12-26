@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Platformer.Core;
+﻿using Platformer.Core;
 using Platformer.Model;
-using UnityEngine;
 
 namespace Platformer.Gameplay
 {
@@ -12,9 +9,6 @@ namespace Platformer.Gameplay
     /// <typeparam name="PlayerDeath"></typeparam>
     public class PlayerDeath : Simulation.Event<PlayerDeath>
     {
-        private static readonly int Hurt = Animator.StringToHash("hurt");
-        private static readonly int Dead = Animator.StringToHash("dead");
-
         private PlatformerModel _model = Simulation.GetModel<PlatformerModel>();
 
         public override void Execute()
@@ -25,10 +19,8 @@ namespace Platformer.Gameplay
                 player.health.Die();
                 _model.virtualCamera.Follow = null;
                 _model.virtualCamera.LookAt = null;
-                // player.collider.enabled = false;
+                player.collider2d.enabled = true;
                 player.controlEnabled = false;
-                player.animator.SetTrigger(Hurt);
-                player.animator.SetBool(Dead, true);
                 Simulation.Schedule<PlayerSpawn>(2);
             }
         }
