@@ -1192,6 +1192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4537625189935320126}
   - component: {fileID: 3137116161105032566}
+  - component: {fileID: 4602147591117327265}
   m_Layer: 0
   m_Name: BasaltBonus_Baum2_0
   m_TagString: Untagged
@@ -1267,12 +1268,34 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6.234375, y: 4}
+  m_Size: {x: 8, y: 4.6875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4602147591117327265
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3816748112969238600}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 940586124688be149ae8a076be490b49, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4009197339578533516
 GameObject:
   m_ObjectHideFlags: 0
@@ -5942,52 +5965,52 @@ PrefabInstance:
     - target: {fileID: 3772753180816643367, guid: 96620d8a6882d8408b14ce1a93b11516,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[0].second.m_AnimationSpeed
-      value: 2.934081
+      value: 1.8999863
       objectReference: {fileID: 0}
     - target: {fileID: 3772753180816643367, guid: 96620d8a6882d8408b14ce1a93b11516,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[1].second.m_AnimationSpeed
-      value: 2.5040822
+      value: 2.7564483
       objectReference: {fileID: 0}
     - target: {fileID: 3772753180816643367, guid: 96620d8a6882d8408b14ce1a93b11516,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[2].second.m_AnimationSpeed
-      value: 2.8486652
+      value: 1.9880097
       objectReference: {fileID: 0}
     - target: {fileID: 3772753180816643367, guid: 96620d8a6882d8408b14ce1a93b11516,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[3].second.m_AnimationSpeed
-      value: 1.9398243
+      value: 2.919754
       objectReference: {fileID: 0}
     - target: {fileID: 3772753180816643367, guid: 96620d8a6882d8408b14ce1a93b11516,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[4].second.m_AnimationSpeed
-      value: 1.5301656
+      value: 2.2746754
       objectReference: {fileID: 0}
     - target: {fileID: 3772753180816643367, guid: 96620d8a6882d8408b14ce1a93b11516,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[5].second.m_AnimationSpeed
-      value: 1.9230196
+      value: 2.9279418
       objectReference: {fileID: 0}
     - target: {fileID: 3772753180816643367, guid: 96620d8a6882d8408b14ce1a93b11516,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[6].second.m_AnimationSpeed
-      value: 1.6761671
+      value: 2.0939374
       objectReference: {fileID: 0}
     - target: {fileID: 3772753180816643367, guid: 96620d8a6882d8408b14ce1a93b11516,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[7].second.m_AnimationSpeed
-      value: 1.529854
+      value: 2.0647807
       objectReference: {fileID: 0}
     - target: {fileID: 3772753180816643367, guid: 96620d8a6882d8408b14ce1a93b11516,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[8].second.m_AnimationSpeed
-      value: 2.6879747
+      value: 1.9745283
       objectReference: {fileID: 0}
     - target: {fileID: 3772753180816643367, guid: 96620d8a6882d8408b14ce1a93b11516,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[9].second.m_AnimationSpeed
-      value: 2.351479
+      value: 2.0554614
       objectReference: {fileID: 0}
     - target: {fileID: 3772753180816643367, guid: 96620d8a6882d8408b14ce1a93b11516,
         type: 3}
