@@ -2,7 +2,6 @@ using UnityEngine;
 using Platformer.Gameplay;
 using static Platformer.Core.Simulation;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace Platformer.Mechanics
 {
@@ -168,7 +167,6 @@ namespace Platformer.Mechanics
 
                 if (!_wasGrounded && IsGrounded)
                 {
-                    Schedule<PlayerLanded>().player = this;
                     _jumpExecutedThisAirborne = false;
                 }
                 
@@ -255,7 +253,7 @@ namespace Platformer.Mechanics
                     // Ensure PlayerJumped is scheduled only once per airborne session
                     if (!_jumpExecutedThisAirborne)
                     {
-                        Schedule<PlayerJumped>().player = this;
+                        PlaySoundAndAnims(15);
                         _jumpExecutedThisAirborne = true;
                     }
                 }
@@ -388,15 +386,15 @@ namespace Platformer.Mechanics
                 switch (actionId)
                 {
                     case 0:
-                        // Idle breathing
+                        // Inhale sound
                         sounds[0].Play();
                         break;
                     case 1:
-                        // jump
+                        // Exhale sound
                         sounds[1].Play();
                         break;
                     case 2:
-                        // run
+                        // footstep (run) sound
                         sounds[2].Play();
                         break;
                     case 3:
@@ -489,6 +487,10 @@ namespace Platformer.Mechanics
                         // respawning
                         sounds[14].Play();
                         break;
+                    case 15:
+                        // jump sound
+                        sounds[15].Play();
+                        break;
                 }
             }
 
@@ -504,6 +506,21 @@ namespace Platformer.Mechanics
             {
                 animator.SetBool(Dead, false);
                 animator.SetBool(Trap, false);
+            }
+
+            protected void OnInhale()
+            {
+                PlaySoundAndAnims(0);
+            }
+
+            protected void OnExhale()
+            {
+                PlaySoundAndAnims(1);
+            }
+
+            protected void OnFootstep()
+            {
+                PlaySoundAndAnims(2);
             }
 
             #endregion
