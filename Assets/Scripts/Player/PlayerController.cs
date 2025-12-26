@@ -75,8 +75,8 @@ namespace Platformer.Mechanics
         [SerializeField] internal bool controlEnabled;
 
         internal InputAction moveAction;
-        private InputAction jumpAction;
-        private InputAction lookAction;
+        internal InputAction jumpAction;
+        internal InputAction lookAction;
 
         private Vector2 move;
         private bool _skipFirstDependency;

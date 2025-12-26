@@ -110,6 +110,9 @@ public class PlayerGunBehaviour : MonoBehaviour
 
             _countingUI.UpdateAmmoCount(currentChamberedAmmo, totalOwnedAmmo);
 
+            StartCoroutine(LockMovementForDuration(shootCooldown));
+            StartCoroutine(LockJumpForDuration(shootCooldown));
+            
             TriggerSoundAndAnimation(1);
             
             Debug.Log("Bullet count:"  + currentChamberedAmmo);
@@ -127,6 +130,13 @@ public class PlayerGunBehaviour : MonoBehaviour
         _playerScript.moveAction.Disable();
         yield return new WaitForSeconds(duration);
         _playerScript.moveAction.Enable();
+    }
+    
+    private System.Collections.IEnumerator LockJumpForDuration(float duration)
+    {
+        _playerScript.jumpAction.Disable();
+        yield return new WaitForSeconds(duration);
+        _playerScript.jumpAction.Enable();
     }
     
     private void OnReload(InputAction.CallbackContext context)
@@ -198,6 +208,7 @@ public class PlayerGunBehaviour : MonoBehaviour
         isAiming = !isAiming;
         
         StartCoroutine(LockMovementForDuration(gunAimCooldown));
+        StartCoroutine(LockJumpForDuration(gunAimCooldown));
         
         _playerScript.PlaySoundAndAnims(5);
     }
