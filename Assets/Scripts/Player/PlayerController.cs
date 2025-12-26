@@ -17,6 +17,9 @@ namespace Platformer.Mechanics
         private static readonly int Trap = Animator.StringToHash("trap");
         private static readonly int DramaticFall = Animator.StringToHash("dramaticFall");
         private static readonly int Climbing = Animator.StringToHash("climbing");
+        private static readonly int Aim = Animator.StringToHash("aim");
+        private static readonly int Unarm = Animator.StringToHash("unarm");
+        private static readonly int IsAiming = Animator.StringToHash("isAiming");
 
         [Header("References")] 
         [SerializeField] protected Rigidbody2D rb;
@@ -94,6 +97,8 @@ namespace Platformer.Mechanics
         private bool _isLadder  = false;
         private bool _canClimbUp;
         private bool _canClimbDown;
+
+        private PlayerGunBehaviour _aimScript;
     
         public Bounds Bounds => collider2d.bounds;
     
@@ -108,6 +113,7 @@ namespace Platformer.Mechanics
             rb = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
             aimTransform = transform.Find("Aim");
+            _aimScript = aimTransform.GetComponent<PlayerGunBehaviour>();
 
             moveAction = InputSystem.actions.FindAction("Player/Move");
             jumpAction = InputSystem.actions.FindAction("Player/Jump");
@@ -253,7 +259,7 @@ namespace Platformer.Mechanics
                     // Ensure PlayerJumped is scheduled only once per airborne session
                     if (!_jumpExecutedThisAirborne)
                     {
-                        PlaySoundAndAnims(15);
+                        PlaySoundAndAnims(2);
                         _jumpExecutedThisAirborne = true;
                     }
                 }
@@ -321,7 +327,7 @@ namespace Platformer.Mechanics
                     break;
                 default:
                     // Is either landing OR walking
-                    PlaySoundAndAnims(13);
+                    PlaySoundAndAnims(4);
                     _wasAirborne  = false;
                     break;
             }
@@ -383,6 +389,8 @@ namespace Platformer.Mechanics
 
             internal void PlaySoundAndAnims(int actionId)
             {
+                animator.SetBool(IsAiming, _aimScript.isAiming);
+                
                 switch (actionId)
                 {
                     case 0:
@@ -394,20 +402,34 @@ namespace Platformer.Mechanics
                         sounds[1].Play();
                         break;
                     case 2:
-                        // footstep (run) sound
+                        // jump sound
                         sounds[2].Play();
                         break;
                     case 3:
-                        // unholster weapon
+                        // footstep sound
                         sounds[3].Play();
                         break;
                     case 4:
-                        // holster weapon
-                        sounds[4].Play();
+                        // Walking, jumping, idle animation & landing animation + sound
+                        animator.SetBool(Climbing, false);
+                        animator.SetBool(Grounded, IsGrounded); // handles jump/land & if run
+                        animator.SetFloat(VelocityX, Mathf.Abs(velocity.x) / playerSpeed); // handles idle/run & if landing
+                        
+                        if (!_wasGrounded) return;
+                        sounds[13].Play(); // landing sound
                         break;
                     case 5:
-                        // shoot
-                        sounds[5].Play();
+                        // holster/unholster weapon
+                        if (!_aimScript.isAiming)
+                        {
+                            animator.SetTrigger(Aim);
+                            sounds[4].Play(); // unholster (aim)
+                        }
+                        else
+                        {
+                            animator.SetTrigger(Unarm);
+                            sounds[5].Play(); // holster (stop aiming)
+                        }
                         break;
                     case 6:
                         // die by void
@@ -475,21 +497,8 @@ namespace Platformer.Mechanics
                         sounds[12].Play();
                         break;
                     case 13:
-                        // Walking, jumping, idle animation & landing animation + sound
-                        animator.SetBool(Climbing, false);
-                        animator.SetBool(Grounded, IsGrounded); // handles jump/land & if run
-                        animator.SetFloat(VelocityX, Mathf.Abs(velocity.x) / playerSpeed); // handles idle/run & if landing
-                        
-                        if (!_wasGrounded) return;
-                        sounds[13].Play();
-                        break;
-                    case 14:
                         // respawning
-                        sounds[14].Play();
-                        break;
-                    case 15:
-                        // jump sound
-                        sounds[15].Play();
+                        sounds[13].Play();
                         break;
                 }
             }
@@ -520,7 +529,7 @@ namespace Platformer.Mechanics
 
             protected void OnFootstep()
             {
-                PlaySoundAndAnims(2);
+                PlaySoundAndAnims(3);
             }
 
             #endregion

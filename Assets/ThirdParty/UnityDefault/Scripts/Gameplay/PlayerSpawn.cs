@@ -18,7 +18,7 @@ namespace Platformer.Gameplay
             var player = _model.player;
             player.collider2d.enabled = true;
             player.controlEnabled = false;
-            player.PlaySoundAndAnims(14);
+            player.PlaySoundAndAnims(13);
             player.health.Increment();
             player.Teleport(_model.spawnPoint.transform.position);
             player.ResetAnimatorBools();
