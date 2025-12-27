@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 578142888236057123, guid: ffa09632b94ece5cba63ad31a538319e,
         type: 3}
       propertyPath: m_Name
-      value: ParallaxLayers
+      value: ParallaxLayers Hub
       objectReference: {fileID: 0}
     - target: {fileID: 979457729584257194, guid: ffa09632b94ece5cba63ad31a538319e,
         type: 3}
@@ -63,8 +63,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1503706542389358513, guid: ffa09632b94ece5cba63ad31a538319e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7533175785537459244, guid: ffa09632b94ece5cba63ad31a538319e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6181087781256850532, guid: 9d7d2c438538cea4aa7e4d5a2ca48834,
+        type: 3}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 349879205688545597, guid: ffa09632b94ece5cba63ad31a538319e, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffa09632b94ece5cba63ad31a538319e, type: 3}
