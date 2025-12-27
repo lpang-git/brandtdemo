@@ -91,7 +91,7 @@ namespace Platformer.Mechanics
         private bool _jumpExecutedThisAirborne = false;
         
         internal bool dyingState;
-        private bool _fallingDramatically;
+        internal bool fallingDramatically;
     
         private bool _isLadder  = false;
         private bool _canClimbUp;
@@ -302,30 +302,28 @@ namespace Platformer.Mechanics
             {
                fallDistance = fallStartPosY - transform.position.y;
                
-               if (!_fallingDramatically && fallDistance > dramaticThreshold)
+               if (!fallingDramatically && fallDistance > dramaticThreshold)
                {
                    Debug.Log("dramatic fall started");
-                   _fallingDramatically = true;
+                   fallingDramatically = true;
                    PlaySoundAndAnims(9);
                }
             }
             
-            switch (_fallingDramatically)
+            switch (fallingDramatically)
             {
-                case true when dyingState:
-                    return; // has died
                 case true when !_isLadder:
                 {
-                    if (!IsGrounded) return;
+                    if (!IsGrounded || dyingState) return;
                     dyingState = true;
                     Schedule<PlayerDeath>();
                     PlaySoundAndAnims(10);
-                    _fallingDramatically  = false;
+                    fallingDramatically  = false;
                     fallStartPosY = 0f;
                     break;
                 }
                 case true when _isLadder:
-                    _fallingDramatically = false;
+                    fallingDramatically = false;
                     fallStartPosY = 0f;
                     break;
                 default:
@@ -448,7 +446,7 @@ namespace Platformer.Mechanics
                         break;
                     case 7:
                         // climbing
-                        if (_fallingDramatically)
+                        if (fallingDramatically)
                         {
                             // Ladder can save player from deadly fall
                             animator.SetBool(DramaticFall, false);
@@ -462,7 +460,7 @@ namespace Platformer.Mechanics
                         Debug.Log("8 pre");
                         StopAllPlayerSounds();
                         
-                        if (_fallingDramatically)
+                        if (fallingDramatically)
                         {
                             // If enemy kills player before they hit ground
                             animator.SetBool(DramaticFall, false);
@@ -481,7 +479,6 @@ namespace Platformer.Mechanics
                     case 10:
                         // die by fall damage
                         animator.SetBool(Dead, true);
-                        animator.SetBool(DramaticFall, false);
                         Debug.Log("10 pre");
                         StopAllPlayerSounds();
                         Debug.Log("10");
@@ -489,7 +486,7 @@ namespace Platformer.Mechanics
                         break;
                     case 11:
                         // die by spikes
-                        if (_fallingDramatically)
+                        if (fallingDramatically)
                         {
                             // If spikes kill player before they hit ground
                             animator.SetBool(DramaticFall, false);
@@ -504,7 +501,7 @@ namespace Platformer.Mechanics
                         break;
                     case 12:
                         // die by Aufseher
-                        if (_fallingDramatically)
+                        if (fallingDramatically)
                         {
                             // If Aufseher kills player before they hit ground
                             animator.SetBool(DramaticFall, false);
@@ -542,6 +539,7 @@ namespace Platformer.Mechanics
             {
                 animator.SetBool(Dead, false);
                 animator.SetBool(Trap, false);
+                animator.SetBool(DramaticFall, false);
             }
 
             protected void OnInhale()

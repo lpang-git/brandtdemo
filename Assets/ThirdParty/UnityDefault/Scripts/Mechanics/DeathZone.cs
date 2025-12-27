@@ -34,6 +34,7 @@ namespace Platformer.Mechanics
             }
             
             p.dyingState = true;
+            p.fallingDramatically = false;
             var ev = Schedule<PlayerEnteredDeathZone>();
             ev.deathzone = this;
         }
