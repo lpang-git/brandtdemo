@@ -88,7 +88,7 @@ MonoBehaviour:
   airAccel: 20
   fallAccelRamp: 1.5
   maxFallMultiplier: 4
-  dramaticThreshold: 5
+  dramaticThreshold: 4
   fallDistance: 0
   fallStartPosY: 0
   mousePosition: {x: 0, y: 0}
@@ -2963,6 +2963,7 @@ MonoBehaviour:
   - {fileID: 1479729178673624918}
   currentChamberedAmmo: 0
   nextShootTime: 0
+  nextHolsterTime: 0
   totalOwnedAmmo: 0
   isAiming: 0
 --- !u!1001 &7178710843230300078
