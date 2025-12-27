@@ -312,7 +312,6 @@ namespace Platformer.Mechanics
 
             if (_fallingDramatically && _isLadder)
             {
-                if (IsGrounded) { return; }
                 _fallingDramatically = false;
                 fallStartPosY = 0f;
             }
@@ -320,6 +319,7 @@ namespace Platformer.Mechanics
             if (_fallingDramatically && !_isLadder)
             {
                 if (!IsGrounded) return;
+                dyingState = true;
                 Schedule<PlayerDeath>();
                 PlaySoundAndAnims(10);
                 _fallingDramatically  = false;

@@ -45,7 +45,7 @@ namespace Platformer.Mechanics
             
             if (player != null)
             {
-                player.dyingState  = true;
+                player.dyingState = true;
                 Schedule<PlayerDeath>();
                 player.PlaySoundAndAnims(8);
             } else if (bullet != null)

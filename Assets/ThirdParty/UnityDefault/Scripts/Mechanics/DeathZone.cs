@@ -33,7 +33,7 @@ namespace Platformer.Mechanics
                     break;
             }
             
-            p.dyingState  = true;
+            p.dyingState = true;
             var ev = Schedule<PlayerEnteredDeathZone>();
             ev.deathzone = this;
         }
