@@ -309,29 +309,34 @@ namespace Platformer.Mechanics
                    PlaySoundAndAnims(9);
                }
             }
-
-            if (_fallingDramatically && _isLadder)
+            
+            switch (_fallingDramatically)
             {
-                _fallingDramatically = false;
-                fallStartPosY = 0f;
-            }
-
-            if (_fallingDramatically && !_isLadder)
-            {
-                if (!IsGrounded) return;
-                dyingState = true;
-                Schedule<PlayerDeath>();
-                PlaySoundAndAnims(10);
-                _fallingDramatically  = false;
-                fallStartPosY = 0f;
-            }
-            else
-            {
-                // Is either landing OR walking
-                PlaySoundAndAnims(14);
+                case true when dyingState:
+                    return; // has died
+                case true when !_isLadder:
+                {
+                    if (!IsGrounded) return;
+                    dyingState = true;
+                    Schedule<PlayerDeath>();
+                    PlaySoundAndAnims(10);
+                    _fallingDramatically  = false;
+                    fallStartPosY = 0f;
+                    break;
+                }
+                case true when _isLadder:
+                    _fallingDramatically = false;
+                    fallStartPosY = 0f;
+                    break;
+                default:
+                {
+                    // Is either landing OR walking
+                    PlaySoundAndAnims(14);
                 
-                if (!IsGrounded) return;
-                _wasAirborne = false;
+                    if (!IsGrounded) return;
+                    _wasAirborne = false;
+                    break;
+                }
             }
         }
     
