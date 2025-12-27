@@ -36,8 +36,11 @@ namespace Platformer.Mechanics
         [Tooltip("Horizontal walking speed of the player.")] 
         [SerializeField] internal float playerSpeed = 3;
         
-        [Tooltip("Initial jump velocity at the start of a jump.")] 
-        [SerializeField] internal float jumpTakeOffSpeed = 3;
+        [Tooltip("How high does the player jump?")] 
+        [SerializeField] internal float jumpHeight = 4.5f;
+        
+        [Tooltip("How far does the player jump?")] 
+        [SerializeField] private float jumpSpeed = 1.2f;
         
         [Tooltip("How far is the gun from the player?")]
         [SerializeField] private float gunDistance = 0.2f;
@@ -253,7 +256,7 @@ namespace Platformer.Mechanics
             
                 if (_jumpRequested)
                 {
-                    velocity.y = jumpTakeOffSpeed;
+                    velocity.y = jumpHeight;
                     _jumpRequested = false;
 
                     // Ensure Jump is scheduled only once per airborne session
@@ -262,6 +265,7 @@ namespace Platformer.Mechanics
                         PlaySoundAndAnims(2);
                         _jumpExecutedThisAirborne = true;
                     }
+                    velocity.x *= jumpSpeed;
                 }
             
                 if (!IsGrounded)
@@ -293,7 +297,7 @@ namespace Platformer.Mechanics
                 CheckGrounded();
                 targetVelocity = new Vector2(velocity.x, targetVelocity.y);
             }
-            velocity.x = move.x * playerSpeed;
+            // velocity.x = move.x * playerSpeed;
         }
 
         private void CheckGrounded()
