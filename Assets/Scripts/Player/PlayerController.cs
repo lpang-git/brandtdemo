@@ -403,27 +403,22 @@ namespace Platformer.Mechanics
                 {
                     case 0:
                         // Inhale sound
-                        Debug.Log("0");
                         sounds[0].Play();
                         break;
                     case 1:
                         // Exhale sound
-                        Debug.Log("1");
                         sounds[1].Play();
                         break;
                     case 2:
                         // jump sound
-                        Debug.Log("2");
                         sounds[2].Play();
                         break;
                     case 3:
                         // footstep sound
-                        Debug.Log("3");
                         sounds[3].Play();
                         break;
                     case 4:
                         // landing sound
-                        Debug.Log("4");
                         sounds[14].Play();
                         break;
                     case 5:
@@ -431,20 +426,16 @@ namespace Platformer.Mechanics
                         animator.SetTrigger(AimPressed);
                         if (_aimScript.isAiming)
                         {
-                            Debug.Log("5.1");
                             sounds[4].Play(); // unholster (aim)
                         }
                         else
                         {
-                            Debug.Log("5.2");
                             sounds[5].Play(); // holster (stop aiming)
                         }
                         break;
                     case 6:
                         // die by void
-                        Debug.Log("6 pre");
                         StopAllPlayerSounds();
-                        Debug.Log("6");
                         sounds[6].Play();
                         break;
                     case 7:
@@ -455,12 +446,10 @@ namespace Platformer.Mechanics
                             animator.SetBool(DramaticFall, false);
                         }
                         animator.SetBool(Climbing, true);
-                        Debug.Log("7");
                         sounds[7].Play();
                         break;
                     case 8:
                         // die by enemy
-                        Debug.Log("8 pre");
                         StopAllPlayerSounds();
                         
                         if (fallingDramatically)
@@ -470,21 +459,17 @@ namespace Platformer.Mechanics
                         }
                         
                         animator.SetBool(Dead, true);
-                        Debug.Log("8");
                         sounds[8].Play();
                         break;
                     case 9:
                         // dramatic fall
                         animator.SetBool(DramaticFall, true);
-                        Debug.Log("9");
                         sounds[9].Play();
                         break;
                     case 10:
                         // die by fall damage
                         animator.SetBool(Dead, true);
-                        Debug.Log("10 pre");
                         StopAllPlayerSounds();
-                        Debug.Log("10");
                         sounds[10].Play();
                         break;
                     case 11:
@@ -497,9 +482,7 @@ namespace Platformer.Mechanics
                         
                         animator.SetBool(Dead, true);
                         animator.SetBool(Trap, true);
-                        Debug.Log("11 pre");
                         StopAllPlayerSounds();
-                        Debug.Log("11");
                         sounds[11].Play();
                         break;
                     case 12:
@@ -511,14 +494,11 @@ namespace Platformer.Mechanics
                         }
                         
                         animator.SetBool(Dead, true);
-                        Debug.Log("12 pre");
                         StopAllPlayerSounds();
-                        Debug.Log("12");
                         sounds[12].Play();
                         break;
                     case 13:
                         // respawning
-                        Debug.Log("13");
                         sounds[13].Play();
                         break;
                     case 14:
