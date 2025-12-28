@@ -32,7 +32,8 @@ namespace Platformer.Mechanics
         [Header("Audio Sources")] 
         [SerializeField] private AudioSource[] sounds;
 
-        [Space] [Header("Settings")] 
+        [Space] 
+        [Header("Settings")] 
         [Tooltip("Horizontal walking speed of the player.")] 
         [SerializeField] internal float playerSpeed = 3;
         
@@ -69,38 +70,43 @@ namespace Platformer.Mechanics
         [Tooltip("Fall distance where fall becomes lethal.")] 
         [SerializeField] private float dramaticThreshold = 5f;
 
-        [Space] 
-        [Header("Debug Values")] 
-        [SerializeField] private float fallDistance;
-        [SerializeField] private float fallStartPosY;
-        [SerializeField] internal Vector2 mousePosition;
-        [SerializeField] internal bool controlEnabled;
+        /// hidden values ///
 
+        // basics
+        internal bool controlEnabled;
         internal InputAction moveAction;
         internal InputAction jumpAction;
-        internal InputAction lookAction;
-
+        private InputAction lookAction;
+        internal bool dyingState;
         private Vector2 move;
         private bool _skipFirstDependency;
-        private Camera _cameraMain;
         
+        // jump values
+        private bool _wasGrounded = true;
         private float _coyoteTimer;
         private float _jumpBufferTimer;
         private bool _jumpRequested;
         private float _fallTime;
-        
-        private bool _wasGrounded = true;
-        private bool _wasAirborne;
         private bool _jumpExecutedThisAirborne = false;
+        private bool _wasAirborne;
         
-        internal bool dyingState;
+        // aim values
+        private Vector2 mousePosition;
+        
+        // dramatic fall values
         internal bool fallingDramatically;
-    
+        private float fallDistance;
+        private float fallStartPosY;
+        
+        // ladder values
         private bool _isLadder  = false;
         private bool _canClimbUp;
         private bool _canClimbDown;
-
+        
+        // private references
         private PlayerGunBehaviour _aimScript;
+        private Camera _cameraMain;
+        
     
         public Bounds Bounds => collider2d.bounds;
     
