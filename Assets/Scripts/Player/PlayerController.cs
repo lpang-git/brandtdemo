@@ -43,23 +43,17 @@ namespace Platformer.Mechanics
         [Tooltip("How far does the player jump?")] 
         [SerializeField] private float jumpSpeed = 1.2f;
         
-        [Tooltip("How far is the gun from the player?")]
-        [SerializeField] private float gunDistance = 0.2f;
-        
-        [Tooltip("How fast can the player climb?")]
-        [SerializeField] protected float climbingSpeed = 2;
-        
-        [Tooltip("Coyote time is a short grace period (≈0.06–0.15s) after leaving a platform during which a jump input still counts as grounded.")]
-        [SerializeField] private float coyoteTime = 0.12f;
-        
-        [Tooltip("Jump buffer time is a short window (≈0.06–0.15s) that stores a recent jump press so the jump triggers as soon as the character becomes grounded.")]
+        [Tooltip("Short time frame that stores a recent jump press so the jump triggers as soon as the character becomes grounded.")]
         [SerializeField] private float jumpBufferTime = 0.12f;
+        
+        [Tooltip("Short grace period after leaving a platform during which a jump input still counts as grounded.")]
+        [SerializeField] private float groundLeaveTime = 0.12f;
         
         [Tooltip("Player acceleration while grounded")]
         [SerializeField] internal float groundAccel = 40f;
         
         [Tooltip("Player acceleration while in air")]
-        [SerializeField] private float airAccel = 20f;
+        [SerializeField] private float airAccel = 2f;
 
         [Tooltip("How fast player gravity grows per second. Makes the player fall faster the longer the fall.")]
         [SerializeField] private float fallAccelRamp = 1.5f;
@@ -69,6 +63,12 @@ namespace Platformer.Mechanics
 
         [Tooltip("Fall distance where fall becomes lethal.")] 
         [SerializeField] private float dramaticThreshold = 5f;
+        
+        [Tooltip("How far is the gun from the player?")]
+        [SerializeField] private float gunDistance = 0.2f;
+        
+        [Tooltip("How fast can the player climb?")]
+        [SerializeField] protected float climbingSpeed = 2;
 
         /// hidden values ///
 
@@ -83,7 +83,7 @@ namespace Platformer.Mechanics
         
         // jump values
         private bool _wasGrounded = true;
-        private float _coyoteTimer;
+        private float _groundLeaveTimer;
         private float _jumpBufferTimer;
         private bool _jumpRequested;
         private float _fallTime;
@@ -143,11 +143,11 @@ namespace Platformer.Mechanics
             
                 if (IsGrounded)
                 {
-                    _coyoteTimer = coyoteTime;
+                    _groundLeaveTimer = groundLeaveTime;
                 }
                 else
                 {
-                    _coyoteTimer -= Time.deltaTime;
+                    _groundLeaveTimer -= Time.deltaTime;
                 }
 
                 if (jumpAction.WasPressedThisFrame())
@@ -159,8 +159,8 @@ namespace Platformer.Mechanics
                     _jumpBufferTimer -= Time.deltaTime;
                 }
 
-                // request jump only if coyote available & we haven't executed a jump for this airborne
-                if (_jumpBufferTimer > 0f && _coyoteTimer > 0f && !_jumpExecutedThisAirborne)
+                // request jump only if groundLeave is over & we haven't executed a jump for this airborne
+                if (_jumpBufferTimer > 0f && _groundLeaveTimer > 0f && !_jumpExecutedThisAirborne)
                 {
                     _jumpRequested = true;
                     _jumpBufferTimer = 0f;
