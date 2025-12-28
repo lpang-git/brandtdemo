@@ -174,12 +174,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75fa2f9ea4cb54f34aaac731aabe3733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Platformer.UI.MainUIController
---- !u!61 &156235272 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 5926952168837778693, guid: 43e2d2d70810fa3b18be4d83fc666003,
-    type: 3}
-  m_PrefabInstance: {fileID: 156235270}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &365591203
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BoundingShape2D: {fileID: 156235272}
+  BoundingShape2D: {fileID: 0}
   Damping: 0
   SlowingDistance: 5
   OversizeWindow:
@@ -457,6 +451,61 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640457506462108206, guid: ef79c16be44b21e12a2a6de0fb20db48,
+        type: 3}
+      propertyPath: m_LocalBounds.m_Center.x
+      value: 11.56365
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640457506462108206, guid: ef79c16be44b21e12a2a6de0fb20db48,
+        type: 3}
+      propertyPath: m_LocalBounds.m_Center.y
+      value: 2.2679503
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640457506462108206, guid: ef79c16be44b21e12a2a6de0fb20db48,
+        type: 3}
+      propertyPath: m_LocalBounds.m_Extent.x
+      value: 25.12255
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640457506462108206, guid: ef79c16be44b21e12a2a6de0fb20db48,
+        type: 3}
+      propertyPath: m_LocalBounds.m_Extent.y
+      value: 7.8124504
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640457506462108206, guid: ef79c16be44b21e12a2a6de0fb20db48,
+        type: 3}
+      propertyPath: m_ShapePath.Array.data[0].x
+      value: -9.491695
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640457506462108206, guid: ef79c16be44b21e12a2a6de0fb20db48,
+        type: 3}
+      propertyPath: m_ShapePath.Array.data[0].y
+      value: -1.4625041
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640457506462108206, guid: ef79c16be44b21e12a2a6de0fb20db48,
+        type: 3}
+      propertyPath: m_ShapePath.Array.data[1].x
+      value: 32.686977
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640457506462108206, guid: ef79c16be44b21e12a2a6de0fb20db48,
+        type: 3}
+      propertyPath: m_ShapePath.Array.data[1].y
+      value: -1.5453696
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640457506462108206, guid: ef79c16be44b21e12a2a6de0fb20db48,
+        type: 3}
+      propertyPath: m_ShapePath.Array.data[2].x
+      value: 31.991364
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640457506462108206, guid: ef79c16be44b21e12a2a6de0fb20db48,
+        type: 3}
+      propertyPath: m_ShapePath.Array.data[3].x
+      value: -9.558481
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640457506462108206, guid: ef79c16be44b21e12a2a6de0fb20db48,
+        type: 3}
+      propertyPath: m_ShapePath.Array.data[3].y
+      value: 6.028569
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
