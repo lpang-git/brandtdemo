@@ -37,6 +37,9 @@ namespace Platformer.Mechanics
         protected const float minMoveDistance = 0.001f;
         protected const float shellRadius = 0.02f;
 
+        protected bool verticalBlocked;
+        protected Vector2 blockingNormal;
+        protected float blockingDistance;
 
         /// <summary>
         /// Bounce the object's vertical velocity.
@@ -119,9 +122,10 @@ namespace Platformer.Mechanics
             PerformMovement(move, true);
         }
 
-        private void PerformMovement(Vector2 move, bool yMovement)
+        protected virtual void PerformMovement(Vector2 move, bool yMovement)
         {
             var distance = move.magnitude;
+            verticalBlocked = false;
 
             if (distance > minMoveDistance)
             {
@@ -142,6 +146,14 @@ namespace Platformer.Mechanics
                             currentNormal.x = 0;
                         }
                     }
+
+                    if (hitBuffer[i].distance <= shellRadius + 0.001f)
+                    {
+                        verticalBlocked = true;
+                        blockingNormal = currentNormal;
+                        blockingDistance = hitBuffer[i].distance;
+                    }
+
                     if (IsGrounded)
                     {
                         //how much of our velocity aligns with surface normal?

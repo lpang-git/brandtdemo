@@ -341,7 +341,29 @@ namespace Platformer.Mechanics
                 }
             }
         }
-    
+
+        protected override void PerformMovement(Vector2 moveV, bool yMovement)
+        {
+            base.PerformMovement(moveV, yMovement);
+            
+            if (IsGrounded || !verticalBlocked) return;
+            
+            const float extraClearance = 0.001f;
+            var penetration = Mathf.Max(0f, (shellRadius + 0.001f) - blockingDistance);
+            var nudge = penetration + extraClearance;
+            var escape = blockingNormal * nudge;
+            body.MovePosition(body.position + escape);
+
+            var into = Vector2.Dot(velocity, blockingNormal);
+            if (into < 0f) velocity -= into * blockingNormal;
+
+            if (Mathf.Abs(blockingNormal.y) < 0.5f)
+                velocity.y = Mathf.Max(0f, velocity.y);
+
+            _fallTime = 0f;
+            _wasAirborne = false;
+        }
+
         private void CheckLadderCollisions()
         {
             var boxCastSize = new Vector2(0.1f, 0.1f);
