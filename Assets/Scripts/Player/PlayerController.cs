@@ -281,6 +281,7 @@ namespace Platformer.Mechanics
                         _fallTime += Time.deltaTime;
                         var extra = 1f + Mathf.Clamp(_fallTime * fallAccelRamp, 0f, maxFallMultiplier - 1f);
                         velocity.y += Physics2D.gravity.y * extra * Time.deltaTime;
+                        velocity.y = Mathf.Max(velocity.y, -5);
                     }
                     else
                     {
