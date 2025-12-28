@@ -264,8 +264,8 @@ namespace Platformer.Mechanics
                     {
                         PlaySoundAndAnims(2);
                         _jumpExecutedThisAirborne = true;
+                        velocity.x = move.x * playerSpeed * jumpSpeed;
                     }
-                    velocity.x *= jumpSpeed;
                 }
             
                 if (!IsGrounded)
@@ -297,7 +297,6 @@ namespace Platformer.Mechanics
                 CheckGrounded();
                 targetVelocity = new Vector2(velocity.x, targetVelocity.y);
             }
-            // velocity.x = move.x * playerSpeed;
         }
 
         private void CheckGrounded()
