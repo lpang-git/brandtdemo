@@ -1,4 +1,3 @@
-using System;
 using Platformer.Mechanics;
 using UnityEngine;
 using UnityEngine.InputSystem;
