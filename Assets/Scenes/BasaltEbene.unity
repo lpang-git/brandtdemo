@@ -879,6 +879,11 @@ PrefabInstance:
       propertyPath: m_AnimatedTiles.Array.data[7].second.m_AnimationSpeed
       value: 1.7970363
       objectReference: {fileID: 0}
+    - target: {fileID: 534391180865233653, guid: 2bceda4ba3159c7efad31aae05c6a721,
+        type: 3}
+      propertyPath: playerSpawn
+      value: 
+      objectReference: {fileID: 1694583628}
     - target: {fileID: 553673908337798360, guid: 2bceda4ba3159c7efad31aae05c6a721,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
