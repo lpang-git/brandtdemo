@@ -327,7 +327,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -358,12 +358,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 897
-        width: 17
-        height: 49
+        x: 0
+        y: 896
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -380,12 +380,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_1
       rect:
         serializedVersion: 2
-        x: 62
-        y: 897
-        width: 17
-        height: 49
+        x: 48
+        y: 896
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -402,12 +402,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_2
       rect:
         serializedVersion: 2
-        x: 110
-        y: 897
-        width: 17
-        height: 48
+        x: 96
+        y: 896
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -424,12 +424,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_3
       rect:
         serializedVersion: 2
-        x: 158
-        y: 897
-        width: 17
-        height: 48
+        x: 144
+        y: 896
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -446,12 +446,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_4
       rect:
         serializedVersion: 2
-        x: 206
-        y: 897
-        width: 17
-        height: 48
+        x: 192
+        y: 896
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -468,12 +468,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_5
       rect:
         serializedVersion: 2
-        x: 254
-        y: 897
-        width: 17
-        height: 49
+        x: 240
+        y: 896
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -490,12 +490,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_6
       rect:
         serializedVersion: 2
-        x: 12
-        y: 833
-        width: 25
-        height: 49
+        x: 0
+        y: 832
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -512,12 +512,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_7
       rect:
         serializedVersion: 2
-        x: 57
-        y: 833
-        width: 26
-        height: 47
+        x: 48
+        y: 832
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -534,12 +534,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_8
       rect:
         serializedVersion: 2
-        x: 110
-        y: 833
-        width: 17
-        height: 50
+        x: 96
+        y: 832
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -556,12 +556,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_9
       rect:
         serializedVersion: 2
-        x: 158
-        y: 833
-        width: 20
-        height: 51
+        x: 144
+        y: 832
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -578,12 +578,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_10
       rect:
         serializedVersion: 2
-        x: 206
-        y: 833
-        width: 24
-        height: 49
+        x: 192
+        y: 832
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -600,12 +600,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_11
       rect:
         serializedVersion: 2
-        x: 251
-        y: 833
-        width: 23
-        height: 47
+        x: 240
+        y: 832
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -622,12 +622,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_12
       rect:
         serializedVersion: 2
-        x: 300
-        y: 833
-        width: 19
-        height: 50
+        x: 288
+        y: 832
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -644,12 +644,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_13
       rect:
         serializedVersion: 2
-        x: 350
-        y: 833
-        width: 20
-        height: 51
+        x: 336
+        y: 832
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -666,12 +666,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_14
       rect:
         serializedVersion: 2
-        x: 14
-        y: 769
-        width: 17
-        height: 49
+        x: 0
+        y: 768
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -688,12 +688,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_15
       rect:
         serializedVersion: 2
-        x: 62
-        y: 769
-        width: 17
-        height: 46
+        x: 48
+        y: 768
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -710,12 +710,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_16
       rect:
         serializedVersion: 2
-        x: 113
-        y: 769
-        width: 19
-        height: 34
+        x: 96
+        y: 768
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -732,12 +732,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_17
       rect:
         serializedVersion: 2
-        x: 158
-        y: 771
-        width: 21
-        height: 45
+        x: 144
+        y: 768
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -754,12 +754,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_18
       rect:
         serializedVersion: 2
-        x: 206
-        y: 787
-        width: 27
-        height: 43
+        x: 192
+        y: 768
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -776,12 +776,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_19
       rect:
         serializedVersion: 2
-        x: 254
-        y: 769
-        width: 20
-        height: 53
+        x: 240
+        y: 768
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -798,12 +798,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_20
       rect:
         serializedVersion: 2
-        x: 302
-        y: 769
-        width: 21
-        height: 36
+        x: 288
+        y: 768
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -820,12 +820,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_21
       rect:
         serializedVersion: 2
-        x: 350
-        y: 769
-        width: 18
-        height: 46
+        x: 336
+        y: 768
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -842,12 +842,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_22
       rect:
         serializedVersion: 2
-        x: 14
-        y: 705
-        width: 17
-        height: 49
+        x: 0
+        y: 704
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -864,12 +864,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_23
       rect:
         serializedVersion: 2
-        x: 56
-        y: 705
-        width: 23
-        height: 49
+        x: 48
+        y: 704
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -886,12 +886,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_24
       rect:
         serializedVersion: 2
-        x: 110
-        y: 705
-        width: 23
-        height: 50
+        x: 96
+        y: 704
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -908,12 +908,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_25
       rect:
         serializedVersion: 2
-        x: 155
-        y: 705
-        width: 35
-        height: 47
+        x: 144
+        y: 704
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -930,12 +930,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_26
       rect:
         serializedVersion: 2
-        x: 203
-        y: 705
-        width: 35
-        height: 49
+        x: 192
+        y: 704
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -952,12 +952,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_27
       rect:
         serializedVersion: 2
-        x: 14
-        y: 641
-        width: 17
-        height: 49
+        x: 0
+        y: 640
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -974,12 +974,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_28
       rect:
         serializedVersion: 2
-        x: 56
-        y: 641
-        width: 23
-        height: 49
+        x: 48
+        y: 640
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -996,12 +996,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_29
       rect:
         serializedVersion: 2
-        x: 110
-        y: 641
-        width: 23
-        height: 50
+        x: 96
+        y: 640
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1018,12 +1018,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_30
       rect:
         serializedVersion: 2
-        x: 159
-        y: 641
-        width: 24
-        height: 47
+        x: 144
+        y: 640
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1040,12 +1040,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_31
       rect:
         serializedVersion: 2
-        x: 207
-        y: 641
-        width: 24
-        height: 49
+        x: 192
+        y: 640
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1062,12 +1062,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_32
       rect:
         serializedVersion: 2
-        x: 14
-        y: 577
-        width: 17
-        height: 49
+        x: 0
+        y: 576
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1084,12 +1084,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_33
       rect:
         serializedVersion: 2
-        x: 56
-        y: 577
-        width: 23
-        height: 49
+        x: 48
+        y: 576
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1106,12 +1106,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_34
       rect:
         serializedVersion: 2
-        x: 110
-        y: 577
-        width: 23
-        height: 50
+        x: 96
+        y: 576
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1128,12 +1128,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_35
       rect:
         serializedVersion: 2
-        x: 155
-        y: 577
-        width: 30
-        height: 47
+        x: 144
+        y: 576
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1150,12 +1150,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_36
       rect:
         serializedVersion: 2
-        x: 203
-        y: 577
-        width: 30
-        height: 49
+        x: 192
+        y: 576
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1172,12 +1172,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_37
       rect:
         serializedVersion: 2
-        x: 10
-        y: 513
-        width: 35
-        height: 49
+        x: 0
+        y: 512
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1194,12 +1194,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_38
       rect:
         serializedVersion: 2
-        x: 57
-        y: 513
-        width: 35
-        height: 49
+        x: 48
+        y: 512
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1216,12 +1216,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_39
       rect:
         serializedVersion: 2
-        x: 107
-        y: 513
-        width: 35
-        height: 49
+        x: 96
+        y: 512
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1238,12 +1238,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_40
       rect:
         serializedVersion: 2
-        x: 14
-        y: 449
-        width: 24
-        height: 49
+        x: 0
+        y: 448
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1260,12 +1260,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_41
       rect:
         serializedVersion: 2
-        x: 62
-        y: 449
-        width: 23
-        height: 49
+        x: 48
+        y: 448
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1282,12 +1282,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_42
       rect:
         serializedVersion: 2
-        x: 111
-        y: 449
-        width: 24
-        height: 49
+        x: 96
+        y: 448
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1304,12 +1304,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_43
       rect:
         serializedVersion: 2
-        x: 10
-        y: 385
-        width: 30
-        height: 49
+        x: 0
+        y: 384
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1326,12 +1326,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_44
       rect:
         serializedVersion: 2
-        x: 57
-        y: 385
-        width: 30
-        height: 49
+        x: 48
+        y: 384
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1348,12 +1348,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_45
       rect:
         serializedVersion: 2
-        x: 107
-        y: 385
-        width: 30
-        height: 49
+        x: 96
+        y: 384
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1370,12 +1370,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_46
       rect:
         serializedVersion: 2
-        x: 14
-        y: 325
-        width: 19
-        height: 45
+        x: 0
+        y: 320
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1392,12 +1392,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_47
       rect:
         serializedVersion: 2
-        x: 62
-        y: 321
-        width: 20
-        height: 49
+        x: 48
+        y: 320
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1414,12 +1414,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_48
       rect:
         serializedVersion: 2
-        x: 110
-        y: 324
-        width: 20
-        height: 46
+        x: 96
+        y: 320
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1436,12 +1436,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_49
       rect:
         serializedVersion: 2
-        x: 158
-        y: 329
-        width: 19
-        height: 42
+        x: 144
+        y: 320
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1458,12 +1458,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_50
       rect:
         serializedVersion: 2
-        x: 206
-        y: 324
-        width: 20
-        height: 46
+        x: 192
+        y: 320
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1480,12 +1480,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_51
       rect:
         serializedVersion: 2
-        x: 253
-        y: 321
-        width: 21
-        height: 49
+        x: 240
+        y: 320
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1502,12 +1502,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_52
       rect:
         serializedVersion: 2
-        x: 302
-        y: 324
-        width: 20
-        height: 46
+        x: 288
+        y: 320
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1524,12 +1524,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_53
       rect:
         serializedVersion: 2
-        x: 350
-        y: 329
-        width: 20
-        height: 42
+        x: 336
+        y: 320
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1546,12 +1546,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_54
       rect:
         serializedVersion: 2
-        x: 14
-        y: 257
-        width: 17
-        height: 49
+        x: 0
+        y: 256
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1568,12 +1568,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_55
       rect:
         serializedVersion: 2
-        x: 53
-        y: 218
-        width: 35
-        height: 39
+        x: 48
+        y: 256
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1590,12 +1590,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_56
       rect:
         serializedVersion: 2
-        x: 60
-        y: 257
-        width: 22
-        height: 52
+        x: 96
+        y: 256
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1612,12 +1612,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_57
       rect:
         serializedVersion: 2
-        x: 110
-        y: 257
-        width: 19
-        height: 47
+        x: 144
+        y: 256
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1634,12 +1634,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_58
       rect:
         serializedVersion: 2
-        x: 156
-        y: 257
-        width: 22
-        height: 29
+        x: 192
+        y: 256
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1656,12 +1656,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_59
       rect:
         serializedVersion: 2
-        x: 204
-        y: 257
-        width: 22
-        height: 28
+        x: 0
+        y: 192
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1678,12 +1678,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_60
       rect:
         serializedVersion: 2
-        x: 4
-        y: 215
-        width: 38
-        height: 41
+        x: 48
+        y: 192
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1700,12 +1700,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_61
       rect:
         serializedVersion: 2
-        x: 102
-        y: 193
-        width: 39
-        height: 29
+        x: 96
+        y: 192
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1722,12 +1722,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_62
       rect:
         serializedVersion: 2
-        x: 147
+        x: 144
         y: 192
-        width: 38
-        height: 20
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1745,11 +1745,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 193
-        width: 45
-        height: 10
+        y: 192
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1766,12 +1766,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_64
       rect:
         serializedVersion: 2
-        x: 239
-        y: 193
+        x: 240
+        y: 192
         width: 48
-        height: 10
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1788,12 +1788,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_65
       rect:
         serializedVersion: 2
-        x: 3
-        y: 108
-        width: 46
-        height: 21
+        x: 0
+        y: 128
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1810,12 +1810,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_66
       rect:
         serializedVersion: 2
-        x: 15
-        y: 129
-        width: 17
-        height: 49
+        x: 48
+        y: 128
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1832,12 +1832,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_67
       rect:
         serializedVersion: 2
-        x: 54
-        y: 129
-        width: 26
-        height: 47
+        x: 96
+        y: 128
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1854,12 +1854,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_68
       rect:
         serializedVersion: 2
-        x: 109
-        y: 129
-        width: 21
-        height: 49
+        x: 144
+        y: 128
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1876,12 +1876,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_69
       rect:
         serializedVersion: 2
-        x: 157
-        y: 129
-        width: 27
-        height: 49
+        x: 192
+        y: 128
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1898,12 +1898,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_70
       rect:
         serializedVersion: 2
-        x: 206
-        y: 129
-        width: 17
-        height: 49
+        x: 0
+        y: 64
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1920,12 +1920,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_71
       rect:
         serializedVersion: 2
-        x: 56
-        y: 81
-        width: 40
-        height: 42
+        x: 48
+        y: 64
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1942,12 +1942,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_72
       rect:
         serializedVersion: 2
-        x: 102
-        y: 65
-        width: 37
-        height: 58
+        x: 96
+        y: 64
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1964,12 +1964,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_73
       rect:
         serializedVersion: 2
-        x: 150
-        y: 65
-        width: 37
-        height: 58
+        x: 144
+        y: 64
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1986,12 +1986,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_74
       rect:
         serializedVersion: 2
-        x: 198
-        y: 65
-        width: 37
-        height: 58
+        x: 192
+        y: 64
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2008,12 +2008,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_75
       rect:
         serializedVersion: 2
-        x: 246
-        y: 65
-        width: 37
-        height: 58
+        x: 240
+        y: 64
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2030,12 +2030,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_76
       rect:
         serializedVersion: 2
-        x: 8
-        y: 13
-        width: 29
-        height: 49
+        x: 0
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2052,12 +2052,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_77
       rect:
         serializedVersion: 2
-        x: 56
-        y: 13
-        width: 29
-        height: 49
+        x: 48
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2074,12 +2074,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_78
       rect:
         serializedVersion: 2
-        x: 104
-        y: 13
-        width: 29
-        height: 49
+        x: 96
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2096,12 +2096,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_79
       rect:
         serializedVersion: 2
-        x: 152
-        y: 13
-        width: 29
-        height: 49
+        x: 144
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2118,12 +2118,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_80
       rect:
         serializedVersion: 2
-        x: 200
-        y: 13
-        width: 29
-        height: 49
+        x: 192
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2140,12 +2140,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_81
       rect:
         serializedVersion: 2
-        x: 248
-        y: 12
-        width: 29
-        height: 49
+        x: 240
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2162,12 +2162,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_82
       rect:
         serializedVersion: 2
-        x: 296
-        y: 1
-        width: 29
-        height: 49
+        x: 288
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2184,12 +2184,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_83
       rect:
         serializedVersion: 2
-        x: 345
-        y: 1
-        width: 31
-        height: 27
+        x: 336
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2206,12 +2206,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_84
       rect:
         serializedVersion: 2
-        x: 399
-        y: 1
-        width: 22
-        height: 39
+        x: 384
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2228,12 +2228,12 @@ TextureImporter:
       name: ProtagonistSpriteSheet2_85
       rect:
         serializedVersion: 2
-        x: 446
-        y: 1
-        width: 17
-        height: 49
+        x: 432
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2250,7 +2250,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: cea96851aaaa583498f445f749c75f89
     internalID: 0
     vertices: []
     indices: 
@@ -2258,7 +2258,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":48.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       ProtagonistSpriteSheet2_0: -1885849863623464688
       ProtagonistSpriteSheet2_1: 172537752011914599

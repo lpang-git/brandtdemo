@@ -732,6 +732,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 298265138534161304, guid: c21a2efb0ed60d16d93797053c602470,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1891006897689089469, guid: c21a2efb0ed60d16d93797053c602470,
         type: 3}
       propertyPath: m_Pivot.x
