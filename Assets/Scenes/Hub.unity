@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BoundingShape2D: {fileID: 0}
+  BoundingShape2D: {fileID: 975565061}
   Damping: 0
   SlowingDistance: 5
   OversizeWindow:
@@ -393,6 +393,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 278b641afa1842c49b0d8f225c5567f9, type: 3}
+--- !u!61 &975565061 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 8666269441486449827, guid: 43e2d2d70810fa3b18be4d83fc666003,
+    type: 3}
+  m_PrefabInstance: {fileID: 156235270}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1327813350
 GameObject:
   m_ObjectHideFlags: 0

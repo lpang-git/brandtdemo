@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BoundingShape2D: {fileID: 0}
+  BoundingShape2D: {fileID: 1221284070}
   Damping: 0
   SlowingDistance: 5
   OversizeWindow:
@@ -387,7 +387,7 @@ PrefabInstance:
     - target: {fileID: 3633967437535493323, guid: c6931f26b72b304809f77f076ed061d1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 105.13
+      value: 105.25
       objectReference: {fileID: 0}
     - target: {fileID: 3633967437535493323, guid: c6931f26b72b304809f77f076ed061d1,
         type: 3}
@@ -397,7 +397,7 @@ PrefabInstance:
     - target: {fileID: 3721605567416612296, guid: c6931f26b72b304809f77f076ed061d1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.44
+      value: 5.4
       objectReference: {fileID: 0}
     - target: {fileID: 3721605567416612296, guid: c6931f26b72b304809f77f076ed061d1,
         type: 3}
@@ -421,8 +421,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8404318643870094744, guid: c6931f26b72b304809f77f076ed061d1,
         type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.26377153
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404318643870094744, guid: c6931f26b72b304809f77f076ed061d1,
+        type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0029380322
+      value: 0.0030303653
       objectReference: {fileID: 0}
     - target: {fileID: 8602635569776452263, guid: c6931f26b72b304809f77f076ed061d1,
         type: 3}
@@ -637,12 +642,12 @@ PrefabInstance:
     - target: {fileID: 2671673837571208598, guid: 51bfe89a839ffbb12bb02b8b03125d30,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6
+      value: -5.7371516
       objectReference: {fileID: 0}
     - target: {fileID: 2671673837571208598, guid: 51bfe89a839ffbb12bb02b8b03125d30,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.00009233326
       objectReference: {fileID: 0}
     - target: {fileID: 3895634147316588127, guid: 51bfe89a839ffbb12bb02b8b03125d30,
         type: 3}
@@ -712,6 +717,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a26b3629e5371115b93926cc2d842f6d, type: 3}
+--- !u!60 &1221284070 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7871359794019713459, guid: 51bfe89a839ffbb12bb02b8b03125d30,
+    type: 3}
+  m_PrefabInstance: {fileID: 1018380347}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1304389554 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4612123620083550438, guid: 7fc08322883661a32a1c7995883afcad,
