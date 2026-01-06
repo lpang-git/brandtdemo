@@ -8,11 +8,36 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6280807806871692481}
     m_Modifications:
+    - target: {fileID: 332069324861120093, guid: 1605834908145350fae891e47ca3dc59,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 332069324861120093, guid: 1605834908145350fae891e47ca3dc59,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 421100716047086742, guid: 1605834908145350fae891e47ca3dc59,
         type: 3}
       propertyPath: path
       value: 
       objectReference: {fileID: 6136633758553404209}
+    - target: {fileID: 2057677414419235125, guid: 1605834908145350fae891e47ca3dc59,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057677414419235125, guid: 1605834908145350fae891e47ca3dc59,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057677414419235125, guid: 1605834908145350fae891e47ca3dc59,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 2057677414419235125, guid: 1605834908145350fae891e47ca3dc59,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -58,6 +83,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3575658334500373412, guid: 1605834908145350fae891e47ca3dc59,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2194993383710470663, guid: bd30e776dc6ee094d88a4b8bbf308b33,
+        type: 3}
     - target: {fileID: 4056200412199868571, guid: 1605834908145350fae891e47ca3dc59,
         type: 3}
       propertyPath: m_Name
@@ -232,7 +263,7 @@ PrefabInstance:
       addedObject: {fileID: 2109146478138033500}
     - targetCorrespondingSourceObject: {fileID: 2911018631444891107, guid: 74eb3b083804c0f60b55f71b5036262d,
         type: 3}
-      insertIndex: 0
+      insertIndex: -1
       addedObject: {fileID: 6990670194378839609}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74eb3b083804c0f60b55f71b5036262d, type: 3}
