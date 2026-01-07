@@ -464,7 +464,7 @@ PrefabInstance:
     - target: {fileID: 4957159397119705476, guid: f7450517298f1d242a9ebec4eb0a3a22,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[0].second.m_AnimationSpeed
-      value: 2.7860868
+      value: 1.9734607
       objectReference: {fileID: 0}
     - target: {fileID: 6159687351491977686, guid: f7450517298f1d242a9ebec4eb0a3a22,
         type: 3}
@@ -2403,6 +2403,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eba30c4fd89db440dba65da09212b229, type: 3}
+--- !u!1 &4977437728596363534 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2330698409724142087, guid: eba30c4fd89db440dba65da09212b229,
+    type: 3}
+  m_PrefabInstance: {fileID: 4977437728596363533}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5642055995139109129
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2471,6 +2477,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cef98895a6426ed2f860df3bff823646, type: 3}
+--- !u!1 &5642055995139109130 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9094216050590439047, guid: cef98895a6426ed2f860df3bff823646,
+    type: 3}
+  m_PrefabInstance: {fileID: 5642055995139109129}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8423564165033514755
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2529,6 +2541,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4886246832421340185, guid: d9229ee817ad24b0faacd05f5457ab95,
+        type: 3}
+      propertyPath: toggle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4886246832421340185, guid: d9229ee817ad24b0faacd05f5457ab95,
+        type: 3}
+      propertyPath: leftFire
+      value: 
+      objectReference: {fileID: 4977437728596363534}
+    - target: {fileID: 4886246832421340185, guid: d9229ee817ad24b0faacd05f5457ab95,
+        type: 3}
+      propertyPath: rightFire
+      value: 
+      objectReference: {fileID: 5642055995139109130}
     - target: {fileID: 6128232525978235147, guid: d9229ee817ad24b0faacd05f5457ab95,
         type: 3}
       propertyPath: m_Name
