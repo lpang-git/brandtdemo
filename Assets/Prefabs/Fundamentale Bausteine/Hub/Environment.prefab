@@ -329,6 +329,30 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4507861982078705912, guid: 459e461cad9241649a36e3d92981d518,
+        type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 5440741253775172101}
+    - targetCorrespondingSourceObject: {fileID: 4507861982078705912, guid: 459e461cad9241649a36e3d92981d518,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1207879488160768567}
+    - targetCorrespondingSourceObject: {fileID: 6336444983765221066, guid: 459e461cad9241649a36e3d92981d518,
+        type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 5037511395874503947}
+    - targetCorrespondingSourceObject: {fileID: 6336444983765221066, guid: 459e461cad9241649a36e3d92981d518,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8179899449953738106}
+    - targetCorrespondingSourceObject: {fileID: 904179181957330869, guid: 459e461cad9241649a36e3d92981d518,
+        type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 6533494270552097446}
+    - targetCorrespondingSourceObject: {fileID: 904179181957330869, guid: 459e461cad9241649a36e3d92981d518,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9066362700888303936}
     - targetCorrespondingSourceObject: {fileID: 8093372753341037500, guid: 459e461cad9241649a36e3d92981d518,
         type: 3}
       insertIndex: -1
@@ -338,6 +362,78 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3284700560965564026}
   m_SourcePrefab: {fileID: 100100000, guid: 459e461cad9241649a36e3d92981d518, type: 3}
+--- !u!1 &569586023592053873 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6336444983765221066, guid: 459e461cad9241649a36e3d92981d518,
+    type: 3}
+  m_PrefabInstance: {fileID: 5766859719882502843}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5037511395874503947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569586023592053873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b951f117297224fad8eda217d24ca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialog
+  dialogLines:
+  - "H\xE4tte ich mich nicht verletzt, h\xE4tte ich die Expedition begleiten k\xF6nnen..."
+  - "Sieht so aus als ob du nicht l\xE4nger warten m\xF6chtest, was? Wenn du unbedingt
+    Felix und die anderen finden willst, werde ich dich davon nicht abhalten."
+  - "Hier, nimm diese zwei Patronen mit. Es ist nicht viel, aber mehr kann ich dir
+    nicht mitgeben. Was auch immer die anderen da drau\xDFen aufgehalten hat wird
+    dir auch das Leben schwer machen wollen, also sie vorsichtig."
+  - "Viel Gl\xFCck."
+--- !u!61 &8179899449953738106
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569586023592053873}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.78125, y: 1}
+    newSize: {x: 0.78125, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.5, y: 1}
+  m_EdgeRadius: 0
 --- !u!4 &692486539223713906 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6454841936849255113, guid: 459e461cad9241649a36e3d92981d518,
@@ -413,4 +509,148 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Size: {x: 1.5, y: 1}
+  m_EdgeRadius: 0
+--- !u!1 &6666535195874968846 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 904179181957330869, guid: 459e461cad9241649a36e3d92981d518,
+    type: 3}
+  m_PrefabInstance: {fileID: 5766859719882502843}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6533494270552097446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6666535195874968846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b951f117297224fad8eda217d24ca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialog
+  dialogLines:
+  - "SCHEI\xDFE MANN!"
+  - "Fr\xFCher habe ich mich dar\xFCber aufgeregt Leuten Finger wieder ann\xE4hen
+    zu m\xFCssen, aber jetzt kommt der Trupp ja nicht mal mehr zur\xFCck! GARNICHTS
+    zum wieder ann\xE4hen!"
+  - "H\xE4tte ich mitgehen sollen? Aber w\xE4re ich mitgegangen w\xE4re ich bei meinem
+    Geschick als erstes gestorben. Und dann w\xE4re ich noch nutzloser als ich es
+    jetzt bin."
+  - Du willst auch noch gehen!? Kann ich dir Hausarrest verschreiben? ...Bitte?
+--- !u!61 &9066362700888303936
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6666535195874968846}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.78125, y: 1}
+    newSize: {x: 0.78125, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.5, y: 1}
+  m_EdgeRadius: 0
+--- !u!1 &7964374919172641347 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4507861982078705912, guid: 459e461cad9241649a36e3d92981d518,
+    type: 3}
+  m_PrefabInstance: {fileID: 5766859719882502843}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5440741253775172101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7964374919172641347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b951f117297224fad8eda217d24ca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialog
+  dialogLines:
+  - "...Meine armen T\xE4ubchen...alles wird gut ihr Feinis."
+  - "Die Brieftauben, welche wir dem Expeditionstrupp mitgegeben haben um in Kontakt
+    zu bleiben, sind letzte Nacht ohne Nachricht alle zu uns zur\xFCckgekehrt."
+  - Ich will mir gar nicht vorstellen was mit dem Trupp passiert ist, die Tauben
+    sind immer noch ganz aufgebracht.
+  - Du willst sie suchen gehen? Oh Gott...
+--- !u!61 &1207879488160768567
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7964374919172641347}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.78125, y: 1.109375}
+    newSize: {x: 0.78125, y: 1.109375}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.5, y: 1.109375}
   m_EdgeRadius: 0
