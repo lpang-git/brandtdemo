@@ -81,7 +81,7 @@ public class MainMenu : MonoBehaviour
     private void OnStartGame()
     {
         // Default start goes to level 1 (scene index 2)
-        LoadLevel(2);
+        LoadLevel(1);
     }
 
     private void LoadLevel(int sceneBuildIndex)
