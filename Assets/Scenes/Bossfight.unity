@@ -178,7 +178,7 @@ Transform:
   m_GameObject: {fileID: 90683654}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.56, y: -2.213, z: 0}
+  m_LocalPosition: {x: -3.27, y: 0.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -341,12 +341,12 @@ PrefabInstance:
     - target: {fileID: 5515164573418419957, guid: bfb4cebd3679c4bd38a0abee68ab57d9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.54
+      value: -1.3582921
       objectReference: {fileID: 0}
     - target: {fileID: 5515164573418419957, guid: bfb4cebd3679c4bd38a0abee68ab57d9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.19
+      value: -2.18927
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -365,6 +365,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75fa2f9ea4cb54f34aaac731aabe3733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Platformer.UI.MainUIController
+--- !u!60 &551480770 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 4633487600163940924, guid: bfb4cebd3679c4bd38a0abee68ab57d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 551480768}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &621197883
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,7 +445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BoundingShape2D: {fileID: 0}
+  BoundingShape2D: {fileID: 551480770}
   Damping: 0
   SlowingDistance: 5
   OversizeWindow:
