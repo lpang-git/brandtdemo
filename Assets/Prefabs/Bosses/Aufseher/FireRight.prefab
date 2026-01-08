@@ -1666,7 +1666,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4332239163196629859}
   - component: {fileID: 258467822054113414}
-  - component: {fileID: 5199141269008252847}
   m_Layer: 0
   m_Name: FireRight
   m_TagString: Untagged
@@ -1725,18 +1724,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5199141269008252847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9094216050590439047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02c3529e845590f99a0a8dd826bbf065, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FireTrigger
 --- !u!1 &9131947186328886185
 GameObject:
   m_ObjectHideFlags: 0
