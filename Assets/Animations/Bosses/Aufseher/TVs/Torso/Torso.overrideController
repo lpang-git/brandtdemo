@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Torso
+  m_Controller: {fileID: 9100000, guid: 0bb851a7daf10994eb509d06fb0482fd, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 55813662ccd104f438c5645f133becc9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: bc1b14bef1af5d544847f75fb7601f5e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 8488ebc1d0c6de54884932ac6b396ccc, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b9d829f7875a4d3429d15bc0142b516d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 25a3167b2bd83fe4c91580577a724336, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 66936cbbf91fbfc499ab4e720872cc72, type: 2}
