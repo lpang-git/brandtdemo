@@ -19,6 +19,7 @@ namespace Platformer.Mechanics
         private static readonly int Climbing = Animator.StringToHash("climbing");
         private static readonly int AimPressed = Animator.StringToHash("aimPressed");
         private static readonly int IsAiming = Animator.StringToHash("isAiming");
+        private static readonly int HasStartedClimbing = Animator.StringToHash("climbStart");
 
         [Header("References")] 
         [SerializeField] protected Rigidbody2D rb;
@@ -102,6 +103,7 @@ namespace Platformer.Mechanics
         private bool _isLadder  = false;
         private bool _canClimbUp;
         private bool _canClimbDown;
+        private bool _climbingActive;
         
         // private references
         private PlayerGunBehaviour _aimScript;
@@ -190,6 +192,26 @@ namespace Platformer.Mechanics
                 base.Update();
                 CheckLadderCollisions();
             
+                var nowOnLadder = _isLadder;
+
+                switch (nowOnLadder)
+                {
+                    case true when !_climbingActive:
+                        _climbingActive = true;
+                        if (fallingDramatically)
+                        {
+                            // Ladder can save player from deadly fall
+                            animator.SetBool(DramaticFall, false);
+                        }
+                        animator.SetTrigger(HasStartedClimbing);
+                        animator.SetBool(Climbing, true);
+                        break;
+                    case false when _climbingActive:
+                        _climbingActive = false;
+                        animator.SetBool(Climbing, false);
+                        break;
+                }
+                
                 if (!_isLadder) return; 
             
                 LadderMovement(inputVector); // Vertical movement
@@ -249,7 +271,6 @@ namespace Platformer.Mechanics
         
             if (_isLadder)
             {
-                PlaySoundAndAnims(7);
                 velocity.y = inputVector.y * climbingSpeed;
                 CheckGrounded();
                 targetVelocity = move * playerSpeed;
@@ -469,12 +490,6 @@ namespace Platformer.Mechanics
                         break;
                     case 7:
                         // climbing
-                        if (fallingDramatically)
-                        {
-                            // Ladder can save player from deadly fall
-                            animator.SetBool(DramaticFall, false);
-                        }
-                        animator.SetBool(Climbing, true);
                         sounds[7].Play();
                         break;
                     case 8:
@@ -532,7 +547,6 @@ namespace Platformer.Mechanics
                         break;
                     case 14:
                         // Walking, jumping, idle & landing animation
-                        animator.SetBool(Climbing, false);
                         animator.SetBool(Grounded, IsGrounded); // handles jump/land & if run
                         animator.SetFloat(VelocityX, Mathf.Abs(velocity.x) / playerSpeed); // handles idle/run & if landing
                         break;
