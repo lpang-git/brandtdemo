@@ -5,6 +5,8 @@ public class NPCDialog : MonoBehaviour
     [TextArea(3, 6)]
     public string[] dialogLines;
 
+    public Sprite npcIcon;
+
     private bool playerInRange;
 
     private void Update()
@@ -16,7 +18,7 @@ public class NPCDialog : MonoBehaviour
         {
             if (!DialogManager.Instance.IsDialogActive())
             {
-                DialogManager.Instance.StartDialog(dialogLines);
+                DialogManager.Instance.StartDialog(dialogLines, npcIcon);
             }
             else
             {

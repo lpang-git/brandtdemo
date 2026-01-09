@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.UI;
 
 public class DialogManager : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class DialogManager : MonoBehaviour
     [Header("UI")]
     public GameObject dialogPanel;
     public TextMeshProUGUI dialogText;
+
+    [Header("NPC Icon")]
+    public Image npcIcon;
 
     [Header("Typewriter Settings")]
     public float typingSpeed = 0.03f;
@@ -28,7 +32,7 @@ public class DialogManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public void StartDialog(string[] lines)
+    public void StartDialog(string[] lines, Sprite icon)
     {
         if (lines == null || lines.Length == 0)
             return;
@@ -38,6 +42,16 @@ public class DialogManager : MonoBehaviour
 
         dialogPanel.SetActive(true);
         isDialogActive = true;
+
+        if (icon != null)
+        {
+            npcIcon.sprite = icon;
+            npcIcon.gameObject.SetActive(true);
+        }
+        else
+        {
+            npcIcon.gameObject.SetActive(false);
+        }
 
         StartTypingCurrentLine();
     }
@@ -101,6 +115,10 @@ public class DialogManager : MonoBehaviour
 
         dialogPanel.SetActive(false);
         dialogText.text = "";
+
+        npcIcon.sprite = null;
+        npcIcon.gameObject.SetActive(false);
+
         currentLines = null;
         currentLineIndex = 0;
         isDialogActive = false;
