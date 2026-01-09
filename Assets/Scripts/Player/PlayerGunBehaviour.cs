@@ -9,6 +9,7 @@ public class PlayerGunBehaviour : MonoBehaviour
     /// </summary>
     
     private static readonly int Shoot = Animator.StringToHash("shoot");
+    private static readonly int Reload = Animator.StringToHash("reload");
     
     [Header("Shooting References")]
     [SerializeField] private GameObject bulletPrefab;
@@ -24,6 +25,9 @@ public class PlayerGunBehaviour : MonoBehaviour
     
     [Tooltip("Cooldown (in seconds) in which the player cannot move after they have pressed aim.")]
     [SerializeField] private float gunAimCooldown = 1f;
+    
+    [Tooltip("Cooldown (in seconds) in which the player cannot move after they have pressed reload.")]
+    [SerializeField] private float reloadCooldown = 1.5f;
     
     [Tooltip("Maximum amount of bullets possible in chamber")]
     [SerializeField] private int maxAmmo = 3;
@@ -141,6 +145,13 @@ public class PlayerGunBehaviour : MonoBehaviour
         _playerScript.jumpAction.Enable();
     }
     
+    private System.Collections.IEnumerator LockShootForDuration(float duration)
+    {
+        _fireAction.Disable();
+        yield return new WaitForSeconds(duration);
+        _fireAction.Enable();
+    }
+    
     private void OnReload(InputAction.CallbackContext context)
     {
         if (!isAiming)
@@ -156,6 +167,11 @@ public class PlayerGunBehaviour : MonoBehaviour
     {
         TriggerSoundAndAnimation(2);
 
+        StartCoroutine(LockMovementForDuration(reloadCooldown));
+        StartCoroutine(LockJumpForDuration(reloadCooldown));
+        StartCoroutine(LockShootForDuration(reloadCooldown));
+        
+        
         switch (currentChamberedAmmo)
         {
             case 0:
@@ -198,6 +214,7 @@ public class PlayerGunBehaviour : MonoBehaviour
             case 2:
                 // reload
                 sounds[2].Play();
+                player.GetComponent<Animator>().SetTrigger(Reload);
                 break;
             case 3:
                 // empty magazine
