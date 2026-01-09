@@ -356,7 +356,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1090490535968589626}
   - component: {fileID: 7291514031274088902}
-  - component: {fileID: 213984596325159465}
   - component: {fileID: 3154210248038313301}
   m_Layer: 0
   m_Name: DialogueBox
@@ -394,23 +393,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8533760199747189610}
   m_CullTransparentMesh: 1
---- !u!114 &213984596325159465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8533760199747189610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40545762748798a1cbf53319216738b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
-  charName: {fileID: 0}
-  dialogueText: {fileID: 2656798691725115832}
-  icon: {fileID: 3508894991620584450}
-  textTypingSpeed: 0.2
-  dialogueSkip: {fileID: 0}
 --- !u!114 &3154210248038313301
 MonoBehaviour:
   m_ObjectHideFlags: 0

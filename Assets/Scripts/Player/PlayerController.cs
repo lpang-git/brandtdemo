@@ -32,6 +32,7 @@ namespace Platformer.Mechanics
         [SerializeField] internal Transform aimTransform;
         [SerializeField] internal Collider2D collider2d;
         [SerializeField] internal Health health;
+        [SerializeField] internal DialogueManager dialogueManager;
 
         [Space] 
         [Header("Audio Sources")] 
@@ -94,6 +95,9 @@ namespace Platformer.Mechanics
         
         // aim values
         private Vector2 mousePosition;
+        
+        // dialogue values
+        internal bool playerInRangeOfDialogue;
         
         // dramatic fall values
         internal bool fallingDramatically;
@@ -274,16 +278,30 @@ namespace Platformer.Mechanics
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            if  (!col.CompareTag("Ladder")) { return; }
-        
-            _isLadder = true;
+            var npc = col.GetComponent<NPC>();
+            
+            if (col.CompareTag("Ladder"))
+            {
+                _isLadder = true;
+            } else if (npc)
+            {
+                playerInRangeOfDialogue = true;
+                dialogueManager.SetNPC(npc);
+            }
         }
 
         private void OnTriggerExit2D(Collider2D col)
         {
-            if (!col.CompareTag("Ladder")) { return; }
-        
-            _isLadder = false;
+            var npc = col.GetComponent<NPC>();
+            
+            if (col.CompareTag("Ladder"))
+            {
+                _isLadder = false;
+            } else if (npc)
+            {
+                playerInRangeOfDialogue = false;
+                dialogueManager.EndDialogue();
+            }
         }
 
         protected override void ComputeVelocity()
@@ -486,21 +504,23 @@ namespace Platformer.Mechanics
             mousePosition = context.ReadValue<Vector2>();
         }
 
-        internal void EnableControls()
+        private void EnableControls()
         {
             moveAction.Enable();
             jumpAction.Enable();
             lookAction.Enable();
+            dialogueManager.interAction.Enable();
             _aimScript.aimAction.Enable();
             _aimScript.fireAction.Enable();
             _aimScript.reloadAction.Enable();
         }
 
-        internal void DisableControls()
+        private void DisableControls()
         {
             moveAction.Disable();
             jumpAction.Disable();
             lookAction.Disable();
+            dialogueManager.interAction.Disable();
             _aimScript.aimAction.Disable();
             _aimScript.fireAction.Disable();
             _aimScript.reloadAction.Disable();

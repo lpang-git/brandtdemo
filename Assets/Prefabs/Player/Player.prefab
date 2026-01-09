@@ -63,6 +63,7 @@ MonoBehaviour:
   aimTransform: {fileID: 4526335388715526479}
   collider2d: {fileID: 298265138534161304}
   health: {fileID: 6082575806313374961}
+  dialogueManager: {fileID: 2495058529709981049}
   sounds:
   - {fileID: 8575104651638045744}
   - {fileID: 3367530410779565191}
@@ -2080,9 +2081,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d71ae3f4ab4af194a97703bb759debd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
-  dialogPanel: {fileID: 1581298700040314052}
-  dialogText: {fileID: 5134454522483254806}
+  dialoguePanel: {fileID: 1581298700040314052}
+  dialogueText: {fileID: 5134454522483254806}
   npcIcon: {fileID: 5993726080988320684}
+  player: {fileID: 4491486714860385802}
   typingSpeed: 0.03
 --- !u!1 &6995612722667769998
 GameObject:
