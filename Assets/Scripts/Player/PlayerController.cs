@@ -103,7 +103,8 @@ namespace Platformer.Mechanics
         private bool _isLadder  = false;
         private bool _canClimbUp;
         private bool _canClimbDown;
-        private bool _climbingActive;
+        private bool _activeClimbing;
+        private bool _passiveClimbing;
         
         // private references
         private PlayerGunBehaviour _aimScript;
@@ -192,24 +193,39 @@ namespace Platformer.Mechanics
                 base.Update();
                 CheckLadderCollisions();
             
+                var verticalInput = inputVector.y != 0f;
                 var nowOnLadder = _isLadder;
 
-                switch (nowOnLadder)
+                if (nowOnLadder && verticalInput && !_activeClimbing && !IsGrounded) // on ladder, actively climbing
                 {
-                    case true when !_climbingActive:
-                        _climbingActive = true;
-                        if (fallingDramatically)
-                        {
-                            // Ladder can save player from deadly fall
-                            animator.SetBool(DramaticFall, false);
-                        }
-                        animator.SetTrigger(HasStartedClimbing);
-                        animator.SetBool(Climbing, true);
-                        break;
-                    case false when _climbingActive:
-                        _climbingActive = false;
-                        animator.SetBool(Climbing, false);
-                        break;
+                    _passiveClimbing = false;
+                    _activeClimbing = true;
+                    if (fallingDramatically)
+                    {
+                        // Ladder can save player from deadly fall
+                        animator.SetBool(DramaticFall, false);
+                    }
+                    animator.SetTrigger(HasStartedClimbing);
+                    animator.SetBool(Climbing, true);
+                    animator.speed = 1f;
+                } else if (nowOnLadder && !verticalInput && !_passiveClimbing && !IsGrounded) // on ladder, not actively climbing
+                {
+                    _activeClimbing = false;
+                    _passiveClimbing = true;
+                    if (fallingDramatically)
+                    {
+                        // Ladder can save player from deadly fall
+                        animator.SetBool(DramaticFall, false);
+                    }
+                    animator.SetTrigger(HasStartedClimbing);
+                    animator.SetBool(Climbing, true);
+                    animator.speed = 0.5f;
+                } else if ((!nowOnLadder && _activeClimbing) || (!nowOnLadder && _passiveClimbing) || nowOnLadder && IsGrounded) // not on ladder
+                {
+                    _activeClimbing = false;
+                    _passiveClimbing =  false;
+                    animator.SetBool(Climbing, false);
+                    animator.speed = 1f;
                 }
                 
                 if (!_isLadder) return; 
