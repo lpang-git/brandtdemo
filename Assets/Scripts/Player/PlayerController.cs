@@ -14,13 +14,16 @@ namespace Platformer.Mechanics
         private static readonly int Grounded = Animator.StringToHash("grounded");
         private static readonly int VelocityX = Animator.StringToHash("velocityX");
         private static readonly int Dead = Animator.StringToHash("dead");
-        private static readonly int Trap = Animator.StringToHash("trap");
         private static readonly int DramaticFall = Animator.StringToHash("dramaticFall");
         private static readonly int Climbing = Animator.StringToHash("climbing");
         private static readonly int AimPressed = Animator.StringToHash("aimPressed");
         private static readonly int IsAiming = Animator.StringToHash("isAiming");
         private static readonly int HasStartedClimbing = Animator.StringToHash("climbStart");
         private static readonly int LookState = Animator.StringToHash("lookState");
+        private static readonly int DeadByEnemy = Animator.StringToHash("deadByEnemy");
+        private static readonly int DeadBySpikes = Animator.StringToHash("deadBySpikes");
+        private static readonly int DeadByFall = Animator.StringToHash("deadByFall");
+        private static readonly int DeadByVoid = Animator.StringToHash("deadByVoid");
 
         [Header("References")] 
         [SerializeField] protected Rigidbody2D rb;
@@ -286,12 +289,14 @@ namespace Platformer.Mechanics
         
             if (_isLadder)
             {
+                _aimScript._aimAction.Disable();
                 velocity.y = inputVector.y * climbingSpeed;
                 CheckGrounded();
                 targetVelocity = move * playerSpeed;
             }
             else
             {
+                _aimScript._aimAction.Enable();
                 var targetX = move.x * playerSpeed;
                 var accel = IsGrounded ? groundAccel : airAccel;
                 velocity.x = Mathf.MoveTowards(velocity.x, targetX, accel * Time.deltaTime);
@@ -369,6 +374,11 @@ namespace Platformer.Mechanics
                     break;
                 }
                 case true when _isLadder:
+                    if (fallingDramatically)
+                    {
+                        // If climbing stop fall
+                        animator.SetBool(DramaticFall, false);
+                    }
                     fallingDramatically = false;
                     fallStartPosY = 0f;
                     break;
@@ -447,7 +457,7 @@ namespace Platformer.Mechanics
             var yDiff = worldPosition.y - transform.position.y;
 
             int lookState;
-            if (yDiff >= upThreshold) lookState = 2;       // look up
+            if (yDiff >= upThreshold) lookState = 2;        // look up
             else if (yDiff <= downThreshold) lookState = 0; // look down
             else lookState = 1;                             // center
 
@@ -515,6 +525,8 @@ namespace Platformer.Mechanics
                         break;
                     case 6:
                         // die by void
+                        animator.SetTrigger(DeadByVoid);
+                        animator.SetBool(Dead, true);
                         StopAllPlayerSounds();
                         sounds[6].Play();
                         break;
@@ -530,8 +542,9 @@ namespace Platformer.Mechanics
                         {
                             // If enemy kills player before they hit ground
                             animator.SetBool(DramaticFall, false);
+                            fallingDramatically  = false;
                         }
-                        
+                        animator.SetTrigger(DeadByEnemy);
                         animator.SetBool(Dead, true);
                         sounds[8].Play();
                         break;
@@ -542,6 +555,7 @@ namespace Platformer.Mechanics
                         break;
                     case 10:
                         // die by fall damage
+                        animator.SetTrigger(DeadByFall);
                         animator.SetBool(Dead, true);
                         StopAllPlayerSounds();
                         sounds[10].Play();
@@ -552,10 +566,10 @@ namespace Platformer.Mechanics
                         {
                             // If spikes kill player before they hit ground
                             animator.SetBool(DramaticFall, false);
+                            fallingDramatically  = false;
                         }
-                        
+                        animator.SetTrigger(DeadBySpikes);
                         animator.SetBool(Dead, true);
-                        animator.SetBool(Trap, true);
                         StopAllPlayerSounds();
                         sounds[11].Play();
                         break;
@@ -565,8 +579,8 @@ namespace Platformer.Mechanics
                         {
                             // If Aufseher kills player before they hit ground
                             animator.SetBool(DramaticFall, false);
+                            fallingDramatically  = false;
                         }
-                        
                         animator.SetBool(Dead, true);
                         StopAllPlayerSounds();
                         sounds[12].Play();
@@ -594,7 +608,6 @@ namespace Platformer.Mechanics
             internal void ResetAnimatorBools()
             {
                 animator.SetBool(Dead, false);
-                animator.SetBool(Trap, false);
                 animator.SetBool(DramaticFall, false);
             }
 
@@ -612,7 +625,7 @@ namespace Platformer.Mechanics
             {
                 PlaySoundAndAnims(3);
             }
-
+            
             #endregion
     }
 }

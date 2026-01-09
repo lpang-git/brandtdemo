@@ -53,7 +53,7 @@ public class PlayerGunBehaviour : MonoBehaviour
     
     private InputAction _fireAction;
     private InputAction _reloadAction;
-    private InputAction _aimAction;
+    internal InputAction _aimAction;
 
     private PlayerUI _countingUI;
     
