@@ -140,6 +140,8 @@ namespace Platformer.Mechanics
         {
             if (controlEnabled)
             {
+                EnableControls();
+                
                 LookAtWalkingDirection();
                 AimAtMouse();
                 var inputVector = moveAction.ReadValue<Vector2>();
@@ -240,6 +242,7 @@ namespace Platformer.Mechanics
             }
             else
             {
+                DisableControls();
                 move.x = 0;
             }
         }
@@ -289,14 +292,14 @@ namespace Platformer.Mechanics
         
             if (_isLadder)
             {
-                _aimScript._aimAction.Disable();
+                _aimScript.aimAction.Disable();
                 velocity.y = inputVector.y * climbingSpeed;
                 CheckGrounded();
                 targetVelocity = move * playerSpeed;
             }
             else
             {
-                _aimScript._aimAction.Enable();
+                _aimScript.aimAction.Enable();
                 var targetX = move.x * playerSpeed;
                 var accel = IsGrounded ? groundAccel : airAccel;
                 velocity.x = Mathf.MoveTowards(velocity.x, targetX, accel * Time.deltaTime);
@@ -481,6 +484,26 @@ namespace Platformer.Mechanics
         private void OnLook(InputAction.CallbackContext context)
         {
             mousePosition = context.ReadValue<Vector2>();
+        }
+
+        internal void EnableControls()
+        {
+            moveAction.Enable();
+            jumpAction.Enable();
+            lookAction.Enable();
+            _aimScript.aimAction.Enable();
+            _aimScript.fireAction.Enable();
+            _aimScript.reloadAction.Enable();
+        }
+
+        internal void DisableControls()
+        {
+            moveAction.Disable();
+            jumpAction.Disable();
+            lookAction.Disable();
+            _aimScript.aimAction.Disable();
+            _aimScript.fireAction.Disable();
+            _aimScript.reloadAction.Disable();
         }
     
         #region Sounds & Animations

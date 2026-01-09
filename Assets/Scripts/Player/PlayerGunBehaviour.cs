@@ -51,18 +51,18 @@ public class PlayerGunBehaviour : MonoBehaviour
 
     private PlayerController _playerScript;
     
-    private InputAction _fireAction;
-    private InputAction _reloadAction;
-    internal InputAction _aimAction;
+    internal InputAction fireAction;
+    internal InputAction reloadAction;
+    internal InputAction aimAction;
 
     private PlayerUI _countingUI;
     
     private void Awake()
     {
         _playerScript = player.GetComponent<PlayerController>();
-        _fireAction = InputSystem.actions.FindAction("Player/Attack");
-        _reloadAction = InputSystem.actions.FindAction("Player/Reload");
-        _aimAction =  InputSystem.actions.FindAction("Player/Aim");
+        fireAction = InputSystem.actions.FindAction("Player/Attack");
+        reloadAction = InputSystem.actions.FindAction("Player/Reload");
+        aimAction =  InputSystem.actions.FindAction("Player/Aim");
         currentChamberedAmmo = startingAmmo;
         totalOwnedAmmo = startingAmmo;
         
@@ -86,26 +86,26 @@ public class PlayerGunBehaviour : MonoBehaviour
 
     private void OnEnable()
     {
-        _fireAction.Enable();
-        _fireAction.performed += OnShoot;
+        fireAction.Enable();
+        fireAction.performed += OnShoot;
         
-        _reloadAction.Enable();
-        _reloadAction.performed += OnReload;
+        reloadAction.Enable();
+        reloadAction.performed += OnReload;
         
-        _aimAction.Enable();
-        _aimAction.performed += OnAim;
+        aimAction.Enable();
+        aimAction.performed += OnAim;
     }
 
     private void OnDisable()
     {
-        _fireAction.Disable();
-        _fireAction.performed -= OnShoot;
+        fireAction.Disable();
+        fireAction.performed -= OnShoot;
         
-        _reloadAction.Disable();
-        _reloadAction.performed -= OnReload;
+        reloadAction.Disable();
+        reloadAction.performed -= OnReload;
         
-        _aimAction.Disable();
-        _aimAction.performed -= OnAim;
+        aimAction.Disable();
+        aimAction.performed -= OnAim;
     }
 
     private void OnShoot(InputAction.CallbackContext context)
@@ -156,9 +156,9 @@ public class PlayerGunBehaviour : MonoBehaviour
     
     private System.Collections.IEnumerator LockShootForDuration(float duration)
     {
-        _fireAction.Disable();
+        fireAction.Disable();
         yield return new WaitForSeconds(duration);
-        _fireAction.Enable();
+        fireAction.Enable();
     }
     
     private void OnReload(InputAction.CallbackContext context)
