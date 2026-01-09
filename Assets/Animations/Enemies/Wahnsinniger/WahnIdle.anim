@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wannsinnigen_Land
+  m_Name: WahnIdle
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -23,17 +23,11 @@ AnimationClip:
     - time: 0
       value: {fileID: -8679219297875499691, guid: 8fd29ff6a7a37f24aa61739ff00294b0,
         type: 3}
-    - time: 0.2
+    - time: 0.33333334
       value: {fileID: -903771752596710032, guid: 8fd29ff6a7a37f24aa61739ff00294b0,
         type: 3}
-    - time: 0.4
-      value: {fileID: 3460808661859913558, guid: 8fd29ff6a7a37f24aa61739ff00294b0,
-        type: 3}
-    - time: 0.6166667
-      value: {fileID: 3061822837615959134, guid: 8fd29ff6a7a37f24aa61739ff00294b0,
-        type: 3}
-    - time: 0.8
-      value: {fileID: 3061822837615959134, guid: 8fd29ff6a7a37f24aa61739ff00294b0,
+    - time: 1.1666666
+      value: {fileID: -8679219297875499691, guid: 8fd29ff6a7a37f24aa61739ff00294b0,
         type: 3}
     attribute: m_Sprite
     path: 
@@ -59,15 +53,13 @@ AnimationClip:
     pptrCurveMapping:
     - {fileID: -8679219297875499691, guid: 8fd29ff6a7a37f24aa61739ff00294b0, type: 3}
     - {fileID: -903771752596710032, guid: 8fd29ff6a7a37f24aa61739ff00294b0, type: 3}
-    - {fileID: 3460808661859913558, guid: 8fd29ff6a7a37f24aa61739ff00294b0, type: 3}
-    - {fileID: 3061822837615959134, guid: 8fd29ff6a7a37f24aa61739ff00294b0, type: 3}
-    - {fileID: 3061822837615959134, guid: 8fd29ff6a7a37f24aa61739ff00294b0, type: 3}
+    - {fileID: -8679219297875499691, guid: 8fd29ff6a7a37f24aa61739ff00294b0, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.81666666
+    m_StopTime: 1.1833333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

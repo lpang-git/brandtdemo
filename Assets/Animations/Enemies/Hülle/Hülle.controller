@@ -57,7 +57,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HulleImpaledStay
+  m_Name: DeathBySpikes Permanent
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -130,7 +130,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HulleLaufen
+  m_Name: Walk
   m_Speed: 3
   m_CycleOffset: 0
   m_Transitions:
@@ -435,7 +435,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HulleAtacke
+  m_Name: Attack
   m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
@@ -484,7 +484,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HulleErschossen
+  m_Name: DeathByPlayer
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -511,7 +511,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HulleErschossenStay
+  m_Name: DeathByPlayer Permanent
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -537,7 +537,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HulleImpaled
+  m_Name: DeathBySpikes
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -611,7 +611,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HulleIdle
+  m_Name: Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
