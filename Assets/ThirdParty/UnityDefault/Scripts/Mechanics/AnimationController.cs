@@ -8,62 +8,31 @@ namespace Platformer.Mechanics
     [RequireComponent(typeof(SpriteRenderer), typeof(Animator))]
     public class AnimationController : KinematicObject
     {
-        /// <summary>
-        /// Max horizontal speed.
-        /// </summary>
-        public float maxSpeed = 7;
-        /// <summary>
-        /// Max jump velocity
-        /// </summary>
-        public float jumpTakeOffSpeed = 7;
+        private static readonly int VelocityX = Animator.StringToHash("velocityX");
+        
+        [SerializeField] internal float maxSpeed = 1;
+        
+        internal Vector2 move;
 
-        /// <summary>
-        /// Used to indicated desired direction of travel.
-        /// </summary>
-        public Vector2 move;
-
-        /// <summary>
-        /// Set to true to initiate a jump.
-        /// </summary>
-        public bool jump;
-
-        /// <summary>
-        /// Set to true to set the current jump velocity to zero.
-        /// </summary>
-        public bool stopJump;
-
-        SpriteRenderer spriteRenderer;
-        Animator animator;
+        private SpriteRenderer _spriteRenderer;
+        private Animator _animator;
 
         protected virtual void Awake()
         {
-            spriteRenderer = GetComponent<SpriteRenderer>();
-            animator = GetComponent<Animator>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _animator = GetComponent<Animator>();
         }
 
         protected override void ComputeVelocity()
         {
-            if (jump && IsGrounded)
+            _spriteRenderer.flipX = move.x switch
             {
-                velocity.y = jumpTakeOffSpeed;
-                jump = false;
-            }
-            else if (stopJump)
-            {
-                stopJump = false;
-                if (velocity.y > 0)
-                {
-                    velocity.y = velocity.y;
-                }
-            }
-
-            if (move.x > 0.01f)
-                spriteRenderer.flipX = false;
-            else if (move.x < -0.01f)
-                spriteRenderer.flipX = true;
-
-            animator.SetBool("grounded", IsGrounded);
-            animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
+                > 0.01f => false,
+                < -0.01f => true,
+                _ => _spriteRenderer.flipX
+            };
+            
+            _animator.SetFloat(VelocityX, Mathf.Abs(velocity.x) / maxSpeed);
 
             targetVelocity = move * maxSpeed;
         }

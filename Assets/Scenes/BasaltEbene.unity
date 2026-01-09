@@ -144,11 +144,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemies & Paths Basalt
       objectReference: {fileID: 0}
-    - target: {fileID: 3816377411201167237, guid: eced4987e6231ab2ebfe20c693d54356,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 6c9615286a525734ea8501a8a6f912df, type: 2}
     - target: {fileID: 4068216523177061135, guid: eced4987e6231ab2ebfe20c693d54356,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -427,7 +422,7 @@ PrefabInstance:
     - target: {fileID: 8404318643870094744, guid: c6931f26b72b304809f77f076ed061d1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0035843644
+      value: 0.0036766976
       objectReference: {fileID: 0}
     - target: {fileID: 8602635569776452263, guid: c6931f26b72b304809f77f076ed061d1,
         type: 3}

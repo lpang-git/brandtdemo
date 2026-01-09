@@ -10,20 +10,32 @@ namespace Platformer.Mechanics
     [RequireComponent(typeof(AnimationController), typeof(Collider2D))]
     public class EnemyController : MonoBehaviour
     {
-        [SerializeField] private PatrolPath path;
-        [SerializeField] internal AudioClip ouch;
+        private static readonly int Attack = Animator.StringToHash("attack");
+        private static readonly int DeathByPlayer = Animator.StringToHash("deathByPlayer");
+        private static readonly int InPursuit = Animator.StringToHash("inPursuit");
         
+        [Header("References")]
+        [SerializeField] private PatrolPath path;
+        [SerializeField] internal Collider2D hit;
+        [Space]
+        [SerializeField] private AudioSource[] audioSources;
+        
+        [Space]
+        [Header("Settings")]
         [SerializeField] private float pursuitRadius = 2f;
         [SerializeField] private float pursuitSpeed = 1.0f; // multiplier of control.maxSpeed
+
+        private PatrolPath.Mover _mover;
+        private SpriteRenderer _spriteRenderer;
+        private PlayerController _player;
         
-        internal PatrolPath.Mover mover;
         internal AnimationController control;
         internal Collider2D enemyCollider;
-        internal AudioSource enemyAudio;
-        internal SpriteRenderer spriteRenderer;
+        internal Rigidbody2D rb;
+        internal Animator animator;
         
         private bool _pursuing = false;
-        private PlayerController _player;
+        internal bool dead;
 
         public Bounds Bounds => enemyCollider.bounds;
 
@@ -31,8 +43,9 @@ namespace Platformer.Mechanics
         {
             control = GetComponent<AnimationController>();
             enemyCollider = GetComponent<Collider2D>();
-            enemyAudio = GetComponent<AudioSource>();
-            spriteRenderer = GetComponent<SpriteRenderer>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            animator = GetComponent<Animator>();
+            rb = GetComponent<Rigidbody2D>();
             
             var playerObj = GameObject.FindWithTag("Player");
             if (playerObj != null) _player = playerObj.GetComponent<PlayerController>();
@@ -47,16 +60,20 @@ namespace Platformer.Mechanics
             {
                 if (player.dyingState) { return; }
                 player.dyingState = true;
+                animator.SetTrigger(Attack);
                 Schedule<PlayerDeath>();
                 player.PlaySoundAndAnims(8);
             } else if (bullet != null)
             {
+                animator.SetTrigger(DeathByPlayer);
                 Schedule<EnemyDeath>().enemy = this;
             }
         }
 
         private void Update()
         {
+            var dist = Vector2.Distance(_player.transform.position, transform.position);
+            
             if (!_player)
             {
                 Debug.LogError("Player not assigned.");
@@ -64,7 +81,6 @@ namespace Platformer.Mechanics
             
             if (_player)
             {
-                var dist = Vector2.Distance(_player.transform.position, transform.position);
                 _pursuing = dist <= pursuitRadius;
             }
             else
@@ -72,24 +88,59 @@ namespace Platformer.Mechanics
                 _pursuing = false;
             }
 
-            if (_pursuing)
+            if (_pursuing && !dead)
             {
-                mover = null;
+                animator.SetBool(InPursuit, true);
+                animator.speed = 1.5f;
+                
+                _mover = null;
                 var dir = Mathf.Clamp(_player.transform.position.x - transform.position.x, -1f, 1f);
                 control.move.x = dir * Mathf.Abs(control.maxSpeed) * pursuitSpeed / Mathf.Abs(control.maxSpeed);
                 control.move.x = dir;
                 
-                if (spriteRenderer) { spriteRenderer.flipX = dir < 0f; }
+                if (_spriteRenderer) { _spriteRenderer.flipX = dir < 0f; }
             }
             else
             {
-                // resume patrol
-                if (!path) return;
+                // on patrol
+                if (!path || dead) return;
                 
-                mover ??= path.CreateMover(control.maxSpeed * 0.5f);
-                control.move.x = Mathf.Clamp(mover.Position.x - transform.position.x, -1, 1);
+                animator.SetBool(InPursuit, false);
+                animator.speed = 1;
+                _mover ??= path.CreateMover(control.maxSpeed * 0.5f);
+                control.move.x = Mathf.Clamp(_mover.Position.x - transform.position.x, -1, 1);
             }
         }
 
+        internal void PlaySound(int actionId)
+        {
+            switch (actionId)
+            {
+                case 0:
+                    // inhale
+                    audioSources[0].Play();
+                    break;
+                case 1:
+                    // exhale
+                    audioSources[1].Play();
+                    break;
+                case 2:
+                    // attack sound
+                    audioSources[2].Play();
+                    break;
+                case 3:
+                    // death by player sound
+                    audioSources[3].Play();
+                    break;
+                case 4:
+                    // death by spike sound
+                    audioSources[4].Play();
+                    break;
+                case 5:
+                    // footstep sound
+                    audioSources[5].Play();
+                    break;
+            }
+        }
     }
 }

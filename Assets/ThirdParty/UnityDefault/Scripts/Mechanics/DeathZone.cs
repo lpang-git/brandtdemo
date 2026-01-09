@@ -12,31 +12,47 @@ namespace Platformer.Mechanics
     /// </summary>
     public class DeathZone : MonoBehaviour
     {
-        private static readonly int Trap = Animator.StringToHash("trap");
+        private static readonly int DeathBySpike = Animator.StringToHash("deathBySpike");
         
         [SerializeField] private int zoneType; // 1 = Void fall, 2 = Spike trap
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             var p = other.gameObject.GetComponent<PlayerController>();
-            if (p == null) return;
-
-            switch (zoneType)
+            var e = other.gameObject.GetComponent<EnemyController>();
+            if (p)
             {
-                case 1:
-                    // Void
-                    p.PlaySoundAndAnims(6);
-                    break;
-                case 2:
-                    // Trap
-                    p.PlaySoundAndAnims(11);
-                    break;
-            }
+                switch (zoneType)
+                {
+                    case 1:
+                        // Void
+                        p.PlaySoundAndAnims(6);
+                        break;
+                    case 2:
+                        // Trap
+                        p.PlaySoundAndAnims(11);
+                        break;
+                }
             
-            p.dyingState = true;
-            p.fallingDramatically = false;
-            var ev = Schedule<PlayerEnteredDeathZone>();
-            ev.deathzone = this;
+                p.dyingState = true;
+                p.fallingDramatically = false;
+                var ev = Schedule<PlayerEnteredDeathZone>();
+                ev.deathzone = this;
+            } else if (e)
+            {
+                switch (zoneType)
+                {
+                    case 1:
+                        // Void
+                        Schedule<EnemyDeath>().enemy = e;
+                        break;
+                    case 2:
+                        // Trap
+                        e.animator.SetTrigger(DeathBySpike);
+                        Schedule<EnemyDeath>().enemy = e;
+                        break;
+                }
+            }
         }
     }
 }

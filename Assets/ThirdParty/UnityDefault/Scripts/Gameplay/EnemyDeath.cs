@@ -15,8 +15,9 @@ namespace Platformer.Gameplay
         {
             enemy.enemyCollider.enabled = false;
             enemy.control.enabled = false;
-            if (enemy.enemyAudio && enemy.ouch)
-                enemy.enemyAudio.PlayOneShot(enemy.ouch);
+            enemy.hit.enabled = false;
+            enemy.rb.gravityScale = 0;
+            enemy.dead = true;
         }
     }
 }
