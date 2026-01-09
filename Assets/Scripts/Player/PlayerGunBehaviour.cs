@@ -1,3 +1,4 @@
+using System;
 using Platformer.Mechanics;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,6 +17,7 @@ public class PlayerGunBehaviour : MonoBehaviour
     [SerializeField] private Transform firePointTransform;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject userInterfaceObject;
+    [SerializeField] private Texture2D aimCursor;
     
     [Space]
     [Header("Settings")]
@@ -68,12 +70,18 @@ public class PlayerGunBehaviour : MonoBehaviour
         _countingUI.UpdateAmmoCount(currentChamberedAmmo, totalOwnedAmmo);
     }
 
+    private void Start()
+    {
+        Cursor.visible = false;
+    }
+
     private void Update()
     {
         if (_playerScript.velocity.x != 0 || _playerScript.velocity.y != 0)
         {
             isAiming = false;
         }
+        Cursor.visible = isAiming;
     }
 
     private void OnEnable()
@@ -228,6 +236,7 @@ public class PlayerGunBehaviour : MonoBehaviour
     private void OnAim(InputAction.CallbackContext context)
     {
         isAiming = !isAiming;
+        Cursor.SetCursor(aimCursor, Vector2.zero, default);
         
         StartCoroutine(LockMovementForDuration(gunAimCooldown));
         StartCoroutine(LockJumpForDuration(gunAimCooldown));
