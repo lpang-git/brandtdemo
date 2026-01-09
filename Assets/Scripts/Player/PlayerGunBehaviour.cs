@@ -65,6 +65,7 @@ public class PlayerGunBehaviour : MonoBehaviour
         totalOwnedAmmo = startingAmmo;
         
         _countingUI = userInterfaceObject.GetComponent<PlayerUI>();
+        _countingUI.UpdateAmmoCount(currentChamberedAmmo, totalOwnedAmmo);
     }
 
     private void Update()
@@ -190,6 +191,7 @@ public class PlayerGunBehaviour : MonoBehaviour
                 }
                 break;
         }
+        _countingUI.UpdateAmmoCount(currentChamberedAmmo, totalOwnedAmmo);
     }
 
     private void OnGunEmpty()
