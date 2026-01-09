@@ -79,18 +79,18 @@ MonoBehaviour:
   - {fileID: 1555282291462899987}
   - {fileID: 5829733823249566075}
   - {fileID: 4597754817465015766}
-  playerSpeed: 2
-  jumpHeight: 4.5
+  playerSpeed: 2.5
+  jumpHeight: 4.6
   jumpSpeed: 2
   jumpBufferTime: 0.12
   groundLeaveTime: 0.12
   groundAccel: 40
-  airAccel: 5
+  airAccel: 6.4
   fallAccelRamp: 1.5
   maxFallMultiplier: 4
   dramaticThreshold: 4
   gunDistance: 0.2
-  climbingSpeed: 2
+  climbingSpeed: 1.5
 --- !u!114 &6082575806313374961
 MonoBehaviour:
   m_ObjectHideFlags: 0
