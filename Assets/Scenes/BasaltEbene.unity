@@ -427,7 +427,7 @@ PrefabInstance:
     - target: {fileID: 8404318643870094744, guid: c6931f26b72b304809f77f076ed061d1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0034920312
+      value: 0.0035843644
       objectReference: {fileID: 0}
     - target: {fileID: 8602635569776452263, guid: c6931f26b72b304809f77f076ed061d1,
         type: 3}
@@ -829,21 +829,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4491486714860385802, guid: c21a2efb0ed60d16d93797053c602470,
-        type: 3}
-      propertyPath: airAccel
-      value: 6.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4491486714860385802, guid: c21a2efb0ed60d16d93797053c602470,
-        type: 3}
-      propertyPath: jumpHeight
-      value: 4.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4491486714860385802, guid: c21a2efb0ed60d16d93797053c602470,
-        type: 3}
-      propertyPath: playerSpeed
-      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6394131901344263775, guid: c21a2efb0ed60d16d93797053c602470,
         type: 3}
