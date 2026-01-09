@@ -20,6 +20,7 @@ namespace Platformer.Mechanics
         private static readonly int AimPressed = Animator.StringToHash("aimPressed");
         private static readonly int IsAiming = Animator.StringToHash("isAiming");
         private static readonly int HasStartedClimbing = Animator.StringToHash("climbStart");
+        private static readonly int LookState = Animator.StringToHash("lookState");
 
         [Header("References")] 
         [SerializeField] protected Rigidbody2D rb;
@@ -64,9 +65,6 @@ namespace Platformer.Mechanics
 
         [Tooltip("Fall distance where fall becomes lethal.")] 
         [SerializeField] private float dramaticThreshold = 5f;
-        
-        [Tooltip("How far is the gun from the player?")]
-        [SerializeField] private float gunDistance = 0.2f;
         
         [Tooltip("How fast can the player climb?")]
         [SerializeField] protected float climbingSpeed = 2;
@@ -433,15 +431,27 @@ namespace Platformer.Mechanics
             
             aimTransform.eulerAngles = new Vector3(0, 0, angle);
             var directionX = worldPosition.x - transform.position.x;
+            
             var aimThreshold = 0.1f;
+            var upThreshold = 0.5f;
+            var downThreshold = -0.5f;
             
             if (!_aimScript.isAiming) { return; } 
             
             // Player flips based on mouse position
             spriteRenderer.flipX = directionX < -aimThreshold;
             
-            aimTransform.localPosition = directionX < -aimThreshold ? new Vector3(-gunDistance, aimTransform.localPosition.y, aimTransform.localPosition.z) : // Move left
-                new Vector3(gunDistance, aimTransform.localPosition.y, aimTransform.localPosition.z); // Move right
+            aimTransform.localPosition = new Vector3(0, aimTransform.localPosition.y, aimTransform.localPosition.z); // Move right
+            
+            // Determine vertical look state using Y difference in world space
+            var yDiff = worldPosition.y - transform.position.y;
+
+            int lookState;
+            if (yDiff >= upThreshold) lookState = 2;       // look up
+            else if (yDiff <= downThreshold) lookState = 0; // look down
+            else lookState = 1;                             // center
+
+            animator.SetInteger(LookState, lookState);
         }
 
         protected override void OnEnable()

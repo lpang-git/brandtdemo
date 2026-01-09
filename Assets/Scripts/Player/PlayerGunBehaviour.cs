@@ -8,6 +8,8 @@ public class PlayerGunBehaviour : MonoBehaviour
     /// This script handles gun logic and ammo.
     /// </summary>
     
+    private static readonly int Shoot = Animator.StringToHash("shoot");
+    
     [Header("Shooting References")]
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePointTransform;
@@ -191,6 +193,7 @@ public class PlayerGunBehaviour : MonoBehaviour
             case 1:
                 // shoot
                 sounds[1].Play();
+                player.GetComponent<Animator>().SetTrigger(Shoot);
                 break;
             case 2:
                 // reload
