@@ -139,6 +139,7 @@ namespace Platformer.Mechanics
         {
             if (controlEnabled)
             {
+                LookAtWalkingDirection();
                 AimAtMouse();
                 var inputVector = moveAction.ReadValue<Vector2>();
                 move.x = inputVector.x; // Horizontal movement
@@ -418,6 +419,12 @@ namespace Platformer.Mechanics
             _canClimbDown = Physics2D.OverlapBox(positionBelow, boxCastSize, 0, LayerMask.GetMask("Default")) == null;
         }
 
+        private void LookAtWalkingDirection()
+        {
+            if (velocity.x == 0) return;
+            spriteRenderer.flipX = velocity.x < 0;
+        }
+        
         private void AimAtMouse()
         {
             var worldPosition = _cameraMain.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, _cameraMain.nearClipPlane));
@@ -428,16 +435,13 @@ namespace Platformer.Mechanics
             var directionX = worldPosition.x - transform.position.x;
             var aimThreshold = 0.1f;
             
+            if (!_aimScript.isAiming) { return; } 
+            
+            // Player flips based on mouse position
             spriteRenderer.flipX = directionX < -aimThreshold;
             
             aimTransform.localPosition = directionX < -aimThreshold ? new Vector3(-gunDistance, aimTransform.localPosition.y, aimTransform.localPosition.z) : // Move left
                 new Vector3(gunDistance, aimTransform.localPosition.y, aimTransform.localPosition.z); // Move right
-        
-            // Player flips based on mouse position
-            if (directionX > aimThreshold)
-                spriteRenderer.flipX = false;
-            else if (directionX < -aimThreshold)
-                spriteRenderer.flipX = true;
         }
 
         protected override void OnEnable()
