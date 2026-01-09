@@ -427,7 +427,7 @@ PrefabInstance:
     - target: {fileID: 8404318643870094744, guid: c6931f26b72b304809f77f076ed061d1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0030303653
+      value: 0.0034920312
       objectReference: {fileID: 0}
     - target: {fileID: 8602635569776452263, guid: c6931f26b72b304809f77f076ed061d1,
         type: 3}
@@ -845,6 +845,11 @@ PrefabInstance:
       propertyPath: playerSpeed
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6394131901344263775, guid: c21a2efb0ed60d16d93797053c602470,
+        type: 3}
+      propertyPath: startingAmmo
+      value: 999
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1114,7 +1119,7 @@ PrefabInstance:
     - target: {fileID: 1287395119228474297, guid: 2bceda4ba3159c7efad31aae05c6a721,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[0].second.m_AnimationSpeed
-      value: 2.6267986
+      value: 2.6880302
       objectReference: {fileID: 0}
     - target: {fileID: 1454286892744183731, guid: 2bceda4ba3159c7efad31aae05c6a721,
         type: 3}
