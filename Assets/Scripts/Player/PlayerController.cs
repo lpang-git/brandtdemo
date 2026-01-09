@@ -279,6 +279,7 @@ namespace Platformer.Mechanics
         private void OnTriggerEnter2D(Collider2D col)
         {
             var npc = col.GetComponent<NPC>();
+            var ammoBox = col.GetComponent<AmmoPickUpTrigger>();
             
             if (col.CompareTag("Ladder"))
             {
@@ -287,6 +288,10 @@ namespace Platformer.Mechanics
             {
                 playerInRangeOfDialogue = true;
                 dialogueManager.SetNPC(npc);
+            } else if (ammoBox)
+            {
+                _aimScript.OnAmmoPickedUp(ammoBox.ammoNum);
+                ammoBox.gameObject.GetComponent<Collider2D>().enabled = false;
             }
         }
 
