@@ -7,14 +7,14 @@ public class TVTrigger : MonoBehaviour
     
     public bool IsShot { get; private set; }
     
-    private Collider2D collider;
+    private Collider2D _collider;
 
     private static readonly int Target = Animator.StringToHash("target");
     private static readonly int WasShot = Animator.StringToHash("shot");
 
     private void Awake()
     {
-        collider = GetComponent<Collider2D>();
+        _collider = GetComponent<Collider2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -29,7 +29,7 @@ public class TVTrigger : MonoBehaviour
     
     internal void SetShootable(bool shootable)
     {
-        collider.enabled = shootable && !IsShot;
+        _collider.enabled = shootable && !IsShot;
         animator.SetBool(Target, shootable && !IsShot);
     }
 
@@ -38,7 +38,7 @@ public class TVTrigger : MonoBehaviour
         if (IsShot) return;
         
         IsShot = true;
-        collider.enabled = false;
+        _collider.enabled = false;
         animator.SetBool(Target, false);
         animator.SetTrigger(WasShot);
     }
