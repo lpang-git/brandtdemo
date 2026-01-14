@@ -4966,6 +4966,85 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3771668838674459107}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4057869108260319788
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3981125593390100101}
+    m_Modifications:
+    - target: {fileID: 3128931963287290069, guid: d3396fa4ec1e6ce57b8b1e3e4bd8ea24,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289661184342170584, guid: d3396fa4ec1e6ce57b8b1e3e4bd8ea24,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 84.442
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289661184342170584, guid: d3396fa4ec1e6ce57b8b1e3e4bd8ea24,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.788
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289661184342170584, guid: d3396fa4ec1e6ce57b8b1e3e4bd8ea24,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289661184342170584, guid: d3396fa4ec1e6ce57b8b1e3e4bd8ea24,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289661184342170584, guid: d3396fa4ec1e6ce57b8b1e3e4bd8ea24,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289661184342170584, guid: d3396fa4ec1e6ce57b8b1e3e4bd8ea24,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289661184342170584, guid: d3396fa4ec1e6ce57b8b1e3e4bd8ea24,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289661184342170584, guid: d3396fa4ec1e6ce57b8b1e3e4bd8ea24,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289661184342170584, guid: d3396fa4ec1e6ce57b8b1e3e4bd8ea24,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289661184342170584, guid: d3396fa4ec1e6ce57b8b1e3e4bd8ea24,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548672883915713444, guid: d3396fa4ec1e6ce57b8b1e3e4bd8ea24,
+        type: 3}
+      propertyPath: m_Name
+      value: AmmoPickUp (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d3396fa4ec1e6ce57b8b1e3e4bd8ea24, type: 3}
+--- !u!4 &1582816388999293428 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3289661184342170584, guid: d3396fa4ec1e6ce57b8b1e3e4bd8ea24,
+    type: 3}
+  m_PrefabInstance: {fileID: 4057869108260319788}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5085334284417173697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7965,7 +8044,7 @@ PrefabInstance:
     - target: {fileID: 3772753180816643367, guid: 96620d8a6882d8408b14ce1a93b11516,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[0].second.m_AnimationSpeed
-      value: 2.9874291
+      value: 1.5440446
       objectReference: {fileID: 0}
     - target: {fileID: 3772753180816643367, guid: 96620d8a6882d8408b14ce1a93b11516,
         type: 3}
@@ -33503,6 +33582,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7725228054659076889}
+    - targetCorrespondingSourceObject: {fileID: 6375702512899043133, guid: 96620d8a6882d8408b14ce1a93b11516,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1582816388999293428}
     - targetCorrespondingSourceObject: {fileID: 1759520771458915650, guid: 96620d8a6882d8408b14ce1a93b11516,
         type: 3}
       insertIndex: -1
