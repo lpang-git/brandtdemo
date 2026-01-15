@@ -26,10 +26,12 @@ namespace Platformer.Mechanics
                 {
                     case 1:
                         // Void
+                        p.dyingState = true;
                         p.PlaySoundAndAnims(6);
                         break;
                     case 2:
                         // Trap
+                        p.dyingState = true;
                         p.PlaySoundAndAnims(11);
                         break;
                 }

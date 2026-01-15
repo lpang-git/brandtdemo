@@ -298,11 +298,15 @@ namespace Platformer.Mechanics
                 PlaySoundAndAnims(15);
             } else if (col.CompareTag("BossCollider"))
             {
+                if (dyingState)
+                    return;
                 Schedule<PlayerDeath>();
                 dyingState = true;
-                PlaySoundAndAnims(8);
+                PlaySoundAndAnims(12);
             } else if (col.CompareTag("Fire"))
             {
+                if (dyingState)
+                    return;
                 Schedule<PlayerDeath>();
                 dyingState = true;
                 PlaySoundAndAnims(16);
@@ -393,7 +397,7 @@ namespace Platformer.Mechanics
             {
                fallDistance = fallStartPosY - transform.position.y;
                
-               if (!fallingDramatically && fallDistance > dramaticThreshold)
+               if (!fallingDramatically && fallDistance > dramaticThreshold && !dyingState)
                {
                    Debug.Log("dramatic fall started");
                    fallingDramatically = true;
@@ -409,7 +413,7 @@ namespace Platformer.Mechanics
                     dyingState = true;
                     Schedule<PlayerDeath>();
                     PlaySoundAndAnims(10);
-                    fallingDramatically  = false;
+                    fallingDramatically = false;
                     fallStartPosY = 0f;
                     break;
                 }
