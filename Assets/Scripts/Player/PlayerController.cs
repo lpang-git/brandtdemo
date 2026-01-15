@@ -292,6 +292,7 @@ namespace Platformer.Mechanics
             {
                 _aimScript.OnAmmoPickedUp(ammoBox.ammoNum);
                 ammoBox.gameObject.GetComponent<Collider2D>().enabled = false;
+                ammoBox.OnPickedUp();
                 PlaySoundAndAnims(15);
             }
         }
