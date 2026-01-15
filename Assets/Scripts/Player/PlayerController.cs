@@ -292,6 +292,7 @@ namespace Platformer.Mechanics
             {
                 _aimScript.OnAmmoPickedUp(ammoBox.ammoNum);
                 ammoBox.gameObject.GetComponent<Collider2D>().enabled = false;
+                PlaySoundAndAnims(15);
             }
         }
 
@@ -641,6 +642,10 @@ namespace Platformer.Mechanics
                         // Walking, jumping, idle & landing animation
                         animator.SetBool(Grounded, IsGrounded); // handles jump/land & if run
                         animator.SetFloat(VelocityX, Mathf.Abs(velocity.x) / playerSpeed); // handles idle/run & if landing
+                        break;
+                    case 15:
+                        // ammo box opened
+                        sounds[15].Play();
                         break;
                 }
             }
