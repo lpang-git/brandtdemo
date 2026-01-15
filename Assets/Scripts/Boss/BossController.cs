@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using Platformer.Mechanics;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class BossController : MonoBehaviour
 {
     [Header("References")] 
     [SerializeField] private GameObject leftFire;
     [SerializeField] private GameObject rightFire;
+    [SerializeField] private GameObject debrisObject;
     
     [Space]
     [SerializeField] private GameObject[] leftArmColliders;
@@ -34,6 +33,9 @@ public class BossController : MonoBehaviour
     private static readonly int RightAttack = Animator.StringToHash("rightAttack");
     private static readonly int OverheadAttack = Animator.StringToHash("roofAttack");
     private static readonly int Ignite = Animator.StringToHash("ignite");
+    private static readonly int FirstDebris = Animator.StringToHash("one");
+    private static readonly int SecondDebris = Animator.StringToHash("two");
+    private static readonly int ThirdDebris = Animator.StringToHash("three");
     
     private Animator _animator;
     private Animator _lFAnimator;
@@ -98,7 +100,15 @@ public class BossController : MonoBehaviour
         
         private void OnRoofSmashed()
         {
+            var choice = Random.Range(0, 3);
+            var dAnim = debrisObject.GetComponent<Animator>();
             
+            switch (choice)
+            {
+                case 0: dAnim.SetTrigger(FirstDebris); break;
+                case 1: dAnim.SetTrigger(SecondDebris); break;
+                case 2: dAnim.SetTrigger(ThirdDebris); break;
+            }
         }
 
     #endregion
