@@ -3,6 +3,7 @@ using TMPro;
 using System.Collections;
 using Platformer.Mechanics;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -147,6 +148,8 @@ public class DialogueManager : MonoBehaviour
         if (_typingCoroutine != null)
             StopCoroutine(_typingCoroutine);
 
+        ChangeScene(_npc.sceneNumber);
+        
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
 
@@ -162,5 +165,13 @@ public class DialogueManager : MonoBehaviour
     private bool IsDialogueActive()
     {
         return _isDialogueActive;
+    }
+
+    private void ChangeScene(int sceneIndex)
+    {
+        if (sceneIndex == 0) // if an NPC has sceneIndex 0, the dialogue is not supposed to change scenes.
+            return;
+        
+        SceneManager.LoadScene(sceneIndex);
     }
 }
