@@ -26,6 +26,7 @@ namespace Platformer.Mechanics
         private static readonly int DeadByVoid = Animator.StringToHash("deadByVoid");
         private static readonly int DeadByAufseher = Animator.StringToHash("deadByAufseher");
         private static readonly int DeadByFire = Animator.StringToHash("deadByFire");
+        private static readonly int DeadByDebris = Animator.StringToHash("deadByDebris");
 
         [Header("References")] 
         [SerializeField] protected Rigidbody2D rb;
@@ -302,6 +303,13 @@ namespace Platformer.Mechanics
                 Schedule<PlayerDeath>();
                 dyingState = true;
                 PlaySoundAndAnims(16);
+            } else if (col.CompareTag("Debris"))
+            {
+                if (dyingState)
+                    return;
+                Schedule<PlayerDeath>();
+                dyingState = true;
+                PlaySoundAndAnims(17);
             }
         }
 
@@ -673,6 +681,18 @@ namespace Platformer.Mechanics
                         animator.SetTrigger(DeadByFire);
                         animator.SetBool(Dead, true);
                         sounds[16].Play();
+                        break;
+                    case 17:
+                        // death by debris
+                        {
+                            // If fire kills player before they hit ground
+                            animator.SetBool(DramaticFall, false);
+                            fallingDramatically  = false;
+                        }
+                        StopAllPlayerSounds();
+                        animator.SetTrigger(DeadByDebris);
+                        animator.SetBool(Dead, true);
+                        sounds[17].Play();
                         break;
                 }
             }
