@@ -6,19 +6,20 @@ TagManager:
   tags:
   - TutorialRequirement
   - Enemy
-  - ProjectileObstacle
   - Ladder
+  - BossCollider
+  - Fire
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Confiner
   - Water
   - UI
   - Player
   - Enemy
-  - 
-  - 
+  - Bullet
+  - Ignore Bullet
   - 
   - 
   - 

@@ -24,6 +24,8 @@ namespace Platformer.Mechanics
         private static readonly int DeadBySpikes = Animator.StringToHash("deadBySpikes");
         private static readonly int DeadByFall = Animator.StringToHash("deadByFall");
         private static readonly int DeadByVoid = Animator.StringToHash("deadByVoid");
+        private static readonly int DeadByAufseher = Animator.StringToHash("deadByAufseher");
+        private static readonly int DeadByFire = Animator.StringToHash("deadByFire");
 
         [Header("References")] 
         [SerializeField] protected Rigidbody2D rb;
@@ -292,6 +294,22 @@ namespace Platformer.Mechanics
             {
                 _aimScript.OnAmmoPickedUp(ammoBox.ammoNum);
                 ammoBox.gameObject.GetComponent<Collider2D>().enabled = false;
+                ammoBox.OnPickedUp();
+                PlaySoundAndAnims(15);
+            } else if (col.CompareTag("BossCollider"))
+            {
+                if (dyingState)
+                    return;
+                Schedule<PlayerDeath>();
+                dyingState = true;
+                PlaySoundAndAnims(12);
+            } else if (col.CompareTag("Fire"))
+            {
+                if (dyingState)
+                    return;
+                Schedule<PlayerDeath>();
+                dyingState = true;
+                PlaySoundAndAnims(16);
             }
         }
 
@@ -379,7 +397,7 @@ namespace Platformer.Mechanics
             {
                fallDistance = fallStartPosY - transform.position.y;
                
-               if (!fallingDramatically && fallDistance > dramaticThreshold)
+               if (!fallingDramatically && fallDistance > dramaticThreshold && !dyingState)
                {
                    Debug.Log("dramatic fall started");
                    fallingDramatically = true;
@@ -395,7 +413,7 @@ namespace Platformer.Mechanics
                     dyingState = true;
                     Schedule<PlayerDeath>();
                     PlaySoundAndAnims(10);
-                    fallingDramatically  = false;
+                    fallingDramatically = false;
                     fallStartPosY = 0f;
                     break;
                 }
@@ -573,6 +591,11 @@ namespace Platformer.Mechanics
                         break;
                     case 6:
                         // die by void
+                        {
+                            // If void kills player, no dramatic impact will happen
+                            animator.SetBool(DramaticFall, false);
+                            fallingDramatically  = false;
+                        }
                         animator.SetTrigger(DeadByVoid);
                         animator.SetBool(Dead, true);
                         StopAllPlayerSounds();
@@ -629,6 +652,7 @@ namespace Platformer.Mechanics
                             animator.SetBool(DramaticFall, false);
                             fallingDramatically  = false;
                         }
+                        animator.SetTrigger(DeadByAufseher);
                         animator.SetBool(Dead, true);
                         StopAllPlayerSounds();
                         sounds[12].Play();
@@ -641,6 +665,22 @@ namespace Platformer.Mechanics
                         // Walking, jumping, idle & landing animation
                         animator.SetBool(Grounded, IsGrounded); // handles jump/land & if run
                         animator.SetFloat(VelocityX, Mathf.Abs(velocity.x) / playerSpeed); // handles idle/run & if landing
+                        break;
+                    case 15:
+                        // ammo box opened
+                        sounds[15].Play();
+                        break;
+                    case 16:
+                        // death by fire
+                        {
+                            // If fire kills player before they hit ground
+                            animator.SetBool(DramaticFall, false);
+                            fallingDramatically  = false;
+                        }
+                        StopAllPlayerSounds();
+                        animator.SetTrigger(DeadByFire);
+                        animator.SetBool(Dead, true);
+                        sounds[16].Play();
                         break;
                 }
             }

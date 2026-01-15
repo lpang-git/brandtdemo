@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6666663432509818892}
   m_Layer: 0
   m_Name: ARMCollider
-  m_TagString: Untagged
+  m_TagString: BossCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,7 +62,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 6848573673958073372}
   m_Layer: 0
   m_Name: ARMCollider
-  m_TagString: Untagged
+  m_TagString: BossCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,7 +131,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 4453892723949923171}
   m_Layer: 0
   m_Name: ARMCollider
-  m_TagString: Untagged
+  m_TagString: BossCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,7 +347,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 5800511181774522702}
   m_Layer: 0
   m_Name: ARMCollider
-  m_TagString: Untagged
+  m_TagString: BossCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -416,7 +416,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -642,7 +642,7 @@ GameObject:
   - component: {fileID: 5793184255169113643}
   m_Layer: 0
   m_Name: ARMCollider
-  m_TagString: Untagged
+  m_TagString: BossCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -692,7 +692,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -774,6 +774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossController
   leftFire: {fileID: 0}
   rightFire: {fileID: 0}
+  debrisObject: {fileID: 0}
   leftArmColliders:
   - {fileID: 5365115043137406208}
   - {fileID: 288493718340616748}
@@ -1744,7 +1745,7 @@ GameObject:
   - component: {fileID: 4808937363724522304}
   m_Layer: 0
   m_Name: ARMCollider
-  m_TagString: Untagged
+  m_TagString: BossCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1794,7 +1795,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7363382910298554280}
   - component: {fileID: 7704937921927609174}
   - component: {fileID: 7504989197941186814}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AmmoPickUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,3 +175,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AmmoPickUpTrigger
   ammoNum: 3
+  ammoAnimator: {fileID: 7363382910298554280}

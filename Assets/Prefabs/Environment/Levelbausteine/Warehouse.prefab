@@ -84,13 +84,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b951f117297224fad8eda217d24ca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialog
-  dialogLines:
+  dialogueLines:
   - M-Max!? MAX! Du bist es!
   - Der Trupp, sie wurden alle abgeschlachtet. Wir hatten keine verdammte Chance.
     Dieser verfluchte Aufseher hat einen nach dem anderen wie unbedeutende Insekten
     zerquetscht.
   - "Max, es ist zu sp\xE4t. Viel zu sp\xE4t. Du und ich, wir sind schon tot."
   npcIcon: {fileID: 5421323288694553770, guid: 63eb58b802a739c48a0c468703fbebb2, type: 3}
+  sceneNumber: 3
 --- !u!212 &7538196611633891878
 SpriteRenderer:
   m_ObjectHideFlags: 0
