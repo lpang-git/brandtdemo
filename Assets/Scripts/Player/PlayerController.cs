@@ -25,6 +25,7 @@ namespace Platformer.Mechanics
         private static readonly int DeadByFall = Animator.StringToHash("deadByFall");
         private static readonly int DeadByVoid = Animator.StringToHash("deadByVoid");
         private static readonly int DeadByAufseher = Animator.StringToHash("deadByAufseher");
+        private static readonly int DeadByFire = Animator.StringToHash("deadByFire");
 
         [Header("References")] 
         [SerializeField] protected Rigidbody2D rb;
@@ -300,6 +301,11 @@ namespace Platformer.Mechanics
                 Schedule<PlayerDeath>();
                 dyingState = true;
                 PlaySoundAndAnims(8);
+            } else if (col.CompareTag("Fire"))
+            {
+                Schedule<PlayerDeath>();
+                dyingState = true;
+                PlaySoundAndAnims(16);
             }
         }
 
@@ -659,6 +665,18 @@ namespace Platformer.Mechanics
                     case 15:
                         // ammo box opened
                         sounds[15].Play();
+                        break;
+                    case 16:
+                        // death by fire
+                        {
+                            // If fire kills player before they hit ground
+                            animator.SetBool(DramaticFall, false);
+                            fallingDramatically  = false;
+                        }
+                        StopAllPlayerSounds();
+                        animator.SetTrigger(DeadByFire);
+                        animator.SetBool(Dead, true);
+                        sounds[16].Play();
                         break;
                 }
             }
