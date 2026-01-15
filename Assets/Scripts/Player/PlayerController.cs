@@ -267,15 +267,7 @@ namespace Platformer.Mechanics
 
         private void LadderMovement(Vector2 inputVector)
         {
-            switch (inputVector.y)
-            {
-                case > 0 when _canClimbUp:
-                    rb.position += new Vector2(0, climbingSpeed * Time.deltaTime); // Climbing up
-                    break;
-                case < 0 when _canClimbDown:
-                    rb.position += new Vector2(0, -climbingSpeed * Time.deltaTime); // Climbing down
-                    break;
-            }
+            velocity.y = inputVector.y * climbingSpeed;
         }
 
         private void OnTriggerEnter2D(Collider2D col)
