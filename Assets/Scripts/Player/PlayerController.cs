@@ -24,6 +24,7 @@ namespace Platformer.Mechanics
         private static readonly int DeadBySpikes = Animator.StringToHash("deadBySpikes");
         private static readonly int DeadByFall = Animator.StringToHash("deadByFall");
         private static readonly int DeadByVoid = Animator.StringToHash("deadByVoid");
+        private static readonly int DeadByAufseher = Animator.StringToHash("deadByAufseher");
 
         [Header("References")] 
         [SerializeField] protected Rigidbody2D rb;
@@ -294,6 +295,11 @@ namespace Platformer.Mechanics
                 ammoBox.gameObject.GetComponent<Collider2D>().enabled = false;
                 ammoBox.OnPickedUp();
                 PlaySoundAndAnims(15);
+            } else if (col.CompareTag("BossCollider"))
+            {
+                Schedule<PlayerDeath>();
+                dyingState = true;
+                PlaySoundAndAnims(8);
             }
         }
 
@@ -575,6 +581,11 @@ namespace Platformer.Mechanics
                         break;
                     case 6:
                         // die by void
+                        {
+                            // If void kills player, no dramatic impact will happen
+                            animator.SetBool(DramaticFall, false);
+                            fallingDramatically  = false;
+                        }
                         animator.SetTrigger(DeadByVoid);
                         animator.SetBool(Dead, true);
                         StopAllPlayerSounds();
@@ -631,6 +642,7 @@ namespace Platformer.Mechanics
                             animator.SetBool(DramaticFall, false);
                             fallingDramatically  = false;
                         }
+                        animator.SetTrigger(DeadByAufseher);
                         animator.SetBool(Dead, true);
                         StopAllPlayerSounds();
                         sounds[12].Play();
