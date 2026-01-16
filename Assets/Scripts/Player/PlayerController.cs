@@ -80,7 +80,7 @@ namespace Platformer.Mechanics
         [SerializeField] private float maxFallMultiplier = 4f;
 
         [Tooltip("Fall distance where fall becomes lethal.")] 
-        [SerializeField] private float dramaticThreshold = 5f;
+        [SerializeField] private float dramaticThreshold = 3f;
         
         [Tooltip("How fast can the player climb?")]
         [SerializeField] protected float climbingSpeed = 2;
@@ -122,7 +122,7 @@ namespace Platformer.Mechanics
         private bool _passiveClimbing;
         
         // footstep values
-        private int _groundType;
+        internal int groundType;
         
         // private references
         private PlayerGunBehaviour _aimScript;
@@ -508,7 +508,7 @@ namespace Platformer.Mechanics
 
         internal void SetGroundType(int type)
         {
-            _groundType = type;
+            groundType = type;
         }
 
         protected override void OnEnable()
@@ -706,7 +706,7 @@ namespace Platformer.Mechanics
                 // ground type number: 0 = gravel, 1 = basalt, 2 = wood, 3 = concrete, 4 = metal
                 var choice = Random.Range(0, 3);
                 sounds[14].pitch = Random.Range(0.5f, 1.5f);
-                sounds[3].clip = _groundType switch
+                sounds[3].clip = groundType switch
                 {
                     0 => gravelFootsteps[choice],
                     1 => basaltFootsteps[choice],
@@ -722,7 +722,7 @@ namespace Platformer.Mechanics
             {
                 // ground type number: 0 = gravel, 1 = basalt
                 sounds[14].pitch = Random.Range(0.7f, 1.5f);
-                sounds[14].clip = landingSounds[_groundType];
+                sounds[14].clip = landingSounds[groundType];
                 sounds[14].Play();
             }
 
