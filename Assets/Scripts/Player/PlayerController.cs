@@ -41,6 +41,15 @@ namespace Platformer.Mechanics
         [Header("Audio Sources")] 
         [SerializeField] private AudioSource[] sounds;
 
+        [Space]
+        [Tooltip("0 = gravel, 1 = basalt, 2 = wood, 3 = concrete, 4 = metal")]
+        [SerializeField] private AudioClip[] landingSounds;
+        [SerializeField] private AudioClip[] gravelFootsteps;
+        [SerializeField] private AudioClip[] basaltFootsteps;
+        [SerializeField] private AudioClip[] woodFootsteps;
+        [SerializeField] private AudioClip[] concreteFootsteps;
+        [SerializeField] private AudioClip[] metalFootsteps;
+        
         [Space] 
         [Header("Settings")] 
         [Tooltip("Horizontal walking speed of the player.")] 
@@ -111,6 +120,9 @@ namespace Platformer.Mechanics
         private bool _isLadder  = false;
         private bool _activeClimbing;
         private bool _passiveClimbing;
+        
+        // footstep values
+        private int _groundType;
         
         // private references
         private PlayerGunBehaviour _aimScript;
@@ -494,6 +506,11 @@ namespace Platformer.Mechanics
             animator.SetInteger(LookState, lookState);
         }
 
+        internal void SetGroundType(int type)
+        {
+            _groundType = type;
+        }
+
         protected override void OnEnable()
         {
             lookAction.performed += OnLook;
@@ -553,15 +570,16 @@ namespace Platformer.Mechanics
                         break;
                     case 2:
                         // jump sound
+                        sounds[2].pitch = Random.Range(0.95f, 1.05f);
                         sounds[2].Play();
                         break;
                     case 3:
                         // footstep sound
-                        sounds[3].Play();
+                        SetTypeAndChooseRandomFootstep();
                         break;
                     case 4:
                         // landing sound
-                        sounds[14].Play();
+                        SetTypeAndPlayLandingSound();
                         break;
                     case 5:
                         // holster/unholster weapon
@@ -681,6 +699,31 @@ namespace Platformer.Mechanics
                         sounds[17].Play();
                         break;
                 }
+            }
+
+            private void SetTypeAndChooseRandomFootstep()
+            {
+                // ground type number: 0 = gravel, 1 = basalt, 2 = wood, 3 = concrete, 4 = metal
+                var choice = Random.Range(0, 3);
+                sounds[14].pitch = Random.Range(0.5f, 1.5f);
+                sounds[3].clip = _groundType switch
+                {
+                    0 => gravelFootsteps[choice],
+                    1 => basaltFootsteps[choice],
+                    2 => woodFootsteps[choice],
+                    3 => concreteFootsteps[choice],
+                    4 => metalFootsteps[choice],
+                    _ => sounds[3].clip
+                };
+                sounds[3].Play();
+            }
+
+            private void SetTypeAndPlayLandingSound()
+            {
+                // ground type number: 0 = gravel, 1 = basalt
+                sounds[14].pitch = Random.Range(0.7f, 1.5f);
+                sounds[14].clip = landingSounds[_groundType];
+                sounds[14].Play();
             }
 
             private void StopAllPlayerSounds()

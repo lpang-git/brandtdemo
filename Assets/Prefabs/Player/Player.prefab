@@ -83,6 +83,32 @@ MonoBehaviour:
   - {fileID: 5259911772894644077}
   - {fileID: 4031002545534363115}
   - {fileID: 7102613781030201328}
+  landingSounds:
+  - {fileID: 8300000, guid: 88b9194b4c7e58ba6844d74fce086a7b, type: 3}
+  - {fileID: 8300000, guid: 35d9d6716010a8c6aa0674e52891774e, type: 3}
+  - {fileID: 8300000, guid: e205200a2024a8db19c5b66231e6237d, type: 3}
+  - {fileID: 8300000, guid: 30c377177959c9076a84002bd1241d33, type: 3}
+  - {fileID: 8300000, guid: afa02604eecbca43b80eb3bdc7cd255f, type: 3}
+  gravelFootsteps:
+  - {fileID: 8300000, guid: 6499f418025f6a9e083eb46afe848087, type: 3}
+  - {fileID: 8300000, guid: 10b60758a7181ab5dae3f02a3f55a789, type: 3}
+  - {fileID: 8300000, guid: e9d045e9f75e9a9c1b65e821e1c41185, type: 3}
+  basaltFootsteps:
+  - {fileID: 8300000, guid: 392934f5533d6d05d885e02c155ac3cc, type: 3}
+  - {fileID: 8300000, guid: 8ca01bae6213204038ccb1139815858b, type: 3}
+  - {fileID: 8300000, guid: 00beddadc7a734fc38ac1d029030f7a5, type: 3}
+  woodFootsteps:
+  - {fileID: 8300000, guid: f43f0d52147e2d5c1bcdb2bd614e251d, type: 3}
+  - {fileID: 8300000, guid: 8ff3ab37126300124a8ab44af2a9f72e, type: 3}
+  - {fileID: 8300000, guid: 76c38904b6bb90066833cf994fc6c478, type: 3}
+  concreteFootsteps:
+  - {fileID: 8300000, guid: 8794ad3ad0eaf30318da37d489fbcf24, type: 3}
+  - {fileID: 8300000, guid: 20ed072d00970a2cf83e4b7c9bb8e2b6, type: 3}
+  - {fileID: 8300000, guid: f4168af84f4410969a5bd79daf59240f, type: 3}
+  metalFootsteps:
+  - {fileID: 8300000, guid: f5b916a4e60e6b4f6bb37dacb84f4cbc, type: 3}
+  - {fileID: 8300000, guid: fc5393d86910fcec2bf90bdb3244c315, type: 3}
+  - {fileID: 8300000, guid: 6849fe51c14ea93a292beea90f0e0492, type: 3}
   playerSpeed: 1.9
   jumpHeight: 4.6
   jumpSpeed: 2.2
@@ -436,7 +462,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: dd6057fd464f77942a0bf39c54651b32, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2655,7 +2681,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 3b8e8c27b098c28678ce1832336a95ef, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
