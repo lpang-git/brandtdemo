@@ -109,8 +109,6 @@ namespace Platformer.Mechanics
         
         // ladder values
         private bool _isLadder  = false;
-        private bool _canClimbUp;
-        private bool _canClimbDown;
         private bool _activeClimbing;
         private bool _passiveClimbing;
         
@@ -202,7 +200,6 @@ namespace Platformer.Mechanics
                 _wasGrounded = IsGrounded;
             
                 base.Update();
-                CheckLadderCollisions();
             
                 var verticalInput = inputVector.y != 0f;
                 var nowOnLadder = _isLadder;
@@ -458,17 +455,6 @@ namespace Platformer.Mechanics
 
             _fallTime = 0f;
             _wasAirborne = false;
-        }
-
-        private void CheckLadderCollisions()
-        {
-            var boxCastSize = new Vector2(0.1f, 0.1f);
-            var positionAbove = rb.position + new Vector2(0, boxCastSize.y / 2);
-            var positionBelow = rb.position - new Vector2(0, boxCastSize.y / 2);
-
-            // Check for colliders above and below
-            _canClimbUp = Physics2D.OverlapBox(positionAbove, boxCastSize, 0, LayerMask.GetMask("Default")) == null;
-            _canClimbDown = Physics2D.OverlapBox(positionBelow, boxCastSize, 0, LayerMask.GetMask("Default")) == null;
         }
 
         private void LookAtWalkingDirection()
