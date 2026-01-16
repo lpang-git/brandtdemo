@@ -89,6 +89,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e205200a2024a8db19c5b66231e6237d, type: 3}
   - {fileID: 8300000, guid: 30c377177959c9076a84002bd1241d33, type: 3}
   - {fileID: 8300000, guid: afa02604eecbca43b80eb3bdc7cd255f, type: 3}
+  - {fileID: 8300000, guid: a5ffb4298dabc51398344d06e21a0e05, type: 3}
+  - {fileID: 8300000, guid: d49f17e869d10589381bfb5e65ea14a6, type: 3}
+  - {fileID: 8300000, guid: a447cdea5ebbfccf2b3660950e5572c6, type: 3}
+  - {fileID: 8300000, guid: ca619001bf3217e09a825838fda36c4b, type: 3}
   gravelFootsteps:
   - {fileID: 8300000, guid: 6499f418025f6a9e083eb46afe848087, type: 3}
   - {fileID: 8300000, guid: 10b60758a7181ab5dae3f02a3f55a789, type: 3}
@@ -109,6 +113,22 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f5b916a4e60e6b4f6bb37dacb84f4cbc, type: 3}
   - {fileID: 8300000, guid: fc5393d86910fcec2bf90bdb3244c315, type: 3}
   - {fileID: 8300000, guid: 6849fe51c14ea93a292beea90f0e0492, type: 3}
+  gravelHallFootsteps:
+  - {fileID: 8300000, guid: 56619db5dcb014626804f743f0503a37, type: 3}
+  - {fileID: 8300000, guid: 02f5a50e58f3b6ecebf2cd00799dc3b6, type: 3}
+  - {fileID: 8300000, guid: f882da95823adaecc96cfef27d25292a, type: 3}
+  woodHallFootsteps:
+  - {fileID: 8300000, guid: 5b72e1bd134146b4f90382deeff3d159, type: 3}
+  - {fileID: 8300000, guid: 761841fb82fcab4d8a1bab87ec394240, type: 3}
+  - {fileID: 8300000, guid: 495302f17da71ed12bdb970b052f3e09, type: 3}
+  concreteHallFootsteps:
+  - {fileID: 8300000, guid: b04d44072b3e5c526ac468497c3b9751, type: 3}
+  - {fileID: 8300000, guid: fe9dbc3475a79194eaaea5fe9cb95673, type: 3}
+  - {fileID: 8300000, guid: b683c7a21b43538a382b4009958c4ab8, type: 3}
+  metalHallFootsteps:
+  - {fileID: 8300000, guid: 682ef3f1fee76fe8abf925a5f346470d, type: 3}
+  - {fileID: 8300000, guid: 5678fb03b96838d0e9366e3c182b0c0b, type: 3}
+  - {fileID: 8300000, guid: 35f888c77096e2d6fab022d90f6f3c82, type: 3}
   playerSpeed: 1.9
   jumpHeight: 4.6
   jumpSpeed: 2.2

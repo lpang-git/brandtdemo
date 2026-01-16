@@ -42,13 +42,17 @@ namespace Platformer.Mechanics
         [SerializeField] private AudioSource[] sounds;
 
         [Space]
-        [Tooltip("0 = gravel, 1 = basalt, 2 = wood, 3 = concrete, 4 = metal")]
+        [Tooltip("0 = gravel, 1 = basalt, 2 = wood, 3 = concrete, 4 = metal, 5 = gravel H, 6 = wood H, 7 = concrete H, 8 = metal H")]
         [SerializeField] private AudioClip[] landingSounds;
         [SerializeField] private AudioClip[] gravelFootsteps;
         [SerializeField] private AudioClip[] basaltFootsteps;
         [SerializeField] private AudioClip[] woodFootsteps;
         [SerializeField] private AudioClip[] concreteFootsteps;
         [SerializeField] private AudioClip[] metalFootsteps;
+        [SerializeField] private AudioClip[] gravelHallFootsteps;
+        [SerializeField] private AudioClip[] woodHallFootsteps;
+        [SerializeField] private AudioClip[] concreteHallFootsteps;
+        [SerializeField] private AudioClip[] metalHallFootsteps;
         
         [Space] 
         [Header("Settings")] 
@@ -703,7 +707,7 @@ namespace Platformer.Mechanics
 
             private void SetTypeAndChooseRandomFootstep()
             {
-                // ground type number: 0 = gravel, 1 = basalt, 2 = wood, 3 = concrete, 4 = metal
+                // ground type number: 0 = gravel, 1 = basalt, 2 = wood, 3 = concrete, 4 = metal, 5 = gravel H, 6 = wood H, 7 = concrete H, 8 = metal H
                 var choice = Random.Range(0, 3);
                 sounds[14].pitch = Random.Range(0.5f, 1.5f);
                 sounds[3].clip = groundType switch
@@ -713,6 +717,10 @@ namespace Platformer.Mechanics
                     2 => woodFootsteps[choice],
                     3 => concreteFootsteps[choice],
                     4 => metalFootsteps[choice],
+                    5 => gravelHallFootsteps[choice],
+                    6 => woodHallFootsteps[choice],
+                    7 => concreteHallFootsteps[choice],
+                    8 => metalHallFootsteps[choice],
                     _ => sounds[3].clip
                 };
                 sounds[3].Play();
@@ -720,7 +728,6 @@ namespace Platformer.Mechanics
 
             private void SetTypeAndPlayLandingSound()
             {
-                // ground type number: 0 = gravel, 1 = basalt
                 sounds[14].pitch = Random.Range(0.7f, 1.5f);
                 sounds[14].clip = landingSounds[groundType];
                 sounds[14].Play();
