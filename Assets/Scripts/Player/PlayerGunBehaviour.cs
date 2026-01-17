@@ -173,6 +173,12 @@ public class PlayerGunBehaviour : MonoBehaviour
     
     private void InitReload()
     {
+        if (!isAiming)
+        {
+            TriggerSoundAndAnimation(0);
+            return;
+        }
+        
         TriggerSoundAndAnimation(2);
 
         StartCoroutine(LockActionsForDuration(reloadCooldown));
