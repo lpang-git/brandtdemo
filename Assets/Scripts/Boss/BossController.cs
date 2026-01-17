@@ -14,7 +14,11 @@ public class BossController : MonoBehaviour
     [Space]
     [SerializeField] private GameObject[] rightArmColliders;
     [Space]
+    [Tooltip("0 = upLeftHead, 1 = upRightHead, 2 = downLeftHead, 3 = downRightHead, 4 = leftArm, 5 = body, 6 = rightLeg")]
     [SerializeField] private TVTrigger[] monitors;
+    [Space]
+    [Tooltip("0 = upLeftHead, 1 = upRightHead, 2 = downLeftHead, 3 = downRightHead")]
+    [SerializeField] private GameObject[] monitorColliders;
     
     [Space]
     [Header("Attack Timing")]
@@ -24,10 +28,10 @@ public class BossController : MonoBehaviour
     
     [Space]
     [Header("Monitor Timing")]
-    [SerializeField] private float minCooldown = 12f;
-    [SerializeField] private float maxCooldown = 18f;
+    [SerializeField] private float minCooldown = 8f;
+    [SerializeField] private float maxCooldown = 15f;
     [SerializeField] private float firstDelayUntilMonitorVulnerable = 16f;
-    [SerializeField] private float cooldownOnMonitorDown = 20f;
+    [SerializeField] private float cooldownOnMonitorDown = 15f;
     
     private static readonly int LeftAttack = Animator.StringToHash("leftAttack");
     private static readonly int RightAttack = Animator.StringToHash("rightAttack");
@@ -165,7 +169,6 @@ public class BossController : MonoBehaviour
     
         private List<int> GetShootablesForCurrentPhase()
         {
-            // 0 = upLeftHead, 1 = upRightHead, 2 = downLeftHead, 3 = downRightHead, 4 = leftArm, 5 = body, 6 = rightLeg
             var start = (phase == Phase.Head) ? 0 : 4;
             var end = (phase == Phase.Head) ? 3 : 6;
             var list = new List<int>();
@@ -197,11 +200,47 @@ public class BossController : MonoBehaviour
         private void TurnOnMonitor(int choice)
         {
             monitors[choice].SetShootable(true);
+
+            switch (choice)
+            {
+                // if shootable monitor is left-sided (0 or 2), disable left monitor colliders
+                case 0 or 2:
+                    SetMonitorColliders(leftSide: true, isEnabled: false);
+                    break;
+                // if shootable monitor is right-sided (1 or 3), disable right monitor colliders
+                case 1 or 3:
+                    SetMonitorColliders(leftSide: false, isEnabled: false);
+                    break;
+            }
         }
 
         private void TurnOffMonitor(int choice)
         {
             monitors[choice].SetShootable(false);
+
+            switch (choice)
+            {
+                // re-enable colliders
+                case 0 or 2:
+                    SetMonitorColliders(leftSide: true, isEnabled: true);
+                    break;
+                case 1 or 3:
+                    SetMonitorColliders(leftSide: false, isEnabled: true);
+                    break;
+            }
+        }
+        
+        private void SetMonitorColliders(bool leftSide, bool isEnabled)
+        {
+            if (monitorColliders == null || monitorColliders.Length < 4) return;
+            // left side: 0 (upLeftHead), 2 (downLeftHead)
+            // right side: 1 (upRightHead), 3 (downRightHead)
+            var side = leftSide ? new[] { 0, 2 } : new[] { 1, 3 };
+            foreach (var i in side)
+            {
+                if (monitorColliders[i] != null)
+                    monitorColliders[i].SetActive(isEnabled);
+            }
         }
 
     #endregion
