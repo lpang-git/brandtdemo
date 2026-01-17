@@ -13,6 +13,7 @@ public class PlayerGunBehaviour : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject userInterfaceObject;
     [SerializeField] private Texture2D aimCursor;
+    [SerializeField] private GameObject ammoSaverPrefab;
     
     [Space]
     [Header("Settings")]
@@ -29,7 +30,7 @@ public class PlayerGunBehaviour : MonoBehaviour
     [Tooltip("Maximum amount of bullets possible in chamber")]
     [SerializeField] private int maxAmmo = 3;
     
-    [Tooltip("Starting ammo in chamber")]
+    [Tooltip("Only in case levels are skipped. This value is used to assume the player has a certain amount of bullet at start of the corresponding level.")]
     [SerializeField] private int startingAmmo = 2;
     
     [Space]
@@ -54,13 +55,19 @@ public class PlayerGunBehaviour : MonoBehaviour
     
     private void Awake()
     {
+        if (AmmoSaver.Instance == null)
+        {
+            Instantiate(ammoSaverPrefab);
+        }
+        
         _playerScript = player.GetComponent<PlayerController>();
         fireAction = InputSystem.actions.FindAction("Player/Attack");
         reloadAction = InputSystem.actions.FindAction("Player/Reload");
         aimAction =  InputSystem.actions.FindAction("Player/Aim");
-        currentChamberedAmmo = startingAmmo;
-        currentUnchamberedAmmo = 0;
         _countingUI = userInterfaceObject.GetComponent<PlayerUI>();
+        
+        currentChamberedAmmo = AmmoSaver.Instance != null ? AmmoSaver.Instance.chambered : startingAmmo;
+        currentUnchamberedAmmo = AmmoSaver.Instance != null ? AmmoSaver.Instance.unchambered : 0;
         _countingUI.UpdateAmmoCount(currentChamberedAmmo, currentUnchamberedAmmo);
     }
 
@@ -115,7 +122,8 @@ public class PlayerGunBehaviour : MonoBehaviour
             Instantiate(bulletPrefab, firePointTransform.position, firePointTransform.rotation);
             currentChamberedAmmo--;
             nextShootTime = Time.time + shootCooldown;
-
+            
+            SaveAmmoToManager();
             _countingUI.UpdateAmmoCount(currentChamberedAmmo, currentUnchamberedAmmo);
 
             StartCoroutine(LockMovementForDuration(shootCooldown));
@@ -180,6 +188,7 @@ public class PlayerGunBehaviour : MonoBehaviour
             currentChamberedAmmo += transfer;
             currentUnchamberedAmmo -= transfer;
         }
+        SaveAmmoToManager();
         _countingUI.UpdateAmmoCount(currentChamberedAmmo, currentUnchamberedAmmo);
     }
 
@@ -228,6 +237,14 @@ public class PlayerGunBehaviour : MonoBehaviour
     internal void OnAmmoPickedUp(int ammoNum)
     {
         currentUnchamberedAmmo += ammoNum;
+        SaveAmmoToManager();
         _countingUI.UpdateAmmoCount(currentChamberedAmmo, currentUnchamberedAmmo);
+    }
+    
+    private void SaveAmmoToManager()
+    {
+        if (AmmoSaver.Instance == null) return;
+        AmmoSaver.Instance.chambered = currentChamberedAmmo;
+        AmmoSaver.Instance.unchambered = currentUnchamberedAmmo;
     }
 }

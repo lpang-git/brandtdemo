@@ -3570,6 +3570,8 @@ MonoBehaviour:
   player: {fileID: 1208144871472054}
   userInterfaceObject: {fileID: 8367910388271450233}
   aimCursor: {fileID: 2800000, guid: 75625c374a10efb4b8aa5053954b8a37, type: 3}
+  ammoSaverPrefab: {fileID: 2267228690259775251, guid: 166345d61ba8dcac8a96bba706e490bd,
+    type: 3}
   shootCooldown: 0.4
   gunAimCooldown: 1
   reloadCooldown: 1.5
@@ -3581,9 +3583,9 @@ MonoBehaviour:
   - {fileID: 7041914089174051345}
   - {fileID: 1479729178673624918}
   currentChamberedAmmo: 0
+  currentUnchamberedAmmo: 0
   nextShootTime: 0
   nextHolsterTime: 0
-  totalOwnedAmmo: 0
   isAiming: 0
 --- !u!1 &8745403917266008529
 GameObject:
