@@ -13,6 +13,9 @@ public class CheckpointLogic : MonoBehaviour
         if (!player) 
             return;
         
+        if (playerSpawn.transform.position == newPlayerSpawn.position)
+            return;
+        
         player.PlaySoundAndAnims(2);
         OnCheckpointReached();
     }
