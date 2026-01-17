@@ -25,7 +25,7 @@ public class PlayerGunBehaviour : MonoBehaviour
     [SerializeField] private float gunAimCooldown = 1f;
     
     [Tooltip("Cooldown (in seconds) in which the player cannot move after they have pressed reload.")]
-    [SerializeField] private float reloadCooldown = 1.5f;
+    [SerializeField] private float reloadCooldown = 1.25f;
     
     [Tooltip("Maximum amount of bullets possible in chamber")]
     [SerializeField] private int maxAmmo = 3;
@@ -52,6 +52,8 @@ public class PlayerGunBehaviour : MonoBehaviour
     internal InputAction aimAction;
 
     private PlayerUI _countingUI;
+
+    private bool _canShoot;
     
     private void Awake()
     {
@@ -117,6 +119,9 @@ public class PlayerGunBehaviour : MonoBehaviour
             return;
         }
         
+        if (!_canShoot)
+            return;
+        
         if (Time.time >= nextShootTime && currentChamberedAmmo > 0)
         {
             Instantiate(bulletPrefab, firePointTransform.position, firePointTransform.rotation);
@@ -126,8 +131,8 @@ public class PlayerGunBehaviour : MonoBehaviour
             SaveAmmoToManager();
             _countingUI.UpdateAmmoCount(currentChamberedAmmo, currentUnchamberedAmmo);
 
-            StartCoroutine(LockMovementForDuration(shootCooldown));
-            StartCoroutine(LockJumpForDuration(shootCooldown));
+            StartCoroutine(LockActionsForDuration(shootCooldown));
+            StartCoroutine(LockShootForDuration(shootCooldown));
             
             TriggerSoundAndAnimation(1);
             
@@ -140,25 +145,18 @@ public class PlayerGunBehaviour : MonoBehaviour
         }
     }
 
-    private System.Collections.IEnumerator LockMovementForDuration(float duration)
+    private System.Collections.IEnumerator LockActionsForDuration(float duration)
     {
-        _playerScript.moveAction.Disable();
+        _playerScript.controlEnabled = false;
         yield return new WaitForSeconds(duration);
-        _playerScript.moveAction.Enable();
-    }
-    
-    private System.Collections.IEnumerator LockJumpForDuration(float duration)
-    {
-        _playerScript.jumpAction.Disable();
-        yield return new WaitForSeconds(duration);
-        _playerScript.jumpAction.Enable();
+        _playerScript.controlEnabled = true;
     }
     
     private System.Collections.IEnumerator LockShootForDuration(float duration)
     {
-        fireAction.Disable();
+        _canShoot = false;
         yield return new WaitForSeconds(duration);
-        fireAction.Enable();
+        _canShoot = true;
     }
     
     private void OnReload(InputAction.CallbackContext context)
@@ -176,8 +174,7 @@ public class PlayerGunBehaviour : MonoBehaviour
     {
         TriggerSoundAndAnimation(2);
 
-        StartCoroutine(LockMovementForDuration(reloadCooldown));
-        StartCoroutine(LockJumpForDuration(reloadCooldown));
+        StartCoroutine(LockActionsForDuration(reloadCooldown));
         StartCoroutine(LockShootForDuration(reloadCooldown));
         
         // Calculate how many bullets needed to fill chamber
@@ -228,8 +225,7 @@ public class PlayerGunBehaviour : MonoBehaviour
         isAiming = !isAiming;
         Cursor.SetCursor(aimCursor, Vector2.zero, default);
         
-        StartCoroutine(LockMovementForDuration(gunAimCooldown));
-        StartCoroutine(LockJumpForDuration(gunAimCooldown));
+        StartCoroutine(LockActionsForDuration(gunAimCooldown));
         
         _playerScript.PlaySoundAndAnims(5);
     }
