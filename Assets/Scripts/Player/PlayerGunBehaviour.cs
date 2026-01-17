@@ -4,10 +4,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerGunBehaviour : MonoBehaviour
 {
-    /// <summary>
-    /// This script handles gun logic and ammo.
-    /// </summary>
-    
     private static readonly int Shoot = Animator.StringToHash("shoot");
     private static readonly int Reload = Animator.StringToHash("reload");
     
@@ -33,7 +29,7 @@ public class PlayerGunBehaviour : MonoBehaviour
     [Tooltip("Maximum amount of bullets possible in chamber")]
     [SerializeField] private int maxAmmo = 3;
     
-    [Tooltip("Starting ammo")]
+    [Tooltip("Starting ammo in chamber")]
     [SerializeField] private int startingAmmo = 2;
     
     [Space]
@@ -43,9 +39,9 @@ public class PlayerGunBehaviour : MonoBehaviour
     [Space]
     [Header("Debug Values")]
     [SerializeField] internal int currentChamberedAmmo;
+    [SerializeField] internal int currentUnchamberedAmmo;
     [SerializeField] private float nextShootTime;
     [SerializeField] private float nextHolsterTime;
-    [SerializeField] private int totalOwnedAmmo;
     [SerializeField] internal bool isAiming = false;
 
     private PlayerController _playerScript;
@@ -63,10 +59,9 @@ public class PlayerGunBehaviour : MonoBehaviour
         reloadAction = InputSystem.actions.FindAction("Player/Reload");
         aimAction =  InputSystem.actions.FindAction("Player/Aim");
         currentChamberedAmmo = startingAmmo;
-        totalOwnedAmmo = startingAmmo;
-        
+        currentUnchamberedAmmo = 0;
         _countingUI = userInterfaceObject.GetComponent<PlayerUI>();
-        _countingUI.UpdateAmmoCount(currentChamberedAmmo, totalOwnedAmmo);
+        _countingUI.UpdateAmmoCount(currentChamberedAmmo, currentUnchamberedAmmo);
     }
 
     private void Start()
@@ -119,22 +114,20 @@ public class PlayerGunBehaviour : MonoBehaviour
         {
             Instantiate(bulletPrefab, firePointTransform.position, firePointTransform.rotation);
             currentChamberedAmmo--;
-            totalOwnedAmmo--;
-            nextShootTime = Time.time + shootCooldown; // Set the next shoot time
+            nextShootTime = Time.time + shootCooldown;
 
-            _countingUI.UpdateAmmoCount(currentChamberedAmmo, totalOwnedAmmo);
+            _countingUI.UpdateAmmoCount(currentChamberedAmmo, currentUnchamberedAmmo);
 
             StartCoroutine(LockMovementForDuration(shootCooldown));
             StartCoroutine(LockJumpForDuration(shootCooldown));
             
             TriggerSoundAndAnimation(1);
             
-            Debug.Log("Bullet count:"  + currentChamberedAmmo);
+            Debug.Log("Bullet count (chambered): "  + currentChamberedAmmo);
         }
         else if (currentChamberedAmmo == 0)
         {
             Debug.Log("Out of Ammo! Reloading automatically.");
-
             OnGunEmpty();
         }
     }
@@ -179,26 +172,15 @@ public class PlayerGunBehaviour : MonoBehaviour
         StartCoroutine(LockJumpForDuration(reloadCooldown));
         StartCoroutine(LockShootForDuration(reloadCooldown));
         
-        
-        switch (currentChamberedAmmo)
+        // Calculate how many bullets needed to fill chamber
+        var needed = maxAmmo - currentChamberedAmmo;
+        if (needed > 0 && currentUnchamberedAmmo > 0)
         {
-            case 0:
-                // Chamber is empty, fill it with the maximum allowed amount or what the player has
-                currentChamberedAmmo = Mathf.Min(maxAmmo, totalOwnedAmmo);
-                break;
-            default:
-                if (currentChamberedAmmo > 0)
-                {
-                    // If there's ammo already in the chamber, reload but don't exceed total owned or max ammo
-                    currentChamberedAmmo = Mathf.Min(currentChamberedAmmo + maxAmmo, maxAmmo, totalOwnedAmmo);
-                }
-                else
-                {
-                    Debug.LogError("Problem with ammo. Check if negative.");
-                }
-                break;
+            var transfer = Mathf.Min(needed, currentUnchamberedAmmo);
+            currentChamberedAmmo += transfer;
+            currentUnchamberedAmmo -= transfer;
         }
-        _countingUI.UpdateAmmoCount(currentChamberedAmmo, totalOwnedAmmo);
+        _countingUI.UpdateAmmoCount(currentChamberedAmmo, currentUnchamberedAmmo);
     }
 
     private void OnGunEmpty()
@@ -245,7 +227,7 @@ public class PlayerGunBehaviour : MonoBehaviour
 
     internal void OnAmmoPickedUp(int ammoNum)
     {
-        totalOwnedAmmo += ammoNum;
-        _countingUI.UpdateAmmoCount(currentChamberedAmmo, totalOwnedAmmo);
+        currentUnchamberedAmmo += ammoNum;
+        _countingUI.UpdateAmmoCount(currentChamberedAmmo, currentUnchamberedAmmo);
     }
 }

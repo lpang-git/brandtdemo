@@ -13,9 +13,9 @@ public class PlayerUI : MonoBehaviour
         Cursor.SetCursor(null, Vector2.zero, default);
     }
     
-    internal void UpdateAmmoCount(float currentAmmo, float totalAmmo)
+    internal void UpdateAmmoCount(float chambered, float unchambered)
     {
-        currentAmmoText.text = $"{currentAmmo}";
-        totalAmmoText.text = $"{totalAmmo}";
+        currentAmmoText.text = $"{chambered}";
+        totalAmmoText.text = $"{unchambered}";
     }
 }
