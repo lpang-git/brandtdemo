@@ -23,6 +23,7 @@ public class DialogueManager : MonoBehaviour
     private bool _isDialogueActive;
     private bool _isTyping;
     internal InputAction interAction;
+    internal bool canInteract;
 
     private NPC _npc;
 
@@ -49,6 +50,9 @@ public class DialogueManager : MonoBehaviour
     {
         Debug.Log("interacted");
         if (!player.playerInRangeOfDialogue)
+            return;
+        
+        if (!canInteract)
             return;
 
         if (!IsDialogueActive())

@@ -93,10 +93,9 @@ namespace Platformer.Mechanics
 
         // basics
         internal bool controlEnabled;
-        internal InputAction moveAction;
-        internal InputAction jumpAction;
-        private InputAction lookAction;
+        internal InputAction moveAction, jumpAction, lookAction;
         internal bool dyingState;
+        private Vector2 _moveInput;
         private Vector2 move;
         private bool _skipFirstDependency;
         
@@ -108,9 +107,11 @@ namespace Platformer.Mechanics
         private float _fallTime;
         private bool _jumpExecutedThisAirborne = false;
         private bool _wasAirborne;
+        private bool _jumpPressed;
         
         // aim values
         private Vector2 mousePosition;
+        private bool _canUseGun;
         
         // dialogue values
         internal bool playerInRangeOfDialogue;
@@ -138,6 +139,7 @@ namespace Platformer.Mechanics
         protected virtual void Awake()
         {
             controlEnabled = true;
+            _canUseGun = true;
             
             _cameraMain = Camera.main;
             health = GetComponent<Health>();
@@ -157,18 +159,60 @@ namespace Platformer.Mechanics
             lookAction.Enable();
         }
         
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            moveAction.performed += OnMovement;
+            moveAction.canceled += OnMovement;
+            jumpAction.performed += OnJump;
+            lookAction.performed += OnLook;
+            moveAction.Enable(); jumpAction.Enable(); lookAction.Enable();
+        }
+
+        protected override void OnDisable()
+        {
+            moveAction.performed -= OnMovement;
+            moveAction.canceled -= OnMovement;
+            jumpAction.performed -= OnJump;
+            lookAction.performed -= OnLook;
+            moveAction.Disable(); jumpAction.Disable(); lookAction.Disable();
+            base.OnDisable();
+        }
+        
+        private void OnMovement(InputAction.CallbackContext context)
+        {
+            _moveInput = context.ReadValue<Vector2>();
+        }
+
+        private void OnJump(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+                _jumpPressed = true;
+        }
+        
         protected override void Update()
         {
+            if (_canUseGun)
+            {
+                _aimScript.EnableGunControls();
+            }
+            else
+            {
+                _aimScript.DisableGunControls();
+            }
+            
             if (controlEnabled)
             {
                 EnableControls();
                 
                 LookAtWalkingDirection();
                 AimAtMouse();
-                var inputVector = moveAction.ReadValue<Vector2>();
+
+                var inputVector = _moveInput;
                 move.x = inputVector.x; // Horizontal movement
                 _skipFirstDependency = true;
-            
+
+                // Ground/air timers
                 if (IsGrounded)
                 {
                     _groundLeaveTimer = groundLeaveTime;
@@ -178,9 +222,11 @@ namespace Platformer.Mechanics
                     _groundLeaveTimer -= Time.deltaTime;
                 }
 
-                if (jumpAction.WasPressedThisFrame())
+                // Jump buffering: set by jump callback (jumpPressed) and cleared here
+                if (_jumpPressed)
                 {
                     _jumpBufferTimer = jumpBufferTime;
+                    _jumpPressed = false;
                 }
                 else
                 {
@@ -247,13 +293,12 @@ namespace Platformer.Mechanics
                 } else if ((!nowOnLadder && _activeClimbing) || (!nowOnLadder && _passiveClimbing) || nowOnLadder && IsGrounded) // not on ladder
                 {
                     _activeClimbing = false;
-                    _passiveClimbing =  false;
+                    _passiveClimbing = false;
                     animator.SetBool(Climbing, false);
                     animator.speed = 1f;
                 }
                 
-                if (!_isLadder) return; 
-            
+                if (!_isLadder) return;
                 LadderMovement(inputVector); // Vertical movement
                 
                 // clear any buffered jump while climbing
@@ -263,6 +308,10 @@ namespace Platformer.Mechanics
             else
             {
                 DisableControls();
+                _moveInput = Vector2.zero; 
+                velocity = Vector2.zero;
+                targetVelocity = Vector2.zero;
+                animator.SetFloat(VelocityX, 0f);
                 move.x = 0;
             }
         }
@@ -346,14 +395,14 @@ namespace Platformer.Mechanics
         
             if (_isLadder)
             {
-                _aimScript.aimAction.Disable();
+                _canUseGun = false;
                 velocity.y = inputVector.y * climbingSpeed;
                 CheckGrounded();
                 targetVelocity = move * playerSpeed;
             }
             else
             {
-                _aimScript.aimAction.Enable();
+                _canUseGun = true;
                 var targetX = move.x * playerSpeed;
                 var accel = IsGrounded ? groundAccel : airAccel;
                 velocity.x = Mathf.MoveTowards(velocity.x, targetX, accel * Time.deltaTime);
@@ -374,6 +423,8 @@ namespace Platformer.Mechanics
             
                 if (!IsGrounded)
                 {
+                    _canUseGun =  false;
+                    
                     if (!_wasAirborne)
                     {
                         fallStartPosY = transform.position.y;
@@ -395,6 +446,7 @@ namespace Platformer.Mechanics
                 }
                 else
                 {
+                    _canUseGun = true;
                     velocity.y = Mathf.Max(0f, velocity.y);
                     _fallTime = 0f;
                 }
@@ -514,20 +566,6 @@ namespace Platformer.Mechanics
         {
             groundType = type;
         }
-
-        protected override void OnEnable()
-        {
-            lookAction.performed += OnLook;
-            
-            base.OnEnable();
-        }
-
-        protected override void OnDisable()
-        {
-            lookAction.performed -= OnLook;
-            
-            base.OnDisable();
-        }
     
         private void OnLook(InputAction.CallbackContext context)
         {
@@ -536,24 +574,22 @@ namespace Platformer.Mechanics
 
         private void EnableControls()
         {
-            moveAction.Enable();
-            jumpAction.Enable();
-            lookAction.Enable();
-            dialogueManager.interAction.Enable();
-            _aimScript.aimAction.Enable();
-            _aimScript.fireAction.Enable();
-            _aimScript.reloadAction.Enable();
+            moveAction.performed += OnMovement;
+            moveAction.canceled += OnMovement;
+            jumpAction.performed += OnJump;
+            lookAction.performed += OnLook;
+            moveAction.Enable(); jumpAction.Enable(); lookAction.Enable();
+            dialogueManager.canInteract = true;
         }
 
         private void DisableControls()
         {
-            moveAction.Disable();
-            jumpAction.Disable();
-            lookAction.Disable();
-            dialogueManager.interAction.Disable();
-            _aimScript.aimAction.Disable();
-            _aimScript.fireAction.Disable();
-            _aimScript.reloadAction.Disable();
+            moveAction.performed -= OnMovement;
+            moveAction.canceled -= OnMovement;
+            jumpAction.performed -= OnJump;
+            lookAction.performed -= OnLook;
+            moveAction.Disable(); jumpAction.Disable(); lookAction.Disable();
+            dialogueManager.canInteract = false;
         }
     
         #region Sounds & Animations
@@ -671,7 +707,11 @@ namespace Platformer.Mechanics
                     case 14:
                         // Walking, jumping, idle & landing animation
                         animator.SetBool(Grounded, IsGrounded); // handles jump/land & if run
-                        animator.SetFloat(VelocityX, Mathf.Abs(velocity.x) / playerSpeed); // handles idle/run & if landing
+                        
+                        float effectiveVelocityX;
+                        if (controlEnabled) { effectiveVelocityX = _moveInput.x * playerSpeed; }
+                        else { effectiveVelocityX = 0f; }
+                        animator.SetFloat(VelocityX, Mathf.Abs(effectiveVelocityX) / playerSpeed);
                         break;
                     case 15:
                         // ammo box opened

@@ -76,6 +76,7 @@ public class PlayerGunBehaviour : MonoBehaviour
     private void Start()
     {
         Cursor.visible = false;
+        _canShoot = true;
     }
 
     private void Update()
@@ -242,5 +243,21 @@ public class PlayerGunBehaviour : MonoBehaviour
         if (AmmoSaver.Instance == null) return;
         AmmoSaver.Instance.chambered = currentChamberedAmmo;
         AmmoSaver.Instance.unchambered = currentUnchamberedAmmo;
+    }
+
+    internal void EnableGunControls()
+    {
+        fireAction.performed += OnShoot;
+        reloadAction.performed += OnReload;
+        aimAction.performed += OnAim;
+        fireAction.Enable(); reloadAction.Enable(); aimAction.Enable();
+    }
+
+    internal void DisableGunControls()
+    {
+        fireAction.performed -= OnShoot;
+        reloadAction.performed -= OnReload;
+        aimAction.performed -= OnAim;
+        fireAction.Disable(); reloadAction.Disable(); aimAction.Disable();
     }
 }
