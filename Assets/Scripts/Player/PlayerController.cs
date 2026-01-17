@@ -366,7 +366,7 @@ namespace Platformer.Mechanics
                     // Ensure Jump is scheduled only once per airborne session
                     if (!_jumpExecutedThisAirborne)
                     {
-                        PlaySoundAndAnims(2);
+                        // play jump sound placeholder comment
                         _jumpExecutedThisAirborne = true;
                         velocity.x = move.x * playerSpeed * jumpSpeed;
                     }
@@ -573,8 +573,7 @@ namespace Platformer.Mechanics
                         sounds[1].Play();
                         break;
                     case 2:
-                        // jump sound
-                        sounds[2].pitch = Random.Range(0.95f, 1.05f);
+                        // checkpoint reached sound
                         sounds[2].Play();
                         break;
                     case 3:

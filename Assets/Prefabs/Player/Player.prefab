@@ -2666,7 +2666,7 @@ GameObject:
   - component: {fileID: 5045901558843451886}
   - component: {fileID: 2967691657262814335}
   m_Layer: 0
-  m_Name: Jump
+  m_Name: Checkpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2699,9 +2699,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -6258297140465194203, guid: ae6acb35f0818d1cca7f3ca41d9aee07,
     type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 3b8e8c27b098c28678ce1832336a95ef, type: 3}
+  m_Resource: {fileID: 8300000, guid: 0b0ccef33886f6a0fbcc178dc0a89955, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

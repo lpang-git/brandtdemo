@@ -1,3 +1,4 @@
+using Platformer.Mechanics;
 using UnityEngine;
 
 public class CheckpointLogic : MonoBehaviour
@@ -7,10 +8,13 @@ public class CheckpointLogic : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            OnCheckpointReached();
-        }
+        var player = other.gameObject.GetComponent<PlayerController>();
+        
+        if (!player) 
+            return;
+        
+        player.PlaySoundAndAnims(2);
+        OnCheckpointReached();
     }
 
     private void OnCheckpointReached()
