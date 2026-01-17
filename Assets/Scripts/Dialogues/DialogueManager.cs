@@ -104,7 +104,7 @@ public class DialogueManager : MonoBehaviour
 
         if (_currentLineIndex >= _currentLines.Length)
         {
-            EndDialogue();
+            EndDialogue(true);
         }
         else
         {
@@ -143,12 +143,16 @@ public class DialogueManager : MonoBehaviour
         _isTyping = false;
     }
 
-    internal void EndDialogue()
+    internal void EndDialogue(bool dialogueWasCalledAndFinished)
     {
         if (_typingCoroutine != null)
             StopCoroutine(_typingCoroutine);
 
-        ChangeScene(_npc.sceneNumber);
+        // dialogueWasCalledAndFinished is true when the player skipped through dialogue instead of just walking out of bounds of the NPC
+        if (dialogueWasCalledAndFinished)
+        {
+            ChangeScene(_npc.sceneNumber);
+        }
         
         dialoguePanel.SetActive(false);
         dialogueText.text = "";

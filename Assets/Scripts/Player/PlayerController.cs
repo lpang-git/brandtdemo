@@ -336,7 +336,7 @@ namespace Platformer.Mechanics
             } else if (npc)
             {
                 playerInRangeOfDialogue = false;
-                dialogueManager.EndDialogue();
+                dialogueManager.EndDialogue(false);
             }
         }
 
