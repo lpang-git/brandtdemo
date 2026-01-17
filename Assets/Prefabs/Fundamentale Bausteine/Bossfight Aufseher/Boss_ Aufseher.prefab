@@ -98,6 +98,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Schuttangriff
       objectReference: {fileID: 0}
+    - target: {fileID: 3854955224287201399, guid: 1f78df6247c8c6b858bba40618442ecc,
+        type: 3}
+      propertyPath: boss
+      value: 
+      objectReference: {fileID: 2505179628307214132}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -363,6 +368,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9229ee817ad24b0faacd05f5457ab95, type: 3}
+--- !u!114 &2505179628307214132 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4886246832421340185, guid: d9229ee817ad24b0faacd05f5457ab95,
+    type: 3}
+  m_PrefabInstance: {fileID: 6992753225242897197}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ccd695b5ce264b6fb27642650b8bc22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossController
 --- !u!4 &6545874154952351428 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4313566491330590185, guid: d9229ee817ad24b0faacd05f5457ab95,

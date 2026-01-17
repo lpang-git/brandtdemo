@@ -4,9 +4,10 @@ public class SpawnAmmo : MonoBehaviour
 {
     [SerializeField] private GameObject ammo;
     [SerializeField] private Transform boxPoint;
+    [SerializeField] private BossController boss;
 
     protected void InstantiateBox()
     {
-        Instantiate(ammo, boxPoint.position, boxPoint.rotation);
+        boss.SpawnAmmoBox(ammo, boxPoint);
     }
 }

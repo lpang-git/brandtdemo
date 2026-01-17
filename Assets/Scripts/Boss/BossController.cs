@@ -40,6 +40,8 @@ public class BossController : MonoBehaviour
     private Animator _animator;
     private Animator _lFAnimator;
     private Animator _rFAnimator;
+
+    private GameObject _previousBox;
     
     private enum Phase { Head, Body, Dead }
     private Phase phase = Phase.Head;
@@ -103,11 +105,26 @@ public class BossController : MonoBehaviour
             var choice = Random.Range(0, 3);
             var dAnim = debrisObject.GetComponent<Animator>();
             
+            DestroyPreviousAmmoBox();
+            
             switch (choice)
             {
                 case 0: dAnim.SetTrigger(FirstDebris); break;
                 case 1: dAnim.SetTrigger(SecondDebris); break;
                 case 2: dAnim.SetTrigger(ThirdDebris); break;
+            }
+        }
+
+        internal void SpawnAmmoBox(GameObject ammoBox, Transform point)
+        {
+            _previousBox = Instantiate(ammoBox, point.position, point.rotation);
+        }
+
+        private void DestroyPreviousAmmoBox()
+        {
+            if (_previousBox != null)
+            {
+                Destroy(_previousBox);
             }
         }
 
