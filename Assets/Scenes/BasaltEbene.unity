@@ -255,6 +255,7 @@ GameObject:
   - component: {fileID: 519050746}
   - component: {fileID: 519050745}
   - component: {fileID: 519050744}
+  - component: {fileID: 519050748}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -371,6 +372,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519050748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519050743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseListener
+  ApplyAfter: 2
+  ChannelMask: 1
+  Gain: 1
+  Use2DDistance: 0
+  UseCameraSpace: 1
+  SignalCombinationMode: 0
+  ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1001 &569183871
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -382,7 +407,7 @@ PrefabInstance:
     - target: {fileID: 3633967437535493323, guid: c6931f26b72b304809f77f076ed061d1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 105.25
+      value: 105.579994
       objectReference: {fileID: 0}
     - target: {fileID: 3633967437535493323, guid: c6931f26b72b304809f77f076ed061d1,
         type: 3}
@@ -392,7 +417,7 @@ PrefabInstance:
     - target: {fileID: 3721605567416612296, guid: c6931f26b72b304809f77f076ed061d1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.4
+      value: 5.27
       objectReference: {fileID: 0}
     - target: {fileID: 3721605567416612296, guid: c6931f26b72b304809f77f076ed061d1,
         type: 3}
@@ -417,12 +442,12 @@ PrefabInstance:
     - target: {fileID: 8404318643870094744, guid: c6931f26b72b304809f77f076ed061d1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.26377153
+      value: 1.0009232
       objectReference: {fileID: 0}
     - target: {fileID: 8404318643870094744, guid: c6931f26b72b304809f77f076ed061d1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0041383635
+      value: 0.0042306967
       objectReference: {fileID: 0}
     - target: {fileID: 8602635569776452263, guid: c6931f26b72b304809f77f076ed061d1,
         type: 3}
@@ -637,12 +662,12 @@ PrefabInstance:
     - target: {fileID: 2671673837571208598, guid: 51bfe89a839ffbb12bb02b8b03125d30,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.7371516
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 2671673837571208598, guid: 51bfe89a839ffbb12bb02b8b03125d30,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.00009233326
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3895634147316588127, guid: 51bfe89a839ffbb12bb02b8b03125d30,
         type: 3}
