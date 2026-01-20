@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using Platformer.Mechanics;
 using UnityEngine;
 
@@ -6,10 +6,13 @@ public class TurnOffOutsideAmbienceTrigger : MonoBehaviour
 {
     [SerializeField] private AudioSource sfx;
     [SerializeField] private ParticleSystem dust;
+    [Space]
+    [SerializeField] private float fadeDuration = 1f;
 
     private Collider2D _collider;
     private int _particleBuffer = 2048;
     private ParticleSystem.Particle[] _particles;
+    private Coroutine _fadeCoroutine;
 
     private void Awake()
     {
@@ -24,7 +27,7 @@ public class TurnOffOutsideAmbienceTrigger : MonoBehaviour
         if (!player) 
             return;
         
-        sfx.Stop();
+        StartFade(0f);
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -33,7 +36,33 @@ public class TurnOffOutsideAmbienceTrigger : MonoBehaviour
         if (!player)
             return;
         
-        sfx.Play();
+        StartFade(0.16f);
+    }
+    
+    private void StartFade(float targetVolume)
+    {
+        if (sfx == null) return;
+        if (_fadeCoroutine != null) StopCoroutine(_fadeCoroutine);
+        _fadeCoroutine = StartCoroutine(FadeVolume(targetVolume));
+    }
+    
+    private IEnumerator FadeVolume(float targetVolume)
+    {
+        var start = sfx.volume;
+        var time = 0f;
+        
+        if (!sfx.isPlaying && targetVolume > 0f) sfx.Play();
+
+        while (time < fadeDuration)
+        {
+            time += Time.deltaTime;
+            sfx.volume = Mathf.Lerp(start, targetVolume, time / fadeDuration);
+            yield return null;
+        }
+
+        sfx.volume = targetVolume;
+
+        _fadeCoroutine = null;
     }
 
     private void LateUpdate()
