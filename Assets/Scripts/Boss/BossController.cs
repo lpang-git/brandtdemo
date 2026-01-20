@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class BossController : MonoBehaviour
@@ -19,6 +20,9 @@ public class BossController : MonoBehaviour
     [Space]
     [Tooltip("0 = upLeftHead, 1 = upRightHead, 2 = downLeftHead, 3 = downRightHead")]
     [SerializeField] private GameObject[] monitorColliders;
+
+    [Space] 
+    [SerializeField] private AudioSource[] sounds;
     
     [Space]
     [Header("Attack Timing")]
@@ -44,6 +48,7 @@ public class BossController : MonoBehaviour
     private Animator _animator;
     private Animator _lFAnimator;
     private Animator _rFAnimator;
+    private CinemachineImpulseSource _impulseSource;
 
     private GameObject _previousBox;
     
@@ -55,6 +60,7 @@ public class BossController : MonoBehaviour
         _animator = GetComponent<Animator>();
         _lFAnimator = leftFire.GetComponent<Animator>();
         _rFAnimator = rightFire.GetComponent<Animator>();
+        _impulseSource = GetComponent<CinemachineImpulseSource>();
     }
 
     private void OnEnable()
@@ -96,27 +102,18 @@ public class BossController : MonoBehaviour
     
         private void OnLeftHandSmash()
         {
-            _lFAnimator.SetTrigger(Ignite);
+            PlaySoundAndShake(2);
         }
         
         private void OnRightHandSmash()
         {
-            _rFAnimator.SetTrigger(Ignite);
+            PlaySoundAndShake(3);
         }
         
         private void OnRoofSmashed()
         {
-            var choice = Random.Range(0, 3);
-            var dAnim = debrisObject.GetComponent<Animator>();
-            
             DestroyPreviousAmmoBox();
-            
-            switch (choice)
-            {
-                case 0: dAnim.SetTrigger(FirstDebris); break;
-                case 1: dAnim.SetTrigger(SecondDebris); break;
-                case 2: dAnim.SetTrigger(ThirdDebris); break;
-            }
+            PlaySoundAndShake(4);
         }
 
         internal void SpawnAmmoBox(GameObject ammoBox, Transform point)
@@ -244,4 +241,57 @@ public class BossController : MonoBehaviour
         }
 
     #endregion
+    
+    internal void PlaySoundAndShake(int actionId)
+    {
+       switch (actionId)
+        {
+            case 0:
+                // intro
+                sounds[0].Play();
+                break;
+            case 1:
+                // idle sound
+                sounds[1].Play();
+                break;
+            case 2:
+                // left attack hit
+                _lFAnimator.SetTrigger(Ignite);
+                sounds[2].Play();
+                CameraShaker.instance.CameraShake(_impulseSource);
+                break;
+            case 3:
+                // right attack hit
+                _rFAnimator.SetTrigger(Ignite);
+                sounds[3].Play();
+                CameraShaker.instance.CameraShake(_impulseSource);
+                break;
+            case 4:
+                // overhead attack hit
+                var choice = Random.Range(0, 3);
+                var dAnim = debrisObject.GetComponent<Animator>();
+            
+                switch (choice)
+                {
+                    case 0: dAnim.SetTrigger(FirstDebris); break;
+                    case 1: dAnim.SetTrigger(SecondDebris); break;
+                    case 2: dAnim.SetTrigger(ThirdDebris); break;
+                }
+                sounds[4].Play();
+                CameraShaker.instance.CameraShake(_impulseSource);
+                break;
+            case 5:
+                // monitor on head destroyed
+                sounds[5].Play();
+                break;
+            case 6:
+                // monitor on body destroyed
+                sounds[6].Play();
+                break;
+            case 7:
+                // death
+                sounds[7].Play();
+                break;
+        }
+    }
 }
