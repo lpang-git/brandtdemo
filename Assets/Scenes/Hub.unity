@@ -138,6 +138,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameSystem Hub
       objectReference: {fileID: 0}
+    - target: {fileID: 1637988461663795006, guid: 43e2d2d70810fa3b18be4d83fc666003,
+        type: 3}
+      propertyPath: orthographic size
+      value: 1.77
+      objectReference: {fileID: 0}
     - target: {fileID: 2374442086090606190, guid: 43e2d2d70810fa3b18be4d83fc666003,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -709,6 +714,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3128931963287290069, guid: d3396fa4ec1e6ce57b8b1e3e4bd8ea24,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3289661184342170584, guid: d3396fa4ec1e6ce57b8b1e3e4bd8ea24,
         type: 3}
       propertyPath: m_LocalPosition.x
