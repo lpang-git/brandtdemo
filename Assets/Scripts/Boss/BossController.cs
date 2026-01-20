@@ -287,11 +287,11 @@ public class BossController : MonoBehaviour
                 CameraShaker.instance.CameraShake(_impulseSource);
                 break;
             case 5:
-                // monitor on head destroyed
+                // monitor vulnerable
                 sounds[5].Play();
                 break;
             case 6:
-                // monitor on body destroyed
+                // monitor destroyed
                 sounds[6].Play();
                 break;
             case 7:

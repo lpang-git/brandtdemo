@@ -1372,7 +1372,7 @@ GameObject:
   - component: {fileID: 8949476423378670878}
   - component: {fileID: 8642664047712974127}
   m_Layer: 0
-  m_Name: HurtMonitorHead
+  m_Name: MonitorVulnerable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3261,7 +3261,7 @@ GameObject:
   - component: {fileID: 4816133336271340408}
   - component: {fileID: 4441218701844095310}
   m_Layer: 0
-  m_Name: HurtMonitorBody
+  m_Name: MonitorDestroyed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
