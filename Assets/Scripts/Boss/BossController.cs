@@ -258,12 +258,16 @@ public class BossController : MonoBehaviour
                 // left attack hit
                 _lFAnimator.SetTrigger(Ignite);
                 sounds[2].Play();
+                _impulseSource.ImpulseDefinition.ImpulseShape = CinemachineImpulseDefinition.ImpulseShapes.Rumble;
+                _impulseSource.ImpulseDefinition.ImpulseDuration = 0.5f;
                 CameraShaker.instance.CameraShake(_impulseSource);
                 break;
             case 3:
                 // right attack hit
                 _rFAnimator.SetTrigger(Ignite);
                 sounds[3].Play();
+                _impulseSource.ImpulseDefinition.ImpulseShape = CinemachineImpulseDefinition.ImpulseShapes.Rumble;
+                _impulseSource.ImpulseDefinition.ImpulseDuration = 0.3f;
                 CameraShaker.instance.CameraShake(_impulseSource);
                 break;
             case 4:
@@ -278,6 +282,8 @@ public class BossController : MonoBehaviour
                     case 2: dAnim.SetTrigger(ThirdDebris); break;
                 }
                 sounds[4].Play();
+                _impulseSource.ImpulseDefinition.ImpulseShape = CinemachineImpulseDefinition.ImpulseShapes.Explosion;
+                _impulseSource.ImpulseDefinition.ImpulseDuration = 0.6f;
                 CameraShaker.instance.CameraShake(_impulseSource);
                 break;
             case 5:
