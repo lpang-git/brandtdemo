@@ -41,7 +41,8 @@ AudioSource:
   m_GameObject: {fileID: 611810456930650825}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8833621054055467049, guid: ae6acb35f0818d1cca7f3ca41d9aee07,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
@@ -349,7 +350,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 2836589891087658081, guid: 228a668547622ed4fb5c6f49406d1475,
+  m_Sprite: {fileID: -2194993383710470663, guid: bd30e776dc6ee094d88a4b8bbf308b33,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -491,7 +492,7 @@ GameObject:
   - component: {fileID: 7306764921774156328}
   - component: {fileID: 55082883830013628}
   m_Layer: 0
-  m_Name: Footstep
+  m_Name: Pursuit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -521,7 +522,8 @@ AudioSource:
   m_GameObject: {fileID: 3133007820152392281}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8833621054055467049, guid: ae6acb35f0818d1cca7f3ca41d9aee07,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
@@ -650,7 +652,8 @@ AudioSource:
   m_GameObject: {fileID: 5383554627575932506}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8833621054055467049, guid: ae6acb35f0818d1cca7f3ca41d9aee07,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
@@ -663,7 +666,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 0.1
-  MaxDistance: 3
+  MaxDistance: 5
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -857,7 +860,8 @@ AudioSource:
   m_GameObject: {fileID: 6692951219624090810}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8833621054055467049, guid: ae6acb35f0818d1cca7f3ca41d9aee07,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
@@ -986,7 +990,8 @@ AudioSource:
   m_GameObject: {fileID: 7170721230719811067}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8833621054055467049, guid: ae6acb35f0818d1cca7f3ca41d9aee07,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0

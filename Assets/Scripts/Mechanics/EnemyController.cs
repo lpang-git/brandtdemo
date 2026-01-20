@@ -1,4 +1,5 @@
-﻿using Platformer.Gameplay;
+﻿using System.Collections;
+using Platformer.Gameplay;
 using UnityEngine;
 using static Platformer.Core.Simulation;
 
@@ -12,6 +13,7 @@ namespace Platformer.Mechanics
     {
         private static readonly int Attack = Animator.StringToHash("attack");
         private static readonly int DeathByPlayer = Animator.StringToHash("deathByPlayer");
+        private static readonly int DeathBySpike = Animator.StringToHash("deathBySpike");
         private static readonly int InPursuit = Animator.StringToHash("inPursuit");
         
         [Header("References")]
@@ -36,6 +38,7 @@ namespace Platformer.Mechanics
         
         private bool _pursuing = false;
         internal bool dead;
+        private Coroutine _groanRoutine;
 
         public Bounds Bounds => enemyCollider.bounds;
 
@@ -60,12 +63,12 @@ namespace Platformer.Mechanics
             {
                 if (player.dyingState) { return; }
                 player.dyingState = true;
-                animator.SetTrigger(Attack);
+                PlaySoundAndAnims(1);
                 Schedule<PlayerDeath>();
                 player.PlaySoundAndAnims(8);
             } else if (bullet != null)
             {
-                animator.SetTrigger(DeathByPlayer);
+                PlaySoundAndAnims(2);
                 Schedule<EnemyDeath>().enemy = this;
             }
         }
@@ -105,6 +108,7 @@ namespace Platformer.Mechanics
                 // on patrol
                 if (!path || dead) return;
                 
+                _groanRoutine ??= StartCoroutine(Groaning());
                 animator.SetBool(InPursuit, false);
                 animator.speed = 1;
                 _mover ??= path.CreateMover(control.maxSpeed * 0.5f);
@@ -112,33 +116,57 @@ namespace Platformer.Mechanics
             }
         }
 
-        internal void PlaySound(int actionId)
+        private IEnumerator Groaning()
+        {
+            do
+            {
+                float wait = Random.Range(3, 8);
+                yield return new WaitForSeconds(wait);
+                
+                PlaySoundAndAnims(0);
+
+            } while (!dead);
+        }
+
+        protected void OnPursuitGroan()
+        {
+            PlaySoundAndAnims(4);
+        }
+
+        internal void PlaySoundAndAnims(int actionId)
         {
             switch (actionId)
             {
                 case 0:
-                    // inhale
+                    // groan
+                    if (_pursuing) 
+                        return;
+                    
+                    audioSources[0].pitch = Random.Range(0.5f, 1.5f);
                     audioSources[0].Play();
                     break;
                 case 1:
-                    // exhale
+                    // attack
+                    animator.SetTrigger(Attack);
+                    audioSources[1].pitch = Random.Range(0.7f, 1f);
                     audioSources[1].Play();
                     break;
                 case 2:
-                    // attack sound
+                    // death by player
+                    animator.SetTrigger(DeathByPlayer);
                     audioSources[2].Play();
                     break;
                 case 3:
-                    // death by player sound
+                    // death by spike
+                    animator.SetTrigger(DeathBySpike);
                     audioSources[3].Play();
                     break;
                 case 4:
-                    // death by spike sound
+                    // pursuit sound
+                    if (!_pursuing)
+                        return;
+                    audioSources[4].pitch = Random.Range(0.8f, 1.1f);
                     audioSources[4].Play();
-                    break;
-                case 5:
-                    // footstep sound
-                    audioSources[5].Play();
                     break;
             }
         }

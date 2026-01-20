@@ -12,8 +12,6 @@ namespace Platformer.Mechanics
     /// </summary>
     public class DeathZone : MonoBehaviour
     {
-        private static readonly int DeathBySpike = Animator.StringToHash("deathBySpike");
-        
         [SerializeField] private int zoneType; // 1 = Void fall, 2 = Spike trap
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -50,7 +48,7 @@ namespace Platformer.Mechanics
                         break;
                     case 2:
                         // Trap
-                        e.animator.SetTrigger(DeathBySpike);
+                        e.PlaySoundAndAnims(3);
                         Schedule<EnemyDeath>().enemy = e;
                         break;
                 }

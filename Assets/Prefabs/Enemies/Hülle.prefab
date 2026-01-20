@@ -8,6 +8,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 55082883830013628, guid: 9e88524ad985c72958ab1cf02228cff6,
+        type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 2337f4a28ab4cdc8baed792798113c0b, type: 3}
     - target: {fileID: 1439664809928414875, guid: 9e88524ad985c72958ab1cf02228cff6,
         type: 3}
       propertyPath: m_Controller
@@ -84,6 +89,11 @@ PrefabInstance:
       propertyPath: 'audioSources.Array.data[4]'
       value: 
       objectReference: {fileID: 2739347608141521867}
+    - target: {fileID: 3133007820152392281, guid: 9e88524ad985c72958ab1cf02228cff6,
+        type: 3}
+      propertyPath: m_Name
+      value: Pursuit
+      objectReference: {fileID: 0}
     - target: {fileID: 3223284602975878167, guid: 9e88524ad985c72958ab1cf02228cff6,
         type: 3}
       propertyPath: maxSpeed
@@ -109,6 +119,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5383554627575932506, guid: 9e88524ad985c72958ab1cf02228cff6,
+        type: 3}
+      propertyPath: m_Name
+      value: Groan
+      objectReference: {fileID: 0}
+    - target: {fileID: 5565721130894444453, guid: 9e88524ad985c72958ab1cf02228cff6,
+        type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: f650e171e70d5d5e6bed2f642b1b2659, type: 3}
+    - target: {fileID: 5990242338993506891, guid: 9e88524ad985c72958ab1cf02228cff6,
+        type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 570739c335f287c1697d07233a76120c, type: 3}
+    - target: {fileID: 6423344808915002112, guid: 9e88524ad985c72958ab1cf02228cff6,
+        type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 16b17b8acd62b9147a3659095eb25b56, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
