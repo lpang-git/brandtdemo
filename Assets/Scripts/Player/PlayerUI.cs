@@ -1,7 +1,9 @@
 using System;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI totalAmmoText;
     [SerializeField] private Texture2D defaultCursor;
     [SerializeField] private GameObject pausePanel;
+    [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private Slider volumeSlider;
 
     [Space] 
     [SerializeField] private AudioClip[] clips;
@@ -18,6 +22,11 @@ public class PlayerUI : MonoBehaviour
     private void Awake()
     {
         _source = GetComponent<AudioSource>();
+    }
+
+    private void Start()
+    {
+        volumeSlider.onValueChanged.AddListener(SetVolume);
     }
 
     internal void PauseGame()
@@ -49,6 +58,12 @@ public class PlayerUI : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void SetVolume(float volume)
+    {
+        audioMixer.SetFloat("Master", Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("Master", volume);
     }
     
     internal void UpdateAmmoCount(float chambered, float unchambered)
