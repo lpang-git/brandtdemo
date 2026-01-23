@@ -193,18 +193,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43e2d2d70810fa3b18be4d83fc666003, type: 3}
---- !u!114 &156235271 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7701330512947616105, guid: 43e2d2d70810fa3b18be4d83fc666003,
-    type: 3}
-  m_PrefabInstance: {fileID: 156235270}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75fa2f9ea4cb54f34aaac731aabe3733, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Platformer.UI.MainUIController
 --- !u!1 &365591203
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,7 +939,6 @@ GameObject:
   - component: {fileID: 1865200718}
   - component: {fileID: 1865200717}
   - component: {fileID: 1865200716}
-  - component: {fileID: 1865200715}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -959,21 +946,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1865200715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1865200714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86f4a4ae3a36547dd915a91ceebed970, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainMenu: {fileID: 156235271}
-  gamePlayCanvasii: []
-  gameController: {fileID: 1865200717}
 --- !u!114 &1865200716
 MonoBehaviour:
   m_ObjectHideFlags: 0

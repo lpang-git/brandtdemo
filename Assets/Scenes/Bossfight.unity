@@ -456,18 +456,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfb4cebd3679c4bd38a0abee68ab57d9, type: 3}
---- !u!114 &551480769 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8842093107566110437, guid: bfb4cebd3679c4bd38a0abee68ab57d9,
-    type: 3}
-  m_PrefabInstance: {fileID: 551480768}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75fa2f9ea4cb54f34aaac731aabe3733, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Platformer.UI.MainUIController
 --- !u!60 &551480770 stripped
 PolygonCollider2D:
   m_CorrespondingSourceObject: {fileID: 4633487600163940924, guid: bfb4cebd3679c4bd38a0abee68ab57d9,
@@ -2669,7 +2657,6 @@ GameObject:
   - component: {fileID: 2050835583}
   - component: {fileID: 2050835582}
   - component: {fileID: 2050835581}
-  - component: {fileID: 2050835580}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -2677,21 +2664,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2050835580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2050835579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86f4a4ae3a36547dd915a91ceebed970, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainMenu: {fileID: 551480769}
-  gamePlayCanvasii: []
-  gameController: {fileID: 2050835582}
 --- !u!114 &2050835581
 MonoBehaviour:
   m_ObjectHideFlags: 0
