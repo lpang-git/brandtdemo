@@ -7,7 +7,7 @@ public class PlayerUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI currentAmmoText;
     [SerializeField] private TextMeshProUGUI totalAmmoText;
-
+    [SerializeField] private Texture2D defaultCursor;
     [SerializeField] private GameObject pausePanel;
 
     [Space] 
@@ -25,7 +25,8 @@ public class PlayerUI : MonoBehaviour
         Time.timeScale = 0;
         Cursor.visible = true;
         pausePanel.SetActive(true);
-        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        //var hotspot = new Vector2(defaultCursor.width / 2, defaultCursor.height / 2);
+        Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
     }
 
     internal void ResumeGame()
