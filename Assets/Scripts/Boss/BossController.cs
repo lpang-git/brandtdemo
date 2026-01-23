@@ -155,6 +155,11 @@ public class BossController : MonoBehaviour
 
                 var wasShot = monitors[choiceIndex].IsShot;
 
+
+                if (wasShot)
+                {
+                    PlaySoundAndShake(6);
+                }
                 if (!wasShot)
                     TurnOffMonitor(choiceIndex);
 
