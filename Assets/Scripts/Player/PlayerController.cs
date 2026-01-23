@@ -29,7 +29,6 @@ namespace Platformer.Mechanics
         private static readonly int DeadByDebris = Animator.StringToHash("deadByDebris");
 
         [Header("References")] 
-        [SerializeField] protected Rigidbody2D rb;
         [SerializeField] protected SpriteRenderer spriteRenderer;
         [SerializeField] internal Animator animator;
         [SerializeField] internal Transform aimTransform;
@@ -93,11 +92,12 @@ namespace Platformer.Mechanics
 
         // basics
         internal bool controlEnabled;
-        internal InputAction moveAction, jumpAction, lookAction;
+        internal InputAction moveAction, jumpAction, lookAction, pauseAction;
         internal bool dyingState;
         private Vector2 _moveInput;
         private Vector2 move;
         private bool _skipFirstDependency;
+        internal bool _isPaused;
         
         // jump values
         private bool _wasGrounded = true;
@@ -131,6 +131,7 @@ namespace Platformer.Mechanics
         
         // private references
         private PlayerGunBehaviour _aimScript;
+        private PlayerUI _ui;
         private Camera _cameraMain;
         
     
@@ -145,18 +146,20 @@ namespace Platformer.Mechanics
             health = GetComponent<Health>();
             collider2d = GetComponent<Collider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
-            rb = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
             aimTransform = transform.Find("Aim");
             _aimScript = aimTransform.GetComponent<PlayerGunBehaviour>();
+            _ui = GetComponentInChildren<PlayerUI>();
 
             moveAction = InputSystem.actions.FindAction("Player/Move");
             jumpAction = InputSystem.actions.FindAction("Player/Jump");
             lookAction = InputSystem.actions.FindAction("Player/Look");
+            pauseAction = InputSystem.actions.FindAction("Player/Pause");
             
             moveAction.Enable();
             jumpAction.Enable();
             lookAction.Enable();
+            pauseAction.Enable();
         }
         
         protected override void OnEnable()
@@ -166,7 +169,8 @@ namespace Platformer.Mechanics
             moveAction.canceled += OnMovement;
             jumpAction.performed += OnJump;
             lookAction.performed += OnLook;
-            moveAction.Enable(); jumpAction.Enable(); lookAction.Enable();
+            pauseAction.performed += OnPause;
+            moveAction.Enable(); jumpAction.Enable(); lookAction.Enable(); pauseAction.Enable();
         }
 
         protected override void OnDisable()
@@ -175,7 +179,8 @@ namespace Platformer.Mechanics
             moveAction.canceled -= OnMovement;
             jumpAction.performed -= OnJump;
             lookAction.performed -= OnLook;
-            moveAction.Disable(); jumpAction.Disable(); lookAction.Disable();
+            pauseAction.performed -= OnPause;
+            moveAction.Disable(); jumpAction.Disable(); lookAction.Disable(); pauseAction.Disable();
             base.OnDisable();
         }
         
@@ -188,6 +193,29 @@ namespace Platformer.Mechanics
         {
             if (context.performed)
                 _jumpPressed = true;
+        }
+
+        private void OnPause(InputAction.CallbackContext context)
+        {
+            _isPaused = !_isPaused;
+
+            if (_ui == null)
+            {
+                Debug.LogError("no ui found");
+                return;
+            }
+
+            controlEnabled = !_isPaused;
+            _canUseGun = !_isPaused;
+
+            if (_isPaused)
+            {
+                _ui.PauseGame();
+            }
+            else
+            {
+                _ui.ResumeGame();
+            }
         }
         
         protected override void Update()

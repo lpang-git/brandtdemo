@@ -32,7 +32,7 @@ namespace Platformer.UI
         void OnEnable()
         {
             _ToggleMainMenu(showMainCanvas);
-            m_MenuAction = InputSystem.actions.FindAction("Player/Menu");
+            m_MenuAction = InputSystem.actions.FindAction("Player/Pause");
         }
 
         /// <summary>

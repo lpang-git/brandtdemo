@@ -85,6 +85,9 @@ public class PlayerGunBehaviour : MonoBehaviour
         {
             isAiming = false;
         }
+
+        if (_playerScript._isPaused)
+            return;
         Cursor.visible = isAiming;
     }
 
