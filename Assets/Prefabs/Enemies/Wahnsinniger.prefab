@@ -134,11 +134,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4289320117780134405, guid: 9e88524ad985c72958ab1cf02228cff6,
+        type: 3}
+      propertyPath: m_Pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289320117780134405, guid: 9e88524ad985c72958ab1cf02228cff6,
+        type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 3b55cce6f79fb678b8c5f660cf834ee9, type: 3}
     - target: {fileID: 5383554627575932506, guid: 9e88524ad985c72958ab1cf02228cff6,
         type: 3}
       propertyPath: m_Name
       value: Monologue
       objectReference: {fileID: 0}
+    - target: {fileID: 5565721130894444453, guid: 9e88524ad985c72958ab1cf02228cff6,
+        type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: b63c2bb1ea713834b846b4e530ed96b2, type: 3}
+    - target: {fileID: 5990242338993506891, guid: 9e88524ad985c72958ab1cf02228cff6,
+        type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: d39f746bfef224048afff45be8c70e89, type: 3}
+    - target: {fileID: 6423344808915002112, guid: 9e88524ad985c72958ab1cf02228cff6,
+        type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 6fe14dd2a1189234d9b72133eecee23a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
