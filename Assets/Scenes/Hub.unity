@@ -575,6 +575,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 896911270193162648, guid: c21a2efb0ed60d16d93797053c602470,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1891006897689089469, guid: c21a2efb0ed60d16d93797053c602470,
         type: 3}
       propertyPath: m_Pivot.x
@@ -618,6 +623,11 @@ PrefabInstance:
     - target: {fileID: 1891006897689089469, guid: c21a2efb0ed60d16d93797053c602470,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351157211546967423, guid: c21a2efb0ed60d16d93797053c602470,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6394131901344263775, guid: c21a2efb0ed60d16d93797053c602470,
