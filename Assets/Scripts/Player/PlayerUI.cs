@@ -10,7 +10,7 @@ public class PlayerUI : MonoBehaviour
     {
         Time.timeScale = 0;
         Cursor.visible = true;
-        Cursor.SetCursor(null, Vector2.zero, default);
+        Cursor.SetCursor(default, Vector2.zero, CursorMode.Auto);
     }
     
     internal void UpdateAmmoCount(float chambered, float unchambered)

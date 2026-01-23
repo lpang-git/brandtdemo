@@ -230,7 +230,8 @@ public class PlayerGunBehaviour : MonoBehaviour
     private void OnAim(InputAction.CallbackContext context)
     {
         isAiming = !isAiming;
-        Cursor.SetCursor(aimCursor, Vector2.zero, default);
+        var hotspot = new Vector2(aimCursor.width / 2, aimCursor.height / 2);
+        Cursor.SetCursor(aimCursor, hotspot, CursorMode.Auto);
         
         StartCoroutine(LockActionsForDuration(gunAimCooldown));
         
