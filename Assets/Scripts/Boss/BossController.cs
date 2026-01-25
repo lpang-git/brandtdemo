@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossController : MonoBehaviour
 {
@@ -74,9 +75,11 @@ public class BossController : MonoBehaviour
         StopAllCoroutines();
     }
     
-    private void Die()
+    private IEnumerator Die()
     {
-        // boss death logic
+        PlaySoundAndShake(7);
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(4);
     }
 
     #region Attacks
