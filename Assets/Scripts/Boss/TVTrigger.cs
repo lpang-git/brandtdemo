@@ -8,7 +8,6 @@ public class TVTrigger : MonoBehaviour
     
     public bool IsShot { get; private set; }
     
-    private BossController _bossController;
     private Collider2D _collider;
 
     private static readonly int Target = Animator.StringToHash("target");
@@ -17,7 +16,6 @@ public class TVTrigger : MonoBehaviour
     private void Awake()
     {
         _collider = GetComponent<Collider2D>();
-        _bossController = GetComponentInParent<BossController>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -44,6 +42,5 @@ public class TVTrigger : MonoBehaviour
         _collider.enabled = false;
         animator.SetBool(Target, false);
         animator.SetTrigger(WasShot);
-        _bossController.CallMonitorShot();
     }
 }

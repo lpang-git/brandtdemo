@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class BossController : MonoBehaviour
@@ -33,14 +34,14 @@ public class BossController : MonoBehaviour
     [Header("Attack Timing")]
     [SerializeField] private float minWait = 4f;
     [SerializeField] private float maxWait = 8f;
-    [SerializeField] private float firstDelayUntilAttack = 10f;
+    [SerializeField] private float introAttackDelay = 10f;
     
     [Space]
     [Header("Monitor Timing")]
     [SerializeField] private float minCooldown = 8f;
     [SerializeField] private float maxCooldown = 15f;
-    [SerializeField] private float firstDelayUntilMonitorVulnerable = 16f;
-    [SerializeField] private float cooldownOnMonitorDown = 15f;
+    [SerializeField] private float introMonitorDelay = 16f;
+    [SerializeField] private float destroyedMonitorCooldown = 5f;
 
     public bool instantKill;
     
@@ -57,7 +58,17 @@ public class BossController : MonoBehaviour
     private Animator _lFAnimator;
     private Animator _rFAnimator;
     private CinemachineImpulseSource _impulseSource;
+
+    private bool _bossIntro = true;
     private bool _died = false;
+    private float _attackCooldown;
+    private bool _isAttacking;
+    
+    private float _monitorChangeCooldown;
+    private List<int> _shootables = new();
+    private int _currentMonitor;
+
+    private float _time;
 
     private GameObject _previousBox;
     
@@ -74,9 +85,18 @@ public class BossController : MonoBehaviour
 
     private void Update()
     {
+        _time += Time.deltaTime;
+        
         if (instantKill)
         {
             Debug_KillAllMonitors();
+        }
+        
+        if (_bossIntro)
+        {
+            introAttackDelay += Time.deltaTime;
+            introMonitorDelay += Time.deltaTime;
+            _bossIntro = false;
         }
         
         if (phase == Phase.Dead)
@@ -86,51 +106,62 @@ public class BossController : MonoBehaviour
             _died = true;
             StartCoroutine(Die());
         }
+        else
+        {
+            // Management of: Attacks
+            CheckTimeUntilNextAttack();
+            
+            // Management of: Monitors
+            _shootables = GetAndSetShootables();
+            if (_shootables.Count == 0) { AdvanceBossPhase(); }
+            CheckTimeUntilMonitorChange();
+            CheckMonitorStatus(); // constant check on if monitor is still active
+        }
     }
 
-    private void OnEnable()
-    {
-        StartCoroutine(AttackRoutine());
-        StartCoroutine(MonitorRoutine());
-    }
-
-    private void OnDisable()
-    {
-        StopAllCoroutines();
-    }
-    
     private IEnumerator Die()
     {
         Debug.Log("boss died");
         music.Stop();
         fade.SetTrigger(Fade);
         PlaySoundAndShake(7);
-        StopCoroutine(AttackRoutine());
-        StopCoroutine(MonitorRoutine());
         _animator.enabled = false;
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene(4);
     }
 
     #region Attacks
-
-        private IEnumerator AttackRoutine()
+    
+        private void CheckTimeUntilNextAttack()
         {
-            yield return new WaitForSeconds(firstDelayUntilAttack);
-
-            while (phase != Phase.Dead)
+            if (Time.deltaTime >= _attackCooldown)
             {
-                // 0 = left, 1 = right, 2 = overhead
-                var choice = Random.Range(0, 3);
-
-                switch (choice)
-                {
-                    case 0: _animator.SetTrigger(LeftAttack); break;
-                    case 1: _animator.SetTrigger(RightAttack); break;
-                    case 2: _animator.SetTrigger(OverheadAttack); break;
-                }
-                yield return new WaitForSeconds(Random.Range(minWait, maxWait));
+                _isAttacking = false;
             }
+
+            if (_isAttacking) return;
+
+            if (!(Time.deltaTime >= introAttackDelay)) return;
+            
+            _isAttacking = true;
+            StartAttack();
+        }
+    
+        private void StartAttack()
+        {
+            if (_died) { return; }
+        
+            // 0 = left, 1 = right, 2 = overhead
+            var choice = Random.Range(0, 3);
+
+            switch (choice)
+            {
+                case 0: _animator.SetTrigger(LeftAttack); break;
+                case 1: _animator.SetTrigger(RightAttack); break;
+                case 2: _animator.SetTrigger(OverheadAttack); break;
+            }
+            var cooldownRandom = Random.Range(minWait, maxWait);
+            _attackCooldown = Time.deltaTime + cooldownRandom;
         }
     
         private void OnLeftHandSmash()
@@ -162,42 +193,41 @@ public class BossController : MonoBehaviour
             }
         }
 
-    #endregion
+        #endregion
 
-    #region Monitors & Health Manager
-        
-        private IEnumerator MonitorRoutine()
+        #region Monitors & Health Manager
+
+        private void SetMonitorShootable()
         {
-            yield return new WaitForSeconds(firstDelayUntilMonitorVulnerable);
+            if (!(Time.deltaTime >= introMonitorDelay)) return;
+            if (_died) { return; }
+            
+            // choose random monitor that is available in respective phase
+            _currentMonitor = _shootables[Random.Range(0, _shootables.Count)];
+            TurnOnMonitor(_currentMonitor);
 
-            while (phase != Phase.Dead)
-            {
-                var shootables = GetShootablesForCurrentPhase();
-                if (shootables.Count == 0)
-                {
-                    AdvancePhase();
-                    yield return null;
-                    continue;
-                }
-
-                var choiceIndex = shootables[Random.Range(0, shootables.Count)];
-                TurnOnMonitor(choiceIndex);
-
-                var randomCooldown = Random.Range(minCooldown, maxCooldown);
-                yield return new WaitForSeconds(randomCooldown);
-
-                var wasShot = monitors[choiceIndex].IsShot;
-                
-                if (!wasShot)
-                    TurnOffMonitor(choiceIndex);
-
-                // use different cooldown depending on whether it was shot
-                var postCooldown = wasShot ? cooldownOnMonitorDown - randomCooldown : 0;
-                yield return new WaitForSeconds(postCooldown);
-            }
+            var cooldownRandom = Random.Range(minCooldown, maxCooldown);
+            _monitorChangeCooldown = Time.deltaTime + cooldownRandom;
         }
-    
-        private List<int> GetShootablesForCurrentPhase()
+        
+        private void CheckTimeUntilMonitorChange()
+        {
+            if (!(Time.deltaTime >= _monitorChangeCooldown)) return;
+        
+            SetMonitorShootable();
+        }
+        
+        private void CheckMonitorStatus()
+        {
+            var monitorWasShot = monitors[_currentMonitor].IsShot;
+            if (!monitorWasShot) return;
+            
+            CallMonitorShot();
+            TurnOffMonitor(_currentMonitor);
+            _monitorChangeCooldown = Time.deltaTime + destroyedMonitorCooldown;
+        }
+        
+        private List<int> GetAndSetShootables()
         {
             var start = (phase == Phase.Head) ? 0 : 4;
             var end = (phase == Phase.Head) ? 3 : 6;
@@ -208,7 +238,7 @@ public class BossController : MonoBehaviour
             return list;
         }
         
-        private void AdvancePhase()
+        private void AdvanceBossPhase()
         {
             switch (phase)
             {
@@ -226,8 +256,6 @@ public class BossController : MonoBehaviour
                     if (allHeadsShot)
                     {
                         phase = Phase.Body;
-                        for (var i = 4; i <= 6; i++) 
-                            monitors[i].SetShootable(false); //
                     }
                     break;
                 }
@@ -311,64 +339,64 @@ public class BossController : MonoBehaviour
             }
         }
 
-    #endregion
+        #endregion
     
-    internal void PlaySoundAndShake(int actionId)
-    {
-       switch (actionId)
+        internal void PlaySoundAndShake(int actionId)
         {
-            case 0:
-                // intro
-                sounds[0].Play();
-                break;
-            case 1:
-                // idle sound
-                sounds[1].Play();
-                break;
-            case 2:
-                // left attack hit
-                _lFAnimator.SetTrigger(Ignite);
-                sounds[2].Play();
-                _impulseSource.ImpulseDefinition.ImpulseShape = CinemachineImpulseDefinition.ImpulseShapes.Rumble;
-                _impulseSource.ImpulseDefinition.ImpulseDuration = 0.5f;
-                CameraShaker.instance.CameraShake(_impulseSource);
-                break;
-            case 3:
-                // right attack hit
-                _rFAnimator.SetTrigger(Ignite);
-                sounds[3].Play();
-                _impulseSource.ImpulseDefinition.ImpulseShape = CinemachineImpulseDefinition.ImpulseShapes.Rumble;
-                _impulseSource.ImpulseDefinition.ImpulseDuration = 0.3f;
-                CameraShaker.instance.CameraShake(_impulseSource);
-                break;
-            case 4:
-                // overhead attack hit
-                var choice = Random.Range(0, 3);
-                var dAnim = debrisObject.GetComponent<Animator>();
+            switch (actionId)
+            {
+                case 0:
+                    // intro
+                    sounds[0].Play();
+                    break;
+                case 1:
+                    // idle sound
+                    sounds[1].Play();
+                    break;
+                case 2:
+                    // left attack hit
+                    _lFAnimator.SetTrigger(Ignite);
+                    sounds[2].Play();
+                    _impulseSource.ImpulseDefinition.ImpulseShape = CinemachineImpulseDefinition.ImpulseShapes.Rumble;
+                    _impulseSource.ImpulseDefinition.ImpulseDuration = 0.5f;
+                    CameraShaker.instance.CameraShake(_impulseSource);
+                    break;
+                case 3:
+                    // right attack hit
+                    _rFAnimator.SetTrigger(Ignite);
+                    sounds[3].Play();
+                    _impulseSource.ImpulseDefinition.ImpulseShape = CinemachineImpulseDefinition.ImpulseShapes.Rumble;
+                    _impulseSource.ImpulseDefinition.ImpulseDuration = 0.3f;
+                    CameraShaker.instance.CameraShake(_impulseSource);
+                    break;
+                case 4:
+                    // overhead attack hit
+                    var choice = Random.Range(0, 3);
+                    var dAnim = debrisObject.GetComponent<Animator>();
             
-                switch (choice)
-                {
-                    case 0: dAnim.SetTrigger(FirstDebris); break;
-                    case 1: dAnim.SetTrigger(SecondDebris); break;
-                    case 2: dAnim.SetTrigger(ThirdDebris); break;
-                }
-                sounds[4].Play();
-                _impulseSource.ImpulseDefinition.ImpulseShape = CinemachineImpulseDefinition.ImpulseShapes.Explosion;
-                _impulseSource.ImpulseDefinition.ImpulseDuration = 0.6f;
-                CameraShaker.instance.CameraShake(_impulseSource);
-                break;
-            case 5:
-                // monitor vulnerable
-                sounds[5].Play();
-                break;
-            case 6:
-                // monitor destroyed
-                sounds[6].Play();
-                break;
-            case 7:
-                // death
-                sounds[7].Play();
-                break;
+                    switch (choice)
+                    {
+                        case 0: dAnim.SetTrigger(FirstDebris); break;
+                        case 1: dAnim.SetTrigger(SecondDebris); break;
+                        case 2: dAnim.SetTrigger(ThirdDebris); break;
+                    }
+                    sounds[4].Play();
+                    _impulseSource.ImpulseDefinition.ImpulseShape = CinemachineImpulseDefinition.ImpulseShapes.Explosion;
+                    _impulseSource.ImpulseDefinition.ImpulseDuration = 0.6f;
+                    CameraShaker.instance.CameraShake(_impulseSource);
+                    break;
+                case 5:
+                    // monitor vulnerable
+                    sounds[5].Play();
+                    break;
+                case 6:
+                    // monitor destroyed
+                    sounds[6].Play();
+                    break;
+                case 7:
+                    // death
+                    sounds[7].Play();
+                    break;
+            }
         }
-    }
 }
