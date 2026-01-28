@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class BossController : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class BossController : MonoBehaviour
     [SerializeField] private GameObject leftFire;
     [SerializeField] private GameObject rightFire;
     [SerializeField] private GameObject debrisObject;
+    [SerializeField] private AudioSource music;
     
     [Space]
     [SerializeField] private GameObject[] leftArmColliders;
@@ -37,6 +40,8 @@ public class BossController : MonoBehaviour
     [SerializeField] private float maxCooldown = 15f;
     [SerializeField] private float firstDelayUntilMonitorVulnerable = 16f;
     [SerializeField] private float cooldownOnMonitorDown = 15f;
+
+    public bool instantKill;
     
     private static readonly int LeftAttack = Animator.StringToHash("leftAttack");
     private static readonly int RightAttack = Animator.StringToHash("rightAttack");
@@ -50,6 +55,7 @@ public class BossController : MonoBehaviour
     private Animator _lFAnimator;
     private Animator _rFAnimator;
     private CinemachineImpulseSource _impulseSource;
+    private bool _died = false;
 
     private GameObject _previousBox;
     
@@ -62,6 +68,22 @@ public class BossController : MonoBehaviour
         _lFAnimator = leftFire.GetComponent<Animator>();
         _rFAnimator = rightFire.GetComponent<Animator>();
         _impulseSource = GetComponent<CinemachineImpulseSource>();
+    }
+
+    private void Update()
+    {
+        if (instantKill)
+        {
+            Debug_KillAllMonitors();
+        }
+        
+        if (phase == Phase.Dead)
+        {
+            if (_died) { return; }
+            
+            _died = true;
+            StartCoroutine(Die());
+        }
     }
 
     private void OnEnable()
@@ -77,7 +99,12 @@ public class BossController : MonoBehaviour
     
     private IEnumerator Die()
     {
+        Debug.Log("boss died");
+        music.Stop();
         PlaySoundAndShake(7);
+        StopCoroutine(AttackRoutine());
+        StopCoroutine(MonitorRoutine());
+        _animator.enabled = false;
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene(4);
     }
@@ -88,7 +115,7 @@ public class BossController : MonoBehaviour
         {
             yield return new WaitForSeconds(firstDelayUntilAttack);
 
-            while (true)
+            while (phase != Phase.Dead)
             {
                 // 0 = left, 1 = right, 2 = overhead
                 var choice = Random.Range(0, 3);
@@ -157,12 +184,7 @@ public class BossController : MonoBehaviour
                 yield return new WaitForSeconds(randomCooldown);
 
                 var wasShot = monitors[choiceIndex].IsShot;
-
-
-                if (wasShot)
-                {
-                    PlaySoundAndShake(6);
-                }
+                
                 if (!wasShot)
                     TurnOffMonitor(choiceIndex);
 
@@ -189,16 +211,40 @@ public class BossController : MonoBehaviour
             {
                 case Phase.Head:
                 {
-                    // if all heads are shot, go to body
-                    phase = Phase.Body;
-                    // un-target any body monitors so routine can pick them
-                    for (var i = 4; i <= 6; i++) monitors[i].SetShootable(false);
+                    // Check if all head monitors are shot
+                    var allHeadsShot = true;
+                    for (var i = 0; i <= 3; i++)
+                    {
+                        if (monitors[i].IsShot) continue;
+                        allHeadsShot = false; 
+                        break;
+                    }
+            
+                    if (allHeadsShot)
+                    {
+                        phase = Phase.Body;
+                        for (var i = 4; i <= 6; i++) 
+                            monitors[i].SetShootable(false); //
+                    }
                     break;
                 }
                 case Phase.Body:
-                    phase = Phase.Dead;
-                    Die();
+                {
+                    // Check if all body monitors are shot
+                    var allBodyShot = true;
+                    for (var i = 4; i <= 6; i++)
+                    {
+                        if (monitors[i].IsShot) continue;
+                        allBodyShot = false; 
+                        break;
+                    }
+
+                    if (allBodyShot)
+                    {
+                        phase = Phase.Dead;
+                    }
                     break;
+                }
             }
         }
         
@@ -245,6 +291,20 @@ public class BossController : MonoBehaviour
             {
                 if (monitorColliders[i] != null)
                     monitorColliders[i].SetActive(isEnabled);
+            }
+        }
+
+        internal void CallMonitorShot()
+        {
+            PlaySoundAndShake(6);
+        }
+
+        private void Debug_KillAllMonitors()
+        {
+            foreach (var monitor in monitors)
+            {
+                monitor.SetShootable(true);
+                monitor.MarkShot();
             }
         }
 
