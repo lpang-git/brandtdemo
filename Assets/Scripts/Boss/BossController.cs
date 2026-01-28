@@ -196,7 +196,7 @@ public class BossController : MonoBehaviour
 
         #endregion
 
-        #region Monitors & Health Manager
+    #region Monitors & Health Manager
 
         private void SetMonitorShootable()
         {
@@ -360,64 +360,64 @@ public class BossController : MonoBehaviour
             }
         }
 
-        #endregion
+    #endregion
     
-        internal void PlaySoundAndShake(int actionId)
+    internal void PlaySoundAndShake(int actionId)
+    { 
+        switch (actionId) 
         {
-            switch (actionId)
-            {
-                case 0:
-                    // intro
-                    sounds[0].Play();
-                    break;
-                case 1:
-                    // idle sound
-                    sounds[1].Play();
-                    break;
-                case 2:
-                    // left attack hit
-                    _lFAnimator.SetTrigger(Ignite);
-                    sounds[2].Play();
-                    _impulseSource.ImpulseDefinition.ImpulseShape = CinemachineImpulseDefinition.ImpulseShapes.Rumble;
-                    _impulseSource.ImpulseDefinition.ImpulseDuration = 0.5f;
-                    CameraShaker.instance.CameraShake(_impulseSource);
-                    break;
-                case 3:
-                    // right attack hit
-                    _rFAnimator.SetTrigger(Ignite);
-                    sounds[3].Play();
-                    _impulseSource.ImpulseDefinition.ImpulseShape = CinemachineImpulseDefinition.ImpulseShapes.Rumble;
-                    _impulseSource.ImpulseDefinition.ImpulseDuration = 0.3f;
-                    CameraShaker.instance.CameraShake(_impulseSource);
-                    break;
-                case 4:
-                    // overhead attack hit
-                    var choice = Random.Range(0, 3);
-                    var dAnim = debrisObject.GetComponent<Animator>();
-            
-                    switch (choice)
-                    {
-                        case 0: dAnim.SetTrigger(FirstDebris); break;
-                        case 1: dAnim.SetTrigger(SecondDebris); break;
-                        case 2: dAnim.SetTrigger(ThirdDebris); break;
-                    }
-                    sounds[4].Play();
-                    _impulseSource.ImpulseDefinition.ImpulseShape = CinemachineImpulseDefinition.ImpulseShapes.Explosion;
-                    _impulseSource.ImpulseDefinition.ImpulseDuration = 0.6f;
-                    CameraShaker.instance.CameraShake(_impulseSource);
-                    break;
-                case 5:
-                    // monitor vulnerable
-                    sounds[5].Play();
-                    break;
-                case 6:
-                    // monitor destroyed
-                    sounds[6].Play();
-                    break;
-                case 7:
-                    // death
-                    sounds[7].Play();
-                    break;
-            }
+            case 0:
+                // intro
+                sounds[0].Play();
+                break;
+            case 1:
+                // idle sound
+                sounds[1].Play();
+                break;
+            case 2:
+                // left attack hit
+                _lFAnimator.SetTrigger(Ignite);
+                sounds[2].Play();
+                _impulseSource.ImpulseDefinition.ImpulseShape = CinemachineImpulseDefinition.ImpulseShapes.Rumble;
+                _impulseSource.ImpulseDefinition.ImpulseDuration = 0.5f;
+                CameraShaker.instance.CameraShake(_impulseSource);
+                break;
+            case 3:
+                // right attack hit
+                _rFAnimator.SetTrigger(Ignite);
+                sounds[3].Play();
+                _impulseSource.ImpulseDefinition.ImpulseShape = CinemachineImpulseDefinition.ImpulseShapes.Rumble;
+                _impulseSource.ImpulseDefinition.ImpulseDuration = 0.3f;
+                CameraShaker.instance.CameraShake(_impulseSource);
+                break;
+            case 4:
+                // overhead attack hit
+                var choice = Random.Range(0, 3);
+                var dAnim = debrisObject.GetComponent<Animator>();
+                
+                switch (choice)
+                {
+                    case 0: dAnim.SetTrigger(FirstDebris); break;
+                    case 1: dAnim.SetTrigger(SecondDebris); break;
+                    case 2: dAnim.SetTrigger(ThirdDebris); break;
+                }
+                sounds[4].Play();
+                _impulseSource.ImpulseDefinition.ImpulseShape = CinemachineImpulseDefinition.ImpulseShapes.Explosion;
+                _impulseSource.ImpulseDefinition.ImpulseDuration = 0.6f;
+                CameraShaker.instance.CameraShake(_impulseSource);
+                break;
+            case 5:
+                // monitor vulnerable
+                sounds[5].Play();
+                break;
+            case 6:
+                // monitor destroyed
+                sounds[6].Play();
+                break;
+            case 7:
+                // death
+                sounds[7].Play(); 
+                break;        
         }
+    }
 }
