@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2183100131335647498}
   - component: {fileID: 2913900692395880673}
   - component: {fileID: 3543305234608224473}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EnvironmentalSilenceZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SFXTrigger
   sfx: {fileID: 0}
+  dust: {fileID: 0}
+  fadeDuration: 1
 --- !u!61 &3543305234608224473
 BoxCollider2D:
   m_ObjectHideFlags: 0
