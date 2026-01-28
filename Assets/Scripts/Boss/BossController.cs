@@ -67,6 +67,7 @@ public class BossController : MonoBehaviour
     private float _monitorChangeCooldown;
     private List<int> _shootables = new();
     private int _currentMonitor;
+    private bool _shotCalled;
 
     private float _time;
 
@@ -115,7 +116,7 @@ public class BossController : MonoBehaviour
             _shootables = GetAndSetShootables();
             if (_shootables.Count == 0) { AdvanceBossPhase(); }
             CheckTimeUntilMonitorChange();
-            CheckMonitorStatus(); // constant check on if monitor is still active
+            CheckMonitorStatus(false); // constant check on if monitor is still active
         }
     }
 
@@ -201,9 +202,11 @@ public class BossController : MonoBehaviour
         {
             if (_died) { return; }
             
+            Debug.Log("Event: Monitor set.");
             // choose random monitor that is available in respective phase
             _currentMonitor = _shootables[Random.Range(0, _shootables.Count)];
             TurnOnMonitor(_currentMonitor);
+            _shotCalled = false;
         }
         
         private void CheckTimeUntilMonitorChange()
@@ -211,20 +214,35 @@ public class BossController : MonoBehaviour
             if (!(_time >= introMonitorDelay)) return;
             if (!(_time >= _monitorChangeCooldown)) return;
         
-            Debug.Log("Event: Monitor set.");
+            Debug.Log("Event: Monitor Change.");
+            CheckMonitorStatus(true);
             var cooldownRandom = Random.Range(minCooldown, maxCooldown);
             _monitorChangeCooldown = _time + cooldownRandom;
             SetMonitorShootable();
         }
         
-        private void CheckMonitorStatus()
+        private void CheckMonitorStatus(bool isChangingTime)
         {
             var monitorWasShot = monitors[_currentMonitor].IsShot;
-            if (!monitorWasShot) return;
-            Debug.Log("Event: Monitor was shot.");
-            CallMonitorShot();
-            TurnOffMonitor(_currentMonitor);
-            _monitorChangeCooldown = _time + destroyedMonitorCooldown;
+
+            if (isChangingTime) // called when monitor hasn't been shot before cooldown end
+            {
+                if (monitorWasShot)
+                {
+                    Debug.Log("Monitor was turned off due to shot, return.");
+                    return;
+                }
+                Debug.Log("Event: Monitor reset.");
+                TurnOffMonitor(_currentMonitor);
+            }
+            else
+            {
+                if (!monitorWasShot || _shotCalled) return;
+                Debug.Log("Event: Monitor was shot.");
+                CallMonitorShot();
+                TurnOffMonitor(_currentMonitor);
+                _monitorChangeCooldown = _time + destroyedMonitorCooldown;
+            }
         }
         
         private List<int> GetAndSetShootables()
@@ -330,6 +348,7 @@ public class BossController : MonoBehaviour
         internal void CallMonitorShot()
         {
             PlaySoundAndShake(6);
+            _shotCalled = true;
         }
 
         private void Debug_KillAllMonitors()
