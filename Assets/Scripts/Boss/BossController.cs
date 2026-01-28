@@ -13,6 +13,7 @@ public class BossController : MonoBehaviour
     [SerializeField] private GameObject rightFire;
     [SerializeField] private GameObject debrisObject;
     [SerializeField] private AudioSource music;
+    [SerializeField] private Animator fade;
     
     [Space]
     [SerializeField] private GameObject[] leftArmColliders;
@@ -50,6 +51,7 @@ public class BossController : MonoBehaviour
     private static readonly int FirstDebris = Animator.StringToHash("one");
     private static readonly int SecondDebris = Animator.StringToHash("two");
     private static readonly int ThirdDebris = Animator.StringToHash("three");
+    private static readonly int Fade = Animator.StringToHash("fadeStart");
     
     private Animator _animator;
     private Animator _lFAnimator;
@@ -101,6 +103,7 @@ public class BossController : MonoBehaviour
     {
         Debug.Log("boss died");
         music.Stop();
+        fade.SetTrigger(Fade);
         PlaySoundAndShake(7);
         StopCoroutine(AttackRoutine());
         StopCoroutine(MonitorRoutine());

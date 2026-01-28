@@ -408,6 +408,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 223010477}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &223010480 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7147138115902564880, guid: c21a2efb0ed60d16d93797053c602470,
+    type: 3}
+  m_PrefabInstance: {fileID: 223010477}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &551480768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2766,6 +2772,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Boss: Aufseher'
       objectReference: {fileID: 0}
+    - target: {fileID: 2505179628307214132, guid: 1f72540f83d53bc0d8b28af4ebc3538e,
+        type: 3}
+      propertyPath: fade
+      value: 
+      objectReference: {fileID: 223010480}
     - target: {fileID: 2505179628307214132, guid: 1f72540f83d53bc0d8b28af4ebc3538e,
         type: 3}
       propertyPath: music
