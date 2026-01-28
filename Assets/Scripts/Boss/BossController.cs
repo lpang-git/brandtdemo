@@ -94,8 +94,8 @@ public class BossController : MonoBehaviour
         
         if (_bossIntro)
         {
-            introAttackDelay += Time.deltaTime;
-            introMonitorDelay += Time.deltaTime;
+            introAttackDelay += _time;
+            introMonitorDelay += _time;
             _bossIntro = false;
         }
         
@@ -121,7 +121,7 @@ public class BossController : MonoBehaviour
 
     private IEnumerator Die()
     {
-        Debug.Log("boss died");
+        Debug.Log("Event: Death.");
         music.Stop();
         fade.SetTrigger(Fade);
         PlaySoundAndShake(7);
@@ -134,16 +134,18 @@ public class BossController : MonoBehaviour
     
         private void CheckTimeUntilNextAttack()
         {
-            if (Time.deltaTime >= _attackCooldown)
+            if (_time >= _attackCooldown)
             {
                 _isAttacking = false;
             }
-
-            if (_isAttacking) return;
-
-            if (!(Time.deltaTime >= introAttackDelay)) return;
             
+            if (_isAttacking) return;
+            if (!(_time >= introAttackDelay)) return;
+            
+            var cooldownRandom = Random.Range(minWait, maxWait);
+            _attackCooldown = _time + cooldownRandom;
             _isAttacking = true;
+            Debug.Log("Event: Attacking.");
             StartAttack();
         }
     
@@ -160,8 +162,6 @@ public class BossController : MonoBehaviour
                 case 1: _animator.SetTrigger(RightAttack); break;
                 case 2: _animator.SetTrigger(OverheadAttack); break;
             }
-            var cooldownRandom = Random.Range(minWait, maxWait);
-            _attackCooldown = Time.deltaTime + cooldownRandom;
         }
     
         private void OnLeftHandSmash()
@@ -199,21 +199,21 @@ public class BossController : MonoBehaviour
 
         private void SetMonitorShootable()
         {
-            if (!(Time.deltaTime >= introMonitorDelay)) return;
             if (_died) { return; }
             
             // choose random monitor that is available in respective phase
             _currentMonitor = _shootables[Random.Range(0, _shootables.Count)];
             TurnOnMonitor(_currentMonitor);
-
-            var cooldownRandom = Random.Range(minCooldown, maxCooldown);
-            _monitorChangeCooldown = Time.deltaTime + cooldownRandom;
         }
         
         private void CheckTimeUntilMonitorChange()
         {
-            if (!(Time.deltaTime >= _monitorChangeCooldown)) return;
+            if (!(_time >= introMonitorDelay)) return;
+            if (!(_time >= _monitorChangeCooldown)) return;
         
+            Debug.Log("Event: Monitor set.");
+            var cooldownRandom = Random.Range(minCooldown, maxCooldown);
+            _monitorChangeCooldown = _time + cooldownRandom;
             SetMonitorShootable();
         }
         
@@ -221,10 +221,10 @@ public class BossController : MonoBehaviour
         {
             var monitorWasShot = monitors[_currentMonitor].IsShot;
             if (!monitorWasShot) return;
-            
+            Debug.Log("Event: Monitor was shot.");
             CallMonitorShot();
             TurnOffMonitor(_currentMonitor);
-            _monitorChangeCooldown = Time.deltaTime + destroyedMonitorCooldown;
+            _monitorChangeCooldown = _time + destroyedMonitorCooldown;
         }
         
         private List<int> GetAndSetShootables()
@@ -255,6 +255,7 @@ public class BossController : MonoBehaviour
             
                     if (allHeadsShot)
                     {
+                        Debug.Log("Event: Advancing to body phase...");
                         phase = Phase.Body;
                     }
                     break;
@@ -272,6 +273,7 @@ public class BossController : MonoBehaviour
 
                     if (allBodyShot)
                     {
+                        Debug.Log("Event: Advancing to death phase...");
                         phase = Phase.Dead;
                     }
                     break;
