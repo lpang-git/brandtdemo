@@ -997,11 +997,35 @@ PrefabInstance:
       propertyPath: m_Name
       value: Portal (SceneChanger)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 18683940612155563, guid: 1a8ffc2caf6456c218767f1811aba881, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8962650476255835076, guid: 1a8ffc2caf6456c218767f1811aba881,
+        type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 7424552259543382520}
   m_SourcePrefab: {fileID: 100100000, guid: 1a8ffc2caf6456c218767f1811aba881, type: 3}
+--- !u!1 &4654937809360879738 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8962650476255835076, guid: 1a8ffc2caf6456c218767f1811aba881,
+    type: 3}
+  m_PrefabInstance: {fileID: 4393281611727860670}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7424552259543382520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4654937809360879738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38df8166933afa642a1cf651a09b144d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneTrigger
+  sceneIndex: 2
 --- !u!4 &5187155048586817099 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8864324667308989941, guid: 1a8ffc2caf6456c218767f1811aba881,
