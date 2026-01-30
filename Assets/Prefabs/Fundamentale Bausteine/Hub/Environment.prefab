@@ -1375,32 +1375,16 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4507861982078705912, guid: 459e461cad9241649a36e3d92981d518,
         type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 5440741253775172101}
-    - targetCorrespondingSourceObject: {fileID: 4507861982078705912, guid: 459e461cad9241649a36e3d92981d518,
-        type: 3}
       insertIndex: -1
       addedObject: {fileID: 1207879488160768567}
-    - targetCorrespondingSourceObject: {fileID: 6336444983765221066, guid: 459e461cad9241649a36e3d92981d518,
-        type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 5037511395874503947}
     - targetCorrespondingSourceObject: {fileID: 6336444983765221066, guid: 459e461cad9241649a36e3d92981d518,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8179899449953738106}
     - targetCorrespondingSourceObject: {fileID: 904179181957330869, guid: 459e461cad9241649a36e3d92981d518,
         type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 6533494270552097446}
-    - targetCorrespondingSourceObject: {fileID: 904179181957330869, guid: 459e461cad9241649a36e3d92981d518,
-        type: 3}
       insertIndex: -1
       addedObject: {fileID: 9066362700888303936}
-    - targetCorrespondingSourceObject: {fileID: 8093372753341037500, guid: 459e461cad9241649a36e3d92981d518,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1199314399045226642}
     - targetCorrespondingSourceObject: {fileID: 8093372753341037500, guid: 459e461cad9241649a36e3d92981d518,
         type: 3}
       insertIndex: -1
@@ -1424,29 +1408,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5766859719882502843}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5037511395874503947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 569586023592053873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6b951f117297224fad8eda217d24ca4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NPCDialog
-  dialogueLines:
-  - "H\xE4tte ich mich nicht verletzt, h\xE4tte ich die Expedition begleiten k\xF6nnen..."
-  - "Sieht so aus als ob du nicht l\xE4nger warten m\xF6chtest, was? Wenn du unbedingt
-    Felix und die anderen finden willst, werde ich dich davon nicht abhalten."
-  - "Hier, nimm diese zwei Patronen mit. Es ist nicht viel, aber mehr kann ich dir
-    nicht mitgeben. Was auch immer die anderen da drau\xDFen aufgehalten hat wird
-    dir auch das Leben schwer machen wollen, also sie vorsichtig."
-  - "Viel Gl\xFCck."
-  npcIcon: {fileID: -7221970766383366765, guid: 516f368c5ed13324eb0e77ff08be4ec1,
-    type: 3}
-  sceneNumber: 0
 --- !u!61 &8179899449953738106
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1511,26 +1472,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5766859719882502843}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1199314399045226642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2331017423360968967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6b951f117297224fad8eda217d24ca4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NPCDialog
-  dialogueLines:
-  - Komm schon, geh an, geh an, GEH AN!
-  - "Wenn dieser Generator auch noch den Geist aufgibt, k\xF6nnen wir uns auf kalte,
-    d\xFCstere Zeiten einstellen. Die Nerven liegen bei allen blank und ich glaube
-    wenn das hier auch noch schief l\xE4uft dann springt mir unser Arzt an die Gurgel..."
-  - Hey, falls du auf deinem Weg einen intakten Generator findest, lass es mich wissen.
-  npcIcon: {fileID: 2054393301788041080, guid: 10a2e653d281bdb46b076071de95dc5d, type: 3}
-  sceneNumber: 0
 --- !u!61 &3284700560965564026
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1583,29 +1524,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5766859719882502843}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6533494270552097446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6666535195874968846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6b951f117297224fad8eda217d24ca4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NPCDialog
-  dialogueLines:
-  - "SCHEI\xDFE MANN!"
-  - "Fr\xFCher habe ich mich dar\xFCber aufgeregt Leuten Finger wieder ann\xE4hen
-    zu m\xFCssen, aber jetzt kommt der Trupp ja nicht mal mehr zur\xFCck! GARNICHTS
-    zum wieder ann\xE4hen!"
-  - "H\xE4tte ich mitgehen sollen? Aber w\xE4re ich mitgegangen w\xE4re ich bei meinem
-    Geschick als erstes gestorben. Und dann w\xE4re ich noch nutzloser als ich es
-    jetzt bin."
-  - Du willst auch noch gehen!? Kann ich dir Hausarrest verschreiben? ...Bitte?
-  npcIcon: {fileID: 3921699034768547792, guid: 70e2e8d7bd1b44940807afa5f3e56d9c, type: 3}
-  sceneNumber: 0
 --- !u!61 &9066362700888303936
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1664,27 +1582,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5766859719882502843}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5440741253775172101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7964374919172641347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6b951f117297224fad8eda217d24ca4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NPCDialog
-  dialogueLines:
-  - "...Meine armen T\xE4ubchen...alles wird gut ihr Feinis."
-  - "Die Brieftauben, welche wir dem Expeditionstrupp mitgegeben haben um in Kontakt
-    zu bleiben, sind letzte Nacht ohne Nachricht alle zu uns zur\xFCckgekehrt."
-  - Ich will mir gar nicht vorstellen was mit dem Trupp passiert ist, die Tauben
-    sind immer noch ganz aufgebracht.
-  - Du willst sie suchen gehen? Oh Gott...
-  npcIcon: {fileID: 5220937277671981227, guid: 02e3cfca76ebb044d9e5b0354adb6c54, type: 3}
-  sceneNumber: 0
 --- !u!61 &1207879488160768567
 BoxCollider2D:
   m_ObjectHideFlags: 0

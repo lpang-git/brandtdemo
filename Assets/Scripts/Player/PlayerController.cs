@@ -373,6 +373,7 @@ namespace Platformer.Mechanics
             {
                 playerInRangeOfDialogue = true;
                 dialogueManager.SetNPC(npc);
+                npc.bubble.SetActive(true);
             } else if (ammoBox)
             {
                 _aimScript.OnAmmoPickedUp(ammoBox.ammoNum);
@@ -414,6 +415,7 @@ namespace Platformer.Mechanics
             {
                 playerInRangeOfDialogue = false;
                 dialogueManager.EndDialogue(false);
+                npc.bubble.SetActive(false);
             }
         }
 

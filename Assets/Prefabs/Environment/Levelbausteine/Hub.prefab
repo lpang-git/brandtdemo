@@ -123,6 +123,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 962777233239957752}
+  - component: {fileID: 766634689217966109}
   - component: {fileID: 552265851224811138}
   - component: {fileID: 2727524777469376715}
   m_Layer: 0
@@ -144,9 +145,34 @@ Transform:
   m_LocalPosition: {x: 3.076, y: -0.213, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 3004744411667926321}
   m_Father: {fileID: 2717004845408298284}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &766634689217966109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904179181957330869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b951f117297224fad8eda217d24ca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialog
+  dialogueLines:
+  - "SCHEI\xDFE MANN!"
+  - "Fr\xFCher habe ich mich dar\xFCber aufgeregt Leuten Finger wieder ann\xE4hen
+    zu m\xFCssen, aber jetzt kommt der Trupp ja nicht mal mehr zur\xFCck! GARNICHTS
+    zum wieder ann\xE4hen!"
+  - "H\xE4tte ich mitgehen sollen? Aber w\xE4re ich mitgegangen w\xE4re ich bei meinem
+    Geschick als erstes gestorben. Und dann w\xE4re ich noch nutzloser als ich es
+    jetzt bin."
+  - Du willst auch noch gehen!? Kann ich dir Hausarrest verschreiben? ...Bitte?
+  npcIcon: {fileID: 3921699034768547792, guid: 70e2e8d7bd1b44940807afa5f3e56d9c, type: 3}
+  sceneNumber: 0
+  bubble: {fileID: 2815163707636205261}
 --- !u!212 &552265851224811138
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1124,6 +1150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2187393246486199745}
+  - component: {fileID: 1984228180349669566}
   - component: {fileID: 5154883107419027254}
   - component: {fileID: 4616620373946113023}
   m_Layer: 0
@@ -1145,9 +1172,32 @@ Transform:
   m_LocalPosition: {x: 10.616, y: -0.174, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 7560779654839308213}
   m_Father: {fileID: 2717004845408298284}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1984228180349669566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4507861982078705912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b951f117297224fad8eda217d24ca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialog
+  dialogueLines:
+  - "...Meine armen T\xE4ubchen...alles wird gut ihr Feinis."
+  - "Die Brieftauben, welche wir dem Expeditionstrupp mitgegeben haben um in Kontakt
+    zu bleiben, sind letzte Nacht ohne Nachricht alle zu uns zur\xFCckgekehrt."
+  - Ich will mir gar nicht vorstellen was mit dem Trupp passiert ist, die Tauben
+    sind immer noch ganz aufgebracht.
+  - Du willst sie suchen gehen? Oh Gott...
+  npcIcon: {fileID: 5220937277671981227, guid: 02e3cfca76ebb044d9e5b0354adb6c54, type: 3}
+  sceneNumber: 0
+  bubble: {fileID: 7372056607192400969}
 --- !u!212 &5154883107419027254
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1419,6 +1469,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6051361472814392054}
+  - component: {fileID: 1576494824793444272}
   - component: {fileID: 1858844475118181166}
   - component: {fileID: 6659928779879944343}
   m_Layer: 0
@@ -1440,9 +1491,34 @@ Transform:
   m_LocalPosition: {x: 8.277, y: -0.211, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 7098423825547760899}
   m_Father: {fileID: 2717004845408298284}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1576494824793444272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6336444983765221066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b951f117297224fad8eda217d24ca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialog
+  dialogueLines:
+  - "H\xE4tte ich mich nicht verletzt, h\xE4tte ich die Expedition begleiten k\xF6nnen..."
+  - "Sieht so aus als ob du nicht l\xE4nger warten m\xF6chtest, was? Wenn du unbedingt
+    Felix und die anderen finden willst, werde ich dich davon nicht abhalten."
+  - "Hier, nimm diese zwei Patronen mit. Es ist nicht viel, aber mehr kann ich dir
+    nicht mitgeben. Was auch immer die anderen da drau\xDFen aufgehalten hat wird
+    dir auch das Leben schwer machen wollen, also sie vorsichtig."
+  - "Viel Gl\xFCck."
+  npcIcon: {fileID: -7221970766383366765, guid: 516f368c5ed13324eb0e77ff08be4ec1,
+    type: 3}
+  sceneNumber: 0
+  bubble: {fileID: 7791559104304340735}
 --- !u!212 &1858844475118181166
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1773,6 +1849,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1091555080944474106}
+  - component: {fileID: 4660330934120276521}
   - component: {fileID: 8043585753118843571}
   - component: {fileID: 2596159659089326835}
   m_Layer: 0
@@ -1794,9 +1871,31 @@ Transform:
   m_LocalPosition: {x: 0.57, y: -0.199, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 1209448520358005272}
   m_Father: {fileID: 2717004845408298284}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4660330934120276521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8093372753341037500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b951f117297224fad8eda217d24ca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialog
+  dialogueLines:
+  - Komm schon, geh an, geh an, GEH AN!
+  - "Wenn dieser Generator auch noch den Geist aufgibt, k\xF6nnen wir uns auf kalte,
+    d\xFCstere Zeiten einstellen. Die Nerven liegen bei allen blank und ich glaube
+    wenn das hier auch noch schief l\xE4uft dann springt mir unser Arzt an die Gurgel..."
+  - Hey, falls du auf deinem Weg einen intakten Generator findest, lass es mich wissen.
+  npcIcon: {fileID: 2054393301788041080, guid: 10a2e653d281bdb46b076071de95dc5d, type: 3}
+  sceneNumber: 0
+  bubble: {fileID: 2191938415450866148}
 --- !u!212 &8043585753118843571
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2059,6 +2158,91 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &232822595445218594
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1091555080944474106}
+    m_Modifications:
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.318
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112314166013926598, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_Name
+      value: Speechbubble
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112314166013926598, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4f78932c83ebb064db58398ad37a290f, type: 3}
+--- !u!4 &1209448520358005272 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+    type: 3}
+  m_PrefabInstance: {fileID: 232822595445218594}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2191938415450866148 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2112314166013926598, guid: 4f78932c83ebb064db58398ad37a290f,
+    type: 3}
+  m_PrefabInstance: {fileID: 232822595445218594}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &709202136137442750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17379,6 +17563,181 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3075594927712547998}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4197648357175548427
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 962777233239957752}
+    m_Modifications:
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.298
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.285
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112314166013926598, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_Name
+      value: Speechbubble
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112314166013926598, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4f78932c83ebb064db58398ad37a290f, type: 3}
+--- !u!1 &2815163707636205261 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2112314166013926598, guid: 4f78932c83ebb064db58398ad37a290f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4197648357175548427}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3004744411667926321 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4197648357175548427}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8174419473681105465
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6051361472814392054}
+    m_Modifications:
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.214
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.422
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112314166013926598, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_Name
+      value: Speechbubble
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112314166013926598, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4f78932c83ebb064db58398ad37a290f, type: 3}
+--- !u!4 &7098423825547760899 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8174419473681105465}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7791559104304340735 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2112314166013926598, guid: 4f78932c83ebb064db58398ad37a290f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8174419473681105465}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8590095854997298186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17467,4 +17826,109 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3955438167788748115, guid: ed7159c9248db0293b6f910682453baa,
     type: 3}
   m_PrefabInstance: {fileID: 8590095854997298186}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8871736012943874191
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2187393246486199745}
+    m_Modifications:
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112314166013926598, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_Name
+      value: Speechbubble
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112314166013926598, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4f78932c83ebb064db58398ad37a290f, type: 3}
+--- !u!1 &7372056607192400969 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2112314166013926598, guid: 4f78932c83ebb064db58398ad37a290f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8871736012943874191}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7560779654839308213 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8871736012943874191}
   m_PrefabAsset: {fileID: 0}

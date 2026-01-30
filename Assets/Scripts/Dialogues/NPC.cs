@@ -8,4 +8,5 @@ public class NPC : MonoBehaviour
     [SerializeField] internal string[] dialogueLines;
     [SerializeField] internal Sprite npcIcon;
     [SerializeField] internal int sceneNumber = 0;
+    [SerializeField] internal GameObject bubble;
 }
