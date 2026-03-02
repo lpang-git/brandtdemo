@@ -69,7 +69,8 @@ Transform:
   m_LocalPosition: {x: 35.615, y: -2.165, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 5118009506600160773}
   m_Father: {fileID: 6500741023972293445}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &655134125132637215
@@ -92,8 +93,10 @@ MonoBehaviour:
   - "Max, es ist zu sp\xE4t. Viel zu sp\xE4t. Du und ich, wir sind schon tot."
   npcIcon: {fileID: 5421323288694553770, guid: 63eb58b802a739c48a0c468703fbebb2, type: 3}
   sceneNumber: 3
+  bubble: {fileID: 5306742168525555193}
 --- !u!212 &7538196611633891878
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -139,6 +142,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
+  m_MaskInteraction: 0
   m_Sprite: {fileID: -3368405547620528607, guid: 569518661678e0e489ea8013995871e5,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -149,7 +153,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &3172275235392518324
 Animator:
@@ -253,6 +256,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1807350916506168425
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -298,6 +302,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 1820385111690157486, guid: 442d3adc1ddd53a43bbadb584dd3f101,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -308,7 +313,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &571874620883196238
 PrefabInstance:
@@ -17434,6 +17438,86 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6526479788197017205, guid: de4f94d3c43aa45429304537a207880f,
     type: 3}
   m_PrefabInstance: {fileID: 5848500892220839127}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6121842596424997183
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4746745003543659001}
+    m_Modifications:
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.349
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.371
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112314166013926598, guid: 4f78932c83ebb064db58398ad37a290f,
+        type: 3}
+      propertyPath: m_Name
+      value: Speechbubble
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4f78932c83ebb064db58398ad37a290f, type: 3}
+--- !u!4 &5118009506600160773 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1437763115981592378, guid: 4f78932c83ebb064db58398ad37a290f,
+    type: 3}
+  m_PrefabInstance: {fileID: 6121842596424997183}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5306742168525555193 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2112314166013926598, guid: 4f78932c83ebb064db58398ad37a290f,
+    type: 3}
+  m_PrefabInstance: {fileID: 6121842596424997183}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6331768702006298520
 PrefabInstance:
