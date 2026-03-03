@@ -68,8 +68,8 @@ MonoBehaviour:
   - {fileID: 3367530410779565191}
   - {fileID: 2967691657262814335}
   - {fileID: 334585645853502162}
-  - {fileID: 2717845032828592136}
-  - {fileID: 2268118468877116851}
+  - {fileID: 4597754817465015766}
+  - {fileID: 0}
   - {fileID: 951585218646854056}
   - {fileID: 5041617629125171631}
   - {fileID: 4307473535417047821}
@@ -78,7 +78,7 @@ MonoBehaviour:
   - {fileID: 2374672746651129914}
   - {fileID: 1555282291462899987}
   - {fileID: 5829733823249566075}
-  - {fileID: 4597754817465015766}
+  - {fileID: 0}
   - {fileID: 5259911772894644077}
   - {fileID: 4031002545534363115}
   - {fileID: 7102613781030201328}
@@ -154,6 +154,7 @@ MonoBehaviour:
   maxHP: 1
 --- !u!212 &212064061491315838
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -199,6 +200,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 2836589891087658081, guid: 228a668547622ed4fb5c6f49406d1475,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -209,7 +211,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &95391780594314510
 Animator:
@@ -1500,12 +1501,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6410251532821305358}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.2, y: 0.125, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5453342071976458734}
+  m_Father: {fileID: 5673164589388417010}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &2268118468877116851
 AudioSource:
@@ -2467,8 +2468,7 @@ Transform:
   - {fileID: 9036279140254412128}
   - {fileID: 5045901558843451886}
   - {fileID: 5110553287790500381}
-  - {fileID: 716399267600801472}
-  - {fileID: 5067975140184483563}
+  - {fileID: 1455225456592629459}
   - {fileID: 7575971829221416533}
   - {fileID: 4251361347240949856}
   - {fileID: 449542295216045596}
@@ -2476,7 +2476,6 @@ Transform:
   - {fileID: 3062236235568160948}
   - {fileID: 9145029762414076368}
   - {fileID: 8120514208264104513}
-  - {fileID: 1455225456592629459}
   - {fileID: 5114942447888034095}
   - {fileID: 7990052397537144601}
   - {fileID: 4005409197850046493}
@@ -2646,6 +2645,8 @@ Transform:
   - {fileID: 1338908089986631604}
   - {fileID: 2535981909803838773}
   - {fileID: 5635910511432479818}
+  - {fileID: 716399267600801472}
+  - {fileID: 5067975140184483563}
   m_Father: {fileID: 4526335388715526479}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7729695720460327803
@@ -2933,12 +2934,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7848625973284741583}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.2, y: 0.125, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5453342071976458734}
+  m_Father: {fileID: 5673164589388417010}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &2717845032828592136
 AudioSource:
@@ -3231,6 +3232,8 @@ MonoBehaviour:
   - {fileID: 7262588855075222428}
   - {fileID: 7041914089174051345}
   - {fileID: 1479729178673624918}
+  - {fileID: 2717845032828592136}
+  - {fileID: 2268118468877116851}
   currentChamberedAmmo: 0
   currentUnchamberedAmmo: 0
   nextShootTime: 0

@@ -16,8 +16,6 @@ namespace Platformer.Mechanics
         private static readonly int Dead = Animator.StringToHash("dead");
         private static readonly int DramaticFall = Animator.StringToHash("dramaticFall");
         private static readonly int Climbing = Animator.StringToHash("climbing");
-        private static readonly int AimPressed = Animator.StringToHash("aimPressed");
-        private static readonly int IsAiming = Animator.StringToHash("isAiming");
         private static readonly int HasStartedClimbing = Animator.StringToHash("climbStart");
         private static readonly int LookState = Animator.StringToHash("lookState");
         private static readonly int DeadByEnemy = Animator.StringToHash("deadByEnemy");
@@ -626,8 +624,6 @@ namespace Platformer.Mechanics
 
             internal void PlaySoundAndAnims(int actionId)
             {
-                animator.SetBool(IsAiming, _aimScript.isAiming);
-                
                 switch (actionId)
                 {
                     case 0:
@@ -651,16 +647,7 @@ namespace Platformer.Mechanics
                         SetTypeAndPlayLandingSound();
                         break;
                     case 5:
-                        // holster/unholster weapon
-                        animator.SetTrigger(AimPressed);
-                        if (_aimScript.isAiming)
-                        {
-                            sounds[4].Play(); // unholster (aim)
-                        }
-                        else
-                        {
-                            sounds[5].Play(); // holster (stop aiming)
-                        }
+                        // empty for now
                         break;
                     case 6:
                         // die by void
@@ -778,7 +765,7 @@ namespace Platformer.Mechanics
             {
                 // ground type number: 0 = gravel, 1 = basalt, 2 = wood, 3 = concrete, 4 = metal, 5 = gravel H, 6 = wood H, 7 = concrete H, 8 = metal H
                 var choice = Random.Range(0, 3);
-                sounds[14].pitch = Random.Range(0.5f, 1.5f);
+                sounds[4].pitch = Random.Range(0.5f, 1.5f);
                 sounds[3].clip = groundType switch
                 {
                     0 => gravelFootsteps[choice],
@@ -797,9 +784,9 @@ namespace Platformer.Mechanics
 
             private void SetTypeAndPlayLandingSound()
             {
-                sounds[14].pitch = Random.Range(0.7f, 1.5f);
-                sounds[14].clip = landingSounds[groundType];
-                sounds[14].Play();
+                sounds[4].pitch = Random.Range(0.7f, 1.5f);
+                sounds[4].clip = landingSounds[groundType];
+                sounds[4].Play();
             }
 
             private void StopAllPlayerSounds()

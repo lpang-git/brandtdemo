@@ -6,6 +6,8 @@ public class PlayerGunBehaviour : MonoBehaviour
 {
     private static readonly int Shoot = Animator.StringToHash("shoot");
     private static readonly int Reload = Animator.StringToHash("reload");
+    private static readonly int AimPressed = Animator.StringToHash("aimPressed");
+    private static readonly int IsAiming = Animator.StringToHash("isAiming");
     
     [Header("Shooting References")]
     [SerializeField] private GameObject bulletPrefab;
@@ -25,7 +27,7 @@ public class PlayerGunBehaviour : MonoBehaviour
     [SerializeField] private float gunAimCooldown = 1f;
     
     [Tooltip("Cooldown (in seconds) in which the player cannot move after they have pressed reload.")]
-    [SerializeField] private float reloadCooldown = 1.25f;
+    [SerializeField] private float reloadCooldown = 1.5f;
     
     [Tooltip("Maximum amount of bullets possible in chamber")]
     [SerializeField] private int maxAmmo = 3;
@@ -52,6 +54,7 @@ public class PlayerGunBehaviour : MonoBehaviour
     internal InputAction aimAction;
 
     private PlayerUI _countingUI;
+    private Animator _animator;
 
     private bool _canShoot;
     
@@ -63,6 +66,7 @@ public class PlayerGunBehaviour : MonoBehaviour
         }
         
         _playerScript = player.GetComponent<PlayerController>();
+        _animator = _playerScript.animator;
         fireAction = InputSystem.actions.FindAction("Player/Attack");
         reloadAction = InputSystem.actions.FindAction("Player/Reload");
         aimAction =  InputSystem.actions.FindAction("Player/Aim");
@@ -81,11 +85,6 @@ public class PlayerGunBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (_playerScript.velocity.x != 0 || _playerScript.velocity.y != 0)
-        {
-            isAiming = false;
-        }
-
         if (_playerScript._isPaused)
             return;
         Cursor.visible = isAiming;
@@ -99,8 +98,8 @@ public class PlayerGunBehaviour : MonoBehaviour
         reloadAction.Enable();
         reloadAction.performed += OnReload;
         
-        aimAction.Enable();
-        aimAction.performed += OnAim;
+        aimAction.performed += OnAimHold;
+        aimAction.canceled += OnAimRelease;
     }
 
     private void OnDisable()
@@ -111,8 +110,31 @@ public class PlayerGunBehaviour : MonoBehaviour
         reloadAction.Disable();
         reloadAction.performed -= OnReload;
         
-        aimAction.Disable();
-        aimAction.performed -= OnAim;
+        aimAction.performed -= OnAimHold;
+        aimAction.canceled -= OnAimRelease;
+    }
+    
+    private void OnAimHold(InputAction.CallbackContext context)
+    {
+        isAiming = true;
+        _playerScript.controlEnabled = false; // lock movement during aiming
+        _animator.SetBool(IsAiming, true);
+        
+        var hotspot = new Vector2(aimCursor.width / 2, aimCursor.height / 2);
+        Cursor.SetCursor(aimCursor, hotspot, CursorMode.Auto);
+
+        TriggerSoundAndAnimation(4);
+    }
+
+    private void OnAimRelease(InputAction.CallbackContext context)
+    {
+        isAiming = false;
+        _playerScript.controlEnabled = true;
+        _animator.SetBool(IsAiming, false);
+        
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto); // Reset the cursor
+        
+        TriggerSoundAndAnimation(5);
     }
 
     private void OnShoot(InputAction.CallbackContext context)
@@ -134,8 +156,7 @@ public class PlayerGunBehaviour : MonoBehaviour
             
             SaveAmmoToManager();
             _countingUI.UpdateAmmoCount(currentChamberedAmmo, currentUnchamberedAmmo);
-
-            StartCoroutine(LockActionsForDuration(shootCooldown));
+            
             StartCoroutine(LockShootForDuration(shootCooldown));
             
             TriggerSoundAndAnimation(1);
@@ -149,43 +170,45 @@ public class PlayerGunBehaviour : MonoBehaviour
         }
     }
 
-    private System.Collections.IEnumerator LockActionsForDuration(float duration)
+    private System.Collections.IEnumerator LockMovementForDuration(float duration) // used when reloading
     {
         _playerScript.controlEnabled = false;
         yield return new WaitForSeconds(duration);
         _playerScript.controlEnabled = true;
     }
     
-    private System.Collections.IEnumerator LockShootForDuration(float duration)
+    private System.Collections.IEnumerator LockShootForDuration(float duration) // used when auto-reloading or when shooting
     {
         _canShoot = false;
         yield return new WaitForSeconds(duration);
         _canShoot = true;
     }
     
-    private void OnReload(InputAction.CallbackContext context)
+    private System.Collections.IEnumerator LockGunForDuration(float duration) // used when reloading
     {
-        if (!isAiming)
-        {
-            TriggerSoundAndAnimation(0);
-            return;
-        }
-        
+        DisableGunControls();
+        yield return new WaitForSeconds(duration);
+        EnableGunControls();
+    }
+    
+    private void OnReload(InputAction.CallbackContext context) // reload pressed
+    {
         InitReload();
+        StartCoroutine(LockGunForDuration(reloadCooldown));
+    }
+    
+    private void OnGunEmpty() // auto-reload
+    {
+        TriggerSoundAndAnimation(3);
+        InitReload();
+        StartCoroutine(LockShootForDuration(reloadCooldown));
     }
     
     private void InitReload()
     {
-        if (!isAiming)
-        {
-            TriggerSoundAndAnimation(0);
-            return;
-        }
-        
         TriggerSoundAndAnimation(2);
 
-        StartCoroutine(LockActionsForDuration(reloadCooldown));
-        StartCoroutine(LockShootForDuration(reloadCooldown));
+        StartCoroutine(LockMovementForDuration(reloadCooldown));
         
         // Calculate how many bullets needed to fill chamber
         var needed = maxAmmo - currentChamberedAmmo;
@@ -197,12 +220,6 @@ public class PlayerGunBehaviour : MonoBehaviour
         }
         SaveAmmoToManager();
         _countingUI.UpdateAmmoCount(currentChamberedAmmo, currentUnchamberedAmmo);
-    }
-
-    private void OnGunEmpty()
-    {
-        TriggerSoundAndAnimation(3);
-        InitReload();
     }
     
     private void TriggerSoundAndAnimation(int fxNum)
@@ -227,18 +244,15 @@ public class PlayerGunBehaviour : MonoBehaviour
                 // empty magazine
                 sounds[3].Play();
                 break;
+            case 4:
+                // unholster
+                sounds[4].Play();
+                break;
+            case 5:
+                // holster
+                sounds[5].Play();
+                break;
         }
-    }
-
-    private void OnAim(InputAction.CallbackContext context)
-    {
-        isAiming = !isAiming;
-        var hotspot = new Vector2(aimCursor.width / 2, aimCursor.height / 2);
-        Cursor.SetCursor(aimCursor, hotspot, CursorMode.Auto);
-        
-        StartCoroutine(LockActionsForDuration(gunAimCooldown));
-        
-        _playerScript.PlaySoundAndAnims(5);
     }
 
     internal void OnAmmoPickedUp(int ammoNum)
@@ -259,7 +273,7 @@ public class PlayerGunBehaviour : MonoBehaviour
     {
         fireAction.performed += OnShoot;
         reloadAction.performed += OnReload;
-        aimAction.performed += OnAim;
+        aimAction.performed += OnAimHold;
         fireAction.Enable(); reloadAction.Enable(); aimAction.Enable();
     }
 
@@ -267,7 +281,7 @@ public class PlayerGunBehaviour : MonoBehaviour
     {
         fireAction.performed -= OnShoot;
         reloadAction.performed -= OnReload;
-        aimAction.performed -= OnAim;
+        aimAction.performed -= OnAimHold;
         fireAction.Disable(); reloadAction.Disable(); aimAction.Disable();
     }
 }
