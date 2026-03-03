@@ -34,7 +34,7 @@ public class BossController : MonoBehaviour
     [Header("Attack Timing")]
     [SerializeField] private float minWait = 4f;
     [SerializeField] private float maxWait = 8f;
-    [SerializeField] private float introAttackDelay = 10f;
+    [SerializeField] private float introAttackDelay = 8f;
     
     [Space]
     [Header("Monitor Timing")]
