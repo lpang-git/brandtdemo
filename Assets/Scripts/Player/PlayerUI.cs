@@ -1,3 +1,4 @@
+using Platformer.Core;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Audio;
@@ -47,6 +48,7 @@ public class PlayerUI : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Simulation.Clear();
         ResumeGame();
     }
 
