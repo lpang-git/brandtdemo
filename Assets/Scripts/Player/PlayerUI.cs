@@ -1,4 +1,4 @@
-using System;
+using Platformer.Core;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Audio;
@@ -47,7 +47,9 @@ public class PlayerUI : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Simulation.Clear();
+        ResumeGame();
     }
 
     public void MainMenu()
@@ -59,12 +61,27 @@ public class PlayerUI : MonoBehaviour
     {
         Application.Quit();
     }
-
-    public void SetVolume(float volume)
+    
+    private void SetVolume(float sliderValue)
     {
-        audioMixer.SetFloat("Master", Mathf.Log10(volume) * 20);
+        sliderValue = Mathf.Clamp(sliderValue, 0, 10);
+
+        var dBValue = sliderValue switch
+        {
+            >= 2 => -20 + ((sliderValue - 2) * 2),
+            1 => -30,
+            _ => -80
+        };
+
+        audioMixer.SetFloat("MasterVolume", dBValue);
+        
+        var volume = Mathf.Pow(10, dBValue / 20);
         PlayerPrefs.SetFloat("Master", volume);
+
+        // Log the volume for debugging
+        Debug.Log("Setting AudioMixer volume to: " + dBValue + " dB");
     }
+
     
     internal void UpdateAmmoCount(float chambered, float unchambered)
     {
@@ -74,12 +91,12 @@ public class PlayerUI : MonoBehaviour
 
     public void PlaySound(int type)
     {
-        switch (type)
+        /*switch (type)
         {
             case 0:
                 // button click
-                _source.PlayOneShot(clips[0]);
+                _source.Play(clips[0]);
                 break;
-        }
+        }*/
     }
 }

@@ -992,6 +992,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 996209537060073319, guid: 2bceda4ba3159c7efad31aae05c6a721,
+        type: 3}
+      propertyPath: playerSpawn
+      value: 
+      objectReference: {fileID: 1694583628}
     - target: {fileID: 1191484121810143592, guid: 2bceda4ba3159c7efad31aae05c6a721,
         type: 3}
       propertyPath: m_TileSpriteArray.Array.size
