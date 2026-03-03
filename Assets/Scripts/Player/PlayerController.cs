@@ -357,7 +357,7 @@ namespace Platformer.Mechanics
                 _aimScript.OnAmmoPickedUp(ammoBox.ammoNum);
                 ammoBox.gameObject.GetComponent<Collider2D>().enabled = false;
                 ammoBox.OnPickedUp();
-                PlaySoundAndAnims(14);
+                PlaySoundAndAnims(15);
             } else if (col.CompareTag("BossCollider"))
             {
                 if (dyingState)
@@ -371,7 +371,7 @@ namespace Platformer.Mechanics
                     return;
                 Schedule<PlayerDeath>();
                 dyingState = true;
-                PlaySoundAndAnims(15);
+                PlaySoundAndAnims(16);
             } else if (col.CompareTag("Debris"))
             {
                 if (dyingState)
