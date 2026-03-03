@@ -8,6 +8,7 @@ public class PlayerGunBehaviour : MonoBehaviour
     private static readonly int Reload = Animator.StringToHash("reload");
     private static readonly int AimPressed = Animator.StringToHash("aimPressed");
     private static readonly int IsAiming = Animator.StringToHash("isAiming");
+    private static readonly int LookState = Animator.StringToHash("lookState");
     
     [Header("Shooting References")]
     [SerializeField] private GameObject bulletPrefab;
@@ -49,13 +50,13 @@ public class PlayerGunBehaviour : MonoBehaviour
 
     private PlayerController _playerScript;
     
-    internal InputAction fireAction;
-    internal InputAction reloadAction;
-    internal InputAction aimAction;
+    internal InputAction fireAction, reloadAction, aimAction, lookAction;
 
     private PlayerUI _countingUI;
     private Animator _animator;
 
+    private Vector2 _mousePosition;
+    private Camera _cameraMain;
     private bool _canShoot;
     
     private void Awake()
@@ -70,7 +71,9 @@ public class PlayerGunBehaviour : MonoBehaviour
         fireAction = InputSystem.actions.FindAction("Player/Attack");
         reloadAction = InputSystem.actions.FindAction("Player/Reload");
         aimAction =  InputSystem.actions.FindAction("Player/Aim");
+        lookAction = InputSystem.actions.FindAction("Player/Look");
         _countingUI = userInterfaceObject.GetComponent<PlayerUI>();
+        _cameraMain = Camera.main;
         
         currentChamberedAmmo = AmmoSaver.Instance != null ? AmmoSaver.Instance.chambered : startingAmmo;
         currentUnchamberedAmmo = AmmoSaver.Instance != null ? AmmoSaver.Instance.unchambered : 0;
@@ -87,30 +90,24 @@ public class PlayerGunBehaviour : MonoBehaviour
     {
         if (_playerScript._isPaused)
             return;
+        
+        if (isAiming)
+        {
+            AimAtMouse();
+        }
+        
         Cursor.visible = isAiming;
     }
 
     private void OnEnable()
     {
-        fireAction.Enable();
-        fireAction.performed += OnShoot;
-        
-        reloadAction.Enable();
-        reloadAction.performed += OnReload;
-        
-        aimAction.performed += OnAimHold;
+        EnableGunControls();
         aimAction.canceled += OnAimRelease;
     }
 
     private void OnDisable()
     {
-        fireAction.Disable();
-        fireAction.performed -= OnShoot;
-        
-        reloadAction.Disable();
-        reloadAction.performed -= OnReload;
-        
-        aimAction.performed -= OnAimHold;
+        DisableGunControls();
         aimAction.canceled -= OnAimRelease;
     }
     
@@ -135,6 +132,11 @@ public class PlayerGunBehaviour : MonoBehaviour
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto); // Reset the cursor
         
         TriggerSoundAndAnimation(5);
+    }
+    
+    private void OnLook(InputAction.CallbackContext context)
+    {
+        _mousePosition = context.ReadValue<Vector2>();
     }
 
     private void OnShoot(InputAction.CallbackContext context)
@@ -222,6 +224,37 @@ public class PlayerGunBehaviour : MonoBehaviour
         _countingUI.UpdateAmmoCount(currentChamberedAmmo, currentUnchamberedAmmo);
     }
     
+    private void AimAtMouse()
+    {
+        var worldPosition = _cameraMain.ScreenToWorldPoint(new Vector3(_mousePosition.x, _mousePosition.y, _cameraMain.nearClipPlane));
+        var aimDirection = (worldPosition - transform.position).normalized;
+        var angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+            
+        transform.eulerAngles = new Vector3(0, 0, angle);
+        var directionX = worldPosition.x - transform.position.x;
+            
+        var aimThreshold = 0.1f;
+        var upThreshold = 0.5f;
+        var downThreshold = -0.5f;
+            
+        if (!isAiming) { return; } 
+            
+        // Player flips based on mouse position
+        _playerScript.spriteRenderer.flipX = directionX < -aimThreshold;
+            
+        transform.localPosition = new Vector3(0, transform.localPosition.y, transform.localPosition.z); // Move right
+            
+        // Determine vertical look state using Y difference in world space
+        var yDiff = worldPosition.y - transform.position.y;
+
+        int lookState;
+        if (yDiff >= upThreshold) lookState = 2;        // look up
+        else if (yDiff <= downThreshold) lookState = 0; // look down
+        else lookState = 1;                             // center
+
+        _animator.SetInteger(LookState, lookState);
+    }
+    
     private void TriggerSoundAndAnimation(int fxNum)
     {
         switch (fxNum)
@@ -274,7 +307,8 @@ public class PlayerGunBehaviour : MonoBehaviour
         fireAction.performed += OnShoot;
         reloadAction.performed += OnReload;
         aimAction.performed += OnAimHold;
-        fireAction.Enable(); reloadAction.Enable(); aimAction.Enable();
+        lookAction.performed += OnLook;
+        fireAction.Enable(); reloadAction.Enable(); aimAction.Enable(); lookAction.Enable();
     }
 
     internal void DisableGunControls()
@@ -282,6 +316,7 @@ public class PlayerGunBehaviour : MonoBehaviour
         fireAction.performed -= OnShoot;
         reloadAction.performed -= OnReload;
         aimAction.performed -= OnAimHold;
-        fireAction.Disable(); reloadAction.Disable(); aimAction.Disable();
+        lookAction.performed -= OnLook;
+        fireAction.Disable(); reloadAction.Disable(); aimAction.Disable(); lookAction.Disable();
     }
 }

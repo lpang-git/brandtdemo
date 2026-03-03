@@ -17,7 +17,6 @@ namespace Platformer.Mechanics
         private static readonly int DramaticFall = Animator.StringToHash("dramaticFall");
         private static readonly int Climbing = Animator.StringToHash("climbing");
         private static readonly int HasStartedClimbing = Animator.StringToHash("climbStart");
-        private static readonly int LookState = Animator.StringToHash("lookState");
         private static readonly int DeadByEnemy = Animator.StringToHash("deadByEnemy");
         private static readonly int DeadBySpikes = Animator.StringToHash("deadBySpikes");
         private static readonly int DeadByFall = Animator.StringToHash("deadByFall");
@@ -27,7 +26,7 @@ namespace Platformer.Mechanics
         private static readonly int DeadByDebris = Animator.StringToHash("deadByDebris");
 
         [Header("References")] 
-        [SerializeField] protected SpriteRenderer spriteRenderer;
+        [SerializeField] internal SpriteRenderer spriteRenderer;
         [SerializeField] internal Animator animator;
         [SerializeField] internal Transform aimTransform;
         [SerializeField] internal Collider2D collider2d;
@@ -90,7 +89,7 @@ namespace Platformer.Mechanics
 
         // basics
         internal bool controlEnabled;
-        internal InputAction moveAction, jumpAction, lookAction, pauseAction;
+        internal InputAction moveAction, jumpAction, pauseAction;
         internal bool dyingState;
         private Vector2 _moveInput;
         private Vector2 move;
@@ -107,8 +106,7 @@ namespace Platformer.Mechanics
         private bool _wasAirborne;
         private bool _jumpPressed;
         
-        // aim values
-        private Vector2 mousePosition;
+        // gun values
         private bool _canUseGun;
         
         // dialogue values
@@ -130,7 +128,6 @@ namespace Platformer.Mechanics
         // private references
         private PlayerGunBehaviour _aimScript;
         private PlayerUI _ui;
-        private Camera _cameraMain;
         
     
         public Bounds Bounds => collider2d.bounds;
@@ -139,24 +136,19 @@ namespace Platformer.Mechanics
         {
             controlEnabled = true;
             _canUseGun = true;
-            
-            _cameraMain = Camera.main;
             health = GetComponent<Health>();
             collider2d = GetComponent<Collider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
-            aimTransform = transform.Find("Aim");
             _aimScript = aimTransform.GetComponent<PlayerGunBehaviour>();
             _ui = GetComponentInChildren<PlayerUI>();
 
             moveAction = InputSystem.actions.FindAction("Player/Move");
             jumpAction = InputSystem.actions.FindAction("Player/Jump");
-            lookAction = InputSystem.actions.FindAction("Player/Look");
             pauseAction = InputSystem.actions.FindAction("Player/Pause");
             
             moveAction.Enable();
             jumpAction.Enable();
-            lookAction.Enable();
             pauseAction.Enable();
         }
         
@@ -166,9 +158,8 @@ namespace Platformer.Mechanics
             moveAction.performed += OnMovement;
             moveAction.canceled += OnMovement;
             jumpAction.performed += OnJump;
-            lookAction.performed += OnLook;
             pauseAction.performed += OnPause;
-            moveAction.Enable(); jumpAction.Enable(); lookAction.Enable(); pauseAction.Enable();
+            moveAction.Enable(); jumpAction.Enable(); pauseAction.Enable();
         }
 
         protected override void OnDisable()
@@ -176,9 +167,8 @@ namespace Platformer.Mechanics
             moveAction.performed -= OnMovement;
             moveAction.canceled -= OnMovement;
             jumpAction.performed -= OnJump;
-            lookAction.performed -= OnLook;
             pauseAction.performed -= OnPause;
-            moveAction.Disable(); jumpAction.Disable(); lookAction.Disable(); pauseAction.Disable();
+            moveAction.Disable(); jumpAction.Disable(); pauseAction.Disable();
             base.OnDisable();
         }
         
@@ -232,7 +222,6 @@ namespace Platformer.Mechanics
                 EnableControls();
                 
                 LookAtWalkingDirection();
-                AimAtMouse();
 
                 var inputVector = _moveInput;
                 move.x = inputVector.x; // Horizontal movement
@@ -266,17 +255,10 @@ namespace Platformer.Mechanics
                     _jumpBufferTimer = 0f;
                 }
 
-                if (!_skipFirstDependency)
+                if (!_skipFirstDependency && !controlEnabled)
                 {
-                    if (controlEnabled)
-                    {
-                        AimAtMouse();
-                    }
-                    else
-                    {
-                        move.x = 0;
-                        _jumpRequested = false;
-                    }
+                    move.x = 0;
+                    _jumpRequested = false;
                 }
 
                 if (!_wasGrounded && IsGrounded)
@@ -558,46 +540,10 @@ namespace Platformer.Mechanics
             if (velocity.x == 0) return;
             spriteRenderer.flipX = velocity.x < 0;
         }
-        
-        private void AimAtMouse()
-        {
-            var worldPosition = _cameraMain.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, _cameraMain.nearClipPlane));
-            var aimDirection = (worldPosition - transform.position).normalized;
-            var angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-            
-            aimTransform.eulerAngles = new Vector3(0, 0, angle);
-            var directionX = worldPosition.x - transform.position.x;
-            
-            var aimThreshold = 0.1f;
-            var upThreshold = 0.5f;
-            var downThreshold = -0.5f;
-            
-            if (!_aimScript.isAiming) { return; } 
-            
-            // Player flips based on mouse position
-            spriteRenderer.flipX = directionX < -aimThreshold;
-            
-            aimTransform.localPosition = new Vector3(0, aimTransform.localPosition.y, aimTransform.localPosition.z); // Move right
-            
-            // Determine vertical look state using Y difference in world space
-            var yDiff = worldPosition.y - transform.position.y;
-
-            int lookState;
-            if (yDiff >= upThreshold) lookState = 2;        // look up
-            else if (yDiff <= downThreshold) lookState = 0; // look down
-            else lookState = 1;                             // center
-
-            animator.SetInteger(LookState, lookState);
-        }
 
         internal void SetGroundType(int type)
         {
             groundType = type;
-        }
-    
-        private void OnLook(InputAction.CallbackContext context)
-        {
-            mousePosition = context.ReadValue<Vector2>();
         }
 
         private void EnableControls()
@@ -605,8 +551,7 @@ namespace Platformer.Mechanics
             moveAction.performed += OnMovement;
             moveAction.canceled += OnMovement;
             jumpAction.performed += OnJump;
-            lookAction.performed += OnLook;
-            moveAction.Enable(); jumpAction.Enable(); lookAction.Enable();
+            moveAction.Enable(); jumpAction.Enable();
             dialogueManager.canInteract = true;
         }
 
@@ -615,8 +560,7 @@ namespace Platformer.Mechanics
             moveAction.performed -= OnMovement;
             moveAction.canceled -= OnMovement;
             jumpAction.performed -= OnJump;
-            lookAction.performed -= OnLook;
-            moveAction.Disable(); jumpAction.Disable(); lookAction.Disable();
+            moveAction.Disable(); jumpAction.Disable();
             dialogueManager.canInteract = false;
         }
     
