@@ -206,11 +206,13 @@ namespace Platformer.Mechanics
         {
             if (_canUseGun)
             {
-                _aimScript.EnableGunControls();
+                _aimScript.EnableAim();
+                _aimScript.EnableGun();
             }
             else
             {
-                _aimScript.DisableGunControls();
+                _aimScript.DisableAim();
+                _aimScript.DisableGun();
             }
             
             if (controlEnabled)
