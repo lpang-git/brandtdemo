@@ -155,20 +155,16 @@ namespace Platformer.Mechanics
         protected override void OnEnable()
         {
             base.OnEnable();
-            moveAction.performed += OnMovement;
-            moveAction.canceled += OnMovement;
-            jumpAction.performed += OnJump;
+            EnableControls();
             pauseAction.performed += OnPause;
-            moveAction.Enable(); jumpAction.Enable(); pauseAction.Enable();
+            pauseAction.Enable();
         }
 
         protected override void OnDisable()
         {
-            moveAction.performed -= OnMovement;
-            moveAction.canceled -= OnMovement;
-            jumpAction.performed -= OnJump;
+            DisableControls();
             pauseAction.performed -= OnPause;
-            moveAction.Disable(); jumpAction.Disable(); pauseAction.Disable();
+            pauseAction.Disable();
             base.OnDisable();
         }
         
