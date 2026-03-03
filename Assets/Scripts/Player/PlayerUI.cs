@@ -64,7 +64,7 @@ public class PlayerUI : MonoBehaviour
 
     public void SetVolume(float volume)
     {
-        audioMixer.SetFloat("Master", Mathf.Log10(volume) * 20);
+        audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("Master", volume);
     }
     
