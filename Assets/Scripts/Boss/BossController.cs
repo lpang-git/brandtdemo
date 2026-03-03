@@ -40,7 +40,7 @@ public class BossController : MonoBehaviour
     [Header("Monitor Timing")]
     [SerializeField] private float minCooldown = 8f;
     [SerializeField] private float maxCooldown = 15f;
-    [SerializeField] private float introMonitorDelay = 16f;
+    [SerializeField] private float introMonitorDelay = 8f;
     [SerializeField] private float destroyedMonitorCooldown = 5f;
 
     public bool instantKill;
