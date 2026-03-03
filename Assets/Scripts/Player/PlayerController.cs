@@ -357,7 +357,7 @@ namespace Platformer.Mechanics
                 _aimScript.OnAmmoPickedUp(ammoBox.ammoNum);
                 ammoBox.gameObject.GetComponent<Collider2D>().enabled = false;
                 ammoBox.OnPickedUp();
-                PlaySoundAndAnims(15);
+                PlaySoundAndAnims(14);
             } else if (col.CompareTag("BossCollider"))
             {
                 if (dyingState)
@@ -371,7 +371,7 @@ namespace Platformer.Mechanics
                     return;
                 Schedule<PlayerDeath>();
                 dyingState = true;
-                PlaySoundAndAnims(16);
+                PlaySoundAndAnims(15);
             } else if (col.CompareTag("Debris"))
             {
                 if (dyingState)
@@ -674,7 +674,7 @@ namespace Platformer.Mechanics
                         break;
                     case 15:
                         // ammo box opened
-                        sounds[15].Play();
+                        sounds[14].Play();
                         break;
                     case 16:
                         // death by fire
@@ -686,7 +686,7 @@ namespace Platformer.Mechanics
                         StopAllPlayerSounds();
                         animator.SetTrigger(DeadByFire);
                         animator.SetBool(Dead, true);
-                        sounds[16].Play();
+                        sounds[15].Play();
                         break;
                     case 17:
                         // death by debris
@@ -698,7 +698,7 @@ namespace Platformer.Mechanics
                         StopAllPlayerSounds();
                         animator.SetTrigger(DeadByDebris);
                         animator.SetBool(Dead, true);
-                        sounds[17].Play();
+                        sounds[16].Play();
                         break;
                 }
             }
@@ -733,7 +733,7 @@ namespace Platformer.Mechanics
 
             private void StopAllPlayerSounds()
             {
-                foreach  (var sound in sounds)
+                foreach (var sound in sounds)
                 {
                     sound.Stop();
                 }
