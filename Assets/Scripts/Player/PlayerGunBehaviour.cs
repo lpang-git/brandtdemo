@@ -24,9 +24,6 @@ public class PlayerGunBehaviour : MonoBehaviour
     [Tooltip("Cooldown for shooting in seconds")]
     [SerializeField] private float shootCooldown = 0.4f;
     
-    [Tooltip("Cooldown (in seconds) in which the player cannot move after they have pressed aim.")]
-    [SerializeField] private float gunAimCooldown = 1f;
-    
     [Tooltip("Cooldown (in seconds) in which the player cannot move after they have pressed reload.")]
     [SerializeField] private float reloadCooldown = 1.5f;
     
