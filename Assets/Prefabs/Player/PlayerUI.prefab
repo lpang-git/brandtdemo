@@ -1468,9 +1468,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 5367084010815064134}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
-  m_Value: 0
+  m_MaxValue: 10
+  m_WholeNumbers: 1
+  m_Value: 10
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -3093,8 +3093,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: -1.7509, y: 0}
+  m_SizeDelta: {x: -3.5019, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8919735450223164486
 GameObject:
