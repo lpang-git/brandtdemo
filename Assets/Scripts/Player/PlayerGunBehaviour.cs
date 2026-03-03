@@ -173,7 +173,11 @@ public class PlayerGunBehaviour : MonoBehaviour
     {
         _playerScript.controlEnabled = false;
         yield return new WaitForSeconds(duration);
-        _playerScript.controlEnabled = true;
+
+        if (!isAiming)
+        {
+            _playerScript.controlEnabled = true;
+        }
     }
     
     private System.Collections.IEnumerator LockShootForDuration(float duration) // used when auto-reloading or when shooting
@@ -194,6 +198,11 @@ public class PlayerGunBehaviour : MonoBehaviour
     {
         InitReload();
         StartCoroutine(LockGunForDuration(reloadCooldown));
+
+        if (!isAiming)
+        {
+            StartCoroutine(LockMovementForDuration(reloadCooldown));
+        }
     }
     
     private void OnGunEmpty() // auto-reload
@@ -206,8 +215,6 @@ public class PlayerGunBehaviour : MonoBehaviour
     private void InitReload()
     {
         TriggerSoundAndAnimation(2);
-
-        StartCoroutine(LockMovementForDuration(reloadCooldown));
         
         // Calculate how many bullets needed to fill chamber
         var needed = maxAmmo - currentChamberedAmmo;
