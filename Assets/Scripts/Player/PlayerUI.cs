@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Audio;
@@ -47,7 +46,8 @@ public class PlayerUI : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        ResumeGame();
     }
 
     public void MainMenu()
@@ -74,12 +74,12 @@ public class PlayerUI : MonoBehaviour
 
     public void PlaySound(int type)
     {
-        switch (type)
+        /*switch (type)
         {
             case 0:
                 // button click
-                _source.PlayOneShot(clips[0]);
+                _source.Play(clips[0]);
                 break;
-        }
+        }*/
     }
 }
