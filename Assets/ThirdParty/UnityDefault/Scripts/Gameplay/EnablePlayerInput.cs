@@ -15,6 +15,7 @@ namespace Platformer.Gameplay
             var player = _model.player;
             player.dyingState = false;
             player.controlEnabled = true;
+            player.canUseGun = true;
         }
     }
 }

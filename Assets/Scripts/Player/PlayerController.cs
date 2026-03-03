@@ -107,7 +107,7 @@ namespace Platformer.Mechanics
         private bool _jumpPressed;
         
         // gun values
-        private bool _canUseGun;
+        internal bool canUseGun;
         
         // dialogue values
         internal bool playerInRangeOfDialogue;
@@ -135,7 +135,7 @@ namespace Platformer.Mechanics
         protected virtual void Awake()
         {
             controlEnabled = true;
-            _canUseGun = true;
+            canUseGun = true;
             health = GetComponent<Health>();
             collider2d = GetComponent<Collider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
@@ -190,7 +190,7 @@ namespace Platformer.Mechanics
             }
 
             controlEnabled = !_isPaused;
-            _canUseGun = !_isPaused;
+            canUseGun = !_isPaused;
 
             if (_isPaused)
             {
@@ -204,7 +204,7 @@ namespace Platformer.Mechanics
         
         protected override void Update()
         {
-            if (_canUseGun)
+            if (canUseGun)
             {
                 _aimScript.EnableAim();
                 _aimScript.EnableGun();
@@ -403,14 +403,14 @@ namespace Platformer.Mechanics
         
             if (_isLadder)
             {
-                _canUseGun = false;
+                canUseGun = false;
                 velocity.y = inputVector.y * climbingSpeed;
                 CheckGrounded();
                 targetVelocity = move * playerSpeed;
             }
             else
             {
-                _canUseGun = true;
+                canUseGun = true;
                 var targetX = move.x * playerSpeed;
                 var accel = IsGrounded ? groundAccel : airAccel;
                 velocity.x = Mathf.MoveTowards(velocity.x, targetX, accel * Time.deltaTime);
@@ -431,7 +431,7 @@ namespace Platformer.Mechanics
             
                 if (!IsGrounded)
                 {
-                    _canUseGun =  false;
+                    canUseGun =  false;
                     
                     if (!_wasAirborne)
                     {
@@ -454,7 +454,7 @@ namespace Platformer.Mechanics
                 }
                 else
                 {
-                    _canUseGun = true;
+                    canUseGun = true;
                     velocity.y = Mathf.Max(0f, velocity.y);
                     _fallTime = 0f;
                 }

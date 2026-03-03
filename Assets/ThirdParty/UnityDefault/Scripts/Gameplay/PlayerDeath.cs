@@ -21,6 +21,7 @@ namespace Platformer.Gameplay
                 _model.virtualCamera.LookAt = null;
                 player.collider2d.enabled = true;
                 player.controlEnabled = false;
+                player.canUseGun = false;
                 Simulation.Schedule<PlayerSpawn>(2);
             }
         }
