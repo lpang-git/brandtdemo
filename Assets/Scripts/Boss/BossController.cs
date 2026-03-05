@@ -307,6 +307,8 @@ public class BossController : MonoBehaviour
         {
             monitors[choice].SetShootable(true);
 
+            if (phase != Phase.Head) return;
+            
             for (var i = 0; i <= 3; i++)
             {
                 if (i == choice) continue;
