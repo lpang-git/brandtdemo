@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class BossController : MonoBehaviour
@@ -82,6 +81,11 @@ public class BossController : MonoBehaviour
         _lFAnimator = leftFire.GetComponent<Animator>();
         _rFAnimator = rightFire.GetComponent<Animator>();
         _impulseSource = GetComponent<CinemachineImpulseSource>();
+    }
+
+    private void Start()
+    {
+        PlaySoundAndShake(0);
     }
 
     private void Update()
@@ -352,7 +356,9 @@ public class BossController : MonoBehaviour
         {
             case 0:
                 // intro
-                sounds[0].Play();
+                _impulseSource.ImpulseDefinition.ImpulseShape = CinemachineImpulseDefinition.ImpulseShapes.Rumble;
+                _impulseSource.ImpulseDefinition.ImpulseDuration = 0.85f;
+                CameraShaker.instance.CameraShake(_impulseSource);
                 break;
             case 1:
                 // idle sound
