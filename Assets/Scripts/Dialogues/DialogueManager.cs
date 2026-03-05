@@ -104,6 +104,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
+        GetComponent<AudioSource>().Play(); // next page sfx
         _currentLineIndex++;
 
         if (_currentLineIndex >= _currentLines.Length)
