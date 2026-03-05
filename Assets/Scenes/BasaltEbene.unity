@@ -633,6 +633,11 @@ PrefabInstance:
       propertyPath: playerSpawn
       value: 
       objectReference: {fileID: 1694583628}
+    - target: {fileID: 2322504551494507070, guid: 51bfe89a839ffbb12bb02b8b03125d30,
+        type: 3}
+      propertyPath: playerSpawn
+      value: 
+      objectReference: {fileID: 1694583628}
     - target: {fileID: 2671673837571208598, guid: 51bfe89a839ffbb12bb02b8b03125d30,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -643,6 +648,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3269960422382005581, guid: 51bfe89a839ffbb12bb02b8b03125d30,
+        type: 3}
+      propertyPath: playerSpawn
+      value: 
+      objectReference: {fileID: 1694583628}
+    - target: {fileID: 3371655311711234330, guid: 51bfe89a839ffbb12bb02b8b03125d30,
+        type: 3}
+      propertyPath: playerSpawn
+      value: 
+      objectReference: {fileID: 1694583628}
     - target: {fileID: 3895634147316588127, guid: 51bfe89a839ffbb12bb02b8b03125d30,
         type: 3}
       propertyPath: playerSpawn
