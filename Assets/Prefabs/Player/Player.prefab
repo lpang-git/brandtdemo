@@ -63,6 +63,7 @@ MonoBehaviour:
   aimTransform: {fileID: 4526335388715526479}
   collider2d: {fileID: 298265138534161304}
   health: {fileID: 6082575806313374961}
+  heart: {fileID: 5061087069603131163}
   dialogueManager: {fileID: 2495058529709981049}
   sounds:
   - {fileID: 8575104651638045744}
@@ -853,7 +854,7 @@ Transform:
   m_GameObject: {fileID: 1277321507919381181}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.041, y: 0.124, z: 0}
+  m_LocalPosition: {x: 0.018, y: 0.022, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -876,7 +877,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:

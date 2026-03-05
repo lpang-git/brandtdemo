@@ -31,6 +31,7 @@ namespace Platformer.Mechanics
         [SerializeField] internal Transform aimTransform;
         [SerializeField] internal Collider2D collider2d;
         [SerializeField] internal Health health;
+        [SerializeField] private ParticleSystem heart;
         [SerializeField] internal DialogueManager dialogueManager;
 
         [Space] 
@@ -579,6 +580,7 @@ namespace Platformer.Mechanics
                     case 2:
                         // checkpoint reached sound
                         sounds[2].Play();
+                        heart.Play();
                         break;
                     case 3:
                         // footstep sound
