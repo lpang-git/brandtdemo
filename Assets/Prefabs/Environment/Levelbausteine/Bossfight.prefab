@@ -246,6 +246,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8123717514893815397, guid: bef5ff3b7e2ec98508a8cf1829b1b47e,
         type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8123717514893815397, guid: bef5ff3b7e2ec98508a8cf1829b1b47e,
+        type: 3}
       propertyPath: playerSpawn
       value: 
       objectReference: {fileID: 0}
@@ -269,7 +274,8 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.4709351
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8123717514893815397, guid: bef5ff3b7e2ec98508a8cf1829b1b47e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
