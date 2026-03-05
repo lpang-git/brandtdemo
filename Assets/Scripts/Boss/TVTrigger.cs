@@ -4,7 +4,7 @@ using UnityEngine;
 public class TVTrigger : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-    [SerializeField] private int monitorNumber;
+    [SerializeField] private GameObject explosion;
     
     public bool IsShot { get; private set; }
     
@@ -12,6 +12,7 @@ public class TVTrigger : MonoBehaviour
 
     private static readonly int Target = Animator.StringToHash("target");
     private static readonly int WasShot = Animator.StringToHash("shot");
+    private static readonly int Explode = Animator.StringToHash("explode");
 
     private void Awake()
     {
@@ -25,6 +26,7 @@ public class TVTrigger : MonoBehaviour
         if (bullet != null)
         {
             MarkShot();
+            explosion.GetComponent<Animator>().SetTrigger(Explode);
         }
     }
     
