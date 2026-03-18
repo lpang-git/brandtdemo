@@ -16,7 +16,8 @@ public class SceneTrigger : MonoBehaviour
     {
         var player = other.gameObject.GetComponent<PlayerController>();
         if (!player) return;
-        
+
+        player.isSilent = true;
         player.controlEnabled = false;
         StartCoroutine(ChangeScene());
     }

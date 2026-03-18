@@ -96,6 +96,7 @@ namespace Platformer.Mechanics
         private Vector2 move;
         private bool _skipFirstDependency;
         internal bool _isPaused;
+        internal bool isSilent;
         
         // jump values
         private bool _wasGrounded = true;
@@ -567,6 +568,8 @@ namespace Platformer.Mechanics
 
             internal void PlaySoundAndAnims(int actionId)
             {
+                if (isSilent) { return; }
+                
                 switch (actionId)
                 {
                     case 0:
