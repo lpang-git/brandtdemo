@@ -27,7 +27,7 @@ public class SceneTrigger : MonoBehaviour
         fade.SetTrigger(Fade);
         yield return new WaitForSeconds(2);
         cutscene.SetTrigger(HubTrigger);
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(15);
         SceneManager.LoadScene(sceneIndex);
     }
 }
