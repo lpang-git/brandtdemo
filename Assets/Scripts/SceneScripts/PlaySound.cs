@@ -2,10 +2,16 @@ using UnityEngine;
 
 public class PlaySound : MonoBehaviour
 {
-    [SerializeField] private AudioSource sound;
+    [SerializeField] private AudioSource windSound;
+    [SerializeField] private AudioSource basaltSound;
     
-    public void PlayEerie()
+    public void PlayWind()
     {
-        sound.Play();
+        windSound.Play();
+    }
+
+    public void PlayBasalt()
+    {
+        basaltSound.Play();
     }
 }
