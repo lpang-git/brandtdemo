@@ -19,6 +19,7 @@ public class SceneTrigger : MonoBehaviour
 
         player.isSilent = true;
         player.controlEnabled = false;
+        player.canUseGun = false;
         StartCoroutine(ChangeScene());
     }
 
