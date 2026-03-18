@@ -119,6 +119,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &163664306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 163664308}
+  - component: {fileID: 163664307}
+  m_Layer: 0
+  m_Name: StartCutsceneScript
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &163664307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163664306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efad881400ff6010c93dae359eb3542c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StartCutsceneScript
+  cutscene: {fileID: 360824583}
+--- !u!4 &163664308
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163664306}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1033.5342, y: 580.4333, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &360824582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -156,6 +201,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b20e8d6fa9f7cb674930306760a3f9c7, type: 3}
+--- !u!95 &360824583 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5894708429432501504, guid: b20e8d6fa9f7cb674930306760a3f9c7,
+    type: 3}
+  m_PrefabInstance: {fileID: 360824582}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &639257077
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,3 +867,4 @@ SceneRoots:
   - {fileID: 1182820975}
   - {fileID: 1422821785}
   - {fileID: 2130829481}
+  - {fileID: 163664308}
