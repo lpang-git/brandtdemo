@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Platformer.Mechanics;
 
 public class SceneTrigger : MonoBehaviour
 {
@@ -13,10 +14,11 @@ public class SceneTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            StartCoroutine(ChangeScene());
-        }
+        var player = other.gameObject.GetComponent<PlayerController>();
+        if (!player) return;
+        
+        player.controlEnabled = false;
+        StartCoroutine(ChangeScene());
     }
 
     private IEnumerator ChangeScene()
