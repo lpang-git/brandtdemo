@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9bb2466e9e649ba43be631b77de8bb98
+guid: 0016cef5ff6ad6ca2b274daa9358b8e0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4340329276097644678
-    second: DefeatedBoss3_0
+      213: 2081474252033255665
+    second: BarackenZuBasalt3Big_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DefeatedBoss3_0
+      name: BarackenZuBasalt3Big_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 480
-        height: 270
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 68847060b72fb3c30800000000000000
-      internalID: 4340329276097644678
+      spriteID: 1f86099ddc1e2ec10800000000000000
+      internalID: 2081474252033255665
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      DefeatedBoss3_0: 4340329276097644678
+      BarackenZuBasalt3Big_0: 2081474252033255665
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
